@@ -17,6 +17,11 @@ namespace ISSApp
             InitializeComponent();
         }
 
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("qwe");
