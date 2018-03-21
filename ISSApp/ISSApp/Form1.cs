@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace ISSApp
 {
@@ -22,9 +24,20 @@ namespace ISSApp
             Dispose();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("qwe");
+            try
+            {
+                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connString"].ToString()))
+                {
+                    connection.Open();
+                }
+            }
+            catch(SqlException exc)
+            {
+                MessageBox.Show(exc.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BtnExit.PerformClick();
+            }
         }
     }
 }
