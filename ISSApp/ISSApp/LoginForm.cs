@@ -23,6 +23,7 @@ namespace ISSApp
         private void LoginForm_Load(object sender, EventArgs e)
         {
             Fade.Start();
+            
             txtUsername.Text = "Username";
             txtPassword.Text = "Password";
             txtPassword.isPassword = false;

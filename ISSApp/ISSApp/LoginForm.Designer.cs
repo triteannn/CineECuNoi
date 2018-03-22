@@ -43,6 +43,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dropdownAS = new Bunifu.Framework.UI.BunifuDropdown();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -66,10 +68,10 @@
             this.txtUsername.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtUsername.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtUsername.LineThickness = 3;
-            this.txtUsername.Location = new System.Drawing.Point(33, 154);
+            this.txtUsername.Location = new System.Drawing.Point(33, 147);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(308, 33);
+            this.txtUsername.Size = new System.Drawing.Size(335, 33);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
@@ -126,10 +128,10 @@
             this.txtPassword.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtPassword.LineThickness = 3;
-            this.txtPassword.Location = new System.Drawing.Point(33, 238);
+            this.txtPassword.Location = new System.Drawing.Point(33, 231);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(308, 33);
+            this.txtPassword.Size = new System.Drawing.Size(335, 33);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
@@ -143,7 +145,7 @@
             this.bunifuSeparator1.Location = new System.Drawing.Point(366, 0);
             this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(45, 403);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(28, 422);
             this.bunifuSeparator1.TabIndex = 10;
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = true;
@@ -154,7 +156,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Maiandra GD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(234, 294);
+            this.btnLogin.Location = new System.Drawing.Point(261, 331);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(107, 41);
             this.btnLogin.TabIndex = 11;
@@ -166,7 +168,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::ISSApp.Properties.Resources.exitBtn;
-            this.pictureBox2.Location = new System.Drawing.Point(751, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(782, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -188,7 +190,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::ISSApp.Properties.Resources.minimize;
-            this.pictureBox3.Location = new System.Drawing.Point(718, 10);
+            this.pictureBox3.Location = new System.Drawing.Point(749, 10);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 22);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -198,6 +200,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.dropdownAS);
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.txtUsername);
@@ -207,8 +211,40 @@
             this.panel1.Controls.Add(this.lblCreateAcc);
             this.panel1.Location = new System.Drawing.Point(398, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 360);
+            this.panel1.Size = new System.Drawing.Size(409, 379);
             this.panel1.TabIndex = 14;
+            // 
+            // dropdownAS
+            // 
+            this.dropdownAS.BackColor = System.Drawing.Color.Transparent;
+            this.dropdownAS.BorderRadius = 3;
+            this.dropdownAS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dropdownAS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dropdownAS.DisabledColor = System.Drawing.Color.Gray;
+            this.dropdownAS.ForeColor = System.Drawing.Color.DarkRed;
+            this.dropdownAS.Items = new string[] {
+        "Doctor",
+        "Angajat centru recoltare",
+        "Donator"};
+            this.dropdownAS.Location = new System.Drawing.Point(108, 291);
+            this.dropdownAS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dropdownAS.Name = "dropdownAS";
+            this.dropdownAS.NomalColor = System.Drawing.Color.White;
+            this.dropdownAS.onHoverColor = System.Drawing.Color.White;
+            this.dropdownAS.selectedIndex = -1;
+            this.dropdownAS.Size = new System.Drawing.Size(260, 29);
+            this.dropdownAS.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.Location = new System.Drawing.Point(30, 297);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 16);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Login as:";
             // 
             // LoginForm
             // 
@@ -216,7 +252,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(788, 403);
+            this.ClientSize = new System.Drawing.Size(819, 424);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -258,6 +294,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel1;
+        private Bunifu.Framework.UI.BunifuDropdown dropdownAS;
+        private System.Windows.Forms.Label label1;
     }
 }
 
