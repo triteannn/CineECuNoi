@@ -19,11 +19,6 @@ namespace ISSApp
             InitializeComponent();
         }
 
-        private void BtnExit_Click(object sender, EventArgs e)
-        {
-            Dispose();
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -36,7 +31,7 @@ namespace ISSApp
             catch(SqlException exc)
             {
                 MessageBox.Show(exc.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                BtnExit.PerformClick();
+                Dispose();
             }
         }
     }

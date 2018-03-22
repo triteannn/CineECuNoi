@@ -28,38 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // BtnExit
-            // 
-            this.BtnExit.Location = new System.Drawing.Point(713, 415);
-            this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(75, 23);
-            this.BtnExit.TabIndex = 0;
-            this.BtnExit.Text = "Exit";
-            this.BtnExit.UseVisualStyleBackColor = true;
-            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 438);
-            this.Controls.Add(this.BtnExit);
+            this.ClientSize = new System.Drawing.Size(450, 228);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
+            this.Text = "Centru donare sange - Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button BtnExit;
     }
 }
 
