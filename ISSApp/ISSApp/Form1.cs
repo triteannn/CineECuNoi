@@ -1,41 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Configuration;
 
 namespace ISSApp
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
-        public Form1()
+
+        private bool _closingfade = false;
+
+        public LoginForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
-            try
+            Fade.Start();
+        }
+
+        private void Fade_Tick(object sender, EventArgs e)
+        {
+            if (!_closingfade)
             {
-                using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connString"].ToString()))
+                if (Opacity < 1.0)
+                    Opacity += 0.05;
+                else
                 {
-                    connection.Open();
+                    Fade.Stop();
+                    Enabled = true;                                   
                 }
             }
-            catch(SqlException exc)
+            else
             {
-                MessageBox.Show(exc.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Dispose();
+                if (Opacity > 0.0)
+                    Opacity -= 0.05;
+                else
+                {
+                    Fade.Stop();
+                    Dispose();
+                }
             }
-            labelTudor.BackColor = Color.Transparent;
+        }
 
-            labelAdi.BackColor = Color.Transparent;
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Doriti intr-adevar sa iesiti din aplicatie?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            _closingfade = true;
+            if (result == DialogResult.Yes)
+            {
+                e.Cancel = true;
+                Enabled = false;
+                Fade.Start();
+            }
+            else e.Cancel = true;
         }
     }
 }

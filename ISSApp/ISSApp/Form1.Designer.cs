@@ -1,6 +1,6 @@
 ﻿namespace ISSApp
 {
-    partial class Form1
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,62 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.labelTudor = new System.Windows.Forms.Label();
-            this.labelAdi = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
+            this.Fade = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // labelTudor
+            // Fade
             // 
-            this.labelTudor.AutoSize = true;
-            this.labelTudor.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTudor.ForeColor = System.Drawing.Color.White;
-            this.labelTudor.Location = new System.Drawing.Point(6, 49);
-            this.labelTudor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelTudor.Name = "labelTudor";
-            this.labelTudor.Size = new System.Drawing.Size(207, 41);
-            this.labelTudor.TabIndex = 0;
-            this.labelTudor.Text = "labelTudor";
+            this.Fade.Interval = 20;
+            this.Fade.Tick += new System.EventHandler(this.Fade_Tick);
             // 
-            // labelAdi
-            // 
-            this.labelAdi.AutoSize = true;
-            this.labelAdi.Location = new System.Drawing.Point(339, 85);
-            this.labelAdi.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelAdi.Name = "labelAdi";
-            this.labelAdi.Size = new System.Drawing.Size(58, 17);
-            this.labelAdi.TabIndex = 0;
-            this.labelAdi.Text = "labelAdi";
-            // 
-            // Form1
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(436, 242);
-            this.Controls.Add(this.labelAdi);
-            this.Controls.Add(this.labelTudor);
             this.DoubleBuffered = true;
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(454, 289);
             this.MinimumSize = new System.Drawing.Size(454, 289);
-            this.Name = "Form1";
+            this.Name = "LoginForm";
+            this.Opacity = 0D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Centru donare sange - Login";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelAdi;
-
-        private System.Windows.Forms.Label labelTudor;
+        private System.Windows.Forms.Timer Fade;
     }
 }
 
