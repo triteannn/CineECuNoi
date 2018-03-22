@@ -33,6 +33,7 @@ namespace ISSApp
                 MessageBox.Show(exc.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Dispose();
             }
+            labelTudor.BackColor = Color.Transparent;
         }
     }
 }
