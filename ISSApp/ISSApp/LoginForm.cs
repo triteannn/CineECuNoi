@@ -23,8 +23,7 @@ namespace ISSApp
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            Fade.Start();
-            
+            Fade.Start();           
             txtUsername.Text = "Username";
             txtPassword.Text = "Password";
             txtPassword.isPassword = false;
@@ -149,6 +148,7 @@ namespace ISSApp
         {
             txtUsername.Text = "Username";
             txtPassword.Text = "Password";
+            txtPassword.isPassword = false;
             dropdownAS.selectedIndex = 0;
         }
 
@@ -156,6 +156,21 @@ namespace ISSApp
         {
             var _registerForm = new RegisterForm();
             _registerForm.Show();
+        }
+
+        private void Controls_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void dropdownAS_onItemSelected(object sender, EventArgs e)
+        {
+            btnLogin.Select();
         }
     }
 }

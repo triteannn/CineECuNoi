@@ -72,5 +72,20 @@ namespace ISSApp
             }
             else MessageBox.Show("Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void Controls_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnRegister.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void dropdownAS_KeyDown(object sender, KeyEventArgs e)
+        {
+            btnRegister.Select();
+        }
     }
 }

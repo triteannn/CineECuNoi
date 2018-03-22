@@ -75,6 +75,7 @@
             this.txtUsername.TabIndex = 1;
             this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // bunifuCustomLabel1
@@ -136,6 +137,7 @@
             this.txtPassword.TabIndex = 2;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // bunifuSeparator1
@@ -164,6 +166,7 @@
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             this.btnLogin.MouseLeave += new System.EventHandler(this.btnLogin_MouseLeave);
             this.btnLogin.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnLogin_MouseMove);
             // 
@@ -215,6 +218,7 @@
             this.dropdownAS.selectedIndex = -1;
             this.dropdownAS.Size = new System.Drawing.Size(260, 29);
             this.dropdownAS.TabIndex = 12;
+            this.dropdownAS.onItemSelected += new System.EventHandler(this.dropdownAS_onItemSelected);
             // 
             // pictureBox3
             // 
