@@ -136,18 +136,19 @@ namespace ISSApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && dropdownAS.selectedIndex > 0)
+            if (txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && dropdownAS.selectedIndex > 0 && txtUsername.Text != "Username" && txtPassword.Text != "Password")
             {
                 var _mainWindow = new MainWindow(this);
                 _mainWindow.Show();
                 Hide();
             }
-            else MessageBox.Show("Fields can not be empty.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show("Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         internal void EmptyFields()
         {
-            txtUsername.Text = txtPassword.Text = "";
+            txtUsername.Text = "Username";
+            txtPassword.Text = "Password";
             dropdownAS.selectedIndex = 0;
         }
 

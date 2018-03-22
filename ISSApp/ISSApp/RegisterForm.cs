@@ -66,11 +66,11 @@ namespace ISSApp
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtFullName.Text.Length > 0 && txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && DOB.Value != null && dropdownAS.selectedIndex > 0)
+            if (txtFullName.Text.Length > 0 && txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && DOB.Value != null && dropdownAS.selectedIndex > 0 && txtFullName.Text != "Full name" && txtUsername.Text != "Username" && txtPassword.Text != "Password")
             {
 
             }
-            else MessageBox.Show("Fields can not be empty.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show("Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
