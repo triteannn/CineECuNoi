@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -55,7 +56,7 @@ namespace ISSApp
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = MessageBox.Show("Doriti intr-adevar sa iesiti din aplicatie?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show("Are you sure you want to exit the application?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             _closingfade = true;
             if (result == DialogResult.Yes)
             {
@@ -106,7 +107,7 @@ namespace ISSApp
         private void txtPassword_Enter(object sender, EventArgs e)
         {
             if (txtPassword.Text == "Password")
-{
+            {
                 txtPassword.Text = "";
                 txtPassword.isPassword = true;
             }
@@ -115,7 +116,7 @@ namespace ISSApp
         private void txtPassword_Leave(object sender, EventArgs e)
         {
             if (txtPassword.Text == "")
-{
+            {
                 txtPassword.Text = "Password";
                 txtPassword.isPassword = false;
             }
@@ -131,6 +132,29 @@ namespace ISSApp
         {
             if (txtUsername.Text == "")
                 txtUsername.Text = "Username";
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && dropdownAS.selectedIndex > 0)
+            {
+                var _mainWindow = new MainWindow(this);
+                _mainWindow.Show();
+                Hide();
+            }
+            else MessageBox.Show("Fields can not be empty.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        internal void EmptyFields()
+        {
+            txtUsername.Text = txtPassword.Text = "";
+            dropdownAS.selectedIndex = 0;
+        }
+
+        private void lblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var _registerForm = new RegisterForm();
+            _registerForm.Show();
         }
     }
 }
