@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,9 +27,8 @@ namespace ISSApp
             var result = MessageBox.Show("Are you sure you want to logout?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Dispose();
                 _loginForm.EmptyFields();
-                _loginForm.Show();
+                _loginForm.Visible = true;
             }
             else e.Cancel = true;
         }

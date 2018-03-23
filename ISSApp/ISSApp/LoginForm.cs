@@ -154,7 +154,8 @@ namespace ISSApp
 
         private void lblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var _registerForm = new RegisterForm();
+            var _registerForm = new RegisterForm(this);
+            Enabled = false;
             _registerForm.Show();
         }
 

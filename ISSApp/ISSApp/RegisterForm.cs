@@ -12,13 +12,18 @@ namespace ISSApp
 {
     public partial class RegisterForm : Form
     {
-        public RegisterForm()
-        {
+
+        private LoginForm _loginForm;
+
+        public RegisterForm(LoginForm loginForm)
+        {            
             InitializeComponent();
+            _loginForm = loginForm;
         }
 
         private void lblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            _loginForm.Enabled = true;
             Dispose();
         }
 
