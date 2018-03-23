@@ -207,6 +207,7 @@
             this.dropdownAS.ForeColor = System.Drawing.Color.DarkRed;
             this.dropdownAS.Items = new string[] {
         "",
+        "Admin",
         "Doctor",
         "Angajat centru recoltare",
         "Donator"};

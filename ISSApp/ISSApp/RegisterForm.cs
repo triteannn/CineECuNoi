@@ -71,7 +71,7 @@ namespace ISSApp
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtFullName.Text.Length > 0 && txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && DOB.Value != null && dropdownAS.selectedIndex > 0 && txtFullName.Text != "Full name" && txtUsername.Text != "Username" && txtPassword.Text != "Password")
+            if (txtFullName.Text.Length > 0 && txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && DOB.Value != null && txtFullName.Text != "Full name" && txtUsername.Text != "Username" && txtPassword.Text != "Password")
             {
 
             }

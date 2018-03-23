@@ -46,8 +46,6 @@
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtFullName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dropdownAS = new Bunifu.Framework.UI.BunifuDropdown();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.btnRegister = new System.Windows.Forms.Button();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -72,14 +70,12 @@
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.txtUsername);
             this.panel1.Controls.Add(this.txtFullName);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dropdownAS);
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.bunifuCustomLabel2);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(408, 585);
+            this.panel1.Size = new System.Drawing.Size(408, 558);
             this.panel1.TabIndex = 16;
             // 
             // bunifuSeparator2
@@ -326,40 +322,6 @@
             this.txtFullName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             this.txtFullName.Leave += new System.EventHandler(this.txtFullName_Leave);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(17, 501);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 16);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Account type:";
-            // 
-            // dropdownAS
-            // 
-            this.dropdownAS.BackColor = System.Drawing.Color.Transparent;
-            this.dropdownAS.BorderRadius = 3;
-            this.dropdownAS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dropdownAS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dropdownAS.DisabledColor = System.Drawing.Color.Gray;
-            this.dropdownAS.ForeColor = System.Drawing.Color.DarkRed;
-            this.dropdownAS.Items = new string[] {
-        "",
-        "Doctor",
-        "Angajat centru recoltare",
-        "Donator"};
-            this.dropdownAS.Location = new System.Drawing.Point(135, 496);
-            this.dropdownAS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dropdownAS.Name = "dropdownAS";
-            this.dropdownAS.NomalColor = System.Drawing.Color.White;
-            this.dropdownAS.onHoverColor = System.Drawing.Color.White;
-            this.dropdownAS.selectedIndex = -1;
-            this.dropdownAS.Size = new System.Drawing.Size(254, 29);
-            this.dropdownAS.TabIndex = 6;
-            this.dropdownAS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dropdownAS_KeyDown);
-            // 
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
@@ -377,7 +339,7 @@
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Maiandra GD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(269, 532);
+            this.btnRegister.Location = new System.Drawing.Point(269, 495);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(120, 50);
             this.btnRegister.TabIndex = 7;
@@ -400,7 +362,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(432, 609);
+            this.ClientSize = new System.Drawing.Size(432, 582);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -416,8 +378,6 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private Bunifu.Framework.UI.BunifuDropdown dropdownAS;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private System.Windows.Forms.Button btnRegister;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
