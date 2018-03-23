@@ -92,27 +92,30 @@
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(30, 67);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(338, 17);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(337, 16);
             this.bunifuCustomLabel2.TabIndex = 6;
             this.bunifuCustomLabel2.Text = "Don\'t have an account? Create one right now, it only";
             // 
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(30, 85);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(103, 17);
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(102, 16);
             this.bunifuCustomLabel3.TabIndex = 7;
             this.bunifuCustomLabel3.Text = "takes a minute!";
             // 
             // lblCreateAcc
             // 
             this.lblCreateAcc.AutoSize = true;
+            this.lblCreateAcc.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreateAcc.Location = new System.Drawing.Point(139, 84);
             this.lblCreateAcc.Name = "lblCreateAcc";
-            this.lblCreateAcc.Size = new System.Drawing.Size(127, 17);
+            this.lblCreateAcc.Size = new System.Drawing.Size(123, 16);
             this.lblCreateAcc.TabIndex = 0;
             this.lblCreateAcc.TabStop = true;
             this.lblCreateAcc.Text = "Create an account!";
@@ -204,6 +207,7 @@
             this.dropdownAS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dropdownAS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dropdownAS.DisabledColor = System.Drawing.Color.Gray;
+            this.dropdownAS.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dropdownAS.ForeColor = System.Drawing.Color.DarkRed;
             this.dropdownAS.Items = new string[] {
         "Choose option...",

@@ -141,7 +141,9 @@
             this.Rh.BackColor = System.Drawing.Color.Transparent;
             this.Rh.BorderRadius = 3;
             this.Rh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Rh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Rh.DisabledColor = System.Drawing.Color.Gray;
+            this.Rh.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rh.ForeColor = System.Drawing.Color.DarkRed;
             this.Rh.Items = new string[] {
         "Choose option...",
@@ -161,7 +163,9 @@
             this.BloodType.BackColor = System.Drawing.Color.Transparent;
             this.BloodType.BorderRadius = 3;
             this.BloodType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BloodType.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BloodType.DisabledColor = System.Drawing.Color.Gray;
+            this.BloodType.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BloodType.ForeColor = System.Drawing.Color.DarkRed;
             this.BloodType.Items = new string[] {
         "Choose option...",
@@ -228,9 +232,10 @@
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
+            this.lblLogin.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogin.Location = new System.Drawing.Point(315, 67);
             this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(74, 17);
+            this.lblLogin.Size = new System.Drawing.Size(72, 16);
             this.lblLogin.TabIndex = 0;
             this.lblLogin.TabStop = true;
             this.lblLogin.Text = "login page";
@@ -351,9 +356,10 @@
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(30, 67);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(288, 17);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(278, 16);
             this.bunifuCustomLabel2.TabIndex = 6;
             this.bunifuCustomLabel2.Text = "Already have an account created? Go to the";
             // 

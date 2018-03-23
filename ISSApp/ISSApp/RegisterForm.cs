@@ -23,6 +23,7 @@ namespace ISSApp
 
         private void lblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            _loginForm.EmptyFields();
             _loginForm.Enabled = true;
             Dispose();
         }
