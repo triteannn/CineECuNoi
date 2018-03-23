@@ -32,9 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.Fade = new System.Windows.Forms.Timer(this.components);
             this.txtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.label2 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.label3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.label4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lblCreateAcc = new System.Windows.Forms.LinkLabel();
             this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -78,36 +78,36 @@
             this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
-            // bunifuCustomLabel1
+            // label2
             // 
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Maiandra GD", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(25, 9);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(116, 46);
-            this.bunifuCustomLabel1.TabIndex = 4;
-            this.bunifuCustomLabel1.Text = "Login";
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Maiandra GD", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(25, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 46);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Login";
             // 
-            // bunifuCustomLabel2
+            // label3
             // 
-            this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(30, 67);
-            this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(337, 16);
-            this.bunifuCustomLabel2.TabIndex = 6;
-            this.bunifuCustomLabel2.Text = "Don\'t have an account? Create one right now, it only";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(30, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(337, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Don\'t have an account? Create one right now, it only";
             // 
-            // bunifuCustomLabel3
+            // label4
             // 
-            this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(30, 85);
-            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(102, 16);
-            this.bunifuCustomLabel3.TabIndex = 7;
-            this.bunifuCustomLabel3.Text = "takes a minute!";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(30, 85);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "takes a minute!";
             // 
             // lblCreateAcc
             // 
@@ -177,12 +177,12 @@
             // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dropdownAS);
-            this.panel1.Controls.Add(this.bunifuCustomLabel1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Controls.Add(this.bunifuCustomLabel2);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtPassword);
-            this.panel1.Controls.Add(this.bunifuCustomLabel3);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.lblCreateAcc);
             this.panel1.Location = new System.Drawing.Point(398, 43);
             this.panel1.Name = "panel1";
@@ -271,7 +271,6 @@
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
-            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -295,10 +294,10 @@
         #endregion
         private System.Windows.Forms.Timer Fade;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtUsername;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private Bunifu.Framework.UI.BunifuCustomLabel label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
+        private Bunifu.Framework.UI.BunifuCustomLabel label3;
+        private Bunifu.Framework.UI.BunifuCustomLabel label4;
         private System.Windows.Forms.LinkLabel lblCreateAcc;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtPassword;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;

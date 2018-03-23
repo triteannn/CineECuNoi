@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -19,6 +21,13 @@ namespace ISSApp
         public LoginForm()
         {
             InitializeComponent();
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile(Path.Combine(Application.StartupPath.Replace(@"bin\Debug","Resources"), "MAIAN.TTF"));
+            label2.Font = new Font(pfc.Families[0], 22, FontStyle.Bold);
+            txtUsername.Font = txtPassword.Font = new Font(pfc.Families[0], 10, FontStyle.Bold);
+            btnLogin.Font = new Font(pfc.Families[0], 12, FontStyle.Bold);
+            label1.Font = dropdownAS.Font = lblCreateAcc.Font = new Font(pfc.Families[0], 8, FontStyle.Bold);
+            label3.Font = label4.Font = new Font(pfc.Families[0], 8, FontStyle.Regular);
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

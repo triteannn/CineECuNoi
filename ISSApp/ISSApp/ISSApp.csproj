@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\MAIAN.TTF" />
     <None Include="Resources\minimize.png" />
     <None Include="Resources\images.png" />
     <None Include="Resources\20579c9ba47831d.png" />

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,9 @@ namespace ISSApp
         {            
             InitializeComponent();
             _loginForm = loginForm;
+            PrivateFontCollection pfc = new PrivateFontCollection();
+            pfc.AddFontFile(Path.Combine(Application.StartupPath.Replace(@"bin\Debug", "Resources"), "MAIAN.TTF"));
+            lblLogin.Font = label1.Font = label2.Font = label3.Font = label4.Font = label5.Font = label6.Font = label7.Font = label8.Font = txtFullName.Font = txtUsername.Font = txtPassword.Font = BloodType.Font = Rh.Font = btnRegister.Font = new Font(pfc.Families[0], 22, FontStyle.Bold);
         }
 
         private void lblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
