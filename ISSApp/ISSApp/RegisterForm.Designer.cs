@@ -144,7 +144,7 @@
             this.Rh.DisabledColor = System.Drawing.Color.Gray;
             this.Rh.ForeColor = System.Drawing.Color.DarkRed;
             this.Rh.Items = new string[] {
-        "",
+        "Choose option...",
         "Positive",
         "Negative"};
             this.Rh.Location = new System.Drawing.Point(135, 412);
@@ -152,7 +152,7 @@
             this.Rh.Name = "Rh";
             this.Rh.NomalColor = System.Drawing.Color.White;
             this.Rh.onHoverColor = System.Drawing.Color.White;
-            this.Rh.selectedIndex = -1;
+            this.Rh.selectedIndex = 0;
             this.Rh.Size = new System.Drawing.Size(254, 43);
             this.Rh.TabIndex = 5;
             // 
@@ -164,7 +164,7 @@
             this.BloodType.DisabledColor = System.Drawing.Color.Gray;
             this.BloodType.ForeColor = System.Drawing.Color.DarkRed;
             this.BloodType.Items = new string[] {
-        "",
+        "Choose option...",
         "0",
         "A",
         "B",
@@ -174,7 +174,7 @@
             this.BloodType.Name = "BloodType";
             this.BloodType.NomalColor = System.Drawing.Color.White;
             this.BloodType.onHoverColor = System.Drawing.Color.White;
-            this.BloodType.selectedIndex = -1;
+            this.BloodType.selectedIndex = 0;
             this.BloodType.Size = new System.Drawing.Size(254, 43);
             this.BloodType.TabIndex = 4;
             // 

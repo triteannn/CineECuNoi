@@ -206,7 +206,7 @@
             this.dropdownAS.DisabledColor = System.Drawing.Color.Gray;
             this.dropdownAS.ForeColor = System.Drawing.Color.DarkRed;
             this.dropdownAS.Items = new string[] {
-        "",
+        "Choose option...",
         "Admin",
         "Doctor",
         "Angajat centru recoltare",
@@ -216,7 +216,7 @@
             this.dropdownAS.Name = "dropdownAS";
             this.dropdownAS.NomalColor = System.Drawing.Color.White;
             this.dropdownAS.onHoverColor = System.Drawing.Color.White;
-            this.dropdownAS.selectedIndex = -1;
+            this.dropdownAS.selectedIndex = 0;
             this.dropdownAS.Size = new System.Drawing.Size(260, 29);
             this.dropdownAS.TabIndex = 12;
             this.dropdownAS.onItemSelected += new System.EventHandler(this.dropdownAS_onItemSelected);
