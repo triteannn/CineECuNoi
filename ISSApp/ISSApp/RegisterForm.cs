@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Drawing;
 
 namespace ISSApp
 {
@@ -21,82 +17,84 @@ namespace ISSApp
         {            
             InitializeComponent();
             _loginForm = loginForm;
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile(Path.Combine(Application.StartupPath.Replace(@"bin\Debug", "Resources"), "MAIAN.TTF"));
-            lblLogin.Font = label1.Font = label2.Font = label3.Font = label4.Font = label5.Font = label6.Font = label7.Font = label8.Font = txtFullName.Font = txtUsername.Font = txtPassword.Font = BloodType.Font = Rh.Font = btnRegister.Font = new Font(pfc.Families[0], 22, FontStyle.Bold);
+            Globals.SetFont(23, FontStyle.Bold, Label1);
+            Globals.SetFont(8, FontStyle.Regular, Label10, LblLogin, BloodType, Rh);
+            Globals.SetFont(8, FontStyle.Bold, Label2, Label3, Label4, Label5, Label6, Label7, Label8);
+            Globals.SetFont(10, FontStyle.Bold, TxtFullName, TxtUsername, TxtPassword);
+            Globals.SetFont(12, FontStyle.Bold, BtnRegister);       
         }
 
-        private void lblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             _loginForm.EmptyFields();
             _loginForm.Enabled = true;
             Dispose();
         }
 
-        private void txtFullName_Enter(object sender, EventArgs e)
+        private void TxtFullName_Enter(object sender, EventArgs e)
         {
-            if (txtFullName.Text == "Full name")
-                txtFullName.Text = "";
+            if (TxtFullName.Text == "Full name")
+                TxtFullName.Text = "";
         }
 
-        private void txtFullName_Leave(object sender, EventArgs e)
+        private void TxtFullName_Leave(object sender, EventArgs e)
         {
-            if (txtFullName.Text == "")
-                txtFullName.Text = "Full name";
+            if (TxtFullName.Text == "")
+                TxtFullName.Text = "Full name";
         }
 
-        private void txtUsername_Enter(object sender, EventArgs e)
+        private void TxtUsername_Enter(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "Username")
-                txtUsername.Text = "";
+            if (TxtUsername.Text == "Username")
+                TxtUsername.Text = "";
         }
 
-        private void txtUsername_Leave(object sender, EventArgs e)
+        private void TxtUsername_Leave(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "")
-                txtUsername.Text = "Username";
+            if (TxtUsername.Text == "")
+                TxtUsername.Text = "Username";
         }
 
-        private void txtPassword_Enter(object sender, EventArgs e)
+        private void TxtPassword_Enter(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "Password")
+            if (TxtPassword.Text == "Password")
             {
-                txtPassword.Text = "";
-                txtPassword.isPassword = true;
+                TxtPassword.Text = "";
+                TxtPassword.isPassword = true;
             }
         }
 
-        private void txtPassword_Leave(object sender, EventArgs e)
+        private void TxtPassword_Leave(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "")
+            if (TxtPassword.Text == "")
             {
-                txtPassword.Text = "Password";
-                txtPassword.isPassword = false;
+                TxtPassword.Text = "Password";
+                TxtPassword.isPassword = false;
             }
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void BtnRegister_Click(object sender, EventArgs e)
         {
-            if (txtFullName.Text.Length > 0 && txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && DOB.Value != null && txtFullName.Text != "Full name" && txtUsername.Text != "Username" && txtPassword.Text != "Password")
+            if (TxtFullName.Text.Length > 0 && TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && DOB.Value != null && TxtFullName.Text != "Full name" && TxtUsername.Text != "Username" && TxtPassword.Text != "Password")
             {
 
             }
-            else MessageBox.Show("Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Controls_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnRegister.PerformClick();
+                BtnRegister.PerformClick();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
         }
 
-        private void dropdownAS_KeyDown(object sender, KeyEventArgs e)
+        private void DropdownAS_KeyDown(object sender, KeyEventArgs e)
         {
-            btnRegister.Select();
+            BtnRegister.Select();
         }
     }
 }

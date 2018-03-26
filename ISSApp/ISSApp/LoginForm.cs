@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Threading;
 
 namespace ISSApp
 {
@@ -20,22 +17,40 @@ namespace ISSApp
 
         public LoginForm()
         {
-            InitializeComponent();
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile(Path.Combine(Application.StartupPath.Replace(@"bin\Debug","Resources"), "MAIAN.TTF"));
-            label2.Font = new Font(pfc.Families[0], 22, FontStyle.Bold);
-            txtUsername.Font = txtPassword.Font = new Font(pfc.Families[0], 10, FontStyle.Bold);
-            btnLogin.Font = new Font(pfc.Families[0], 12, FontStyle.Bold);
-            label1.Font = dropdownAS.Font = lblCreateAcc.Font = new Font(pfc.Families[0], 8, FontStyle.Bold);
-            label3.Font = label4.Font = new Font(pfc.Families[0], 8, FontStyle.Regular);
+            InitializeComponent();          
+            Globals.SetFont(22, FontStyle.Bold, Label2);
+            Globals.SetFont(10, FontStyle.Bold, TxtUsername, TxtPassword);
+            Globals.SetFont(12, FontStyle.Bold, BtnLogin);
+            Globals.SetFont(8, FontStyle.Bold, Label1, DropdownAS, LblCreateAcc, Label5);
+            Globals.SetFont(8, FontStyle.Regular, Label3, Label4);
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
             Fade.Start();           
-            txtUsername.Text = "Username";
-            txtPassword.Text = "Password";
-            txtPassword.isPassword = false;
+            TxtUsername.Text = "Username";
+            TxtPassword.Text = "Password";
+            TxtPassword.isPassword = false;
+            using (var connection = Globals.getDBConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    var cmd = new SqlCommand("select * from RememberedUser", connection);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            TxtUsername.Text = reader.GetString(0);
+                            reader.Close();
+                        }
+                    }
+                }
+                catch(SqlException exc)
+                {
+                    MessageBox.Show(exc.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void Fade_Tick(object sender, EventArgs e)
@@ -64,7 +79,7 @@ namespace ISSApp
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = MessageBox.Show("Are you sure you want to exit the application?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var result = MessageBox.Show(@"Are you sure you want to exit the application?", @"", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             _closingfade = true;
             if (result == DialogResult.Yes)
             {
@@ -75,19 +90,19 @@ namespace ISSApp
             else e.Cancel = true;
         }
 
-        private void btnLogin_MouseMove(object sender, MouseEventArgs e)
+        private void BtnLogin_MouseMove(object sender, MouseEventArgs e)
         {
-            btnLogin.BackColor = Color.White;
-            btnLogin.ForeColor = Color.DarkRed;
+            BtnLogin.BackColor = Color.White;
+            BtnLogin.ForeColor = Color.DarkRed;
         }
 
-        private void btnLogin_MouseLeave(object sender, EventArgs e)
+        private void BtnLogin_MouseLeave(object sender, EventArgs e)
         {
-            btnLogin.BackColor = Color.DarkRed;
-            btnLogin.ForeColor = Color.White;
+            BtnLogin.BackColor = Color.DarkRed;
+            BtnLogin.ForeColor = Color.White;
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void PictureBox2_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -107,61 +122,108 @@ namespace ISSApp
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void PictureBox3_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
-        private void txtPassword_Enter(object sender, EventArgs e)
+        private void TxtPassword_Enter(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "Password")
+            if (TxtPassword.Text == "Password")
             {
-                txtPassword.Text = "";
-                txtPassword.isPassword = true;
+                TxtPassword.Text = "";
+                TxtPassword.isPassword = true;
             }
         }
 
-        private void txtPassword_Leave(object sender, EventArgs e)
+        private void TxtPassword_Leave(object sender, EventArgs e)
         {
-            if (txtPassword.Text == "")
+            if (TxtPassword.Text == "")
             {
-                txtPassword.Text = "Password";
-                txtPassword.isPassword = false;
+                TxtPassword.Text = "Password";
+                TxtPassword.isPassword = false;
             }
         }
 
-        private void txtUsername_Enter(object sender, EventArgs e)
+        private void TxtUsername_Enter(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "Username")
-                txtUsername.Text = "";
+            if (TxtUsername.Text == "Username")
+                TxtUsername.Text = "";
         }
 
-        private void txtUsername_Leave(object sender, EventArgs e)
+        private void TxtUsername_Leave(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "")
-                txtUsername.Text = "Username";
+            if (TxtUsername.Text == "")
+                TxtUsername.Text = "Username";
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text.Length > 0 && txtPassword.Text.Length > 0 && dropdownAS.selectedIndex > 0 && txtUsername.Text != "Username" && txtPassword.Text != "Password")
-            {
-                var _mainWindow = new MainWindow(this);
-                _mainWindow.Show();
-                Hide();
+            if (TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && DropdownAS.selectedIndex > 0 && TxtUsername.Text != "Username" && TxtPassword.Text != "Password")
+            {               
+                using (var connection = Globals.getDBConnection())
+                {                    
+                    try
+                    {                         
+                        connection.Open();
+                        if (RememberMe.Checked)
+                        {
+                            var cmd = new SqlCommand("select * from RememberedUser", connection);
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    var username = reader.GetString(0);
+                                    var cmdUpdate = new SqlCommand("update RememberedUser set RememberedUsername = @username where RememberedUsername = @olduser", connection);
+                                    var param1 = new SqlParameter("@username", TxtUsername.Text);
+                                    var param2 = new SqlParameter("@olduser", username);
+                                    cmdUpdate.Parameters.Add(param1);
+                                    cmdUpdate.Parameters.Add(param2);
+                                    reader.Close();
+                                    cmdUpdate.ExecuteNonQuery();
+                                }
+                                else
+                                {
+                                    reader.Close();
+                                    var cmdInsert = new SqlCommand("insert into RememberedUser values(@username)", connection);
+                                    var param1 = new SqlParameter("@username", TxtUsername.Text);
+                                    cmdInsert.Parameters.Add(param1);
+                                    cmdInsert.ExecuteNonQuery();
+                                }
+                            }
+                            var _mainWindow = new MainWindow(this);
+                            _mainWindow.Show();                               
+                            Hide();
+                        }
+                        else
+                        {
+                            var cmdDelete = new SqlCommand("delete from RememberedUser", connection);
+                            cmdDelete.ExecuteNonQuery();
+                            var _mainWindow = new MainWindow(this);
+                            _mainWindow.Show();
+                            Hide();
+                        }
+                    }
+                    catch (SqlException exc)
+                    {
+                        MessageBox.Show(exc.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                    
+                }          
             }
-            else MessageBox.Show("Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         internal void EmptyFields()
         {
-            txtUsername.Text = "Username";
-            txtPassword.Text = "Password";
-            txtPassword.isPassword = false;
-            dropdownAS.selectedIndex = 0;
+            if (!RememberMe.Checked)
+                TxtUsername.Text = "Username";
+            TxtPassword.Text = "Password";
+            TxtPassword.isPassword = false;
+            RememberMe.Checked = false;
+            DropdownAS.selectedIndex = 0;
         }
 
-        private void lblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var _registerForm = new RegisterForm(this);
             Enabled = false;
@@ -172,15 +234,15 @@ namespace ISSApp
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnLogin.PerformClick();
+                BtnLogin.PerformClick();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
         }
 
-        private void dropdownAS_onItemSelected(object sender, EventArgs e)
+        private void DropdownAS_onItemSelected(object sender, EventArgs e)
         {
-            btnLogin.Select();
+            BtnLogin.Select();
         }
     }
 }

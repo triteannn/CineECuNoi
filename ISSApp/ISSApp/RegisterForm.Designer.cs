@@ -31,51 +31,52 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Label8 = new System.Windows.Forms.Label();
+            this.Label7 = new System.Windows.Forms.Label();
+            this.Label6 = new System.Windows.Forms.Label();
+            this.Label5 = new System.Windows.Forms.Label();
             this.Rh = new Bunifu.Framework.UI.BunifuDropdown();
             this.BloodType = new Bunifu.Framework.UI.BunifuDropdown();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblLogin = new System.Windows.Forms.LinkLabel();
+            this.Label4 = new System.Windows.Forms.Label();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.Label2 = new System.Windows.Forms.Label();
+            this.LblLogin = new System.Windows.Forms.LinkLabel();
             this.DOB = new Bunifu.Framework.UI.BunifuDatepicker();
-            this.txtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.txtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.txtFullName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.label10 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.TxtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtFullName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.Label1 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.BtnRegister = new System.Windows.Forms.Button();
+            this.Label10 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.bunifuSeparator2);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.Label8);
+            this.panel1.Controls.Add(this.Label7);
+            this.panel1.Controls.Add(this.Label6);
+            this.panel1.Controls.Add(this.Label5);
             this.panel1.Controls.Add(this.Rh);
             this.panel1.Controls.Add(this.BloodType);
             this.panel1.Controls.Add(this.bunifuSeparator1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.lblLogin);
+            this.panel1.Controls.Add(this.Label4);
+            this.panel1.Controls.Add(this.Label3);
+            this.panel1.Controls.Add(this.Label2);
+            this.panel1.Controls.Add(this.LblLogin);
             this.panel1.Controls.Add(this.DOB);
-            this.panel1.Controls.Add(this.txtPassword);
-            this.panel1.Controls.Add(this.txtUsername);
-            this.panel1.Controls.Add(this.txtFullName);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btnRegister);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Controls.Add(this.TxtPassword);
+            this.panel1.Controls.Add(this.TxtUsername);
+            this.panel1.Controls.Add(this.TxtFullName);
+            this.panel1.Controls.Add(this.Label1);
+            this.panel1.Controls.Add(this.BtnRegister);
+            this.panel1.Controls.Add(this.Label10);
+            this.panel1.Location = new System.Drawing.Point(9, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(408, 558);
+            this.panel1.Size = new System.Drawing.Size(306, 453);
             this.panel1.TabIndex = 16;
             // 
             // bunifuSeparator2
@@ -84,57 +85,60 @@
             this.bunifuSeparator2.ForeColor = System.Drawing.Color.DarkRed;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuSeparator2.LineThickness = 2;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(31, 467);
-            this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(23, 379);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
-            this.bunifuSeparator2.Size = new System.Drawing.Size(358, 21);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(268, 17);
             this.bunifuSeparator2.TabIndex = 28;
             this.bunifuSeparator2.Transparency = 255;
             this.bunifuSeparator2.Vertical = false;
             // 
-            // label8
+            // Label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.DarkRed;
-            this.label8.Location = new System.Drawing.Point(37, 434);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 16);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "(optional)";
+            this.Label8.AutoSize = true;
+            this.Label8.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label8.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label8.Location = new System.Drawing.Point(28, 353);
+            this.Label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label8.Name = "Label8";
+            this.Label8.Size = new System.Drawing.Size(66, 14);
+            this.Label8.TabIndex = 27;
+            this.Label8.Text = "(optional)";
             // 
-            // label7
+            // Label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DarkRed;
-            this.label7.Location = new System.Drawing.Point(37, 384);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 16);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "(optional)";
+            this.Label7.AutoSize = true;
+            this.Label7.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label7.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label7.Location = new System.Drawing.Point(28, 312);
+            this.Label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label7.Name = "Label7";
+            this.Label7.Size = new System.Drawing.Size(66, 14);
+            this.Label7.TabIndex = 26;
+            this.Label7.Text = "(optional)";
             // 
-            // label6
+            // Label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DarkRed;
-            this.label6.Location = new System.Drawing.Point(85, 416);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 16);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Rh:";
+            this.Label6.AutoSize = true;
+            this.Label6.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label6.Location = new System.Drawing.Point(64, 338);
+            this.Label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label6.Name = "Label6";
+            this.Label6.Size = new System.Drawing.Size(26, 14);
+            this.Label6.TabIndex = 25;
+            this.Label6.Text = "Rh:";
             // 
-            // label5
+            // Label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.DarkRed;
-            this.label5.Location = new System.Drawing.Point(33, 364);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 16);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Blood type:";
+            this.Label5.AutoSize = true;
+            this.Label5.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label5.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label5.Location = new System.Drawing.Point(25, 296);
+            this.Label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label5.Name = "Label5";
+            this.Label5.Size = new System.Drawing.Size(74, 14);
+            this.Label5.TabIndex = 24;
+            this.Label5.Text = "Blood type:";
             // 
             // Rh
             // 
@@ -149,14 +153,13 @@
         "Choose option...",
         "Positive",
         "Negative"};
-            this.Rh.Location = new System.Drawing.Point(135, 412);
-            this.Rh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Rh.Location = new System.Drawing.Point(101, 335);
             this.Rh.Name = "Rh";
             this.Rh.NomalColor = System.Drawing.Color.White;
             this.Rh.onHoverColor = System.Drawing.Color.White;
             this.Rh.selectedIndex = 0;
-            this.Rh.Size = new System.Drawing.Size(254, 43);
-            this.Rh.TabIndex = 5;
+            this.Rh.Size = new System.Drawing.Size(191, 35);
+            this.Rh.TabIndex = 12;
             // 
             // BloodType
             // 
@@ -173,14 +176,13 @@
         "A",
         "B",
         "AB"};
-            this.BloodType.Location = new System.Drawing.Point(135, 362);
-            this.BloodType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BloodType.Location = new System.Drawing.Point(101, 294);
             this.BloodType.Name = "BloodType";
             this.BloodType.NomalColor = System.Drawing.Color.White;
             this.BloodType.onHoverColor = System.Drawing.Color.White;
             this.BloodType.selectedIndex = 0;
-            this.BloodType.Size = new System.Drawing.Size(254, 43);
-            this.BloodType.TabIndex = 4;
+            this.BloodType.Size = new System.Drawing.Size(191, 35);
+            this.BloodType.TabIndex = 11;
             // 
             // bunifuSeparator1
             // 
@@ -188,58 +190,61 @@
             this.bunifuSeparator1.ForeColor = System.Drawing.Color.DarkRed;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuSeparator1.LineThickness = 2;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(31, 333);
-            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(23, 271);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(358, 21);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(268, 17);
             this.bunifuSeparator1.TabIndex = 21;
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = false;
             // 
-            // label4
+            // Label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.DarkRed;
-            this.label4.Location = new System.Drawing.Point(33, 309);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 16);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "birth:";
+            this.Label4.AutoSize = true;
+            this.Label4.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label4.Location = new System.Drawing.Point(25, 251);
+            this.Label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label4.Name = "Label4";
+            this.Label4.Size = new System.Drawing.Size(39, 14);
+            this.Label4.TabIndex = 20;
+            this.Label4.Text = "birth:";
             // 
-            // label3
+            // Label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.DarkRed;
-            this.label3.Location = new System.Drawing.Point(33, 292);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 16);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "of";
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label3.Location = new System.Drawing.Point(25, 237);
+            this.Label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(19, 14);
+            this.Label3.TabIndex = 19;
+            this.Label3.Text = "of";
             // 
-            // label2
+            // Label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(33, 275);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 16);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Date";
+            this.Label2.AutoSize = true;
+            this.Label2.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label2.Location = new System.Drawing.Point(25, 223);
+            this.Label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(33, 14);
+            this.Label2.TabIndex = 18;
+            this.Label2.Text = "Date";
             // 
-            // lblLogin
+            // LblLogin
             // 
-            this.lblLogin.AutoSize = true;
-            this.lblLogin.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogin.Location = new System.Drawing.Point(315, 67);
-            this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(72, 16);
-            this.lblLogin.TabIndex = 0;
-            this.lblLogin.TabStop = true;
-            this.lblLogin.Text = "login page";
-            this.lblLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLogin_LinkClicked);
+            this.LblLogin.AutoSize = true;
+            this.LblLogin.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLogin.Location = new System.Drawing.Point(236, 54);
+            this.LblLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblLogin.Name = "LblLogin";
+            this.LblLogin.Size = new System.Drawing.Size(57, 14);
+            this.LblLogin.TabIndex = 0;
+            this.LblLogin.TabStop = true;
+            this.LblLogin.Text = "login page";
+            this.LblLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblLogin_LinkClicked);
             // 
             // DOB
             // 
@@ -248,132 +253,135 @@
             this.DOB.ForeColor = System.Drawing.Color.White;
             this.DOB.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.DOB.FormatCustom = null;
-            this.DOB.Location = new System.Drawing.Point(85, 275);
-            this.DOB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DOB.Location = new System.Drawing.Point(64, 223);
             this.DOB.Name = "DOB";
-            this.DOB.Size = new System.Drawing.Size(304, 50);
-            this.DOB.TabIndex = 3;
+            this.DOB.Size = new System.Drawing.Size(228, 41);
+            this.DOB.TabIndex = 10;
             this.DOB.Value = new System.DateTime(2018, 3, 22, 22, 34, 40, 474);
             // 
-            // txtPassword
+            // TxtPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.Color.White;
-            this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPassword.HintForeColor = System.Drawing.Color.Empty;
-            this.txtPassword.HintText = "";
-            this.txtPassword.isPassword = false;
-            this.txtPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtPassword.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtPassword.LineThickness = 3;
-            this.txtPassword.Location = new System.Drawing.Point(33, 218);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(356, 33);
-            this.txtPassword.TabIndex = 2;
-            this.txtPassword.Text = "Password";
-            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
-            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
+            this.TxtPassword.BackColor = System.Drawing.Color.White;
+            this.TxtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtPassword.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtPassword.HintText = "";
+            this.TxtPassword.isPassword = false;
+            this.TxtPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtPassword.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtPassword.LineThickness = 3;
+            this.TxtPassword.Location = new System.Drawing.Point(25, 177);
+            this.TxtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtPassword.Name = "TxtPassword";
+            this.TxtPassword.Size = new System.Drawing.Size(267, 27);
+            this.TxtPassword.TabIndex = 3;
+            this.TxtPassword.Text = "Password";
+            this.TxtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TxtPassword.Enter += new System.EventHandler(this.TxtPassword_Enter);
+            this.TxtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
+            this.TxtPassword.Leave += new System.EventHandler(this.TxtPassword_Leave);
             // 
-            // txtUsername
+            // TxtUsername
             // 
-            this.txtUsername.BackColor = System.Drawing.Color.White;
-            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtUsername.HintForeColor = System.Drawing.Color.Empty;
-            this.txtUsername.HintText = "";
-            this.txtUsername.isPassword = false;
-            this.txtUsername.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtUsername.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtUsername.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtUsername.LineThickness = 3;
-            this.txtUsername.Location = new System.Drawing.Point(33, 163);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(356, 33);
-            this.txtUsername.TabIndex = 1;
-            this.txtUsername.Text = "Username";
-            this.txtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
-            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
-            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
+            this.TxtUsername.BackColor = System.Drawing.Color.White;
+            this.TxtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtUsername.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtUsername.HintText = "";
+            this.TxtUsername.isPassword = false;
+            this.TxtUsername.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtUsername.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtUsername.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtUsername.LineThickness = 3;
+            this.TxtUsername.Location = new System.Drawing.Point(25, 132);
+            this.TxtUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtUsername.Name = "TxtUsername";
+            this.TxtUsername.Size = new System.Drawing.Size(267, 27);
+            this.TxtUsername.TabIndex = 2;
+            this.TxtUsername.Text = "Username";
+            this.TxtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TxtUsername.Enter += new System.EventHandler(this.TxtUsername_Enter);
+            this.TxtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
+            this.TxtUsername.Leave += new System.EventHandler(this.TxtUsername_Leave);
             // 
-            // txtFullName
+            // TxtFullName
             // 
-            this.txtFullName.BackColor = System.Drawing.Color.White;
-            this.txtFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.txtFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtFullName.HintForeColor = System.Drawing.Color.Empty;
-            this.txtFullName.HintText = "";
-            this.txtFullName.isPassword = false;
-            this.txtFullName.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtFullName.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtFullName.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtFullName.LineThickness = 3;
-            this.txtFullName.Location = new System.Drawing.Point(33, 110);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(356, 33);
-            this.txtFullName.TabIndex = 0;
-            this.txtFullName.Text = "Full name";
-            this.txtFullName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtFullName.Enter += new System.EventHandler(this.txtFullName_Enter);
-            this.txtFullName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
-            this.txtFullName.Leave += new System.EventHandler(this.txtFullName_Leave);
+            this.TxtFullName.BackColor = System.Drawing.Color.White;
+            this.TxtFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TxtFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtFullName.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtFullName.HintText = "";
+            this.TxtFullName.isPassword = false;
+            this.TxtFullName.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtFullName.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtFullName.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TxtFullName.LineThickness = 3;
+            this.TxtFullName.Location = new System.Drawing.Point(25, 89);
+            this.TxtFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtFullName.Name = "TxtFullName";
+            this.TxtFullName.Size = new System.Drawing.Size(267, 27);
+            this.TxtFullName.TabIndex = 1;
+            this.TxtFullName.Text = "Full name";
+            this.TxtFullName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TxtFullName.Enter += new System.EventHandler(this.TxtFullName_Enter);
+            this.TxtFullName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
+            this.TxtFullName.Leave += new System.EventHandler(this.TxtFullName_Leave);
             // 
-            // label1
+            // Label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Maiandra GD", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 46);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Register";
+            this.Label1.AutoSize = true;
+            this.Label1.BackColor = System.Drawing.Color.Transparent;
+            this.Label1.Font = new System.Drawing.Font("Maiandra GD", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Location = new System.Drawing.Point(19, 7);
+            this.Label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(126, 36);
+            this.Label1.TabIndex = 4;
+            this.Label1.Text = "Register";
             // 
-            // btnRegister
+            // BtnRegister
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.DarkRed;
-            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegister.Font = new System.Drawing.Font("Maiandra GD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(269, 495);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(120, 50);
-            this.btnRegister.TabIndex = 7;
-            this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = false;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            this.btnRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
+            this.BtnRegister.BackColor = System.Drawing.Color.DarkRed;
+            this.BtnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRegister.Font = new System.Drawing.Font("Maiandra GD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRegister.ForeColor = System.Drawing.Color.White;
+            this.BtnRegister.Location = new System.Drawing.Point(202, 402);
+            this.BtnRegister.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnRegister.Name = "BtnRegister";
+            this.BtnRegister.Size = new System.Drawing.Size(90, 41);
+            this.BtnRegister.TabIndex = 4;
+            this.BtnRegister.Text = "Register";
+            this.BtnRegister.UseVisualStyleBackColor = false;
+            this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
+            this.BtnRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             // 
-            // label10
+            // Label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(30, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(278, 16);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Already have an account created? Go to the";
+            this.Label10.AutoSize = true;
+            this.Label10.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label10.Location = new System.Drawing.Point(22, 54);
+            this.Label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label10.Name = "Label10";
+            this.Label10.Size = new System.Drawing.Size(214, 14);
+            this.Label10.TabIndex = 6;
+            this.Label10.Text = "Already have an account created? Go to the";
             // 
             // RegisterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(432, 582);
+            this.ClientSize = new System.Drawing.Size(324, 473);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
@@ -384,24 +392,24 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuCustomLabel label1;
-        private System.Windows.Forms.Button btnRegister;
-        private Bunifu.Framework.UI.BunifuCustomLabel label10;
-        private System.Windows.Forms.LinkLabel lblLogin;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtFullName;
+        private Bunifu.Framework.UI.BunifuCustomLabel Label1;
+        private System.Windows.Forms.Button BtnRegister;
+        private Bunifu.Framework.UI.BunifuCustomLabel Label10;
+        private System.Windows.Forms.LinkLabel LblLogin;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtFullName;
         private Bunifu.Framework.UI.BunifuDatepicker DOB;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtPassword;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtUsername;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtPassword;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtUsername;
+        private System.Windows.Forms.Label Label8;
+        private System.Windows.Forms.Label Label7;
+        private System.Windows.Forms.Label Label6;
+        private System.Windows.Forms.Label Label5;
         private Bunifu.Framework.UI.BunifuDropdown Rh;
         private Bunifu.Framework.UI.BunifuDropdown BloodType;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Label4;
+        private System.Windows.Forms.Label Label3;
+        private System.Windows.Forms.Label Label2;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator2;
     }
 }
