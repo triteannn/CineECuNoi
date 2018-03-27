@@ -36,6 +36,7 @@ namespace ISSApp
                 }
                 RememberMe.Checked = true;
             }
+            Label5.ForeColor = RememberMe.Checked ? Color.DarkRed : Color.Gray;
         }
 
         private void Fade_Tick(object sender, EventArgs e)
