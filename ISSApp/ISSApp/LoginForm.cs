@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Xml.Serialization;
+using System.Threading;
 
 namespace ISSApp
 {
@@ -38,6 +39,7 @@ namespace ISSApp
                 {
                     TxtUsername.Text = serializer.Deserialize(fs) as string;
                 }
+                RememberMe.Checked = true;
             }
         }
 
@@ -183,12 +185,12 @@ namespace ISSApp
         }
 
         internal void EmptyFields()
-        {
+        {          
             if (!RememberMe.Checked)
                 TxtUsername.Text = "Username";
+            RememberMe.Checked = TxtUsername.Text != "Username" ? true : false;
             TxtPassword.Text = "Password";
             TxtPassword.isPassword = false;
-            RememberMe.Checked = false;
             DropdownAS.selectedIndex = 0;
         }
 
