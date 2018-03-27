@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace ISSApp
 {
@@ -17,11 +18,6 @@ namespace ISSApp
         {            
             InitializeComponent();
             _loginForm = loginForm;
-            Globals.SetFont(23, FontStyle.Bold, Label1);
-            Globals.SetFont(8, FontStyle.Regular, Label10, LblLogin, BloodType, Rh);
-            Globals.SetFont(8, FontStyle.Bold, Label2, Label3, Label4, Label5, Label6, Label7, Label8);
-            Globals.SetFont(10, FontStyle.Bold, TxtFullName, TxtUsername, TxtPassword);
-            Globals.SetFont(12, FontStyle.Bold, BtnRegister);       
         }
 
         private void LblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -95,6 +91,21 @@ namespace ISSApp
         private void DropdownAS_KeyDown(object sender, KeyEventArgs e)
         {
             BtnRegister.Select();
+        }
+
+        public const int WmNclbuttondown = 0xA1;
+        public const int HtCaption = 0x2;
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            ReleaseCapture();
+            SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }
     }
 }

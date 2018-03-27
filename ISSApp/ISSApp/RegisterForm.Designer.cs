@@ -73,11 +73,13 @@
             this.panel1.Controls.Add(this.Label1);
             this.panel1.Controls.Add(this.BtnRegister);
             this.panel1.Controls.Add(this.Label10);
-            this.panel1.Location = new System.Drawing.Point(9, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(306, 453);
+            this.panel1.Size = new System.Drawing.Size(412, 582);
             this.panel1.TabIndex = 16;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // bunifuSeparator2
             // 
@@ -85,9 +87,10 @@
             this.bunifuSeparator2.ForeColor = System.Drawing.Color.DarkRed;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuSeparator2.LineThickness = 2;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(23, 379);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(22, 481);
+            this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
-            this.bunifuSeparator2.Size = new System.Drawing.Size(268, 17);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(357, 21);
             this.bunifuSeparator2.TabIndex = 28;
             this.bunifuSeparator2.Transparency = 255;
             this.bunifuSeparator2.Vertical = false;
@@ -95,48 +98,44 @@
             // Label8
             // 
             this.Label8.AutoSize = true;
-            this.Label8.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label8.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label8.ForeColor = System.Drawing.Color.DarkRed;
-            this.Label8.Location = new System.Drawing.Point(28, 353);
-            this.Label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label8.Location = new System.Drawing.Point(28, 449);
             this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(66, 14);
+            this.Label8.Size = new System.Drawing.Size(81, 17);
             this.Label8.TabIndex = 27;
             this.Label8.Text = "(optional)";
             // 
             // Label7
             // 
             this.Label7.AutoSize = true;
-            this.Label7.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label7.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label7.ForeColor = System.Drawing.Color.DarkRed;
-            this.Label7.Location = new System.Drawing.Point(28, 312);
-            this.Label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label7.Location = new System.Drawing.Point(28, 399);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(66, 14);
+            this.Label7.Size = new System.Drawing.Size(81, 17);
             this.Label7.TabIndex = 26;
             this.Label7.Text = "(optional)";
             // 
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label6.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label6.ForeColor = System.Drawing.Color.DarkRed;
-            this.Label6.Location = new System.Drawing.Point(64, 338);
-            this.Label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label6.Location = new System.Drawing.Point(76, 431);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(26, 14);
+            this.Label6.Size = new System.Drawing.Size(34, 17);
             this.Label6.TabIndex = 25;
             this.Label6.Text = "Rh:";
             // 
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label5.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label5.ForeColor = System.Drawing.Color.DarkRed;
-            this.Label5.Location = new System.Drawing.Point(25, 296);
-            this.Label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label5.Location = new System.Drawing.Point(24, 379);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(74, 14);
+            this.Label5.Size = new System.Drawing.Size(91, 17);
             this.Label5.TabIndex = 24;
             this.Label5.Text = "Blood type:";
             // 
@@ -147,18 +146,19 @@
             this.Rh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Rh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Rh.DisabledColor = System.Drawing.Color.Gray;
-            this.Rh.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Rh.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Rh.ForeColor = System.Drawing.Color.DarkRed;
             this.Rh.Items = new string[] {
         "Choose option...",
         "Positive",
         "Negative"};
-            this.Rh.Location = new System.Drawing.Point(101, 335);
+            this.Rh.Location = new System.Drawing.Point(126, 427);
+            this.Rh.Margin = new System.Windows.Forms.Padding(5);
             this.Rh.Name = "Rh";
             this.Rh.NomalColor = System.Drawing.Color.White;
             this.Rh.onHoverColor = System.Drawing.Color.White;
             this.Rh.selectedIndex = 0;
-            this.Rh.Size = new System.Drawing.Size(191, 35);
+            this.Rh.Size = new System.Drawing.Size(254, 43);
             this.Rh.TabIndex = 12;
             // 
             // BloodType
@@ -168,7 +168,7 @@
             this.BloodType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BloodType.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BloodType.DisabledColor = System.Drawing.Color.Gray;
-            this.BloodType.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BloodType.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BloodType.ForeColor = System.Drawing.Color.DarkRed;
             this.BloodType.Items = new string[] {
         "Choose option...",
@@ -176,12 +176,13 @@
         "A",
         "B",
         "AB"};
-            this.BloodType.Location = new System.Drawing.Point(101, 294);
+            this.BloodType.Location = new System.Drawing.Point(126, 377);
+            this.BloodType.Margin = new System.Windows.Forms.Padding(5);
             this.BloodType.Name = "BloodType";
             this.BloodType.NomalColor = System.Drawing.Color.White;
             this.BloodType.onHoverColor = System.Drawing.Color.White;
             this.BloodType.selectedIndex = 0;
-            this.BloodType.Size = new System.Drawing.Size(191, 35);
+            this.BloodType.Size = new System.Drawing.Size(254, 43);
             this.BloodType.TabIndex = 11;
             // 
             // bunifuSeparator1
@@ -190,9 +191,10 @@
             this.bunifuSeparator1.ForeColor = System.Drawing.Color.DarkRed;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuSeparator1.LineThickness = 2;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(23, 271);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(22, 349);
+            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(268, 17);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(357, 21);
             this.bunifuSeparator1.TabIndex = 21;
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = false;
@@ -200,50 +202,50 @@
             // Label4
             // 
             this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.Color.DarkRed;
-            this.Label4.Location = new System.Drawing.Point(25, 251);
-            this.Label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label4.Location = new System.Drawing.Point(24, 324);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(39, 14);
+            this.Label4.Size = new System.Drawing.Size(50, 17);
             this.Label4.TabIndex = 20;
             this.Label4.Text = "birth:";
             // 
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.DarkRed;
-            this.Label3.Location = new System.Drawing.Point(25, 237);
-            this.Label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label3.Location = new System.Drawing.Point(24, 307);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(19, 14);
+            this.Label3.Size = new System.Drawing.Size(23, 17);
             this.Label3.TabIndex = 19;
             this.Label3.Text = "of";
             // 
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.Label2.Location = new System.Drawing.Point(25, 223);
-            this.Label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label2.Location = new System.Drawing.Point(24, 289);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(33, 14);
+            this.Label2.Size = new System.Drawing.Size(41, 17);
             this.Label2.TabIndex = 18;
             this.Label2.Text = "Date";
             // 
             // LblLogin
             // 
             this.LblLogin.AutoSize = true;
-            this.LblLogin.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblLogin.Location = new System.Drawing.Point(236, 54);
-            this.LblLogin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LblLogin.BackColor = System.Drawing.Color.Transparent;
+            this.LblLogin.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LblLogin.Location = new System.Drawing.Point(255, 81);
+            this.LblLogin.Margin = new System.Windows.Forms.Padding(0);
             this.LblLogin.Name = "LblLogin";
-            this.LblLogin.Size = new System.Drawing.Size(57, 14);
+            this.LblLogin.Size = new System.Drawing.Size(36, 17);
             this.LblLogin.TabIndex = 0;
             this.LblLogin.TabStop = true;
-            this.LblLogin.Text = "login page";
+            this.LblLogin.Text = "here";
+            this.LblLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LblLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblLogin_LinkClicked);
             // 
             // DOB
@@ -253,9 +255,10 @@
             this.DOB.ForeColor = System.Drawing.Color.White;
             this.DOB.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.DOB.FormatCustom = null;
-            this.DOB.Location = new System.Drawing.Point(64, 223);
+            this.DOB.Location = new System.Drawing.Point(76, 289);
+            this.DOB.Margin = new System.Windows.Forms.Padding(5);
             this.DOB.Name = "DOB";
-            this.DOB.Size = new System.Drawing.Size(228, 41);
+            this.DOB.Size = new System.Drawing.Size(304, 50);
             this.DOB.TabIndex = 10;
             this.DOB.Value = new System.DateTime(2018, 3, 22, 22, 34, 40, 474);
             // 
@@ -263,7 +266,7 @@
             // 
             this.TxtPassword.BackColor = System.Drawing.Color.White;
             this.TxtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtPassword.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtPassword.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtPassword.HintForeColor = System.Drawing.Color.Empty;
             this.TxtPassword.HintText = "";
@@ -272,10 +275,10 @@
             this.TxtPassword.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TxtPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TxtPassword.LineThickness = 3;
-            this.TxtPassword.Location = new System.Drawing.Point(25, 177);
-            this.TxtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtPassword.Location = new System.Drawing.Point(24, 233);
+            this.TxtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPassword.Name = "TxtPassword";
-            this.TxtPassword.Size = new System.Drawing.Size(267, 27);
+            this.TxtPassword.Size = new System.Drawing.Size(356, 33);
             this.TxtPassword.TabIndex = 3;
             this.TxtPassword.Text = "Password";
             this.TxtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -287,7 +290,7 @@
             // 
             this.TxtUsername.BackColor = System.Drawing.Color.White;
             this.TxtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtUsername.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtUsername.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtUsername.HintForeColor = System.Drawing.Color.Empty;
             this.TxtUsername.HintText = "";
@@ -296,10 +299,10 @@
             this.TxtUsername.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TxtUsername.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TxtUsername.LineThickness = 3;
-            this.TxtUsername.Location = new System.Drawing.Point(25, 132);
-            this.TxtUsername.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtUsername.Location = new System.Drawing.Point(24, 177);
+            this.TxtUsername.Margin = new System.Windows.Forms.Padding(5);
             this.TxtUsername.Name = "TxtUsername";
-            this.TxtUsername.Size = new System.Drawing.Size(267, 27);
+            this.TxtUsername.Size = new System.Drawing.Size(356, 33);
             this.TxtUsername.TabIndex = 2;
             this.TxtUsername.Text = "Username";
             this.TxtUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -311,7 +314,7 @@
             // 
             this.TxtFullName.BackColor = System.Drawing.Color.White;
             this.TxtFullName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TxtFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtFullName.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtFullName.HintForeColor = System.Drawing.Color.Empty;
             this.TxtFullName.HintText = "";
@@ -320,10 +323,10 @@
             this.TxtFullName.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TxtFullName.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.TxtFullName.LineThickness = 3;
-            this.TxtFullName.Location = new System.Drawing.Point(25, 89);
-            this.TxtFullName.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtFullName.Location = new System.Drawing.Point(24, 125);
+            this.TxtFullName.Margin = new System.Windows.Forms.Padding(5);
             this.TxtFullName.Name = "TxtFullName";
-            this.TxtFullName.Size = new System.Drawing.Size(267, 27);
+            this.TxtFullName.Size = new System.Drawing.Size(356, 33);
             this.TxtFullName.TabIndex = 1;
             this.TxtFullName.Text = "Full name";
             this.TxtFullName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -335,11 +338,10 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.BackColor = System.Drawing.Color.Transparent;
-            this.Label1.Font = new System.Drawing.Font("Maiandra GD", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(19, 7);
-            this.Label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label1.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Location = new System.Drawing.Point(16, 24);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(126, 36);
+            this.Label1.Size = new System.Drawing.Size(182, 43);
             this.Label1.TabIndex = 4;
             this.Label1.Text = "Register";
             // 
@@ -347,12 +349,12 @@
             // 
             this.BtnRegister.BackColor = System.Drawing.Color.DarkRed;
             this.BtnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnRegister.Font = new System.Drawing.Font("Maiandra GD", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRegister.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnRegister.ForeColor = System.Drawing.Color.White;
-            this.BtnRegister.Location = new System.Drawing.Point(202, 402);
-            this.BtnRegister.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnRegister.Location = new System.Drawing.Point(260, 510);
+            this.BtnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BtnRegister.Name = "BtnRegister";
-            this.BtnRegister.Size = new System.Drawing.Size(90, 41);
+            this.BtnRegister.Size = new System.Drawing.Size(120, 50);
             this.BtnRegister.TabIndex = 4;
             this.BtnRegister.Text = "Register";
             this.BtnRegister.UseVisualStyleBackColor = false;
@@ -362,26 +364,26 @@
             // Label10
             // 
             this.Label10.AutoSize = true;
-            this.Label10.Font = new System.Drawing.Font("Maiandra GD", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label10.Location = new System.Drawing.Point(22, 54);
-            this.Label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label10.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label10.Location = new System.Drawing.Point(20, 81);
             this.Label10.Name = "Label10";
-            this.Label10.Size = new System.Drawing.Size(214, 14);
+            this.Label10.Size = new System.Drawing.Size(254, 17);
             this.Label10.TabIndex = 6;
-            this.Label10.Text = "Already have an account created? Go to the";
+            this.Label10.Text = "Already have an account created? Click";
             // 
             // RegisterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(324, 473);
+            this.ClientSize = new System.Drawing.Size(412, 582);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(412, 582);
+            this.MinimumSize = new System.Drawing.Size(412, 582);
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);

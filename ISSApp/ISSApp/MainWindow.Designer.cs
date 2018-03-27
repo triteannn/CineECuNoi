@@ -38,10 +38,10 @@
             // PictureBox2
             // 
             this.PictureBox2.Image = global::ISSApp.Properties.Resources.exitBtn;
-            this.PictureBox2.Location = new System.Drawing.Point(572, 10);
-            this.PictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PictureBox2.Location = new System.Drawing.Point(763, 12);
+            this.PictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBox2.Name = "PictureBox2";
-            this.PictureBox2.Size = new System.Drawing.Size(19, 20);
+            this.PictureBox2.Size = new System.Drawing.Size(25, 25);
             this.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox2.TabIndex = 13;
             this.PictureBox2.TabStop = false;
@@ -50,10 +50,10 @@
             // PictureBox3
             // 
             this.PictureBox3.Image = global::ISSApp.Properties.Resources.minimize;
-            this.PictureBox3.Location = new System.Drawing.Point(553, 7);
-            this.PictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PictureBox3.Location = new System.Drawing.Point(737, 9);
+            this.PictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBox3.Name = "PictureBox3";
-            this.PictureBox3.Size = new System.Drawing.Size(15, 18);
+            this.PictureBox3.Size = new System.Drawing.Size(20, 22);
             this.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox3.TabIndex = 14;
             this.PictureBox3.TabStop = false;
@@ -61,19 +61,20 @@
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
             this.Controls.Add(this.PictureBox3);
             this.Controls.Add(this.PictureBox2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).EndInit();
             this.ResumeLayout(false);

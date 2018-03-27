@@ -18,12 +18,7 @@ namespace ISSApp
 
         public LoginForm()
         {
-            InitializeComponent();          
-            Globals.SetFont(22, FontStyle.Bold, Label2);
-            Globals.SetFont(10, FontStyle.Bold, TxtUsername, TxtPassword);
-            Globals.SetFont(12, FontStyle.Bold, BtnLogin);
-            Globals.SetFont(8, FontStyle.Bold, Label1, DropdownAS, LblCreateAcc, Label5);
-            Globals.SetFont(8, FontStyle.Regular, Label3, Label4);
+            InitializeComponent();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -197,8 +192,8 @@ namespace ISSApp
         private void LblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var _registerForm = new RegisterForm(this);
-            Enabled = false;
             _registerForm.Show();
+            Enabled = false;
         }
 
         private void Controls_KeyDown(object sender, KeyEventArgs e)
@@ -214,6 +209,11 @@ namespace ISSApp
         private void DropdownAS_onItemSelected(object sender, EventArgs e)
         {
             BtnLogin.Select();
+        }
+
+        private void RememberMe_OnChange(object sender, EventArgs e)
+        {
+            Label5.ForeColor = RememberMe.Checked ? Color.DarkRed : Color.Gray;
         }
     }
 }

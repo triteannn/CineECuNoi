@@ -26,13 +26,5 @@ namespace ISSApp
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["connString"].ToString());
         }
-
-        public static void SetFont(int _fontSize, FontStyle _fontStyle, params Control[] _controls)
-        {
-            PrivateFontCollection pfc = new PrivateFontCollection();
-            pfc.AddFontFile(Path.Combine(Application.StartupPath.Replace(@"bin\Debug", "Resources"), "MAIAN.TTF"));
-            foreach (var _control in _controls)
-                _control.Font = new Font(pfc.Families[0], _fontSize, _fontStyle);
-        }
     }
 }
