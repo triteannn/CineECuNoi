@@ -33,8 +33,6 @@
             this.Fade = new System.Windows.Forms.Timer(this.components);
             this.TxtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.Label2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.Label3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.Label4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.LblCreateAcc = new System.Windows.Forms.LinkLabel();
             this.TxtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -47,6 +45,8 @@
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.Label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
@@ -90,26 +90,6 @@
             this.Label2.Size = new System.Drawing.Size(130, 43);
             this.Label2.TabIndex = 4;
             this.Label2.Text = "Login";
-            // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(29, 66);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(332, 17);
-            this.Label3.TabIndex = 6;
-            this.Label3.Text = "Don\'t have an account? Create one right now, it only";
-            // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(29, 85);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(103, 17);
-            this.Label4.TabIndex = 7;
-            this.Label4.Text = "takes a minute!";
             // 
             // LblCreateAcc
             // 
@@ -189,9 +169,9 @@
             this.panel1.Controls.Add(this.Label2);
             this.panel1.Controls.Add(this.BtnLogin);
             this.panel1.Controls.Add(this.TxtUsername);
-            this.panel1.Controls.Add(this.Label3);
             this.panel1.Controls.Add(this.TxtPassword);
             this.panel1.Controls.Add(this.LblCreateAcc);
+            this.panel1.Controls.Add(this.Label3);
             this.panel1.Controls.Add(this.Label4);
             this.panel1.Location = new System.Drawing.Point(397, 43);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -297,6 +277,27 @@
             this.PictureBox1.TabStop = false;
             this.PictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Location = new System.Drawing.Point(29, 68);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(332, 17);
+            this.Label3.TabIndex = 15;
+            this.Label3.Text = "Don\'t have an account? Create one right now, it only";
+            // 
+            // Label4
+            // 
+            this.Label4.AutoSize = true;
+            this.Label4.BackColor = System.Drawing.Color.Transparent;
+            this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Location = new System.Drawing.Point(30, 84);
+            this.Label4.Name = "Label4";
+            this.Label4.Size = new System.Drawing.Size(103, 17);
+            this.Label4.TabIndex = 16;
+            this.Label4.Text = "takes a minute!";
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -336,8 +337,6 @@
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtUsername;
         private Bunifu.Framework.UI.BunifuCustomLabel Label2;
         private System.Windows.Forms.PictureBox PictureBox1;
-        private Bunifu.Framework.UI.BunifuCustomLabel Label3;
-        private Bunifu.Framework.UI.BunifuCustomLabel Label4;
         private System.Windows.Forms.LinkLabel LblCreateAcc;
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtPassword;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
@@ -349,6 +348,8 @@
         private System.Windows.Forms.Label Label1;
         private Bunifu.Framework.UI.BunifuCheckbox RememberMe;
         private System.Windows.Forms.Label Label5;
+        private System.Windows.Forms.Label Label3;
+        private System.Windows.Forms.Label Label4;
     }
 }
 

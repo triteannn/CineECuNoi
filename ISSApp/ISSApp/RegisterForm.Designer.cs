@@ -46,14 +46,16 @@
             this.TxtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.TxtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.TxtFullName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.Label1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.BtnRegister = new System.Windows.Forms.Button();
-            this.Label10 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.Label1);
             this.panel1.Controls.Add(this.bunifuSeparator2);
             this.panel1.Controls.Add(this.Label8);
             this.panel1.Controls.Add(this.Label7);
@@ -70,9 +72,7 @@
             this.panel1.Controls.Add(this.TxtPassword);
             this.panel1.Controls.Add(this.TxtUsername);
             this.panel1.Controls.Add(this.TxtFullName);
-            this.panel1.Controls.Add(this.Label1);
             this.panel1.Controls.Add(this.BtnRegister);
-            this.panel1.Controls.Add(this.Label10);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -334,17 +334,6 @@
             this.TxtFullName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             this.TxtFullName.Leave += new System.EventHandler(this.TxtFullName_Leave);
             // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.BackColor = System.Drawing.Color.Transparent;
-            this.Label1.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(16, 24);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(182, 43);
-            this.Label1.TabIndex = 4;
-            this.Label1.Text = "Register";
-            // 
             // BtnRegister
             // 
             this.BtnRegister.BackColor = System.Drawing.Color.DarkRed;
@@ -361,15 +350,25 @@
             this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             this.BtnRegister.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             // 
-            // Label10
+            // Label1
             // 
-            this.Label10.AutoSize = true;
-            this.Label10.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label10.Location = new System.Drawing.Point(20, 81);
-            this.Label10.Name = "Label10";
-            this.Label10.Size = new System.Drawing.Size(254, 17);
-            this.Label10.TabIndex = 6;
-            this.Label10.Text = "Already have an account created? Click";
+            this.Label1.AutoSize = true;
+            this.Label1.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Location = new System.Drawing.Point(16, 21);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(182, 43);
+            this.Label1.TabIndex = 29;
+            this.Label1.Text = "Register";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(21, 81);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(254, 17);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Already have an account created? Click";
             // 
             // RegisterForm
             // 
@@ -394,9 +393,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuCustomLabel Label1;
         private System.Windows.Forms.Button BtnRegister;
-        private Bunifu.Framework.UI.BunifuCustomLabel Label10;
         private System.Windows.Forms.LinkLabel LblLogin;
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtFullName;
         private Bunifu.Framework.UI.BunifuDatepicker DOB;
@@ -413,5 +410,7 @@
         private System.Windows.Forms.Label Label3;
         private System.Windows.Forms.Label Label2;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Label1;
     }
 }
