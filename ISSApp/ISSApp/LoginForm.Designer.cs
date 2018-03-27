@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            AnimatorNS.Animation animation2 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.Fade = new System.Windows.Forms.Timer(this.components);
             this.TxtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -37,6 +38,7 @@
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.BtnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Label2 = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
             this.RememberMe = new Bunifu.Framework.UI.BunifuCheckbox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -46,7 +48,7 @@
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Label2 = new System.Windows.Forms.Label();
+            this.PopAnimator = new AnimatorNS.Animator(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
@@ -61,6 +63,7 @@
             // TxtUsername
             // 
             this.TxtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PopAnimator.SetDecoration(this.TxtUsername, AnimatorNS.DecorationType.None);
             this.TxtUsername.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtUsername.HintForeColor = System.Drawing.Color.Empty;
@@ -84,6 +87,7 @@
             // 
             this.LblCreateAcc.AutoSize = true;
             this.LblCreateAcc.BackColor = System.Drawing.Color.Transparent;
+            this.PopAnimator.SetDecoration(this.LblCreateAcc, AnimatorNS.DecorationType.None);
             this.LblCreateAcc.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblCreateAcc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LblCreateAcc.Location = new System.Drawing.Point(125, 84);
@@ -99,6 +103,7 @@
             // TxtPassword
             // 
             this.TxtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PopAnimator.SetDecoration(this.TxtPassword, AnimatorNS.DecorationType.None);
             this.TxtPassword.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtPassword.HintForeColor = System.Drawing.Color.Empty;
@@ -121,6 +126,7 @@
             // bunifuSeparator1
             // 
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.PopAnimator.SetDecoration(this.bunifuSeparator1, AnimatorNS.DecorationType.None);
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(105)))), ((int)(((byte)(105)))));
             this.bunifuSeparator1.LineThickness = 2;
             this.bunifuSeparator1.Location = new System.Drawing.Point(365, 0);
@@ -134,6 +140,7 @@
             // BtnLogin
             // 
             this.BtnLogin.BackColor = System.Drawing.Color.DarkRed;
+            this.PopAnimator.SetDecoration(this.BtnLogin, AnimatorNS.DecorationType.None);
             this.BtnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLogin.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnLogin.ForeColor = System.Drawing.Color.White;
@@ -162,17 +169,30 @@
             this.panel1.Controls.Add(this.LblCreateAcc);
             this.panel1.Controls.Add(this.Label3);
             this.panel1.Controls.Add(this.Label4);
+            this.PopAnimator.SetDecoration(this.panel1, AnimatorNS.DecorationType.None);
             this.panel1.Location = new System.Drawing.Point(397, 43);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(384, 390);
             this.panel1.TabIndex = 14;
             // 
+            // Label2
+            // 
+            this.Label2.AutoSize = true;
+            this.PopAnimator.SetDecoration(this.Label2, AnimatorNS.DecorationType.None);
+            this.Label2.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(24, 14);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(130, 43);
+            this.Label2.TabIndex = 17;
+            this.Label2.Text = "Login";
+            // 
             // Label5
             // 
             this.Label5.AutoSize = true;
+            this.PopAnimator.SetDecoration(this.Label5, AnimatorNS.DecorationType.None);
             this.Label5.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.ForeColor = System.Drawing.Color.DarkRed;
+            this.Label5.ForeColor = System.Drawing.Color.Gray;
             this.Label5.Location = new System.Drawing.Point(65, 350);
             this.Label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label5.Name = "Label5";
@@ -186,6 +206,7 @@
             this.RememberMe.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.RememberMe.Checked = false;
             this.RememberMe.CheckedOnColor = System.Drawing.Color.DarkRed;
+            this.PopAnimator.SetDecoration(this.RememberMe, AnimatorNS.DecorationType.None);
             this.RememberMe.ForeColor = System.Drawing.Color.White;
             this.RememberMe.Location = new System.Drawing.Point(33, 346);
             this.RememberMe.Margin = new System.Windows.Forms.Padding(5);
@@ -197,6 +218,7 @@
             // Label1
             // 
             this.Label1.AutoSize = true;
+            this.PopAnimator.SetDecoration(this.Label1, AnimatorNS.DecorationType.None);
             this.Label1.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.DarkRed;
             this.Label1.Location = new System.Drawing.Point(29, 297);
@@ -211,6 +233,7 @@
             this.DropdownAS.BorderRadius = 3;
             this.DropdownAS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DropdownAS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PopAnimator.SetDecoration(this.DropdownAS, AnimatorNS.DecorationType.None);
             this.DropdownAS.DisabledColor = System.Drawing.Color.Gray;
             this.DropdownAS.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DropdownAS.ForeColor = System.Drawing.Color.DarkRed;
@@ -233,6 +256,7 @@
             // Label3
             // 
             this.Label3.AutoSize = true;
+            this.PopAnimator.SetDecoration(this.Label3, AnimatorNS.DecorationType.None);
             this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.Location = new System.Drawing.Point(29, 68);
             this.Label3.Name = "Label3";
@@ -244,6 +268,7 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.BackColor = System.Drawing.Color.Transparent;
+            this.PopAnimator.SetDecoration(this.Label4, AnimatorNS.DecorationType.None);
             this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.Location = new System.Drawing.Point(30, 84);
             this.Label4.Name = "Label4";
@@ -253,6 +278,7 @@
             // 
             // PictureBox3
             // 
+            this.PopAnimator.SetDecoration(this.PictureBox3, AnimatorNS.DecorationType.None);
             this.PictureBox3.Image = global::ISSApp.Properties.Resources.minimize;
             this.PictureBox3.Location = new System.Drawing.Point(724, 9);
             this.PictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -265,6 +291,7 @@
             // 
             // PictureBox2
             // 
+            this.PopAnimator.SetDecoration(this.PictureBox2, AnimatorNS.DecorationType.None);
             this.PictureBox2.Image = global::ISSApp.Properties.Resources.exitBtn;
             this.PictureBox2.Location = new System.Drawing.Point(756, 11);
             this.PictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -277,6 +304,7 @@
             // 
             // PictureBox1
             // 
+            this.PopAnimator.SetDecoration(this.PictureBox1, AnimatorNS.DecorationType.None);
             this.PictureBox1.Image = global::ISSApp.Properties.Resources.bloodBackground;
             this.PictureBox1.Location = new System.Drawing.Point(-1, 14);
             this.PictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -287,15 +315,27 @@
             this.PictureBox1.TabStop = false;
             this.PictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             // 
-            // Label2
+            // PopAnimator
             // 
-            this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(24, 14);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(130, 43);
-            this.Label2.TabIndex = 17;
-            this.Label2.Text = "Login";
+            this.PopAnimator.AnimationType = AnimatorNS.AnimationType.Scale;
+            this.PopAnimator.Cursor = null;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.PopAnimator.DefaultAnimation = animation2;
+            this.PopAnimator.TimeStep = 0.04F;
             // 
             // LoginForm
             // 
@@ -308,6 +348,7 @@
             this.Controls.Add(this.PictureBox2);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.PictureBox1);
+            this.PopAnimator.SetDecoration(this, AnimatorNS.DecorationType.None);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -349,6 +390,7 @@
         private System.Windows.Forms.Label Label3;
         private System.Windows.Forms.Label Label4;
         private System.Windows.Forms.Label Label2;
+        private AnimatorNS.Animator PopAnimator;
     }
 }
 
