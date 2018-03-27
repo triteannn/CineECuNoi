@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Threading;
+using System.Xml.Serialization;
 
 namespace ISSApp
 {
@@ -31,24 +31,12 @@ namespace ISSApp
             TxtUsername.Text = "Username";
             TxtPassword.Text = "Password";
             TxtPassword.isPassword = false;
-            using (var connection = Globals.getDBConnection())
+            var serializer = new XmlSerializer(typeof(string));
+            if (File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
             {
-                try
+                using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Open, FileAccess.Read))
                 {
-                    connection.Open();
-                    var cmd = new SqlCommand("select * from RememberedUser", connection);
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            TxtUsername.Text = reader.GetString(0);
-                            reader.Close();
-                        }
-                    }
-                }
-                catch(SqlException exc)
-                {
-                    MessageBox.Show(exc.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtUsername.Text = serializer.Deserialize(fs) as string;
                 }
             }
         }
@@ -161,54 +149,35 @@ namespace ISSApp
         {
             if (TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && DropdownAS.selectedIndex > 0 && TxtUsername.Text != "Username" && TxtPassword.Text != "Password")
             {               
-                using (var connection = Globals.getDBConnection())
-                {                    
-                    try
-                    {                         
-                        connection.Open();
-                        if (RememberMe.Checked)
+                if(RememberMe.Checked)
+                {
+                    var serializer = new XmlSerializer(typeof(string));
+                    if(File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
+                    {
+                        using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Open, FileAccess.Write))
                         {
-                            var cmd = new SqlCommand("select * from RememberedUser", connection);
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    var username = reader.GetString(0);
-                                    var cmdUpdate = new SqlCommand("update RememberedUser set RememberedUsername = @username where RememberedUsername = @olduser", connection);
-                                    var param1 = new SqlParameter("@username", TxtUsername.Text);
-                                    var param2 = new SqlParameter("@olduser", username);
-                                    cmdUpdate.Parameters.Add(param1);
-                                    cmdUpdate.Parameters.Add(param2);
-                                    reader.Close();
-                                    cmdUpdate.ExecuteNonQuery();
-                                }
-                                else
-                                {
-                                    reader.Close();
-                                    var cmdInsert = new SqlCommand("insert into RememberedUser values(@username)", connection);
-                                    var param1 = new SqlParameter("@username", TxtUsername.Text);
-                                    cmdInsert.Parameters.Add(param1);
-                                    cmdInsert.ExecuteNonQuery();
-                                }
-                            }
-                            var _mainWindow = new MainWindow(this);
-                            _mainWindow.Show();                               
-                            Hide();
-                        }
-                        else
-                        {
-                            var cmdDelete = new SqlCommand("delete from RememberedUser", connection);
-                            cmdDelete.ExecuteNonQuery();
-                            var _mainWindow = new MainWindow(this);
-                            _mainWindow.Show();
-                            Hide();
+                            serializer.Serialize(fs, TxtUsername.Text);
                         }
                     }
-                    catch (SqlException exc)
+                    else
                     {
-                        MessageBox.Show(exc.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }                    
-                }          
+                        using(var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Create, FileAccess.Write))
+                        {
+                            serializer.Serialize(fs, TxtUsername.Text);
+                        }
+                    }
+                }
+                else
+                {
+                    var serializer = new XmlSerializer(typeof(string));
+                    if (File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
+                    {
+                        File.Delete(Environment.CurrentDirectory + @"\RememberedUser.xml");
+                    }
+                }
+                var mainWindow = new MainWindow(this);
+                mainWindow.Show();
+                Hide();
             }
             else MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

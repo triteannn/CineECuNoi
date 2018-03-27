@@ -28,7 +28,7 @@ namespace ISSApp
         {
             _loginForm.EmptyFields();
             _loginForm.Enabled = true;
-            Dispose();
+            Close();
         }
 
         private void TxtFullName_Enter(object sender, EventArgs e)
