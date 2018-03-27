@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.Fade = new System.Windows.Forms.Timer(this.components);
             this.TxtUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.Label2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.LblCreateAcc = new System.Windows.Forms.LinkLabel();
             this.TxtPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -42,11 +41,12 @@
             this.RememberMe = new Bunifu.Framework.UI.BunifuCheckbox();
             this.Label1 = new System.Windows.Forms.Label();
             this.DropdownAS = new Bunifu.Framework.UI.BunifuDropdown();
+            this.Label3 = new System.Windows.Forms.Label();
+            this.Label4 = new System.Windows.Forms.Label();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Label3 = new System.Windows.Forms.Label();
-            this.Label4 = new System.Windows.Forms.Label();
+            this.Label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
@@ -79,17 +79,6 @@
             this.TxtUsername.Enter += new System.EventHandler(this.TxtUsername_Enter);
             this.TxtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Controls_KeyDown);
             this.TxtUsername.Leave += new System.EventHandler(this.TxtUsername_Leave);
-            // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.BackColor = System.Drawing.Color.Transparent;
-            this.Label2.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(25, 9);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(130, 43);
-            this.Label2.TabIndex = 4;
-            this.Label2.Text = "Login";
             // 
             // LblCreateAcc
             // 
@@ -162,11 +151,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Label2);
             this.panel1.Controls.Add(this.Label5);
             this.panel1.Controls.Add(this.RememberMe);
             this.panel1.Controls.Add(this.Label1);
             this.panel1.Controls.Add(this.DropdownAS);
-            this.panel1.Controls.Add(this.Label2);
             this.panel1.Controls.Add(this.BtnLogin);
             this.panel1.Controls.Add(this.TxtUsername);
             this.panel1.Controls.Add(this.TxtPassword);
@@ -241,6 +230,27 @@
             this.DropdownAS.TabIndex = 12;
             this.DropdownAS.onItemSelected += new System.EventHandler(this.DropdownAS_onItemSelected);
             // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Location = new System.Drawing.Point(29, 68);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(332, 17);
+            this.Label3.TabIndex = 15;
+            this.Label3.Text = "Don\'t have an account? Create one right now, it only";
+            // 
+            // Label4
+            // 
+            this.Label4.AutoSize = true;
+            this.Label4.BackColor = System.Drawing.Color.Transparent;
+            this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Location = new System.Drawing.Point(30, 84);
+            this.Label4.Name = "Label4";
+            this.Label4.Size = new System.Drawing.Size(103, 17);
+            this.Label4.TabIndex = 16;
+            this.Label4.Text = "takes a minute!";
+            // 
             // PictureBox3
             // 
             this.PictureBox3.Image = global::ISSApp.Properties.Resources.minimize;
@@ -277,26 +287,15 @@
             this.PictureBox1.TabStop = false;
             this.PictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             // 
-            // Label3
+            // Label2
             // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(29, 68);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(332, 17);
-            this.Label3.TabIndex = 15;
-            this.Label3.Text = "Don\'t have an account? Create one right now, it only";
-            // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.BackColor = System.Drawing.Color.Transparent;
-            this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(30, 84);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(103, 17);
-            this.Label4.TabIndex = 16;
-            this.Label4.Text = "takes a minute!";
+            this.Label2.AutoSize = true;
+            this.Label2.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(24, 14);
+            this.Label2.Name = "Label2";
+            this.Label2.Size = new System.Drawing.Size(130, 43);
+            this.Label2.TabIndex = 17;
+            this.Label2.Text = "Login";
             // 
             // LoginForm
             // 
@@ -335,7 +334,6 @@
         #endregion
         private System.Windows.Forms.Timer Fade;
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtUsername;
-        private Bunifu.Framework.UI.BunifuCustomLabel Label2;
         private System.Windows.Forms.PictureBox PictureBox1;
         private System.Windows.Forms.LinkLabel LblCreateAcc;
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtPassword;
@@ -350,6 +348,7 @@
         private System.Windows.Forms.Label Label5;
         private System.Windows.Forms.Label Label3;
         private System.Windows.Forms.Label Label4;
+        private System.Windows.Forms.Label Label2;
     }
 }
 
