@@ -173,9 +173,33 @@ namespace ISSApp
                         File.Delete(Environment.CurrentDirectory + @"\RememberedUser.xml");
                     }
                 }
-                var mainWindow = new MainWindow(this);
-                mainWindow.Show();
-                Hide();
+                string username = "";
+                string password = "";
+                using (var connection = Globals.getDBConnection())
+                {
+                    try
+                    {
+                        connection.Open();
+                        var cmd = new SqlCommand(@"select * from Users", connection);
+                        var reader = cmd.ExecuteReader();
+                        while(reader.Read())
+                        {
+                            username = reader.GetString(1);
+                            password = reader.GetString(2);
+                        }
+                    }
+                    catch (SqlException exc)
+                    {
+                        MessageBox.Show(exc.Message, @"Database related error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                if (username.Length > 0 && password.Length > 0 && username.Equals(TxtUsername.Text) && password.Equals(TxtPassword.Text))
+                {
+                    var mainWindow = new MainWindow(this);
+                    mainWindow.Show();
+                    Hide();
+                }
+                else MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
