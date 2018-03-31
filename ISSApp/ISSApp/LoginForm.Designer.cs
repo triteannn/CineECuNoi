@@ -37,7 +37,6 @@
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.BtnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Label2 = new System.Windows.Forms.Label();
             this.Label5 = new System.Windows.Forms.Label();
             this.RememberMe = new Bunifu.Framework.UI.BunifuCheckbox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -47,10 +46,12 @@
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
+            this.swfLogin = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // Fade
@@ -151,7 +152,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.Label2);
+            this.panel1.Controls.Add(this.swfLogin);
             this.panel1.Controls.Add(this.Label5);
             this.panel1.Controls.Add(this.RememberMe);
             this.panel1.Controls.Add(this.Label1);
@@ -167,16 +168,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(384, 390);
             this.panel1.TabIndex = 14;
-            // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Georgia", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(24, 14);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(104, 35);
-            this.Label2.TabIndex = 17;
-            this.Label2.Text = "Login";
             // 
             // Label5
             // 
@@ -297,6 +288,15 @@
             this.PictureBox1.TabStop = false;
             this.PictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             // 
+            // swfLogin
+            // 
+            this.swfLogin.Enabled = true;
+            this.swfLogin.Location = new System.Drawing.Point(28, 3);
+            this.swfLogin.Name = "swfLogin";
+            this.swfLogin.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("swfLogin.OcxState")));
+            this.swfLogin.Size = new System.Drawing.Size(213, 62);
+            this.swfLogin.TabIndex = 15;
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -327,6 +327,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -348,7 +349,7 @@
         private System.Windows.Forms.Label Label5;
         private System.Windows.Forms.Label Label3;
         private System.Windows.Forms.Label Label4;
-        private System.Windows.Forms.Label Label2;
+        private AxShockwaveFlashObjects.AxShockwaveFlash swfLogin;
     }
 }
 

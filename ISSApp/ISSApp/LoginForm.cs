@@ -37,6 +37,7 @@ namespace ISSApp
                 RememberMe.Checked = true;
             }
             Label5.ForeColor = RememberMe.Checked ? Color.DarkRed : Color.Gray;
+            swfLogin.Movie = Environment.CurrentDirectory.Replace(@"bin\x86\Debug", @"Resources\LoginImage.swf");
         }
 
         private void Fade_Tick(object sender, EventArgs e)
