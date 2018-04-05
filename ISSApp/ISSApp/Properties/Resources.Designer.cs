@@ -109,5 +109,15 @@ namespace ISSApp.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RegisterImage {
+            get {
+                object obj = ResourceManager.GetObject("RegisterImage", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

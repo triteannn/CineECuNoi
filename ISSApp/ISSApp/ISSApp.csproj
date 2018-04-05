@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\RegisterImage.swf" />
     <None Include="Resources\LoginImage.swf" />
     <None Include="Resources\minimize.png" />
     <None Include="Resources\images.png" />

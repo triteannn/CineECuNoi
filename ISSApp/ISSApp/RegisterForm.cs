@@ -107,5 +107,10 @@ namespace ISSApp
             ReleaseCapture();
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+            swfRegister.Movie = Environment.CurrentDirectory.Replace(@"bin\x86\Debug", @"Resources\RegisterImage.swf");
+        }
     }
 }
