@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\codDiagrama.zip" />
     <None Include="Resources\donare sange diag2.mdj" />
     <None Include="Resources\RegisterImage.swf" />
     <None Include="Resources\LoginImage.swf" />
