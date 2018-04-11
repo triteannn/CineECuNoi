@@ -1,6 +1,7 @@
-
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -13,28 +14,33 @@ namespace Domain{
         /**
          * 
          */
-        public Adresa() {
-        }
+        public Adresa() {}
 
         /**
          * 
          */
-        public string Strada;
+        [Key]
+        [Column(Order = 1)]
+        public string Strada { get; set; }
 
         /**
          * 
          */
-        public int Numar;
+        [Key]
+        [Column(Order = 2)]
+        public int Numar { get; set; }
 
         /**
          * 
          */
-        public string Oras;
+        [Key]
+        [Column(Order = 3)]
+        public string Oras { get; set; }
 
         /**
          * 
          */
-        public string Judet;
+        public string Judet { get; set; }
 
     }
 }

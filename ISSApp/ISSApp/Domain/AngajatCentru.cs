@@ -14,5 +14,6 @@ namespace Domain{
          */
         public AngajatCentru() {}
 
+        public override CentruDonare CentruDonare { get; set; }
     }
 }

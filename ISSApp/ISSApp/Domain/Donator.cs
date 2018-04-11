@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -14,11 +15,14 @@ namespace Domain{
          */
         public Donator() {}
 
-        public string CNP { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Nume { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Prenume { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime Dob { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateContact DateContact { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Account Account { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [Key]
+        public string CNP { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public DateTime Dob { get; set; }
+        public DateContact DateContact { get; set; }
+        public virtual Account Account { get; set; }
+
+        public virtual CentruDonare CentruDonare { get; set; }
     }
 }

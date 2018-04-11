@@ -15,5 +15,7 @@ namespace Domain{
          */
         public Medic() {}
 
+        public virtual Spital Spital { get; set; }
+
     }
 }

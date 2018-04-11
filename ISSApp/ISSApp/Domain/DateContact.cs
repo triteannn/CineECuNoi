@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -17,6 +18,10 @@ namespace Domain{
         /**
          * 
          */
+        
+        [Key]
+        public int Id { get; set; }
+
         public string Telefon { get; set; }
 
         /**
@@ -27,7 +32,8 @@ namespace Domain{
         /**
          * 
          */
-        public Adresa Adresa { get; set; }
+        public virtual Adresa Adresa { get; set; }
 
+        public virtual IPersoana Persoana { get; set; }
     }
 }

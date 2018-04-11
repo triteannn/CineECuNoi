@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="Bunifu_UI_v1.5.3, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>bin\x86\Debug\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -102,6 +102,8 @@
     <Compile Include="Domain\PSTrombocite.cs" />
     <Compile Include="Domain\PungaSange.cs" />
     <Compile Include="Domain\Spital.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Utils\DatabaseContext.cs" />
     <Compile Include="Utils\Globals.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>

@@ -8,6 +8,10 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Xml.Serialization;
 using System.Threading;
+using ISSApp.Utils;
+using Domain;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 
 namespace ISSApp
 {
@@ -23,6 +27,32 @@ namespace ISSApp
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            using (var db = new DatabaseContext())
+            {
+                
+                var spital = new Spital() { Denumire = "Da" };
+                var medic1 = new Medic() { CNP="123", Nume = "Tritean" };
+                var medic2 = new Medic() { CNP="321", Nume = "Adi" };
+                spital.Medici.Add(medic1);
+                spital.Medici.Add(medic2);
+                db.Spitale.Add(spital);
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException exc)
+                {
+                    foreach (var msg in exc.EntityValidationErrors)
+                    {
+                        Console.WriteLine(msg.Entry.State);
+                        foreach (var nume in msg.ValidationErrors)
+                        {
+                            Console.WriteLine(nume.PropertyName);
+                            Console.WriteLine(nume.ErrorMessage);
+                        }
+                    }
+                }
+            }
             Fade.Start();           
             TxtUsername.Text = "Username";
             TxtPassword.Text = "Password";

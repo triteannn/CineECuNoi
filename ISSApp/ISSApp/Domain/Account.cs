@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -17,6 +18,7 @@ namespace Domain{
         /**
          * 
          */
+        [Key]
         public string Username { get; set; }
 
         /**
@@ -24,5 +26,6 @@ namespace Domain{
          */
         public string Password { get; set; }
 
+        public virtual IPersoana Persoana { get; set; }
     }
 }
