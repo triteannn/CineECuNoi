@@ -85,7 +85,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Globals.cs" />
+    <Compile Include="Domain\Account.cs" />
+    <Compile Include="Domain\Adresa.cs" />
+    <Compile Include="Domain\AngajatCentru.cs" />
+    <Compile Include="Domain\CentruDonare.cs" />
+    <Compile Include="Domain\DateContact.cs" />
+    <Compile Include="Domain\Donator.cs" />
+    <Compile Include="Domain\FormularCerere.cs" />
+    <Compile Include="Domain\FormularDonare.cs" />
+    <Compile Include="Domain\IInstitutie.cs" />
+    <Compile Include="Domain\IPersoana.cs" />
+    <Compile Include="Domain\IProdusSanguin.cs" />
+    <Compile Include="Domain\Medic.cs" />
+    <Compile Include="Domain\PSGlobuleRosii.cs" />
+    <Compile Include="Domain\PSPlasma.cs" />
+    <Compile Include="Domain\PSTrombocite.cs" />
+    <Compile Include="Domain\PungaSange.cs" />
+    <Compile Include="Domain\Spital.cs" />
+    <Compile Include="Utils\Globals.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +123,23 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repository\ISQLRepo.cs" />
+    <Compile Include="Repository\SQLAngajatRepo.cs" />
+    <Compile Include="Repository\SQLDonatorRepo.cs" />
+    <Compile Include="Repository\SQLFormularCerereRepo.cs" />
+    <Compile Include="Repository\SQLFormularDonareRepo.cs" />
+    <Compile Include="Repository\SQLGlobuleRosiiRepo.cs" />
+    <Compile Include="Repository\SQLMedicRepo.cs" />
+    <Compile Include="Repository\SQLPlasmaRepo.cs" />
+    <Compile Include="Repository\SQLProdSanguinRepo.cs" />
+    <Compile Include="Repository\SQLPungaSangeRepo.cs" />
+    <Compile Include="Repository\SQLTrombociteRepo.cs" />
+    <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\ServiceAngajat.cs" />
+    <Compile Include="Service\ServiceDonator.cs" />
+    <Compile Include="Service\ServiceMedic.cs" />
+    <Compile Include="Service\ServiceOungaSange.cs" />
+    <Compile Include="Service\ServiceProdusSanguin.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
