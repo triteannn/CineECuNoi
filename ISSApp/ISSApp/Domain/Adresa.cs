@@ -9,6 +9,7 @@ namespace Domain{
     /**
      * 
      */
+    [Table("Adresa")]
     public class Adresa {
 
         /**

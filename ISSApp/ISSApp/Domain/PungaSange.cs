@@ -9,6 +9,7 @@ namespace Domain{
     /**
      * 
      */
+    [Table("PungaSange")]
     public class PungaSange {
 
         /**
