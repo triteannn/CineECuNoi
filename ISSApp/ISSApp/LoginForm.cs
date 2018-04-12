@@ -211,7 +211,7 @@ namespace ISSApp
                     try
                     {
                         connection.Open();
-                        var cmd = new SqlCommand(@"select * from Users", connection);
+                        var cmd = new SqlCommand(@"select * from Accounts", connection);
                         var reader = cmd.ExecuteReader();
                         while(reader.Read())
                         {

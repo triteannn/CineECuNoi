@@ -24,7 +24,7 @@ namespace ISSApp
 
         public static SqlConnection getDBConnection()
         {
-            return new SqlConnection(ConfigurationManager.ConnectionStrings["connString"].ToString());
+            return new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseContext"].ToString());
         }
     }
 }
