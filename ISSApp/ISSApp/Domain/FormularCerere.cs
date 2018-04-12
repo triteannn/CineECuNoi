@@ -15,7 +15,7 @@ namespace Domain
 
 
         [Key]
-        public int Id { get; set; }
+        public int IdFC { get; set; }
         public virtual IProdusSanguin ProdusSanguin { get; set; }
     }
 }

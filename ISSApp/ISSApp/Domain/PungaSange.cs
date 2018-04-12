@@ -21,7 +21,7 @@ namespace Domain{
          * 
          */
         [Key, ForeignKey("FormularDonare")]
-        public int Id { get; set; }
+        public int IdPS { get; set; }
 
         public DateTime DataRecoltare { get; set; }
 

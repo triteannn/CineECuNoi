@@ -18,7 +18,7 @@ namespace Domain{
         public PSTrombocite() {}
 
         [Key]
-        public int Id { get; set; }
+        public int IdT { get; set; }
         public DateTime DataRecoltare { get; set; }
         public float Cantitate { get; set; }
         public string Target { get; set; }
