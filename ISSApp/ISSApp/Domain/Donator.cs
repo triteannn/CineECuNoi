@@ -17,6 +17,8 @@ namespace Domain{
          */
         public Donator() {}
 
+
+
         [Key, ForeignKey("Account")]
         public string CNP { get; set; }
         public string Nume { get; set; }

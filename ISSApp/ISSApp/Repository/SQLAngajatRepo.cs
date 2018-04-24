@@ -11,7 +11,7 @@ namespace Repository{
     /**
      * 
      */
-    public class SQLAngajatRepo : ISQLRepo<AngajatCentru> {
+    public class SQLAngajatRepo : ISQLRepo<AngajatCentru, String> {
 
         /**
          * 
@@ -100,7 +100,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public AngajatCentru FindEntity(int id) {
+        public AngajatCentru FindEntity(String id) {
             return null;
         }
 
