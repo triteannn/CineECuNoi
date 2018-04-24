@@ -20,6 +20,7 @@ namespace Domain{
 
 
         [Key, ForeignKey("Account")]
+        public int IdD { get; set; }
         public string CNP { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }

@@ -21,6 +21,8 @@ namespace Domain{
          * 
          */
         [Key]
+        public int IdA { get; set; }
+
         public string Username { get; set; }
 
         /**
