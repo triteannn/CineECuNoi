@@ -39,7 +39,7 @@ namespace Repository{
                 paramIDCD.Value = angajatCentru.CentruDonare.IdCD;
                 command.Parameters.Add(paramIDCD);
 
-                var result = command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
             }
         }
 

@@ -9,13 +9,19 @@ namespace Domain{
      * 
      */
     [Table("Angajat")]
-    public class AngajatCentru : Donator {
+    public class AngajatCentru :IPersoana {
 
         /**
          * 
          */
         public AngajatCentru() {}
 
-        public override CentruDonare CentruDonare { get; set; }
+        public virtual CentruDonare CentruDonare { get; set; }
+        public string CNP { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public DateTime Dob { get; set; }
+        public DateContact DateContact { get; set; }
+        public Account Account { get; set; }
     }
 }

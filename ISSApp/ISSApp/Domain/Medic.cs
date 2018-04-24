@@ -10,7 +10,7 @@ namespace Domain{
      * 
      */
     [Table("Medic")]
-    public class Medic : Donator {
+    public class Medic : IPersoana {
 
         /**
          * 
@@ -19,5 +19,11 @@ namespace Domain{
 
         public virtual Spital Spital { get; set; }
 
+        public string CNP { get; set; }
+        public string Nume { get; set; }
+        public string Prenume { get; set; }
+        public DateTime Dob { get; set; }
+        public DateContact DateContact { get; set; }
+        public Account Account { get; set; }
     }
 }

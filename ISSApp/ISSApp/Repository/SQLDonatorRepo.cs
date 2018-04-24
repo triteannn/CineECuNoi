@@ -57,7 +57,7 @@ namespace Repository{
                 paramDateContact.Value = donator.DateContact.IdDC;
                 command.Parameters.Add(paramDateContact);
 
-                var result = command.ExecuteNonQuery();
+                command.ExecuteNonQuery();
             }
         }
 
