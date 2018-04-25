@@ -30,10 +30,13 @@ namespace Domain{
          */
         public string Password { get; set; }
 
+        [ForeignKey("Donator")]
         public virtual Donator Donator { get; set; }
 
+        [ForeignKey("Medic")]
         public virtual Medic Medic { get; set; }
 
+        [ForeignKey("AngajatCentru")]
         public virtual AngajatCentru AngajatCentru { get; set; }
     }
 }
