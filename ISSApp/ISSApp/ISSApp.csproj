@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201804251905120_InitialCreate.Designer.cs">
       <DependentUpon>201804251905120_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804251943549_Update1.cs" />
+    <Compile Include="Migrations\201804251943549_Update1.Designer.cs">
+      <DependentUpon>201804251943549_Update1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Utils\Globals.cs" />
     <Compile Include="LoginForm.cs">
@@ -158,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804251905120_InitialCreate.resx">
       <DependentUpon>201804251905120_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804251943549_Update1.resx">
+      <DependentUpon>201804251943549_Update1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

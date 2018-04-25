@@ -25,18 +25,24 @@ namespace Domain{
 
         public string Username { get; set; }
 
-        /**
-         * 
-         */
         public string Password { get; set; }
 
-        [ForeignKey("Donator")]
+        public int IdD { get; set; }
+
+        public int IdM { get; set; }
+
+        public int IdAC { get; set; }
+
+        [ForeignKey("IdD")]
+        [InverseProperty("Account")]
         public virtual Donator Donator { get; set; }
 
-        [ForeignKey("Medic")]
+        [ForeignKey("IdM")]
+        [InverseProperty("Account")]
         public virtual Medic Medic { get; set; }
 
-        [ForeignKey("AngajatCentru")]
+        [ForeignKey("IdAC")]
+        [InverseProperty("Account")]
         public virtual AngajatCentru AngajatCentru { get; set; }
     }
 }
