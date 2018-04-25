@@ -30,8 +30,6 @@ namespace Domain{
          */
         public string Password { get; set; }
 
-       // public virtual IPersoana Persoana { get; set; }
-
         public virtual Donator Donator { get; set; }
 
         public virtual Medic Medic { get; set; }

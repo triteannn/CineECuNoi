@@ -18,15 +18,15 @@ namespace Domain{
          */
         public Medic() {}
 
-        public virtual Spital Spital { get; set; }
-
-        [Key]
+        [Key, ForeignKey("Account")]
         public int IdM { get; set; }
         public string CNP { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public DateTime Dob { get; set; }
         public DateContact DateContact { get; set; }
-        public Account Account { get; set; }
+
+        public virtual Account Account { get; set; }
+        public virtual Spital Spital { get; set; }
     }
 }
