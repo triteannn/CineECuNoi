@@ -46,7 +46,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public PSGlobuleRosii FindEntity(int id) {
+        public PSGlobuleRosii FindEntity(PSGlobuleRosii entity) {
             // TODO implement here
             return null;
         }

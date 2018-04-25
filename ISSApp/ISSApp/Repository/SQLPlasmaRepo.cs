@@ -47,7 +47,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public PSPlasma FindEntity(int id) {
+        public PSPlasma FindEntity(PSPlasma entity) {
             // TODO implement here
             return null;
         }
