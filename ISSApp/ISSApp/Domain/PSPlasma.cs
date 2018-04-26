@@ -19,7 +19,7 @@ namespace Domain{
         }
 
         [Key]
-        public int IdP { get; set; }
+        public int Id { get; set; }
         public DateTime DataRecoltare { get; set; }
         public float Cantitate { get; set; }
         public string Target { get; set; }

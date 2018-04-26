@@ -21,18 +21,21 @@ namespace Domain{
          * 
          */
         [Key]
-        public int IdA { get; set; }
-
+        [Column(Order = 1)]
         public string Strada { get; set; }
 
         /**
          * 
          */
+        [Key]
+        [Column(Order = 2)]
         public int Numar { get; set; }
 
         /**
          * 
          */
+        [Key]
+        [Column(Order = 3)]
         public string Oras { get; set; }
 
         /**

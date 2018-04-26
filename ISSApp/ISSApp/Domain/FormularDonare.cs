@@ -14,7 +14,7 @@ namespace Domain
         public FormularDonare() { }
 
         [Key]
-        public int IdFD { get; set; }
+        public int Id { get; set; }
         public virtual PungaSange PungaSange { get; set; }
     }
 }

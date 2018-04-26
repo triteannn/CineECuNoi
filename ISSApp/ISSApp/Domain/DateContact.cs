@@ -21,8 +21,8 @@ namespace Domain{
          * 
          */
         
-        [Key, ForeignKey("Adresa")]
-        public int IdDC { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string Telefon { get; set; }
 
