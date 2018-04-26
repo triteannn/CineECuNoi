@@ -31,7 +31,7 @@ namespace Repository{
             throw new NotImplementedException();
         }
 
-        public IProdusSanguin FindEntity(int id)
+        public IProdusSanguin FindEntity(IProdusSanguin entity)
         {
             throw new NotImplementedException();
         }

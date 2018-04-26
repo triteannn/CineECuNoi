@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms.VisualStyles;
 using Domain;
+using ISSApp;
 
 namespace Repository{
     /**
@@ -21,7 +24,23 @@ namespace Repository{
          * @return
          */
         public void Add(AngajatCentru angajatCentru) {
-            // TODO implement here
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Angajat(CNP, CentruDonare_IdCD) VALUES (@CNP, @IDCD)";
+
+                var paramCNP = command.CreateParameter();
+                paramCNP.ParameterName = "@CNP";
+                paramCNP.Value = angajatCentru.CNP;
+                command.Parameters.Add(paramCNP);
+
+                var paramIDCD = command.CreateParameter();
+                paramIDCD.ParameterName = "@IDCD";
+                paramIDCD.Value = angajatCentru.CentruDonare.IdCD;
+                command.Parameters.Add(paramIDCD);
+
+                command.ExecuteNonQuery();
+            }
         }
 
         /**
@@ -29,7 +48,22 @@ namespace Repository{
          * @return
          */
         public AngajatCentru Delete(AngajatCentru angajatCentru) {
-            // TODO implement here
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Angajat WHERE CNP=@CNP";
+
+                var paramCNP = command.CreateParameter();
+                paramCNP.ParameterName = "@CNP";
+                paramCNP.Value = angajatCentru.CNP;
+                command.Parameters.Add(paramCNP);
+
+                var result = command.ExecuteNonQuery();
+                if (result != 0)
+                {
+                    return angajatCentru;
+                }
+            }
             return null;
         }
 
@@ -38,7 +72,27 @@ namespace Repository{
          * @return
          */
         public AngajatCentru Update(AngajatCentru angajatCentru) {
-            // TODO implement here
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "UPDATE Angajat SET CentruDonate_IdCD=@IDCD WHERE CNP=@CNP";
+
+                var paramCNP = command.CreateParameter();
+                paramCNP.ParameterName = "@CNP";
+                paramCNP.Value = angajatCentru.CNP;
+                command.Parameters.Add(paramCNP);
+
+                var paramIDCD = command.CreateParameter();
+                paramIDCD.ParameterName = "@IDCD";
+                paramIDCD.Value = angajatCentru.CentruDonare.IdCD;
+                command.Parameters.Add(paramIDCD);
+
+                var result = command.ExecuteNonQuery();
+                if (result != 0)
+                {
+                    return angajatCentru;
+                }
+            }
             return null;
         }
 
@@ -46,8 +100,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public AngajatCentru FindEntity(int id) {
-            // TODO implement here
+        public AngajatCentru FindEntity(AngajatCentru entity) {
             return null;
         }
 

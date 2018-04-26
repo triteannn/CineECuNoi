@@ -21,13 +21,28 @@ namespace Domain{
          * 
          */
         [Key]
+        public int IdA { get; set; }
+
         public string Username { get; set; }
 
-        /**
-         * 
-         */
         public string Password { get; set; }
 
-        public virtual IPersoana Persoana { get; set; }
+        public int IdD { get; set; }
+
+        public int IdM { get; set; }
+
+        public int IdAC { get; set; }
+
+        [ForeignKey("IdD")]
+        [InverseProperty("Account")]
+        public virtual Donator Donator { get; set; }
+
+        [ForeignKey("IdM")]
+        [InverseProperty("Account")]
+        public virtual Medic Medic { get; set; }
+
+        [ForeignKey("IdAC")]
+        [InverseProperty("Account")]
+        public virtual AngajatCentru AngajatCentru { get; set; }
     }
 }

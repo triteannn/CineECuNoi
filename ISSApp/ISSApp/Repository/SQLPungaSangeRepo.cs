@@ -45,7 +45,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public PungaSange FindEntity(int id) {
+        public PungaSange FindEntity(PungaSange entity) {
             // TODO implement here
             return null;
         }

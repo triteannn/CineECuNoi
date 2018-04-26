@@ -107,9 +107,17 @@
     <Compile Include="Domain\PungaSange.cs" />
     <Compile Include="Domain\Spital.cs" />
     <Compile Include="DatabaseContext.cs" />
-    <Compile Include="Migrations\201804121449427_InitialCreate.cs" />
-    <Compile Include="Migrations\201804121449427_InitialCreate.Designer.cs">
-      <DependentUpon>201804121449427_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201804251905120_InitialCreate.cs" />
+    <Compile Include="Migrations\201804251905120_InitialCreate.Designer.cs">
+      <DependentUpon>201804251905120_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804251943549_Update1.cs" />
+    <Compile Include="Migrations\201804251943549_Update1.Designer.cs">
+      <DependentUpon>201804251943549_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804251954255_Update2.cs" />
+    <Compile Include="Migrations\201804251954255_Update2.Designer.cs">
+      <DependentUpon>201804251954255_Update2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Utils\Globals.cs" />
@@ -156,8 +164,14 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804121449427_InitialCreate.resx">
-      <DependentUpon>201804121449427_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804251905120_InitialCreate.resx">
+      <DependentUpon>201804251905120_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804251943549_Update1.resx">
+      <DependentUpon>201804251943549_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804251954255_Update2.resx">
+      <DependentUpon>201804251954255_Update2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
