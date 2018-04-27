@@ -37,7 +37,6 @@
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.BtnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.swfLogin = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.Label5 = new System.Windows.Forms.Label();
             this.RememberMe = new Bunifu.Framework.UI.BunifuCheckbox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -47,11 +46,12 @@
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
+            this.swfLogin = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // Fade
@@ -90,7 +90,7 @@
             this.LblCreateAcc.Location = new System.Drawing.Point(125, 84);
             this.LblCreateAcc.Margin = new System.Windows.Forms.Padding(0);
             this.LblCreateAcc.Name = "LblCreateAcc";
-            this.LblCreateAcc.Size = new System.Drawing.Size(116, 14);
+            this.LblCreateAcc.Size = new System.Drawing.Size(125, 17);
             this.LblCreateAcc.TabIndex = 0;
             this.LblCreateAcc.TabStop = true;
             this.LblCreateAcc.Text = "Create an account!";
@@ -169,15 +169,6 @@
             this.panel1.Size = new System.Drawing.Size(384, 390);
             this.panel1.TabIndex = 14;
             // 
-            // swfLogin
-            // 
-            this.swfLogin.Enabled = true;
-            this.swfLogin.Location = new System.Drawing.Point(28, 3);
-            this.swfLogin.Name = "swfLogin";
-            this.swfLogin.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("swfLogin.OcxState")));
-            this.swfLogin.Size = new System.Drawing.Size(184, 62);
-            this.swfLogin.TabIndex = 15;
-            // 
             // Label5
             // 
             this.Label5.AutoSize = true;
@@ -186,13 +177,13 @@
             this.Label5.Location = new System.Drawing.Point(65, 350);
             this.Label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(97, 14);
+            this.Label5.Size = new System.Drawing.Size(106, 17);
             this.Label5.TabIndex = 14;
             this.Label5.Text = "Remember me?";
             // 
             // RememberMe
             // 
-            this.RememberMe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.RememberMe.BackColor = System.Drawing.Color.DarkRed;
             this.RememberMe.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.RememberMe.Checked = false;
             this.RememberMe.CheckedOnColor = System.Drawing.Color.DarkRed;
@@ -211,7 +202,7 @@
             this.Label1.ForeColor = System.Drawing.Color.DarkRed;
             this.Label1.Location = new System.Drawing.Point(29, 297);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(64, 14);
+            this.Label1.Size = new System.Drawing.Size(74, 17);
             this.Label1.TabIndex = 13;
             this.Label1.Text = "Login as:";
             // 
@@ -246,7 +237,7 @@
             this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.Location = new System.Drawing.Point(29, 68);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(310, 14);
+            this.Label3.Size = new System.Drawing.Size(332, 17);
             this.Label3.TabIndex = 15;
             this.Label3.Text = "Don\'t have an account? Create one right now, it only";
             // 
@@ -257,7 +248,7 @@
             this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.Location = new System.Drawing.Point(30, 84);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(97, 14);
+            this.Label4.Size = new System.Drawing.Size(103, 17);
             this.Label4.TabIndex = 16;
             this.Label4.Text = "takes a minute!";
             // 
@@ -297,6 +288,17 @@
             this.PictureBox1.TabStop = false;
             this.PictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             // 
+            // swfLogin
+            // 
+            this.swfLogin.Enabled = true;
+            this.swfLogin.Location = new System.Drawing.Point(28, 3);
+            this.swfLogin.MaximumSize = new System.Drawing.Size(240, 62);
+            this.swfLogin.MinimumSize = new System.Drawing.Size(240, 62);
+            this.swfLogin.Name = "swfLogin";
+            this.swfLogin.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("swfLogin.OcxState")));
+            this.swfLogin.Size = new System.Drawing.Size(240, 62);
+            this.swfLogin.TabIndex = 15;
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -324,10 +326,10 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).EndInit();
             this.ResumeLayout(false);
 
         }

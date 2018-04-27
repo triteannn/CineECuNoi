@@ -1,16 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 
-namespace Domain{
+namespace Domain
+{
     /**
      * 
      */
     [Table("CentruDonare")]
-    public class CentruDonare : IInstitutie {
+    public class CentruDonare : IInstitutie
+    {
 
         /**
          * 
@@ -23,7 +22,7 @@ namespace Domain{
         }
 
         [Key]
-        public int Id { get; set; }
+        public int IdCD { get; set; }
         public string Denumire { get; set; }
         public virtual Adresa Adresa { get; set; }
 

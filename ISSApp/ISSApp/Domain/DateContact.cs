@@ -1,28 +1,26 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 
-namespace Domain{
+namespace Domain
+{
     /**
      * 
      */
     [Table("DateContact")]
-    public class DateContact {
+    public class DateContact
+    {
 
         /**
          * 
          */
-        public DateContact() {}
+        public DateContact() { }
 
         /**
          * 
          */
-        
+
         [Key]
-        public int Id { get; set; }
+        public int IdDC { get; set; }
 
         public string Telefon { get; set; }
 
