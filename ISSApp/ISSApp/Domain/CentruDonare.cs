@@ -22,8 +22,8 @@ namespace Domain{
             PungiSange = new List<PungaSange>();
         }
 
-        [Key, ForeignKey("Adresa")]
-        public int IdCD { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string Denumire { get; set; }
         public virtual Adresa Adresa { get; set; }
 

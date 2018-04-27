@@ -37,6 +37,7 @@
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.BtnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.swfLogin = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.Label5 = new System.Windows.Forms.Label();
             this.RememberMe = new Bunifu.Framework.UI.BunifuCheckbox();
             this.Label1 = new System.Windows.Forms.Label();
@@ -46,12 +47,11 @@
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
-            this.swfLogin = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // Fade
@@ -168,6 +168,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(384, 390);
             this.panel1.TabIndex = 14;
+            // 
+            // swfLogin
+            // 
+            this.swfLogin.Enabled = true;
+            this.swfLogin.Location = new System.Drawing.Point(28, 3);
+            this.swfLogin.Name = "swfLogin";
+            this.swfLogin.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("swfLogin.OcxState")));
+            this.swfLogin.Size = new System.Drawing.Size(184, 62);
+            this.swfLogin.TabIndex = 15;
             // 
             // Label5
             // 
@@ -288,15 +297,6 @@
             this.PictureBox1.TabStop = false;
             this.PictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             // 
-            // swfLogin
-            // 
-            this.swfLogin.Enabled = true;
-            this.swfLogin.Location = new System.Drawing.Point(28, 3);
-            this.swfLogin.Name = "swfLogin";
-            this.swfLogin.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("swfLogin.OcxState")));
-            this.swfLogin.Size = new System.Drawing.Size(213, 62);
-            this.swfLogin.TabIndex = 15;
-            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -324,10 +324,10 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginForm_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.swfLogin)).EndInit();
             this.ResumeLayout(false);
 
         }

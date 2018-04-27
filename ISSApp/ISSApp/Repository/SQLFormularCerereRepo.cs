@@ -46,7 +46,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public FormularCerere FindEntity(int id) {
+        public FormularCerere FindEntity(FormularCerere entity) {
             // TODO implement here
             return null;
         }

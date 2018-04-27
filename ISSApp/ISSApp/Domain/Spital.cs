@@ -21,8 +21,8 @@ namespace Domain{
         }
 
 
-        [Key, ForeignKey("Adresa")]
-        public int IdS { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string Denumire { get; set; }
         public virtual Adresa Adresa { get; set; }
 

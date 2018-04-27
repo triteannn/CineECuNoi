@@ -7,7 +7,7 @@ namespace Repository{
     /**
      * 
      */
-    public interface ISQLRepo<T, I> {
+    public interface ISQLRepo<T> {
 
         /**
          * @param entity 
@@ -31,7 +31,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        T FindEntity(I id);
+        T FindEntity(T entity);
 
         /**
          * @return

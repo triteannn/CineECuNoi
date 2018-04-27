@@ -10,7 +10,7 @@ namespace Repository{
     /**
      * 
      */
-    public class SQLDonatorRepo : ISQLRepo<Donator, String> {
+    public class SQLDonatorRepo : ISQLRepo<Donator> {
 
         /**
          * 
@@ -138,7 +138,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public Donator FindEntity(String id) {
+        public Donator FindEntity(Donator entity) {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -146,7 +146,7 @@ namespace Repository{
 
                 var paramCNP = command.CreateParameter();
                 paramCNP.ParameterName = "@CNP";
-                paramCNP.Value = id;
+                paramCNP.Value = entity.IdD;
                 command.Parameters.Add(paramCNP);
 
                 using (var result = command.ExecuteReader())
