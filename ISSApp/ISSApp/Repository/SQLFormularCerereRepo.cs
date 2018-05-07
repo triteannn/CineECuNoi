@@ -1,26 +1,27 @@
-using System;
+using ISSApp.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLFormularCerereRepo : ISQLRepo<FormularCerere> {
+    public class SQLFormularCerereRepo : ISQLRepo<FormularCerere>
+    {
 
         /**
          * 
          */
-        public SQLFormularCerereRepo() {
+        public SQLFormularCerereRepo()
+        {
         }
 
         /**
          * @param formular 
          * @return
          */
-        public void Add(FormularCerere formular) {
+        public void Add(FormularCerere formular)
+        {
             // TODO implement here
         }
 
@@ -28,7 +29,8 @@ namespace Repository{
          * @param formular 
          * @return
          */
-        public FormularCerere Delete(FormularCerere formular) {
+        public FormularCerere Delete(FormularCerere formular)
+        {
             // TODO implement here
             return null;
         }
@@ -37,7 +39,8 @@ namespace Repository{
          * @param formular 
          * @return
          */
-        public FormularCerere Update(FormularCerere formular) {
+        public FormularCerere Update(FormularCerere formular)
+        {
             // TODO implement here
             return null;
         }
@@ -46,7 +49,8 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public FormularCerere FindEntity(FormularCerere entity) {
+        public FormularCerere FindEntity(FormularCerere entity)
+        {
             // TODO implement here
             return null;
         }
@@ -54,7 +58,8 @@ namespace Repository{
         /**
          * @return
          */
-        public List<FormularCerere> FindAll() {
+        public List<FormularCerere> FindAll()
+        {
             // TODO implement here
             return null;
         }

@@ -1,26 +1,26 @@
-using System;
+using ISSApp.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLGlobuleRosiiRepo : ISQLRepo<PSGlobuleRosii> {
+    public class SQLGlobuleRosiiRepo : ISQLRepo<PSGlobuleRosii>
+    {
 
         /**
          * 
          */
-        public SQLGlobuleRosiiRepo() {}
+        public SQLGlobuleRosiiRepo() { }
 
 
         /**
          * @param psGlobuleRosii 
          * @return
          */
-        public void Add(PSGlobuleRosii psGlobuleRosii) {
+        public void Add(PSGlobuleRosii psGlobuleRosii)
+        {
             // TODO implement here
         }
 
@@ -28,7 +28,8 @@ namespace Repository{
          * @param psGlobuleRosii 
          * @return
          */
-        public PSGlobuleRosii Delete(PSGlobuleRosii psGlobuleRosii) {
+        public PSGlobuleRosii Delete(PSGlobuleRosii psGlobuleRosii)
+        {
             // TODO implement here
             return null;
         }
@@ -37,7 +38,8 @@ namespace Repository{
          * @param psGlobuleRosii 
          * @return
          */
-        public PSGlobuleRosii Update(PSGlobuleRosii psGlobuleRosii) {
+        public PSGlobuleRosii Update(PSGlobuleRosii psGlobuleRosii)
+        {
             // TODO implement here
             return null;
         }
@@ -46,7 +48,8 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public PSGlobuleRosii FindEntity(PSGlobuleRosii entity) {
+        public PSGlobuleRosii FindEntity(PSGlobuleRosii entity)
+        {
             // TODO implement here
             return null;
         }
@@ -54,7 +57,8 @@ namespace Repository{
         /**
          * @return
          */
-        public List<PSGlobuleRosii> FindAll() {
+        public List<PSGlobuleRosii> FindAll()
+        {
             // TODO implement here
             return null;
         }
@@ -63,7 +67,8 @@ namespace Repository{
          * @param target 
          * @return
          */
-        public List<PSGlobuleRosii> FindByTarget(string target) {
+        public List<PSGlobuleRosii> FindByTarget(string target)
+        {
             // TODO implement here
             return null;
         }

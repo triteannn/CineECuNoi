@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain
+namespace ISSApp.Domain
 {
-    [Table("FormularDonare")]
+    [Table("FormulareDonare")]
     public class FormularDonare
     {
-        public FormularDonare() { }
-
-        [Key]
         public int Id { get; set; }
+
+        public int IdPs { get; set; }
+
         public virtual PungaSange PungaSange { get; set; }
     }
 }

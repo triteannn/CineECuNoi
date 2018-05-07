@@ -1,19 +1,12 @@
+using Domain;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain
+namespace ISSApp.Domain
 {
-    /**
-     * 
-     */
-    [Table("CentruDonare")]
+    [Table("CentreDonare")]
     public class CentruDonare : IInstitutie
     {
-
-        /**
-         * 
-         */
         public CentruDonare()
         {
             Angajati = new List<AngajatCentru>();
@@ -21,13 +14,14 @@ namespace Domain
             PungiSange = new List<PungaSange>();
         }
 
-        [Key]
-        public int IdCD { get; set; }
+        public int Id { get; set; }
         public string Denumire { get; set; }
-        public virtual Adresa Adresa { get; set; }
 
-        public virtual List<AngajatCentru> Angajati { get; set; }
-        public virtual List<Donator> Donatori { get; set; }
-        public virtual List<PungaSange> PungiSange { get; set; }
+        public int IdAdr { get; set; }
+
+        public virtual Adresa Adresa { get; set; }
+        public virtual ICollection<AngajatCentru> Angajati { get; set; }
+        public virtual ICollection<Donator> Donatori { get; set; }
+        public virtual ICollection<PungaSange> PungiSange { get; set; }
     }
 }

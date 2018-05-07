@@ -1,19 +1,19 @@
-using System;
+using ISSApp.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLPlasmaRepo : ISQLRepo<PSPlasma> {
+    public class SQLPlasmaRepo : ISQLRepo<PSPlasma>
+    {
 
         /**
          * 
          */
-        public SQLPlasmaRepo() {
+        public SQLPlasmaRepo()
+        {
         }
 
 
@@ -21,7 +21,8 @@ namespace Repository{
          * @param psPlasma 
          * @return
          */
-        public void Add(PSPlasma psPlasma) {
+        public void Add(PSPlasma psPlasma)
+        {
             // TODO implement here
         }
 
@@ -29,7 +30,8 @@ namespace Repository{
          * @param psPlasma 
          * @return
          */
-        public PSPlasma Delete(PSPlasma psPlasma) {
+        public PSPlasma Delete(PSPlasma psPlasma)
+        {
             // TODO implement here
             return null;
         }
@@ -38,7 +40,8 @@ namespace Repository{
          * @param psPlasma 
          * @return
          */
-        public PSPlasma Update(PSPlasma psPlasma) {
+        public PSPlasma Update(PSPlasma psPlasma)
+        {
             // TODO implement here
             return null;
         }
@@ -47,7 +50,8 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public PSPlasma FindEntity(PSPlasma entity) {
+        public PSPlasma FindEntity(PSPlasma entity)
+        {
             // TODO implement here
             return null;
         }
@@ -55,7 +59,8 @@ namespace Repository{
         /**
          * @return
          */
-        public List<PSPlasma> FindAll() {
+        public List<PSPlasma> FindAll()
+        {
             // TODO implement here
             return null;
         }
@@ -64,7 +69,8 @@ namespace Repository{
          * @param target 
          * @return
          */
-        public List<PSPlasma> FindByTarget(string target) {
+        public List<PSPlasma> FindByTarget(string target)
+        {
             // TODO implement here
             return null;
         }

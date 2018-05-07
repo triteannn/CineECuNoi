@@ -1,27 +1,28 @@
+using ISSApp;
+using ISSApp.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using Domain;
-using ISSApp;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLDonatorRepo : ISQLRepo<Donator> {
+    public class SQLDonatorRepo : ISQLRepo<Donator>
+    {
 
         /**
          * 
          */
-        public SQLDonatorRepo() {}
+        public SQLDonatorRepo() { }
 
         /**
          * @param donator 
          * @return
          */
-        public void Add(Donator donator) {
+        public void Add(Donator donator)
+        {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -49,12 +50,12 @@ namespace Repository{
 
                 var paramCentruDonare = command.CreateParameter();
                 paramCentruDonare.ParameterName = "@CentruDonare";
-                paramCentruDonare.Value = donator.CentruDonare.IdCD;
+                paramCentruDonare.Value = donator.CentruDonare.Id;
                 command.Parameters.Add(paramCentruDonare);
 
                 var paramDateContact = command.CreateParameter();
                 paramDateContact.ParameterName = "@DateContact";
-                paramDateContact.Value = donator.DateContact.IdDC;
+                paramDateContact.Value = donator.DateContact.Id;
                 command.Parameters.Add(paramDateContact);
 
                 command.ExecuteNonQuery();
@@ -65,7 +66,8 @@ namespace Repository{
          * @param donator 
          * @return
          */
-        public Donator Delete(Donator donator) {
+        public Donator Delete(Donator donator)
+        {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -89,7 +91,8 @@ namespace Repository{
          * @param donator 
          * @return
          */
-        public Donator Update(Donator donator) {
+        public Donator Update(Donator donator)
+        {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -117,12 +120,12 @@ namespace Repository{
 
                 var paramCentruDonare = command.CreateParameter();
                 paramCentruDonare.ParameterName = "@CentruDonare";
-                paramCentruDonare.Value = donator.CentruDonare.IdCD;
+                paramCentruDonare.Value = donator.CentruDonare.Id;
                 command.Parameters.Add(paramCentruDonare);
 
                 var paramDateContact = command.CreateParameter();
                 paramDateContact.ParameterName = "@DateContact";
-                paramDateContact.Value = donator.DateContact.IdDC;
+                paramDateContact.Value = donator.DateContact.Id;
                 command.Parameters.Add(paramDateContact);
 
                 var result = command.ExecuteNonQuery();
@@ -138,7 +141,8 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public Donator FindEntity(Donator entity) {
+        public Donator FindEntity(Donator entity)
+        {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -146,7 +150,7 @@ namespace Repository{
 
                 var paramCNP = command.CreateParameter();
                 paramCNP.ParameterName = "@CNP";
-                paramCNP.Value = entity.IdD;
+                paramCNP.Value = entity.Id;
                 command.Parameters.Add(paramCNP);
 
                 using (var result = command.ExecuteReader())
@@ -175,7 +179,8 @@ namespace Repository{
         /**
          * @return
          */
-        public List<Donator> FindAll() {
+        public List<Donator> FindAll()
+        {
             // TODO implement here
             return null;
         }

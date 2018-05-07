@@ -1,26 +1,27 @@
-using System;
+using ISSApp.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLFormularDonareRepo : ISQLRepo<FormularDonare> {
+    public class SQLFormularDonareRepo : ISQLRepo<FormularDonare>
+    {
 
         /**
          * 
          */
-        public SQLFormularDonareRepo() {
+        public SQLFormularDonareRepo()
+        {
         }
 
         /**
          * @param formular 
          * @return
          */
-        public void Add(FormularDonare formular) {
+        public void Add(FormularDonare formular)
+        {
             // TODO implement here
         }
 
@@ -28,7 +29,8 @@ namespace Repository{
          * @param formular 
          * @return
          */
-        public FormularDonare Delete(FormularDonare formular) {
+        public FormularDonare Delete(FormularDonare formular)
+        {
             // TODO implement here
             return null;
         }
@@ -37,7 +39,8 @@ namespace Repository{
          * @param formular 
          * @return
          */
-        public FormularDonare Update(FormularDonare formular) {
+        public FormularDonare Update(FormularDonare formular)
+        {
             // TODO implement here
             return null;
         }
@@ -46,7 +49,8 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public FormularDonare FindEntity(FormularDonare entity) {
+        public FormularDonare FindEntity(FormularDonare entity)
+        {
             // TODO implement here
             return null;
         }
@@ -54,7 +58,8 @@ namespace Repository{
         /**
          * @return
          */
-        public List<FormularDonare> FindAll() {
+        public List<FormularDonare> FindAll()
+        {
             // TODO implement here
             return null;
         }

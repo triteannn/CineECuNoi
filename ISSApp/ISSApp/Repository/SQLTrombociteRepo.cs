@@ -1,25 +1,25 @@
-using System;
+using ISSApp.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLTrombociteRepo : ISQLRepo<PSTrombocite> {
+    public class SQLTrombociteRepo : ISQLRepo<PSTrombocite>
+    {
 
         /**
          * 
          */
-        public SQLTrombociteRepo() {}
+        public SQLTrombociteRepo() { }
 
         /**
          * @param psTrombocite 
          * @return
          */
-        public void Add(PSTrombocite psTrombocite) {
+        public void Add(PSTrombocite psTrombocite)
+        {
             // TODO implement here
         }
 
@@ -27,7 +27,8 @@ namespace Repository{
          * @param psTrombocite 
          * @return
          */
-        public PSTrombocite Delete(PSTrombocite psTrombocite) {
+        public PSTrombocite Delete(PSTrombocite psTrombocite)
+        {
             // TODO implement here
             return null;
         }
@@ -36,7 +37,8 @@ namespace Repository{
          * @param psTrombocite 
          * @return
          */
-        public PSTrombocite Update(PSTrombocite psTrombocite) {
+        public PSTrombocite Update(PSTrombocite psTrombocite)
+        {
             // TODO implement here
             return null;
         }
@@ -45,7 +47,8 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public PSTrombocite FindEntity(PSTrombocite entity) {
+        public PSTrombocite FindEntity(PSTrombocite entity)
+        {
             // TODO implement here
             return null;
         }
@@ -53,7 +56,8 @@ namespace Repository{
         /**
          * @return
          */
-        public List<PSTrombocite> FindAll() {
+        public List<PSTrombocite> FindAll()
+        {
             // TODO implement here
             return null;
         }
@@ -62,7 +66,8 @@ namespace Repository{
          * @param target 
          * @return
          */
-        public List<PSTrombocite> FindByTarget(string target) {
+        public List<PSTrombocite> FindByTarget(string target)
+        {
             // TODO implement here
             return null;
         }

@@ -1,25 +1,25 @@
-using System;
+using ISSApp.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLPungaSangeRepo : ISQLRepo<PungaSange> {
+    public class SQLPungaSangeRepo : ISQLRepo<PungaSange>
+    {
 
         /**
          * 
          */
-        public SQLPungaSangeRepo() {}
+        public SQLPungaSangeRepo() { }
 
         /**
          * @param pungaSange 
          * @return
          */
-        public void Add(PungaSange pungaSange) {
+        public void Add(PungaSange pungaSange)
+        {
             // TODO implement here
         }
 
@@ -27,7 +27,8 @@ namespace Repository{
          * @param pungaSange 
          * @return
          */
-        public PungaSange Delete(PungaSange pungaSange) {
+        public PungaSange Delete(PungaSange pungaSange)
+        {
             // TODO implement here
             return null;
         }
@@ -36,7 +37,8 @@ namespace Repository{
          * @param pungaSange 
          * @return
          */
-        public PungaSange Update(PungaSange pungaSange) {
+        public PungaSange Update(PungaSange pungaSange)
+        {
             // TODO implement here
             return null;
         }
@@ -45,7 +47,8 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public PungaSange FindEntity(PungaSange entity) {
+        public PungaSange FindEntity(PungaSange entity)
+        {
             // TODO implement here
             return null;
         }
@@ -53,7 +56,8 @@ namespace Repository{
         /**
          * @return
          */
-        public List<PungaSange> FindAll() {
+        public List<PungaSange> FindAll()
+        {
             // TODO implement here
             return null;
         }

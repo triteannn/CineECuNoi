@@ -1,32 +1,23 @@
+using Domain;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain
+namespace ISSApp.Domain
 {
-    /**
-     * 
-     */
-    [Table("Donator")]
+    [Table("Donatori")]
     public class Donator : IPersoana
     {
-
-        /**
-         * 
-         */
-        public Donator() { }
-
-
-
-        [Key]
-        public int IdD { get; set; }
+        public int Id { get; set; }
         public string CNP { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public DateTime Dob { get; set; }
-        public DateContact DateContact { get; set; }
 
-        [ForeignKey("Account")]
+        public int IdDc { get; set; }
+        public int IdA { get; set; }
+        public int IdCd { get; set; }
+
+        public virtual DateContact DateContact { get; set; }
         public virtual Account Account { get; set; }
         public virtual CentruDonare CentruDonare { get; set; }
     }

@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Domain
+namespace ISSApp.Domain
 {
-    [Table("FormularCerere")]
+    [Table("FormulareCerere")]
     public class FormularCerere
     {
-        public FormularCerere() { }
+        public FormularCerere()
+        {
+            PsPlasme = new List<PSPlasma>();
+            PsGlobuleRosii = new List<PSGlobuleRosii>();
+            PsTrombocite = new List<PSTrombocite>();
+        }
 
-
-        [Key]
         public int Id { get; set; }
-        public virtual IProdusSanguin ProdusSanguin { get; set; }
+        public virtual ICollection<PSPlasma> PsPlasme { get; set; }
+        public virtual ICollection<PSGlobuleRosii> PsGlobuleRosii { get; set; }
+        public virtual ICollection<PSTrombocite> PsTrombocite { get; set; }
     }
 }

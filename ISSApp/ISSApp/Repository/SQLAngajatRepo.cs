@@ -1,29 +1,30 @@
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms.VisualStyles;
 using Domain;
 using ISSApp;
+using System.Collections.Generic;
+using System.Data;
+using ISSApp.Domain;
 
-namespace Repository{
+namespace Repository
+{
     /**
      * 
      */
-    public class SQLAngajatRepo : ISQLRepo<AngajatCentru> {
+    public class SQLAngajatRepo : ISQLRepo<AngajatCentru>
+    {
 
         /**
          * 
          */
-        public SQLAngajatRepo() {
+        public SQLAngajatRepo()
+        {
         }
 
         /**
          * @param angajatCentru 
          * @return
          */
-        public void Add(AngajatCentru angajatCentru) {
+        public void Add(AngajatCentru angajatCentru)
+        {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -36,7 +37,7 @@ namespace Repository{
 
                 var paramIDCD = command.CreateParameter();
                 paramIDCD.ParameterName = "@IDCD";
-                paramIDCD.Value = angajatCentru.CentruDonare.IdCD;
+                paramIDCD.Value = angajatCentru.CentruDonare.Id;
                 command.Parameters.Add(paramIDCD);
 
                 command.ExecuteNonQuery();
@@ -47,7 +48,8 @@ namespace Repository{
          * @param angajatCentru 
          * @return
          */
-        public AngajatCentru Delete(AngajatCentru angajatCentru) {
+        public AngajatCentru Delete(AngajatCentru angajatCentru)
+        {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -71,7 +73,8 @@ namespace Repository{
          * @param angajatCentru 
          * @return
          */
-        public AngajatCentru Update(AngajatCentru angajatCentru) {
+        public AngajatCentru Update(AngajatCentru angajatCentru)
+        {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
@@ -84,7 +87,7 @@ namespace Repository{
 
                 var paramIDCD = command.CreateParameter();
                 paramIDCD.ParameterName = "@IDCD";
-                paramIDCD.Value = angajatCentru.CentruDonare.IdCD;
+                paramIDCD.Value = angajatCentru.CentruDonare.Id;
                 command.Parameters.Add(paramIDCD);
 
                 var result = command.ExecuteNonQuery();
@@ -100,14 +103,16 @@ namespace Repository{
          * @param id 
          * @return
          */
-        public AngajatCentru FindEntity(AngajatCentru entity) {
+        public AngajatCentru FindEntity(AngajatCentru entity)
+        {
             return null;
         }
 
         /**
          * @return
          */
-        public List<AngajatCentru> FindAll() {
+        public List<AngajatCentru> FindAll()
+        {
             // TODO implement here
             return null;
         }
