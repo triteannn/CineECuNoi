@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Text;
-using System.IO;
-using System.Windows.Forms;
+﻿using ISSApp.Domain;
+using ISSApp.Repository;
+using System;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace ISSApp
 {
     public partial class RegisterForm : Form
     {
 
-        private LoginForm _loginForm;
+        private readonly LoginForm _loginForm;
+        private readonly SqlDonatorRepo _donatorRepo;
+        private readonly SqlAccountRepo _accountRepo;
 
         public RegisterForm(LoginForm loginForm)
-        {            
+        {
             InitializeComponent();
             _loginForm = loginForm;
+            _donatorRepo = new SqlDonatorRepo();
+            _accountRepo = new SqlAccountRepo();
         }
 
         private void LblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -27,33 +29,33 @@ namespace ISSApp
             Close();
         }
 
-        private void TxtFullName_Enter(object sender, EventArgs e)
+        private void TxtFirstName_Enter(object sender, EventArgs e)
         {
-            if (TxtFullName.Text == "Full name")
-                TxtFullName.Text = "";
+            if (TxtFirstName.Text == @"First name")
+                TxtFirstName.Text = "";
         }
 
-        private void TxtFullName_Leave(object sender, EventArgs e)
+        private void TxtFirstName_Leave(object sender, EventArgs e)
         {
-            if (TxtFullName.Text == "")
-                TxtFullName.Text = "Full name";
+            if (TxtFirstName.Text == "")
+                TxtFirstName.Text = @"First name";
         }
 
         private void TxtUsername_Enter(object sender, EventArgs e)
         {
-            if (TxtUsername.Text == "Username")
+            if (TxtUsername.Text == @"Username")
                 TxtUsername.Text = "";
         }
 
         private void TxtUsername_Leave(object sender, EventArgs e)
         {
             if (TxtUsername.Text == "")
-                TxtUsername.Text = "Username";
+                TxtUsername.Text = @"Username";
         }
 
         private void TxtPassword_Enter(object sender, EventArgs e)
         {
-            if (TxtPassword.Text == "Password")
+            if (TxtPassword.Text == @"Password")
             {
                 TxtPassword.Text = "";
                 TxtPassword.isPassword = true;
@@ -64,18 +66,36 @@ namespace ISSApp
         {
             if (TxtPassword.Text == "")
             {
-                TxtPassword.Text = "Password";
+                TxtPassword.Text = @"Password";
                 TxtPassword.isPassword = false;
             }
         }
 
         private void BtnRegister_Click(object sender, EventArgs e)
         {
-            if (TxtFullName.Text.Length > 0 && TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && DOB.Value != null && TxtFullName.Text != "Full name" && TxtUsername.Text != "Username" && TxtPassword.Text != "Password")
+            if (TxtCnp.Text.Length > 0 && TxtFirstName.Text.Length > 0 && TxtLastName.Text.Length > 0 && TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && !TxtFirstName.Text.Equals("Full name") && !TxtUsername.Text.Equals("Username") && !TxtPassword.Text.Equals("Password"))
             {
-
+                var donator = new Donator(TxtCnp.Text, TxtLastName.Text, TxtFirstName.Text, DOB.Value);
+                var account = new Account(TxtUsername.Text, TxtPassword.Text);
+                _donatorRepo.Add(donator);
+                using (var connection = Globals.getDBConnection())
+                {
+                    connection.Open();
+                    var cmd = new SqlCommand(@"select max(Id) from Donatori", connection);
+                    var reader = cmd.ExecuteReader();
+                    var id = 0;
+                    if (reader.Read())
+                    {
+                        id = reader.GetInt16(0);
+                    }
+                    account.IdD = id;
+                }
+                _accountRepo.Add(account);
+                MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
-            else MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show(@"Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void Controls_KeyDown(object sender, KeyEventArgs e)
@@ -88,11 +108,6 @@ namespace ISSApp
             }
         }
 
-        private void DropdownAS_KeyDown(object sender, KeyEventArgs e)
-        {
-            BtnRegister.Select();
-        }
-
         public const int WmNclbuttondown = 0xA1;
         public const int HtCaption = 0x2;
 
@@ -103,7 +118,8 @@ namespace ISSApp
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
+            if (e.Button != MouseButtons.Left)
+                return;
             ReleaseCapture();
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }
@@ -111,6 +127,30 @@ namespace ISSApp
         private void RegisterForm_Load(object sender, EventArgs e)
         {
             swfRegister.Movie = Environment.CurrentDirectory.Replace(@"bin\x86\Debug", @"Resources\RegisterImage.swf");
+        }
+
+        private void TxtLastName_Enter(object sender, EventArgs e)
+        {
+            if (TxtLastName.Text == @"Last name")
+                TxtLastName.Text = "";
+        }
+
+        private void TxtLastName_Leave(object sender, EventArgs e)
+        {
+            if (TxtLastName.Text == "")
+                TxtLastName.Text = @"Last name";
+        }
+
+        private void TxtCnp_Enter(object sender, EventArgs e)
+        {
+            if (TxtCnp.Text == @"CNP")
+                TxtCnp.Text = "";
+        }
+
+        private void TxtCnp_Leave(object sender, EventArgs e)
+        {
+            if (TxtCnp.Text == "")
+                TxtCnp.Text = @"CNP";
         }
     }
 }

@@ -57,15 +57,15 @@ namespace ISSApp
             modelBuilder.Entity<DateContact>().Property(t => t.IdD).IsOptional();
             modelBuilder.Entity<DateContact>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<DateContact>().HasRequired(t => t.Adresa).WithOptional(t => t.DateContact);
-            modelBuilder.Entity<DateContact>().HasOptional(t => t.Donator).WithRequired(t => t.DateContact);
+            modelBuilder.Entity<DateContact>().HasRequired(t => t.Donator).WithOptional(t => t.DateContact);
             modelBuilder.Entity<DateContact>().HasOptional(t => t.Medic).WithRequired(t => t.DateContact);
             modelBuilder.Entity<DateContact>().HasOptional(t => t.AngajatCentru).WithRequired(t => t.DateContact);
 
             modelBuilder.Entity<Donator>().HasKey(t => t.Id);
             modelBuilder.Entity<Donator>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<Donator>().HasRequired(t => t.DateContact).WithOptional(t => t.Donator);
+            modelBuilder.Entity<Donator>().HasOptional(t => t.DateContact).WithRequired(t => t.Donator);
             modelBuilder.Entity<Donator>().HasRequired(t => t.Account).WithOptional(t => t.Donator);
-            modelBuilder.Entity<Donator>().HasRequired(t => t.CentruDonare).WithMany(t => t.Donatori).HasForeignKey(t => t.IdCd);
+            modelBuilder.Entity<Donator>().HasOptional(t => t.CentruDonare).WithMany(t => t.Donatori).HasForeignKey(t => t.IdCd);
 
             modelBuilder.Entity<FormularCerere>().HasKey(t => t.Id);
             modelBuilder.Entity<FormularCerere>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

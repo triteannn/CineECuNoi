@@ -8,7 +8,30 @@ namespace ISSApp.Repository
     {
         public void Add(Account entity)
         {
-            throw new System.NotImplementedException();
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Accounts(Username, Password, IdD) VALUES (@Username, @Password, @IdD)";
+
+                var paramUsername = command.CreateParameter();
+                paramUsername.ParameterName = "@Username";
+                paramUsername.Value = entity.Username;
+                command.Parameters.Add(paramUsername);
+
+                var paramPassword = command.CreateParameter();
+                paramPassword.ParameterName = "@Password";
+                paramPassword.Value = entity.Password;
+                command.Parameters.Add(paramPassword);
+
+                var paramIdD = command.CreateParameter();
+                paramIdD.ParameterName = "@IdD";
+                paramIdD.Value = entity.IdD;
+                command.Parameters.Add(paramIdD);
+
+                command.ExecuteNonQuery();
+            }
+            connection.Close();
         }
 
         public Account Delete(Account entity)

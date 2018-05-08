@@ -9,15 +9,16 @@ namespace ISSApp.Repository
     {
         public void Add(Donator donator)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            var connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "INSERT INTO Donator(CNP, Nume, Prenume, Dob, CentruDonare_IdCD1, DateContact_IdDC) VALUES (@CNP, @Nume, @Prenume, @Dob, @CentruDonare, @DateContact)";
+                command.CommandText = "INSERT INTO Donatori(CNP, Nume, Prenume, Dob, IdA) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA)";
 
-                var paramCNP = command.CreateParameter();
-                paramCNP.ParameterName = "@CNP";
-                paramCNP.Value = donator.CNP;
-                command.Parameters.Add(paramCNP);
+                var paramCnp = command.CreateParameter();
+                paramCnp.ParameterName = "@CNP";
+                paramCnp.Value = donator.CNP;
+                command.Parameters.Add(paramCnp);
 
                 var paramNume = command.CreateParameter();
                 paramNume.ParameterName = "@Nume";
@@ -34,18 +35,14 @@ namespace ISSApp.Repository
                 paramDob.Value = donator.Dob;
                 command.Parameters.Add(paramDob);
 
-                var paramCentruDonare = command.CreateParameter();
-                paramCentruDonare.ParameterName = "@CentruDonare";
-                paramCentruDonare.Value = donator.CentruDonare.Id;
-                command.Parameters.Add(paramCentruDonare);
-
-                var paramDateContact = command.CreateParameter();
-                paramDateContact.ParameterName = "@DateContact";
-                paramDateContact.Value = donator.DateContact.Id;
-                command.Parameters.Add(paramDateContact);
+                var paramIdA = command.CreateParameter();
+                paramIdA.ParameterName = "@IdA";
+                paramIdA.Value = donator.IdA;
+                command.Parameters.Add(paramIdA);
 
                 command.ExecuteNonQuery();
             }
+            connection.Close();
         }
 
         public Donator Delete(Donator donator)
