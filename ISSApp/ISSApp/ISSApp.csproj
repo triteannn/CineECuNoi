@@ -112,6 +112,7 @@
       <DependentUpon>201805071950095_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repository\SQLCentruDonareRepo.cs" />
     <Compile Include="Repository\SQLSpitalRepo.cs" />
     <Compile Include="Utils\Globals.cs" />
     <Compile Include="LoginForm.cs">
