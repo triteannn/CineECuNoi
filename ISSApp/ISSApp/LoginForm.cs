@@ -1,56 +1,30 @@
-﻿using System;
+﻿using ISSApp.Repository;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Xml.Serialization;
-using Domain;
-using System.Data.Entity.Validation;
 
 namespace ISSApp
 {
     public partial class LoginForm : Form
     {
 
-        private bool _closingfade = false;
+        private bool _closingfade;
+        private readonly SqlAccountRepo _accountRepo;
 
         public LoginForm()
         {
             InitializeComponent();
+            _accountRepo = new SqlAccountRepo();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            /*using (var db = new DatabaseContext())
-            {
-                
-                var spital = new Spital() { Denumire = "Da" };
-                var medic1 = new Medic() { CNP="123", Nume = "Tritean" };
-                var medic2 = new Medic() { CNP="321", Nume = "Adi" };
-                spital.Medici.Add(medic1);
-                spital.Medici.Add(medic2);
-                db.Spital.Add(spital);
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (DbEntityValidationException exc)
-                {
-                    foreach (var msg in exc.EntityValidationErrors)
-                    {
-                        Console.WriteLine(msg.Entry.State);
-                        foreach (var nume in msg.ValidationErrors)
-                        {
-                            Console.WriteLine(nume.PropertyName);
-                            Console.WriteLine(nume.ErrorMessage);
-                        }
-                    }
-                }
-            }*/
-            Fade.Start();           
-            TxtUsername.Text = "Username";
-            TxtPassword.Text = "Password";
+            Fade.Start();
+            TxtUsername.Text = @"Username";
+            TxtPassword.Text = @"Password";
             TxtPassword.isPassword = false;
             var serializer = new XmlSerializer(typeof(string));
             if (File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
@@ -74,7 +48,7 @@ namespace ISSApp
                 else
                 {
                     Fade.Stop();
-                    Enabled = true;                                   
+                    Enabled = true;
                 }
             }
             else
@@ -99,7 +73,8 @@ namespace ISSApp
                 Enabled = false;
                 Fade.Start();
             }
-            else e.Cancel = true;
+            else
+                e.Cancel = true;
         }
 
         private void BtnLogin_MouseMove(object sender, MouseEventArgs e)
@@ -129,7 +104,8 @@ namespace ISSApp
 
         private void LoginForm_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
+            if (e.Button != MouseButtons.Left)
+                return;
             ReleaseCapture();
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }
@@ -141,7 +117,7 @@ namespace ISSApp
 
         private void TxtPassword_Enter(object sender, EventArgs e)
         {
-            if (TxtPassword.Text == "Password")
+            if (TxtPassword.Text == @"Password")
             {
                 TxtPassword.Text = "";
                 TxtPassword.isPassword = true;
@@ -152,31 +128,31 @@ namespace ISSApp
         {
             if (TxtPassword.Text == "")
             {
-                TxtPassword.Text = "Password";
+                TxtPassword.Text = @"Password";
                 TxtPassword.isPassword = false;
             }
         }
 
         private void TxtUsername_Enter(object sender, EventArgs e)
         {
-            if (TxtUsername.Text == "Username")
+            if (TxtUsername.Text == @"Username")
                 TxtUsername.Text = "";
         }
 
         private void TxtUsername_Leave(object sender, EventArgs e)
         {
             if (TxtUsername.Text == "")
-                TxtUsername.Text = "Username";
+                TxtUsername.Text = @"Username";
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && DropdownAS.selectedIndex > 0 && TxtUsername.Text != "Username" && TxtPassword.Text != "Password")
-            {               
-                if(RememberMe.Checked)
+            if (TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && DropdownAS.selectedIndex > 0 && TxtUsername.Text != @"Username" && TxtPassword.Text != @"Password")
+            {
+                if (RememberMe.Checked)
                 {
                     var serializer = new XmlSerializer(typeof(string));
-                    if(File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
+                    if (File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
                     {
                         using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Open, FileAccess.Write))
                         {
@@ -185,7 +161,7 @@ namespace ISSApp
                     }
                     else
                     {
-                        using(var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Create, FileAccess.Write))
+                        using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Create, FileAccess.Write))
                         {
                             serializer.Serialize(fs, TxtUsername.Text);
                         }
@@ -193,57 +169,40 @@ namespace ISSApp
                 }
                 else
                 {
-                    var serializer = new XmlSerializer(typeof(string));
                     if (File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
                     {
                         File.Delete(Environment.CurrentDirectory + @"\RememberedUser.xml");
                     }
                 }
-                string username = "";
-                string password = "";
-                using (var connection = Globals.getDBConnection())
-                {
-                    try
-                    {
-                        connection.Open();
-                        var cmd = new SqlCommand(@"select * from Accounts", connection);
-                        var reader = cmd.ExecuteReader();
-                        while(reader.Read())
-                        {
-                            username = reader.GetString(1);
-                            password = reader.GetString(2);
-                        }
-                    }
-                    catch (SqlException exc)
-                    {
-                        MessageBox.Show(exc.Message, @"Database related error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                if (username.Length > 0 && password.Length > 0 && username.Equals(TxtUsername.Text) && password.Equals(TxtPassword.Text))
+
+                var acc = _accountRepo.FindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
+                if (acc != null)
                 {
                     var mainWindow = new MainWindow(this);
                     mainWindow.Show();
                     Hide();
                 }
-                else MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+                MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         internal void EmptyFields()
-        {          
+        {
             if (!RememberMe.Checked)
-                TxtUsername.Text = "Username";
-            RememberMe.Checked = TxtUsername.Text != "Username" ? true : false;
-            TxtPassword.Text = "Password";
+                TxtUsername.Text = @"Username";
+            RememberMe.Checked = TxtUsername.Text != @"Username";
+            TxtPassword.Text = @"Password";
             TxtPassword.isPassword = false;
             DropdownAS.selectedIndex = 0;
         }
 
         private void LblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var _registerForm = new RegisterForm(this);
-            _registerForm.Show();
+            var registerForm = new RegisterForm(this);
+            registerForm.Show();
             Enabled = false;
         }
 
