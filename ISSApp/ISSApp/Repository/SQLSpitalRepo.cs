@@ -1,16 +1,12 @@
 ﻿using ISSApp.Domain;
-using Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace ISSApp.Repository
 {
-    public class SQLSpitalRepo : ISQLRepo<Spital>
+    public class SqlSpitalRepo : ISqlRepo<Spital>
     {
         public void Add(Spital entity)
         {
@@ -26,8 +22,7 @@ namespace ISSApp.Repository
 
                     Globals.getDBConnection().Open();
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database insert failed.");
                 }
@@ -48,8 +43,7 @@ namespace ISSApp.Repository
                     Globals.getDBConnection().Open();
                     command.ExecuteNonQuery();
                     return entity;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database delete failed.");
                 }
@@ -72,8 +66,7 @@ namespace ISSApp.Repository
                     }
                     reader.Close();
                     return toReturn;
-                }
-                catch(SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database get failed.");
                 }
@@ -99,8 +92,7 @@ namespace ISSApp.Repository
                     }
                     reader.Close();
                     return spital;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database get failed.");
                 }
@@ -124,8 +116,7 @@ namespace ISSApp.Repository
                     Globals.getDBConnection().Open();
                     command.ExecuteNonQuery();
                     return entity;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database insert failed.");
                 }

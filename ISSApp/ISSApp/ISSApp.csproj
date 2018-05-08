@@ -112,8 +112,9 @@
       <DependentUpon>201805071950095_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Repository\SQLCentruDonareRepo.cs" />
-    <Compile Include="Repository\SQLSpitalRepo.cs" />
+    <Compile Include="Repository\SqlAccountRepo.cs" />
+    <Compile Include="Repository\SqlCentruDonareRepo.cs" />
+    <Compile Include="Repository\SqlSpitalRepo.cs" />
     <Compile Include="Utils\Globals.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -135,17 +136,17 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repository\ISQLRepo.cs" />
-    <Compile Include="Repository\SQLAngajatRepo.cs" />
-    <Compile Include="Repository\SQLDonatorRepo.cs" />
-    <Compile Include="Repository\SQLFormularCerereRepo.cs" />
-    <Compile Include="Repository\SQLFormularDonareRepo.cs" />
-    <Compile Include="Repository\SQLGlobuleRosiiRepo.cs" />
-    <Compile Include="Repository\SQLMedicRepo.cs" />
-    <Compile Include="Repository\SQLPlasmaRepo.cs" />
-    <Compile Include="Repository\SQLProdSanguinRepo.cs" />
-    <Compile Include="Repository\SQLPungaSangeRepo.cs" />
-    <Compile Include="Repository\SQLTrombociteRepo.cs" />
+    <Compile Include="Repository\ISqlRepo.cs" />
+    <Compile Include="Repository\SqlAngajatRepo.cs" />
+    <Compile Include="Repository\SqlDonatorRepo.cs" />
+    <Compile Include="Repository\SqlFormularCerereRepo.cs" />
+    <Compile Include="Repository\SqlFormularDonareRepo.cs" />
+    <Compile Include="Repository\SqlGlobuleRosiiRepo.cs" />
+    <Compile Include="Repository\SqlMedicRepo.cs" />
+    <Compile Include="Repository\SqlPlasmaRepo.cs" />
+    <Compile Include="Repository\SqlProdSanguinRepo.cs" />
+    <Compile Include="Repository\SqlPungaSangeRepo.cs" />
+    <Compile Include="Repository\SqlTrombociteRepo.cs" />
     <Compile Include="Service\IService.cs" />
     <Compile Include="Service\ServiceAngajat.cs" />
     <Compile Include="Service\ServiceDonator.cs" />

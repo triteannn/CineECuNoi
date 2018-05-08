@@ -1,66 +1,37 @@
 using ISSApp.Domain;
 using System.Collections.Generic;
 
-namespace Repository
+namespace ISSApp.Repository
 {
-    /**
-     * 
-     */
-    public class SQLMedicRepo : ISQLRepo<Medic>
+    public class SqlMedicRepo : ISqlRepo<Medic>
     {
-
-        /**
-         * 
-         */
-        public SQLMedicRepo() { }
-
-        /**
-         * @param medic 
-         * @return
-         */
         public void Add(Medic medic)
         {
             // TODO implement here
         }
 
-        /**
-         * @param medic 
-         * @return
-         */
         public Medic Delete(Medic medic)
         {
             // TODO implement here
             return null;
         }
 
-        /**
-         * @param medic 
-         * @return
-         */
         public Medic Update(Medic medic)
         {
             // TODO implement here
             return null;
         }
 
-        /**
-         * @param id 
-         * @return
-         */
         public Medic FindEntity(int id)
         {
             // TODO implement here
             return null;
         }
 
-        /**
-         * @return
-         */
         public List<Medic> FindAll()
         {
             // TODO implement here
             return null;
         }
-
     }
 }

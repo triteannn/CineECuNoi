@@ -1,26 +1,12 @@
-using ISSApp;
 using ISSApp.Domain;
 using System;
 using System.Collections.Generic;
 using System.Data;
 
-namespace Repository
+namespace ISSApp.Repository
 {
-    /**
-     * 
-     */
-    public class SQLDonatorRepo : ISQLRepo<Donator>
+    public class SqlDonatorRepo : ISqlRepo<Donator>
     {
-
-        /**
-         * 
-         */
-        public SQLDonatorRepo() { }
-
-        /**
-         * @param donator 
-         * @return
-         */
         public void Add(Donator donator)
         {
             IDbConnection connection = Globals.getDBConnection();
@@ -62,10 +48,6 @@ namespace Repository
             }
         }
 
-        /**
-         * @param donator 
-         * @return
-         */
         public Donator Delete(Donator donator)
         {
             IDbConnection connection = Globals.getDBConnection();
@@ -87,10 +69,6 @@ namespace Repository
             return null;
         }
 
-        /**
-         * @param donator 
-         * @return
-         */
         public Donator Update(Donator donator)
         {
             IDbConnection connection = Globals.getDBConnection();
@@ -137,10 +115,6 @@ namespace Repository
             return null;
         }
 
-        /**
-         * @param id 
-         * @return
-         */
         public Donator FindEntity(int id)
         {
             IDbConnection connection = Globals.getDBConnection();
@@ -176,14 +150,10 @@ namespace Repository
             return null;
         }
 
-        /**
-         * @return
-         */
         public List<Donator> FindAll()
         {
             // TODO implement here
             return null;
         }
-
     }
 }

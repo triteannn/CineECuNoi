@@ -1,42 +1,13 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Repository{
-    /**
-     * 
-     */
-    public interface ISQLRepo<T> {
-
-        /**
-         * @param entity 
-         * @return
-         */
+namespace ISSApp.Repository
+{
+    public interface ISqlRepo<T>
+    {
         void Add(T entity);
-
-        /**
-         * @param entity 
-         * @return
-         */
         T Delete(T entity);
-
-        /**
-         * @param entity 
-         * @return
-         */
         T Update(T entity);
-
-        /**
-         * @param id 
-         * @return
-         */
         T FindEntity(int id);
-
-        /**
-         * @return
-         */
         List<T> FindAll();
-
     }
 }

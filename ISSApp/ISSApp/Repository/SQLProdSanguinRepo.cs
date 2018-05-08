@@ -1,22 +1,11 @@
+using ISSApp.Domain;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Domain;
-using ISSApp.Domain;
 
-namespace Repository{
-    /**
-     * 
-     */
-    public class SQLProdSanguinRepo : ISQLRepo<IProdusSanguin> {
-
-        /**
-         * 
-         */
-        public SQLProdSanguinRepo() {
-        }
-
+namespace ISSApp.Repository
+{
+    public class SqlProdSanguinRepo : ISqlRepo<IProdusSanguin>
+    {
         public void Add(IProdusSanguin entity)
         {
             throw new NotImplementedException();

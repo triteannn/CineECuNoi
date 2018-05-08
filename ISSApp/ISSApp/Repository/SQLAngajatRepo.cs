@@ -1,28 +1,11 @@
-using Domain;
-using ISSApp;
+using ISSApp.Domain;
 using System.Collections.Generic;
 using System.Data;
-using ISSApp.Domain;
 
-namespace Repository
+namespace ISSApp.Repository
 {
-    /**
-     * 
-     */
-    public class SQLAngajatRepo : ISQLRepo<AngajatCentru>
+    public class SqlAngajatRepo : ISqlRepo<AngajatCentru>
     {
-
-        /**
-         * 
-         */
-        public SQLAngajatRepo()
-        {
-        }
-
-        /**
-         * @param angajatCentru 
-         * @return
-         */
         public void Add(AngajatCentru angajatCentru)
         {
             IDbConnection connection = Globals.getDBConnection();
@@ -44,10 +27,6 @@ namespace Repository
             }
         }
 
-        /**
-         * @param angajatCentru 
-         * @return
-         */
         public AngajatCentru Delete(AngajatCentru angajatCentru)
         {
             IDbConnection connection = Globals.getDBConnection();
@@ -69,10 +48,6 @@ namespace Repository
             return null;
         }
 
-        /**
-         * @param angajatCentru 
-         * @return
-         */
         public AngajatCentru Update(AngajatCentru angajatCentru)
         {
             IDbConnection connection = Globals.getDBConnection();
@@ -99,23 +74,15 @@ namespace Repository
             return null;
         }
 
-        /**
-         * @param id 
-         * @return
-         */
         public AngajatCentru FindEntity(int id)
         {
             return null;
         }
 
-        /**
-         * @return
-         */
         public List<AngajatCentru> FindAll()
         {
             // TODO implement here
             return null;
         }
-
     }
 }
