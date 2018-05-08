@@ -12,6 +12,14 @@ namespace ISSApp.Domain
             Medici = new List<Medic>();
         }
 
+        public Spital(int _Id, string _Denumire, int _IdAdr)
+        {
+            Id = _Id;
+            Denumire = _Denumire;
+            IdAdr = _IdAdr;
+            Medici = new List<Medic>();
+        }
+
         public int Id { get; set; }
         public string Denumire { get; set; }
 

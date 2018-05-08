@@ -31,7 +31,7 @@ namespace Repository{
          * @param id 
          * @return
          */
-        T FindEntity(T entity);
+        T FindEntity(int id);
 
         /**
          * @return

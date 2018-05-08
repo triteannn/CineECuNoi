@@ -141,7 +141,7 @@ namespace Repository
          * @param id 
          * @return
          */
-        public Donator FindEntity(Donator entity)
+        public Donator FindEntity(int id)
         {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
@@ -150,7 +150,7 @@ namespace Repository
 
                 var paramCNP = command.CreateParameter();
                 paramCNP.ParameterName = "@CNP";
-                paramCNP.Value = entity.Id;
+                paramCNP.Value = id;
                 command.Parameters.Add(paramCNP);
 
                 using (var result = command.ExecuteReader())

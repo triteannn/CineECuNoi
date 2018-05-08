@@ -49,7 +49,7 @@ namespace Repository
          * @param id 
          * @return
          */
-        public FormularCerere FindEntity(FormularCerere entity)
+        public FormularCerere FindEntity(int id)
         {
             // TODO implement here
             return null;

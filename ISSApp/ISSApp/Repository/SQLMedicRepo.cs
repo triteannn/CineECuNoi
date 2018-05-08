@@ -47,7 +47,7 @@ namespace Repository
          * @param id 
          * @return
          */
-        public Medic FindEntity(Medic entity)
+        public Medic FindEntity(int id)
         {
             // TODO implement here
             return null;

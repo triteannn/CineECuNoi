@@ -103,7 +103,7 @@ namespace Repository
          * @param id 
          * @return
          */
-        public AngajatCentru FindEntity(AngajatCentru entity)
+        public AngajatCentru FindEntity(int id)
         {
             return null;
         }

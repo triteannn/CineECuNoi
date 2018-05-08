@@ -47,7 +47,7 @@ namespace Repository
          * @param id 
          * @return
          */
-        public PSTrombocite FindEntity(PSTrombocite entity)
+        public PSTrombocite FindEntity(int id)
         {
             // TODO implement here
             return null;
