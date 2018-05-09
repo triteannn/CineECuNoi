@@ -7,7 +7,13 @@ namespace ISSApp.Domain
     [Table("AngajatiCentru")]
     public class AngajatCentru : IPersoana
     {
-
+        public AngajatCentru(string cNP, string nume, string prenume, DateTime dob)
+        {
+            CNP = cNP;
+            Nume = nume;
+            Prenume = prenume;
+            Dob = dob;
+        }
 
         public int Id { get; set; }
         public string CNP { get; set; }
