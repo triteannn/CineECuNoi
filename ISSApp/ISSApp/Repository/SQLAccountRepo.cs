@@ -12,7 +12,44 @@ namespace ISSApp.Repository
             connection.Open();
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "INSERT INTO Accounts(Username, Password, IdD) VALUES (@Username, @Password, @IdD)";
+                command.CommandText = "INSERT INTO Accounts(Username, Password) VALUES (@Username, @Password)";
+
+                var paramUsername = command.CreateParameter();
+                paramUsername.ParameterName = "@Username";
+                paramUsername.Value = entity.Username;
+                command.Parameters.Add(paramUsername);
+
+                var paramPassword = command.CreateParameter();
+                paramPassword.ParameterName = "@Password";
+                paramPassword.Value = entity.Password;
+                command.Parameters.Add(paramPassword);
+
+//                var paramIdD = command.CreateParameter();
+//                paramIdD.ParameterName = "@IdD";
+//                paramIdD.Value = entity.IdD;
+//                command.Parameters.Add(paramIdD);
+
+                command.ExecuteNonQuery();
+            }
+            connection.Close();
+        }
+
+        public Account Delete(Account entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Account Update(Account entity)
+        {
+            var connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "UPDATE Accounts SET Username=@Username, Password=@Password, IdD=@IdD WHERE Id=@Id";
+
+                var paramId = command.CreateParameter();
+                paramId.ParameterName = "@Id";
+                paramId.Value = entity.Id;
+                command.Parameters.Add(paramId);
 
                 var paramUsername = command.CreateParameter();
                 paramUsername.ParameterName = "@Username";
@@ -29,19 +66,13 @@ namespace ISSApp.Repository
                 paramIdD.Value = entity.IdD;
                 command.Parameters.Add(paramIdD);
 
-                command.ExecuteNonQuery();
+                var result = command.ExecuteNonQuery();
+                if (result != 0)
+                {
+                    return entity;
+                }
             }
-            connection.Close();
-        }
-
-        public Account Delete(Account entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Account Update(Account entity)
-        {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         public Account FindEntity(int id)

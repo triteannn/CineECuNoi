@@ -77,7 +77,25 @@ namespace ISSApp
             {
                 var donator = new Donator(TxtCnp.Text, TxtLastName.Text, TxtFirstName.Text, DOB.Value);
                 var account = new Account(TxtUsername.Text, TxtPassword.Text);
+                _accountRepo.Add(account);
+
+                using (var connection = Globals.getDBConnection())
+                {
+                    connection.Open();
+                    var cmd = new SqlCommand(@"select max(Id) from Accounts", connection);
+                    var reader = cmd.ExecuteReader();
+                    var id = 0;
+                    if (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                    }
+                    donator.IdA = id;
+                    account.Id = id;
+                }
+
                 _donatorRepo.Add(donator);
+
+                // update idD for account
                 using (var connection = Globals.getDBConnection())
                 {
                     connection.Open();
@@ -88,9 +106,11 @@ namespace ISSApp
                     {
                         id = reader.GetInt16(0);
                     }
+                    donator.Id = id;
                     account.IdD = id;
                 }
-                _accountRepo.Add(account);
+                _accountRepo.Update(account);
+               
                 MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
