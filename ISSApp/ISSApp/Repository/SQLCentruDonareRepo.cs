@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 namespace ISSApp.Repository
 {
     public class SqlCentruDonareRepo : ISqlRepo<CentruDonare>
-    {
+    {/*
         public void Add(CentruDonare entity)
         {
             using (Globals.getDBConnection())
@@ -121,6 +121,31 @@ namespace ISSApp.Repository
                     throw new Exception("Database insert failed.");
                 }
             }
+        }*/
+        public void Add(CentruDonare entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CentruDonare Delete(CentruDonare entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CentruDonare Update(CentruDonare entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public CentruDonare FindEntity(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CentruDonare> FindAll()
+        {
+            throw new NotImplementedException();
         }
     }
+        
 }

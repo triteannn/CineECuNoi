@@ -26,39 +26,37 @@ namespace ISSApp.Migrations
                     Nume = c.String(),
                     Prenume = c.String(),
                     Dob = c.DateTime(nullable: false),
-                    IdA = c.Int(nullable: false),
-                    IdCd = c.Int(nullable: false),
-                    IdDc = c.Int(nullable: false),
+                    IdA = c.Int(),
+                    IdCd = c.Int(),
+                    IdDc = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.CentreDonare", t => t.IdA, cascadeDelete: true)
-                .ForeignKey("dbo.DateContact", t => t.Id)
+                .ForeignKey("dbo.DateContact", t => t.IdDc)
                 .ForeignKey("dbo.Accounts", t => t.Id)
                 .Index(t => t.Id)
-                .Index(t => t.IdA);
+                .Index(t => t.IdA)
+                .Index(t => t.IdDc);
 
             CreateTable(
                 "dbo.CentreDonare",
                 c => new {
                     Id = c.Int(nullable: false, identity: true),
                     Denumire = c.String(),
-                    IdAdr = c.Int(nullable: false),
+                    IdAdr = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Adrese", t => t.Id)
-                .Index(t => t.Id);
+                .ForeignKey("dbo.Adrese", t => t.IdAdr)
+                .Index(t => t.IdAdr);
 
             CreateTable(
                 "dbo.Adrese",
                 c => new {
                     Id = c.Int(nullable: false, identity: true),
                     Strada = c.String(),
-                    Numar = c.Int(nullable: false),
+                    Numar = c.Int(),
                     Oras = c.String(),
                     Judet = c.String(),
-                    IdS = c.Int(),
-                    IdCd = c.Int(),
-                    IdDc = c.Int(),
                 })
                 .PrimaryKey(t => t.Id);
 
@@ -68,14 +66,11 @@ namespace ISSApp.Migrations
                     Id = c.Int(nullable: false, identity: true),
                     Telefon = c.String(),
                     Email = c.String(),
-                    IdAdr = c.Int(nullable: false),
-                    IdD = c.Int(),
-                    IdM = c.Int(),
-                    IdAc = c.Int(),
+                    IdAdr = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Adrese", t => t.Id)
-                .Index(t => t.Id);
+                .ForeignKey("dbo.Adrese", t => t.IdAdr)
+                .Index(t => t.IdAdr);
 
             CreateTable(
                 "dbo.Donatori",
@@ -85,16 +80,17 @@ namespace ISSApp.Migrations
                     Nume = c.String(),
                     Prenume = c.String(),
                     Dob = c.DateTime(nullable: false),
-                    IdDc = c.Int(nullable: false),
-                    IdA = c.Int(nullable: false),
-                    IdCd = c.Int(nullable: false),
+                    IdA = c.Int(),
+                    IdCd = c.Int(),
+                    IdDc = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.CentreDonare", t => t.IdCd, cascadeDelete: true)
-                .ForeignKey("dbo.DateContact", t => t.Id)
+                .ForeignKey("dbo.CentreDonare", t => t.IdCd)
+                .ForeignKey("dbo.DateContact", t => t.IdDc)
                 .ForeignKey("dbo.Accounts", t => t.Id)
                 .Index(t => t.Id)
-                .Index(t => t.IdCd);
+                .Index(t => t.IdCd)
+                .Index(t => t.IdDc);
 
             CreateTable(
                 "dbo.Medici",
@@ -104,27 +100,28 @@ namespace ISSApp.Migrations
                     Nume = c.String(),
                     Prenume = c.String(),
                     Dob = c.DateTime(nullable: false),
-                    IdDc = c.Int(nullable: false),
-                    IdA = c.Int(nullable: false),
-                    IdS = c.Int(nullable: false),
+                    IdA = c.Int(),
+                    IdS = c.Int(),
+                    IdDc = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.DateContact", t => t.IdDc)
                 .ForeignKey("dbo.Spitale", t => t.IdS, cascadeDelete: true)
-                .ForeignKey("dbo.DateContact", t => t.Id)
                 .ForeignKey("dbo.Accounts", t => t.Id)
                 .Index(t => t.Id)
-                .Index(t => t.IdS);
+                .Index(t => t.IdS)
+                .Index(t => t.IdDc);
 
             CreateTable(
                 "dbo.Spitale",
                 c => new {
                     Id = c.Int(nullable: false, identity: true),
                     Denumire = c.String(),
-                    IdAdr = c.Int(nullable: false),
+                    IdAdr = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Adrese", t => t.Id)
-                .Index(t => t.Id);
+                .ForeignKey("dbo.Adrese", t => t.IdAdr)
+                .Index(t => t.IdAdr);
 
             CreateTable(
                 "dbo.PungiSange",
@@ -134,20 +131,19 @@ namespace ISSApp.Migrations
                     Grupa = c.String(),
                     Rh = c.String(),
                     Target = c.String(),
-                    IdCd = c.Int(nullable: false),
-                    IdFd = c.Int(nullable: false),
+                    IdCd = c.Int(),
+                    IdFd = c.Int(),
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.CentreDonare", t => t.IdCd, cascadeDelete: true)
-                .ForeignKey("dbo.FormulareDonare", t => t.Id)
-                .Index(t => t.Id)
-                .Index(t => t.IdCd);
+                .ForeignKey("dbo.FormulareDonare", t => t.IdFd)
+                .Index(t => t.IdCd)
+                .Index(t => t.IdFd);
 
             CreateTable(
                 "dbo.FormulareDonare",
                 c => new {
                     Id = c.Int(nullable: false, identity: true),
-                    IdPs = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => t.Id);
 
@@ -207,29 +203,32 @@ namespace ISSApp.Migrations
             DropForeignKey("dbo.Medici", "Id", "dbo.Accounts");
             DropForeignKey("dbo.Donatori", "Id", "dbo.Accounts");
             DropForeignKey("dbo.AngajatiCentru", "Id", "dbo.Accounts");
-            DropForeignKey("dbo.AngajatiCentru", "Id", "dbo.DateContact");
+            DropForeignKey("dbo.AngajatiCentru", "IdDc", "dbo.DateContact");
             DropForeignKey("dbo.AngajatiCentru", "IdA", "dbo.CentreDonare");
-            DropForeignKey("dbo.PungiSange", "Id", "dbo.FormulareDonare");
+            DropForeignKey("dbo.PungiSange", "IdFd", "dbo.FormulareDonare");
             DropForeignKey("dbo.PungiSange", "IdCd", "dbo.CentreDonare");
-            DropForeignKey("dbo.Spitale", "Id", "dbo.Adrese");
-            DropForeignKey("dbo.DateContact", "Id", "dbo.Adrese");
-            DropForeignKey("dbo.Medici", "Id", "dbo.DateContact");
+            DropForeignKey("dbo.CentreDonare", "IdAdr", "dbo.Adrese");
             DropForeignKey("dbo.Medici", "IdS", "dbo.Spitale");
-            DropForeignKey("dbo.Donatori", "Id", "dbo.DateContact");
+            DropForeignKey("dbo.Spitale", "IdAdr", "dbo.Adrese");
+            DropForeignKey("dbo.Medici", "IdDc", "dbo.DateContact");
+            DropForeignKey("dbo.Donatori", "IdDc", "dbo.DateContact");
             DropForeignKey("dbo.Donatori", "IdCd", "dbo.CentreDonare");
-            DropForeignKey("dbo.CentreDonare", "Id", "dbo.Adrese");
+            DropForeignKey("dbo.DateContact", "IdAdr", "dbo.Adrese");
             DropIndex("dbo.PSTrombocite", new[] { "IdFc" });
             DropIndex("dbo.PSPlasme", new[] { "IdFc" });
             DropIndex("dbo.PSGlobuleRosii", new[] { "IdFc" });
+            DropIndex("dbo.PungiSange", new[] { "IdFd" });
             DropIndex("dbo.PungiSange", new[] { "IdCd" });
-            DropIndex("dbo.PungiSange", new[] { "Id" });
-            DropIndex("dbo.Spitale", new[] { "Id" });
+            DropIndex("dbo.Spitale", new[] { "IdAdr" });
+            DropIndex("dbo.Medici", new[] { "IdDc" });
             DropIndex("dbo.Medici", new[] { "IdS" });
             DropIndex("dbo.Medici", new[] { "Id" });
+            DropIndex("dbo.Donatori", new[] { "IdDc" });
             DropIndex("dbo.Donatori", new[] { "IdCd" });
             DropIndex("dbo.Donatori", new[] { "Id" });
-            DropIndex("dbo.DateContact", new[] { "Id" });
-            DropIndex("dbo.CentreDonare", new[] { "Id" });
+            DropIndex("dbo.DateContact", new[] { "IdAdr" });
+            DropIndex("dbo.CentreDonare", new[] { "IdAdr" });
+            DropIndex("dbo.AngajatiCentru", new[] { "IdDc" });
             DropIndex("dbo.AngajatiCentru", new[] { "IdA" });
             DropIndex("dbo.AngajatiCentru", new[] { "Id" });
             DropTable("dbo.PSTrombocite");
