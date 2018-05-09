@@ -9,10 +9,10 @@ namespace ISSApp.Domain
         public string Telefon { get; set; }
         public string Email { get; set; }
 
-        public int IdAdr { get; set; }
-        public int IdD { get; set; }
-        public int IdM { get; set; }
-        public int IdAc { get; set; }
+        //public int IdAdr { get; set; }
+        //public int IdD { get; set; }
+        //public int IdM { get; set; }
+        //public int IdAc { get; set; }
 
         public virtual Adresa Adresa { get; set; }
         public virtual Donator Donator { get; set; }

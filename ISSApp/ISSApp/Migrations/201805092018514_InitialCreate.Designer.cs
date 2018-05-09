@@ -13,7 +13,7 @@ namespace ISSApp.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805071950095_InitialCreate"; }
+            get { return "201805092018514_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

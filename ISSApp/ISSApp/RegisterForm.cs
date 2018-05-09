@@ -104,15 +104,18 @@ namespace ISSApp
                     var id = 0;
                     if (reader.Read())
                     {
-                        id = reader.GetInt16(0);
+                        id = reader.GetInt32(0);
                     }
                     donator.Id = id;
                     account.IdD = id;
                 }
                 _accountRepo.Update(account);
-               
+
                 MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                _loginForm.EmptyFields();
+                _loginForm.Enabled = true;
+                Close();
             }
             else
                 MessageBox.Show(@"Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);

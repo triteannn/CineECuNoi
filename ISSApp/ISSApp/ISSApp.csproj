@@ -107,13 +107,9 @@
     <Compile Include="Domain\PungaSange.cs" />
     <Compile Include="Domain\Spital.cs" />
     <Compile Include="DatabaseContext.cs" />
-    <Compile Include="Migrations\201805071950095_InitialCreate.cs" />
-    <Compile Include="Migrations\201805071950095_InitialCreate.Designer.cs">
-      <DependentUpon>201805071950095_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805082103075_SomeNullIssues.cs" />
-    <Compile Include="Migrations\201805082103075_SomeNullIssues.Designer.cs">
-      <DependentUpon>201805082103075_SomeNullIssues.cs</DependentUpon>
+    <Compile Include="Migrations\201805092018514_InitialCreate.cs" />
+    <Compile Include="Migrations\201805092018514_InitialCreate.Designer.cs">
+      <DependentUpon>201805092018514_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\SqlAccountRepo.cs" />
@@ -163,11 +159,8 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805071950095_InitialCreate.resx">
-      <DependentUpon>201805071950095_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805082103075_SomeNullIssues.resx">
-      <DependentUpon>201805082103075_SomeNullIssues.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805092018514_InitialCreate.resx">
+      <DependentUpon>201805092018514_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

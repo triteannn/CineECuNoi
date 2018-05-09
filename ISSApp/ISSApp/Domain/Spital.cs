@@ -16,14 +16,14 @@ namespace ISSApp.Domain
         {
             Id = _Id;
             Denumire = _Denumire;
-            IdAdr = _IdAdr;
+            //IdAdr = _IdAdr;
             Medici = new List<Medic>();
         }
 
         public int Id { get; set; }
         public string Denumire { get; set; }
 
-        public int IdAdr { get; set; }
+        //public int IdAdr { get; set; }
 
         public virtual Adresa Adresa { get; set; }
         public virtual ICollection<Medic> Medici { get; set; }

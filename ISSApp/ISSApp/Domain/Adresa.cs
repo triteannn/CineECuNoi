@@ -11,9 +11,9 @@ namespace ISSApp.Domain
         public string Oras { get; set; }
         public string Judet { get; set; }
 
-        public int IdS { get; set; }
-        public int IdCd { get; set; }
-        public int IdDc { get; set; }
+        //public int IdS { get; set; }
+        //public int IdCd { get; set; }
+        //public int IdDc { get; set; }
 
         public virtual Spital Spital { get; set; }
         public virtual CentruDonare CentruDonare { get; set; }

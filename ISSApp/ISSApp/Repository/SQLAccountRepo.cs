@@ -24,11 +24,6 @@ namespace ISSApp.Repository
                 paramPassword.Value = entity.Password;
                 command.Parameters.Add(paramPassword);
 
-//                var paramIdD = command.CreateParameter();
-//                paramIdD.ParameterName = "@IdD";
-//                paramIdD.Value = entity.IdD;
-//                command.Parameters.Add(paramIdD);
-
                 command.ExecuteNonQuery();
             }
             connection.Close();
@@ -45,6 +40,8 @@ namespace ISSApp.Repository
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = "UPDATE Accounts SET Username=@Username, Password=@Password, IdD=@IdD WHERE Id=@Id";
+
+                connection.Open();
 
                 var paramId = command.CreateParameter();
                 paramId.ParameterName = "@Id";
@@ -72,6 +69,7 @@ namespace ISSApp.Repository
                     return entity;
                 }
             }
+            connection.Close();
             return null;
         }
 

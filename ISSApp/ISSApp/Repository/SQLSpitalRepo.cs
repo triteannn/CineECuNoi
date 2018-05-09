@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 namespace ISSApp.Repository
 {
     public class SqlSpitalRepo : ISqlRepo<Spital>
-    {
+    {/*
         public void Add(Spital entity)
         {
             using (Globals.getDBConnection())
@@ -121,6 +121,30 @@ namespace ISSApp.Repository
                     throw new Exception("Database insert failed.");
                 }
             }
+        }*/
+        public void Add(Spital entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Spital Delete(Spital entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Spital Update(Spital entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Spital FindEntity(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Spital> FindAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
