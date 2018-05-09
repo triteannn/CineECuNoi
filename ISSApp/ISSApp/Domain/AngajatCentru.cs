@@ -7,6 +7,8 @@ namespace ISSApp.Domain
     [Table("AngajatiCentru")]
     public class AngajatCentru : IPersoana
     {
+
+
         public int Id { get; set; }
         public string CNP { get; set; }
         public string Nume { get; set; }
