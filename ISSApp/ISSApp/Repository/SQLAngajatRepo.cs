@@ -203,7 +203,7 @@ namespace ISSApp.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database get failed.");
+                    throw new Exception("Database getAll failed.");
                 }
             }
         }
