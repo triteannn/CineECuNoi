@@ -95,7 +95,7 @@ namespace ISSApp.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE Donator SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, CentruDonare_IdCD1=@CentruDonare, DateContact=@DateContact WHERE CNP=@CNP";
+                        "UPDATE Donator SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA WHERE CNP=@CNP";
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -117,15 +117,10 @@ namespace ISSApp.Repository
                     paramDob.Value = donator.Dob;
                     command.Parameters.Add(paramDob);
 
-                    var paramCentruDonare = command.CreateParameter();
-                    paramCentruDonare.ParameterName = "@CentruDonare";
-                    paramCentruDonare.Value = donator.CentruDonare.Id;
-                    command.Parameters.Add(paramCentruDonare);
-
-                    var paramDateContact = command.CreateParameter();
-                    paramDateContact.ParameterName = "@DateContact";
-                    paramDateContact.Value = donator.DateContact.Id;
-                    command.Parameters.Add(paramDateContact);
+                    var paramIdA = command.CreateParameter();
+                    paramIdA.ParameterName = "@IdA";
+                    paramIdA.Value = donator.IdA;
+                    command.Parameters.Add(paramIdA);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -149,9 +144,9 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    command.CommandText = "SELECT * FROM Donator WHERE CNP=@CNP";
+                    command.CommandText = "SELECT * FROM Donator WHERE Id=@Id";
                     var paramCNP = command.CreateParameter();
-                    paramCNP.ParameterName = "@CNP";
+                    paramCNP.ParameterName = "@Id";
                     paramCNP.Value = id;
                     command.Parameters.Add(paramCNP);
 
