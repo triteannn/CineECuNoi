@@ -7,144 +7,153 @@ using System.Data.SqlClient;
 namespace ISSApp.Repository
 {
     public class SqlSpitalRepo : ISqlRepo<Spital>
-    {/*
+    { 
         public void Add(Spital entity)
         {
-            using (Globals.getDBConnection())
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    string querry = "INSERT INTO Spitale(Denumire,IdAdr) VALUES(@Denumire,@IdAdresa)";
-                    SqlCommand command = new SqlCommand(querry, Globals.getDBConnection());
-                    command.Parameters.Add("@IdAdresa", SqlDbType.Int);
-                    command.Parameters["@IdAdresa"].Value = entity.IdAdr;
-                    command.Parameters.AddWithValue("@Denumire", entity.Denumire);
+                    command.CommandText = "INSERT INTO Spitale(Denumire) VALUES(@Denumire)";
 
-                    Globals.getDBConnection().Open();
+                    var paramDenumire = command.CreateParameter();
+                    paramDenumire.ParameterName = "@Denumire";
+                    paramDenumire.Value = entity.Denumire;
+                    command.Parameters.Add(paramDenumire);
+
                     command.ExecuteNonQuery();
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
+                    connection.Close();
                     throw new Exception("Database insert failed.");
                 }
             }
+            connection.Close();
         }
 
         public Spital Delete(Spital entity)
         {
-            using (Globals.getDBConnection())
+            
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    string query = "DELETE FROM Spitale WHERE Id = @IdEntity";
-                    SqlCommand command = new SqlCommand(query, Globals.getDBConnection());
-                    command.Parameters.Add("@IdEntity", SqlDbType.Int);
-                    command.Parameters["@IdEntity"].Value = entity.Id;
+                    command.CommandText = "DELETE FROM Spitale WHERE Id = @IdEntity";
 
-                    Globals.getDBConnection().Open();
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@IdEntity";
+                    paramId.Value = entity.Id;
+                    command.Parameters.Add(paramId);
+
                     command.ExecuteNonQuery();
-                    return entity;
-                } catch (SqlException)
+                }
+                catch(SqlException)
                 {
+                    connection.Close();
                     throw new Exception("Database delete failed.");
                 }
             }
+            connection.Close();
+            return entity;
         }
 
-        public List<Spital> FindAll()
+        public Spital Update(Spital entity)
         {
-            using (Globals.getDBConnection())
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    List<Spital> toReturn = new List<Spital>();
-                    string query = "SELECT * FROM Spitale";
-                    SqlCommand command = new SqlCommand(query, Globals.getDBConnection());
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        toReturn.Add(new Spital(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2)));
-                    }
-                    reader.Close();
-                    return toReturn;
-                } catch (SqlException)
+                    command.CommandText = "UPDATE Spitale SET Denumire=@Denumire WHERE Id=@Id";
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = entity.Id;
+                    command.Parameters.Add(paramId);
+
+                    var paramDenumire = command.CreateParameter();
+                    paramDenumire.ParameterName = "@Denumire";
+                    paramDenumire.Value = entity.Id;
+                    command.Parameters.Add(paramDenumire);
+
+                    command.ExecuteNonQuery();
+                }
+                catch (SqlException)
                 {
-                    throw new Exception("Database get failed.");
+                    connection.Close();
+                    throw new Exception("Database update failed.");
                 }
             }
+            connection.Close();
+            return entity;
         }
 
         public Spital FindEntity(int id)
         {
-            using (Globals.getDBConnection())
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
                     Spital spital = null;
-                    List<Spital> toReturn = new List<Spital>();
-                    string query = "SELECT * FROM Spitale WHERE Id = @Id";
-                    SqlCommand command = new SqlCommand(query, Globals.getDBConnection());
-                    command.Parameters.Add("@Id", SqlDbType.Int);
-                    command.Parameters["@Id"].Value = id;
+                    command.CommandText = "SELECT * FROM Spitale WHERE Id = @Id";
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = id;
+                    command.Parameters.Add(paramId);
+
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
                         spital = new Spital(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2));
                     }
                     reader.Close();
+                    connection.Close();
                     return spital;
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
+                    connection.Close();
                     throw new Exception("Database get failed.");
                 }
             }
         }
 
-        public Spital Update(Spital entity)
+        public List<Spital> FindAll()
         {
-            using (Globals.getDBConnection())
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    string querry = "UPDATE Spitale SET Denumire=@Denumire, IdAdr=@IdAdr WHERE Id=@Id";
-                    SqlCommand command = new SqlCommand(querry, Globals.getDBConnection());
-                    command.Parameters.Add("@Id", SqlDbType.Int);
-                    command.Parameters["@Id"].Value = entity.Id;
-                    command.Parameters.Add("@IdAdr", SqlDbType.Int);
-                    command.Parameters["@IdAdr"].Value = entity.IdAdr;
-                    command.Parameters.AddWithValue("@Denumire", entity.Denumire);
-
-                    Globals.getDBConnection().Open();
-                    command.ExecuteNonQuery();
-                    return entity;
-                } catch (SqlException)
+                    List<Spital> toReturn = new List<Spital>();
+                    Spital spital = null;
+                    command.CommandText = "SELECT * FROM Spitale";
+                    
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        toReturn.Add(new Spital(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2)));
+                    }
+                    reader.Close();
+                    connection.Close();
+                    return toReturn;
+                }
+                catch (SqlException)
                 {
-                    throw new Exception("Database insert failed.");
+                    connection.Close();
+                    throw new Exception("Database get failed.");
                 }
             }
-        }*/
-        public void Add(Spital entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Spital Delete(Spital entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Spital Update(Spital entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Spital FindEntity(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Spital> FindAll()
-        {
-            throw new NotImplementedException();
         }
     }
 }
