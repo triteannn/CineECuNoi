@@ -17,7 +17,7 @@ namespace ISSApp.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO Donatori(CNP, Nume, Prenume, Dob, IdA) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA)";
+                        "INSERT INTO Donatori(CNP, Nume, Prenume, Dob, IdA, IdCd) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA, @IdCd)";
 
                     var paramCnp = command.CreateParameter();
                     paramCnp.ParameterName = "@CNP";
@@ -44,6 +44,11 @@ namespace ISSApp.Repository
                     paramIdA.Value = donator.IdA;
                     command.Parameters.Add(paramIdA);
 
+                    var paramIdCd = command.CreateParameter();
+                    paramIdCd.ParameterName = "@IdCd";
+                    paramIdCd.Value = donator.IdCd;
+                    command.Parameters.Add(paramIdCd);
+
                     command.ExecuteNonQuery();
 
                 }
@@ -63,7 +68,7 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM Donator WHERE CNP=@CNP";
+                    command.CommandText = "DELETE FROM Donatori WHERE CNP=@CNP";
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -95,7 +100,7 @@ namespace ISSApp.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE Donator SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA WHERE CNP=@CNP";
+                        "UPDATE Donatori SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA, IdCd=@IdCd WHERE CNP=@CNP";
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -122,6 +127,11 @@ namespace ISSApp.Repository
                     paramIdA.Value = donator.IdA;
                     command.Parameters.Add(paramIdA);
 
+                    var paramIdCd = command.CreateParameter();
+                    paramIdCd.ParameterName = "@IdCd";
+                    paramIdCd.Value = donator.IdCd;
+                    command.Parameters.Add(paramIdCd);
+
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
                     {
@@ -144,20 +154,21 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    command.CommandText = "SELECT * FROM Donator WHERE Id=@Id";
-                    var paramCNP = command.CreateParameter();
-                    paramCNP.ParameterName = "@Id";
-                    paramCNP.Value = id;
-                    command.Parameters.Add(paramCNP);
+                    command.CommandText = "SELECT * FROM Donatori WHERE Id=@Id";
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = id;
+                    command.Parameters.Add(paramId);
 
                     using (var result = command.ExecuteReader())
                     {
                         if (result.Read())
                         {
-                            String cnp = result.GetString(0);
-                            String nume = result.GetString(1);
-                            String prenume = result.GetString(2);
-                            DateTime date = result.GetDateTime(3);
+                            int idDonator = result.GetInt32(0);
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
 
                             Donator donator = new Donator(cnp, nume, prenume, date);
                             return donator;
@@ -183,7 +194,7 @@ namespace ISSApp.Repository
                 try
                 {
                     List<Donator> toReturn = new List<Donator>();
-                    command.CommandText = "SELECT * FROM Donator";
+                    command.CommandText = "SELECT * FROM Donatori";
                     using (var result = command.ExecuteReader())
                     {
                         while (result.Read())

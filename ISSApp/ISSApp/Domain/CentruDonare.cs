@@ -14,7 +14,7 @@ namespace ISSApp.Domain
             PungiSange = new List<PungaSange>();
         }
 
-        public CentruDonare(int id, string denumire, int idAdr)
+        public CentruDonare(int id, string denumire)
         {
             Id = id;
             Denumire = denumire;

@@ -15,7 +15,7 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    command.CommandText = "INSERT INTO Angajat(CNP, Nume, Prenume, Dob, IdA, IdCd) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA, @IdCd)";
+                    command.CommandText = "INSERT INTO AngajatiCentru(CNP, Nume, Prenume, Dob, IdA, IdCd) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA, @IdCd)";
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -64,7 +64,7 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM Angajat WHERE CNP=@CNP";
+                    command.CommandText = "DELETE FROM AngajatiCentru WHERE CNP=@CNP";
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -95,7 +95,7 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    command.CommandText = "UPDATE Angajat SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA, IdCd=@IdCd WHERE CNP=@CNP";
+                    command.CommandText = "UPDATE AngajatiCentru SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA, IdCd=@IdCd WHERE CNP=@CNP";
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -151,7 +151,7 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    command.CommandText = "SELECT * FROM Donator WHERE Id=@Id";
+                    command.CommandText = "SELECT * FROM AngajatiCentru WHERE Id=@Id";
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@Id";
                     paramCNP.Value = id;
@@ -161,10 +161,10 @@ namespace ISSApp.Repository
                     {
                         if (result.Read())
                         {
-                            String cnp = result.GetString(0);
-                            String nume = result.GetString(1);
-                            String prenume = result.GetString(2);
-                            DateTime date = result.GetDateTime(3);
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
 
                             AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
                             return angajat;
@@ -190,12 +190,12 @@ namespace ISSApp.Repository
                 try
                 {
                     List<AngajatCentru> toReturn = new List<AngajatCentru>();
-                    command.CommandText = "SELECT * FROM Donator";
+                    command.CommandText = "SELECT * FROM AngajatiCentru";
                     using (var result = command.ExecuteReader())
                     {
                         while (result.Read())
                         {
-                            toReturn.Add(new AngajatCentru(result.GetString(0), result.GetString(1), result.GetString(2), result.GetDateTime(3)));
+                            toReturn.Add(new AngajatCentru(result.GetString(1), result.GetString(2), result.GetString(3), result.GetDateTime(4)));
                         }
                     }
 

@@ -1,5 +1,7 @@
-﻿using ISSApp.Domain;
+﻿using System;
+using ISSApp.Domain;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace ISSApp.Repository
@@ -31,7 +33,33 @@ namespace ISSApp.Repository
 
         public Account Delete(Account entity)
         {
-            throw new System.NotImplementedException();
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText = "DELETE FROM Accounts WHERE Id=@Id";
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@CNP";
+                    paramId.Value = entity.Id;
+                    command.Parameters.Add(paramId);
+
+                    var result = command.ExecuteNonQuery();
+                    if (result != 0)
+                    {
+                        return entity;
+                    }
+
+                    return null;
+
+                }
+                catch (SqlException e)
+                {
+                    throw new Exception("Database delete failed.");
+                }
+
+            }
         }
 
         public Account Update(Account entity)
@@ -75,7 +103,36 @@ namespace ISSApp.Repository
 
         public Account FindEntity(int id)
         {
-            throw new System.NotImplementedException();
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText = "SELECT * FROM Accounts WHERE Id=@Id";
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = id;
+                    command.Parameters.Add(paramId);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+
+                            Account account = new Account(result.GetString(1), result.GetString(2));
+                            return account;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException e)
+                {
+                    throw new Exception("Database getOne failed.");
+                }
+
+            }
         }
 
         public Account FindAccountByCredentials(string username, string password)
@@ -100,7 +157,28 @@ namespace ISSApp.Repository
 
         public List<Account> FindAll()
         {
-            throw new System.NotImplementedException();
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    List<Account> toReturn = new List<Account>();
+                    command.CommandText = "SELECT * FROM Accounts";
+                    using (var result = command.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            toReturn.Add(new Account(result.GetString(1), result.GetString(2)));
+                        }
+                    }
+
+                    return toReturn;
+                }
+                catch (SqlException)
+                {
+                    throw new Exception("Database getAll failed.");
+                }
+            }
         }
     }
 }

@@ -183,7 +183,7 @@ namespace ISSApp.Repository
                 try
                 {
                     List<PSGlobuleRosii> toReturn = new List<PSGlobuleRosii>();
-                    command.CommandText = "SELECT * FROM Donator";
+                    command.CommandText = "SELECT * FROM PSGlobuleRosii";
                     using (var result = command.ExecuteReader())
                     {
                         while (result.Read())
@@ -218,7 +218,7 @@ namespace ISSApp.Repository
                 try
                 {
                     List<PSGlobuleRosii> toReturn = new List<PSGlobuleRosii>();
-                    command.CommandText = "SELECT * FROM Donator WHERE Target=@Target";
+                    command.CommandText = "SELECT * FROM PSGlobuleRosii WHERE Target=@Target";
 
                     var paramTarget = command.CreateParameter();
                     paramTarget.ParameterName = "@Target";
