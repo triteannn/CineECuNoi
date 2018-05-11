@@ -83,7 +83,9 @@ namespace ISSApp.Repository
             using (var connection = Globals.getDBConnection())
             {
                 connection.Open();
-                var cmd = new SqlCommand(@"select * from Accounts", connection);
+                var cmd = new SqlCommand(@"select * from Accounts where Username=@username and Password=@password", connection);
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Password", password);
                 var reader = cmd.ExecuteReader();
                 var user = "";
                 var pass = "";
