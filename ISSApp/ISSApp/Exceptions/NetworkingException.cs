@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISSApp.Exceptions
 {
-    class NetworkingException : Exception
+    public class NetworkingException : Exception
     {
         public NetworkingException(string message) :base(message)
         {

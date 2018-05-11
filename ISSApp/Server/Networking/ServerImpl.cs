@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using ISSApp.Domain;
 using ISSApp.Networking;
-using Server.Repository; 
+using Server.Repository;
+using ISSApp.Exceptions;
 
 namespace Server.Networking
 {
@@ -42,327 +43,783 @@ namespace Server.Networking
 
         public void AccountAdd(Account account)
         {
-            throw new NotImplementedException();
+            try
+            {
+                accountRepo.Add(account);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Account AccountDelete(Account account)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return accountRepo.Delete(account);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Account AccountFindAccountByCredentials(string username, string password)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return accountRepo.FindAccountByCredentials(username, password);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<Account> AccountFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return accountRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Account AccountFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return accountRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Account AccountUpdate(Account account)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return accountRepo.Update(account);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void AngajatAdd(AngajatCentru angajatCentru)
         {
-            throw new NotImplementedException();
+            try
+            {
+                angajatRepo.Add(angajatCentru);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public AngajatCentru AngajatDelete(AngajatCentru angajatCentru)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return angajatRepo.Delete(angajatCentru);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<AngajatCentru> AngajatFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return angajatRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public AngajatCentru AngajatFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return angajatRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public AngajatCentru AngajatUpdate(AngajatCentru angajatCentru)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return angajatRepo.Update(angajatCentru);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void CentruDonareAdd(CentruDonare centru)
         {
-            throw new NotImplementedException();
+            try
+            {
+                centruDonareRepo.Add(centru);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public CentruDonare CentruDonareDelete(CentruDonare centru)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return centruDonareRepo.Delete(centru);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<CentruDonare> CentruDonareFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return centruDonareRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public CentruDonare CentruDonareFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return centruDonareRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public CentruDonare CentruDonareUpdate(CentruDonare centru)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return centruDonareRepo.Update(centru);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void DonatorAdd(Donator donator)
         {
-            throw new NotImplementedException();
+            try
+            {
+                donatorRepo.Add(donator);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Donator DonatorDelete(Donator donator)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return donatorRepo.Delete(donator);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<Donator> DonatorFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return donatorRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Donator DonatorFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return donatorRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Donator DonatorUpdate(Donator donator)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return donatorRepo.Update(donator);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void FormularCerereAdd(FormularCerere formular)
         {
-            throw new NotImplementedException();
+            try
+            {
+                formularCerereRepo.Add(formular);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public FormularCerere FormularCerereDelete(FormularCerere formular)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularCerereRepo.Delete(formular);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<FormularCerere> FormularCerereFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularCerereRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public FormularCerere FormularCerereFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularCerereRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public FormularCerere FormularCerereUpdate(FormularCerere formular)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularCerereRepo.Update(formular);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void FormularDonareAdd(FormularDonare formular)
         {
-            throw new NotImplementedException();
+            try
+            {
+                formularDonareRepo.Add(formular);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public FormularDonare FormularDonareDelete(FormularDonare formular)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularDonareRepo.Delete(formular);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<FormularDonare> FormularDonareFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularDonareRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public FormularDonare FormularDonareFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularDonareRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public FormularDonare FormularDonareUpdate(FormularDonare formular)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return formularDonareRepo.Update(formular);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void GlobuleRosiiAdd(PSGlobuleRosii psGlobuleRosii)
         {
-            throw new NotImplementedException();
+            try
+            {
+                globuleRosiiRepo.Add(psGlobuleRosii);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSGlobuleRosii GlobuleRosiiDelete(PSGlobuleRosii psGlobuleRosii)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return globuleRosiiRepo.Delete(psGlobuleRosii);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<PSGlobuleRosii> GlobuleRosiiFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return globuleRosiiRepo.FindAll();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<PSGlobuleRosii> GlobuleRosiiFindByTarget(string target)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return globuleRosiiRepo.FindByTarget(target);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSGlobuleRosii GlobuleRosiiFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return globuleRosiiRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSGlobuleRosii GlobuleRosiiUpdate(PSGlobuleRosii psGlobuleRosii)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return globuleRosiiRepo.Update(psGlobuleRosii);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void MedicAdd(Medic medic)
         {
-            throw new NotImplementedException();
+            try
+            {
+                medicRepo.Add(medic);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Medic MedicDelete(Medic medic)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return medicRepo.Delete(medic);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<Medic> MedicFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return medicRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Medic MedicFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return medicRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Medic MedicUpdate(Medic medic)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return medicRepo.Update(medic);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void PlasmaAdd(PSPlasma psPlasma)
         {
-            throw new NotImplementedException();
+            try
+            {
+                plasmaRepo.Add(psPlasma);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSPlasma PlasmaDelete(PSPlasma psPlasma)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return plasmaRepo.Delete(psPlasma);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<PSPlasma> PlasmaFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return plasmaRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<PSPlasma> PlasmaFindByTarget(string target)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return plasmaRepo.FindByTarget(target);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSPlasma PlasmaFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return plasmaRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSPlasma PlasmaUpdate(PSPlasma psPlasma)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return plasmaRepo.Update(psPlasma);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void PungaSangeAdd(PungaSange pungaSange)
         {
-            throw new NotImplementedException();
+            try
+            {
+                pungaSangeRepo.Add(pungaSange);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PungaSange PungaSangeDelete(PungaSange pungaSange)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return pungaSangeRepo.Delete(pungaSange);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<PungaSange> PungaSangeFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return pungaSangeRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<PungaSange> PungaSangeFindByTarget(string target)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return pungaSangeRepo.FindByTarget(target);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PungaSange PungaSangeFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return pungaSangeRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PungaSange PungaSangeUpdate(PungaSange pungaSange)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return pungaSangeRepo.Update(pungaSange);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void SpitalAdd(Spital spital)
         {
-            throw new NotImplementedException();
+            try
+            {
+                spitalRepo.Add(spital);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Spital SpitalDelete(Spital spital)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return spitalRepo.Delete(spital);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<Spital> SpitalFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return spitalRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Spital SpitalFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return spitalRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public Spital SpitalUpdate(Spital spital)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return spitalRepo.Update(spital);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public void TrombociteAdd(PSTrombocite psTrombocite)
         {
-            throw new NotImplementedException();
+            try
+            {
+                trombociteRepo.Add(psTrombocite);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSTrombocite TrombociteDelete(PSTrombocite psTrombocite)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return trombociteRepo.Delete(psTrombocite);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<PSTrombocite> TrombociteFindAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return trombociteRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<PSTrombocite> TrombociteFindByTarget(string target)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return trombociteRepo.FindByTarget(target);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSTrombocite TrombociteFindEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return trombociteRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public PSTrombocite TrombociteUpdate(PSTrombocite psTrombocite)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return trombociteRepo.Update(psTrombocite);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
     }
 }

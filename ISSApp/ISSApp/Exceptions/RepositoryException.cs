@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ISSApp.Exceptions
 {
-    class RepositoryException : Exception
+    public class RepositoryException : Exception
     {
         public RepositoryException(string message) :base(message)
         {
