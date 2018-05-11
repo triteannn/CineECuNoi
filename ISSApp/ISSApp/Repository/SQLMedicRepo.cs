@@ -1,5 +1,5 @@
-using System;
 using ISSApp.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -51,8 +51,7 @@ namespace ISSApp.Repository
 
                     command.ExecuteNonQuery();
 
-                }
-                catch (SqlException e)
+                } catch (SqlException)
                 {
                     throw new Exception("Database insert failed.");
                 }
@@ -82,8 +81,7 @@ namespace ISSApp.Repository
 
                     return null;
 
-                }
-                catch (SqlException e)
+                } catch (SqlException)
                 {
                     throw new Exception("Database delete failed.");
                 }
@@ -138,8 +136,7 @@ namespace ISSApp.Repository
                     }
 
                     return null;
-                }
-                catch (SqlException e)
+                } catch (SqlException)
                 {
                     throw new Exception("Database update failed.");
                 }
@@ -163,7 +160,7 @@ namespace ISSApp.Repository
                     {
                         if (result.Read())
                         {
-                            Medic medic = new Medic();
+                            var medic = new Medic();
                             medic.Id = result.GetInt32(0);
                             medic.CNP = result.GetString(1);
                             medic.Nume = result.GetString(2);
@@ -171,15 +168,14 @@ namespace ISSApp.Repository
                             medic.Dob = result.GetDateTime(4);
                             medic.IdA = result.GetInt32(5);
                             medic.IdS = result.GetInt32(6);
-                          
+
                             return medic;
                         }
 
                         return null;
                     }
 
-                }
-                catch (SqlException e)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getOne failed.");
                 }
@@ -200,8 +196,7 @@ namespace ISSApp.Repository
                     {
                         while (result.Read())
                         {
-                            Medic medic = new Medic
-                            {
+                            Medic medic = new Medic {
                                 Id = result.GetInt32(0),
                                 CNP = result.GetString(1),
                                 Nume = result.GetString(2),
@@ -216,8 +211,7 @@ namespace ISSApp.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getAll failed.");
                 }

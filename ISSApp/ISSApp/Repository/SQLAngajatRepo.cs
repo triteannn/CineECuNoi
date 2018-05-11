@@ -49,7 +49,7 @@ namespace ISSApp.Repository
 
                     command.ExecuteNonQuery();
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     throw new Exception("Database insert failed.");
                 }
@@ -80,7 +80,7 @@ namespace ISSApp.Repository
                     return null;
 
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     throw new Exception("Database delete failed.");
                 }
@@ -136,7 +136,7 @@ namespace ISSApp.Repository
                     return null;
 
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     throw new Exception("Database update failed.");
                 }
@@ -174,7 +174,7 @@ namespace ISSApp.Repository
                     }
 
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     throw new Exception("Database getOne failed.");
                 }

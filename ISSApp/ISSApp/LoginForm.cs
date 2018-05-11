@@ -174,8 +174,13 @@ namespace ISSApp
                         File.Delete(Environment.CurrentDirectory + @"\RememberedUser.xml");
                     }
                 }
-
+                //Account acc = null;
+                //new Thread(() => {
+                //    Thread.CurrentThread.IsBackground = true;
                 var acc = _accountRepo.FindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
+
+                //}
+                //).Start();
                 if (acc != null)
                 {
                     var mainWindow = new MainWindow(this);
@@ -184,6 +189,7 @@ namespace ISSApp
                 }
                 else
                     MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             else
                 MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);

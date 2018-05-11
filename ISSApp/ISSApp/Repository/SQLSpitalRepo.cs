@@ -135,7 +135,7 @@ namespace ISSApp.Repository
             {
                 try
                 {
-                    List<Spital> toReturn = new List<Spital>();
+                    var toReturn = new List<Spital>();
                     Spital spital = null;
                     command.CommandText = "SELECT * FROM Spitale";
                     
