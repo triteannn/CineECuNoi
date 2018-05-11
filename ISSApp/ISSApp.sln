@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSApp", "ISSApp\ISSApp.csproj", "{FB6828FA-3A97-4478-8F3D-5CA7159E17BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,14 @@ Global
 		{FB6828FA-3A97-4478-8F3D-5CA7159E17BE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB6828FA-3A97-4478-8F3D-5CA7159E17BE}.Release|x86.ActiveCfg = Release|x86
 		{FB6828FA-3A97-4478-8F3D-5CA7159E17BE}.Release|x86.Build.0 = Release|x86
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Debug|x86.Build.0 = Debug|Any CPU
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

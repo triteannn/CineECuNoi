@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ISSApp.Networking
 {
-    interface IServer
+    public interface IServer
     {
         //Account
         void AccountAdd(Account account);
