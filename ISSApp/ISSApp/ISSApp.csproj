@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Domain\Account.cs" />
     <Compile Include="Domain\Adresa.cs" />
+    <Compile Include="Domain\Analiza.cs" />
     <Compile Include="Domain\AngajatCentru.cs" />
     <Compile Include="Domain\CentruDonare.cs" />
     <Compile Include="Domain\DateContact.cs" />
@@ -110,6 +111,10 @@
     <Compile Include="Migrations\201805092018514_InitialCreate.cs" />
     <Compile Include="Migrations\201805092018514_InitialCreate.Designer.cs">
       <DependentUpon>201805092018514_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805110700207_NewEntity.cs" />
+    <Compile Include="Migrations\201805110700207_NewEntity.Designer.cs">
+      <DependentUpon>201805110700207_NewEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\SqlAccountRepo.cs" />
@@ -161,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805092018514_InitialCreate.resx">
       <DependentUpon>201805092018514_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805110700207_NewEntity.resx">
+      <DependentUpon>201805110700207_NewEntity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

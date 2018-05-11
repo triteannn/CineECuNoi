@@ -1,13 +1,12 @@
 ﻿using ISSApp.Domain;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace ISSApp.Repository
 {
     public class SqlSpitalRepo : ISqlRepo<Spital>
-    { 
+    {
         public void Add(Spital entity)
         {
             var connection = Globals.getDBConnection();
@@ -24,8 +23,7 @@ namespace ISSApp.Repository
                     command.Parameters.Add(paramDenumire);
 
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new Exception("Database insert failed.");
@@ -36,7 +34,7 @@ namespace ISSApp.Repository
 
         public Spital Delete(Spital entity)
         {
-            
+
             var connection = Globals.getDBConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
@@ -51,8 +49,7 @@ namespace ISSApp.Repository
                     command.Parameters.Add(paramId);
 
                     command.ExecuteNonQuery();
-                }
-                catch(SqlException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new Exception("Database delete failed.");
@@ -83,8 +80,7 @@ namespace ISSApp.Repository
                     command.Parameters.Add(paramDenumire);
 
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new Exception("Database update failed.");
@@ -113,13 +109,12 @@ namespace ISSApp.Repository
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        spital = new Spital(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2));
+                        spital = new Spital(reader.GetInt32(0), reader.GetString(1));
                     }
                     reader.Close();
                     connection.Close();
                     return spital;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new Exception("Database get failed.");
@@ -138,17 +133,16 @@ namespace ISSApp.Repository
                     var toReturn = new List<Spital>();
                     Spital spital = null;
                     command.CommandText = "SELECT * FROM Spitale";
-                    
+
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        toReturn.Add(new Spital(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2)));
+                        toReturn.Add(new Spital(reader.GetInt32(0), reader.GetString(1)));
                     }
                     reader.Close();
                     connection.Close();
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new Exception("Database get failed.");

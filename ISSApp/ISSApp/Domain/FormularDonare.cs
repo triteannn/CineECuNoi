@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISSApp.Domain
 {
@@ -6,7 +7,13 @@ namespace ISSApp.Domain
     public class FormularDonare
     {
         public int Id { get; set; }
+        public DateTime DataCreare { get; set; }
+        public string ListaBoli { get; set; }
 
         public virtual PungaSange PungaSange { get; set; }
+        public virtual Analiza Analiza { get; set; }
+
+        [NotMapped]
+        public int IdAn { get; set; }
     }
 }

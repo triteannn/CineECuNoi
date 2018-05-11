@@ -76,6 +76,7 @@ namespace ISSApp
             modelBuilder.Entity<FormularDonare>().HasKey(t => t.Id);
             modelBuilder.Entity<FormularDonare>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<FormularDonare>().HasOptional(t => t.PungaSange).WithRequired(t => t.FormularDonare);
+            modelBuilder.Entity<FormularDonare>().HasRequired(t => t.Analiza).WithOptional(t => t.FormularDonare).Map(t => t.MapKey("IdAn"));
 
             modelBuilder.Entity<Medic>().HasKey(t => t.Id);
             modelBuilder.Entity<Medic>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -103,6 +104,9 @@ namespace ISSApp
             modelBuilder.Entity<Spital>().HasKey(t => t.Id);
             modelBuilder.Entity<Spital>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Spital>().HasRequired(t => t.Adresa).WithOptional(t => t.Spital).Map(t => t.MapKey("IdAdr"));
+
+            modelBuilder.Entity<Analiza>().HasKey(t => t.Id);
+            modelBuilder.Entity<Analiza>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }
