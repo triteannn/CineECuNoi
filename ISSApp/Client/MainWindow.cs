@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using ISSApp.Networking;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace ISSApp
+namespace Client
 {
     public partial class MainWindow : Form
     {
 
         private readonly LoginForm _loginForm;
+        private readonly IServer _server;
 
-        public MainWindow(LoginForm loginForm)
+        public MainWindow(LoginForm loginForm, IServer server)
         {
             InitializeComponent();
             _loginForm = loginForm;
+            _server = server;
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -25,7 +26,8 @@ namespace ISSApp
                 _loginForm.EmptyFields();
                 _loginForm.Visible = true;
             }
-            else e.Cancel = true;
+            else
+                e.Cancel = true;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -48,7 +50,8 @@ namespace ISSApp
 
         private void MainWindow_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left) return;
+            if (e.Button != MouseButtons.Left)
+                return;
             ReleaseCapture();
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }

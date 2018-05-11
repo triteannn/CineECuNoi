@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ISSApp.Domain;
+﻿using ISSApp.Domain;
+using ISSApp.Exceptions;
 using ISSApp.Networking;
 using Server.Repository;
-using ISSApp.Exceptions;
+using System;
+using System.Collections.Generic;
 
 namespace Server.Networking
 {
@@ -39,15 +36,14 @@ namespace Server.Networking
             pungaSangeRepo = new SqlPungaSangeRepo();
             spitalRepo = new SqlSpitalRepo();
             trombociteRepo = new SqlTrombociteRepo();
-    }
+        }
 
         public void AccountAdd(Account account)
         {
             try
             {
                 accountRepo.Add(account);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -58,8 +54,7 @@ namespace Server.Networking
             try
             {
                 return accountRepo.Delete(account);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -70,8 +65,7 @@ namespace Server.Networking
             try
             {
                 return accountRepo.FindAccountByCredentials(username, password);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -82,8 +76,7 @@ namespace Server.Networking
             try
             {
                 return accountRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -94,8 +87,7 @@ namespace Server.Networking
             try
             {
                 return accountRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -106,8 +98,18 @@ namespace Server.Networking
             try
             {
                 return accountRepo.Update(account);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
             }
-            catch (RepositoryException e)
+        }
+
+        public int AccountGetLastId()
+        {
+            try
+            {
+                return accountRepo.GetLastId();
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -118,8 +120,7 @@ namespace Server.Networking
             try
             {
                 angajatRepo.Add(angajatCentru);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -130,8 +131,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.Delete(angajatCentru);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -142,8 +142,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -154,8 +153,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -166,8 +164,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.Update(angajatCentru);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -178,8 +175,7 @@ namespace Server.Networking
             try
             {
                 centruDonareRepo.Add(centru);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -190,8 +186,7 @@ namespace Server.Networking
             try
             {
                 return centruDonareRepo.Delete(centru);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -202,8 +197,7 @@ namespace Server.Networking
             try
             {
                 return centruDonareRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -214,8 +208,7 @@ namespace Server.Networking
             try
             {
                 return centruDonareRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -226,8 +219,7 @@ namespace Server.Networking
             try
             {
                 return centruDonareRepo.Update(centru);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -238,8 +230,7 @@ namespace Server.Networking
             try
             {
                 donatorRepo.Add(donator);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -250,8 +241,7 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.Delete(donator);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -262,8 +252,7 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -274,8 +263,7 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -286,8 +274,18 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.Update(donator);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
             }
-            catch (RepositoryException e)
+        }
+
+        public int DonatorGetLastId()
+        {
+            try
+            {
+                return donatorRepo.GetLastId();
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -298,8 +296,7 @@ namespace Server.Networking
             try
             {
                 formularCerereRepo.Add(formular);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -310,8 +307,7 @@ namespace Server.Networking
             try
             {
                 return formularCerereRepo.Delete(formular);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -322,8 +318,7 @@ namespace Server.Networking
             try
             {
                 return formularCerereRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -334,8 +329,7 @@ namespace Server.Networking
             try
             {
                 return formularCerereRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -346,8 +340,7 @@ namespace Server.Networking
             try
             {
                 return formularCerereRepo.Update(formular);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -358,8 +351,7 @@ namespace Server.Networking
             try
             {
                 formularDonareRepo.Add(formular);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -370,8 +362,7 @@ namespace Server.Networking
             try
             {
                 return formularDonareRepo.Delete(formular);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -382,8 +373,7 @@ namespace Server.Networking
             try
             {
                 return formularDonareRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -394,8 +384,7 @@ namespace Server.Networking
             try
             {
                 return formularDonareRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -406,8 +395,7 @@ namespace Server.Networking
             try
             {
                 return formularDonareRepo.Update(formular);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -418,8 +406,7 @@ namespace Server.Networking
             try
             {
                 globuleRosiiRepo.Add(psGlobuleRosii);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -430,8 +417,7 @@ namespace Server.Networking
             try
             {
                 return globuleRosiiRepo.Delete(psGlobuleRosii);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -442,8 +428,7 @@ namespace Server.Networking
             try
             {
                 return globuleRosiiRepo.FindAll();
-            }
-            catch (Exception)
+            } catch (Exception)
             {
 
                 throw;
@@ -455,8 +440,7 @@ namespace Server.Networking
             try
             {
                 return globuleRosiiRepo.FindByTarget(target);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -467,8 +451,7 @@ namespace Server.Networking
             try
             {
                 return globuleRosiiRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -479,8 +462,7 @@ namespace Server.Networking
             try
             {
                 return globuleRosiiRepo.Update(psGlobuleRosii);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -491,8 +473,7 @@ namespace Server.Networking
             try
             {
                 medicRepo.Add(medic);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -503,8 +484,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.Delete(medic);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -515,8 +495,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -527,8 +506,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -539,8 +517,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.Update(medic);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -551,8 +528,7 @@ namespace Server.Networking
             try
             {
                 plasmaRepo.Add(psPlasma);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -563,8 +539,7 @@ namespace Server.Networking
             try
             {
                 return plasmaRepo.Delete(psPlasma);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -575,8 +550,7 @@ namespace Server.Networking
             try
             {
                 return plasmaRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -587,8 +561,7 @@ namespace Server.Networking
             try
             {
                 return plasmaRepo.FindByTarget(target);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -599,8 +572,7 @@ namespace Server.Networking
             try
             {
                 return plasmaRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -611,8 +583,7 @@ namespace Server.Networking
             try
             {
                 return plasmaRepo.Update(psPlasma);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -623,8 +594,7 @@ namespace Server.Networking
             try
             {
                 pungaSangeRepo.Add(pungaSange);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -635,8 +605,7 @@ namespace Server.Networking
             try
             {
                 return pungaSangeRepo.Delete(pungaSange);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -647,8 +616,7 @@ namespace Server.Networking
             try
             {
                 return pungaSangeRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -659,8 +627,7 @@ namespace Server.Networking
             try
             {
                 return pungaSangeRepo.FindByTarget(target);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -671,8 +638,7 @@ namespace Server.Networking
             try
             {
                 return pungaSangeRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -683,8 +649,7 @@ namespace Server.Networking
             try
             {
                 return pungaSangeRepo.Update(pungaSange);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -695,8 +660,7 @@ namespace Server.Networking
             try
             {
                 spitalRepo.Add(spital);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -707,8 +671,7 @@ namespace Server.Networking
             try
             {
                 return spitalRepo.Delete(spital);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -719,8 +682,7 @@ namespace Server.Networking
             try
             {
                 return spitalRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -731,8 +693,7 @@ namespace Server.Networking
             try
             {
                 return spitalRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -743,8 +704,7 @@ namespace Server.Networking
             try
             {
                 return spitalRepo.Update(spital);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -755,8 +715,7 @@ namespace Server.Networking
             try
             {
                 trombociteRepo.Add(psTrombocite);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -767,8 +726,7 @@ namespace Server.Networking
             try
             {
                 return trombociteRepo.Delete(psTrombocite);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -779,8 +737,7 @@ namespace Server.Networking
             try
             {
                 return trombociteRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -791,8 +748,7 @@ namespace Server.Networking
             try
             {
                 return trombociteRepo.FindByTarget(target);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -803,8 +759,7 @@ namespace Server.Networking
             try
             {
                 return trombociteRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -815,8 +770,7 @@ namespace Server.Networking
             try
             {
                 return trombociteRepo.Update(psTrombocite);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }

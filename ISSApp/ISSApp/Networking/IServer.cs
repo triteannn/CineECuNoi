@@ -1,9 +1,5 @@
 ﻿using ISSApp.Domain;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ISSApp.Networking
 {
@@ -16,6 +12,7 @@ namespace ISSApp.Networking
         Account AccountFindEntity(int id);
         Account AccountFindAccountByCredentials(string username, string password);
         List<Account> AccountFindAll();
+        int AccountGetLastId();
         //Angajat
         void AngajatAdd(AngajatCentru angajatCentru);
         AngajatCentru AngajatDelete(AngajatCentru angajatCentru);
@@ -34,6 +31,7 @@ namespace ISSApp.Networking
         Donator DonatorUpdate(Donator donator);
         Donator DonatorFindEntity(int id);
         List<Donator> DonatorFindAll();
+        int DonatorGetLastId();
         //FormularCerere
         void FormularCerereAdd(FormularCerere formular);
         FormularCerere FormularCerereDelete(FormularCerere formular);

@@ -1,4 +1,4 @@
-﻿using ISSApp.Repository;
+﻿using ISSApp.Networking;
 using System;
 using System.Drawing;
 using System.IO;
@@ -6,18 +6,18 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
-namespace ISSApp
+namespace Client
 {
     public partial class LoginForm : Form
     {
 
         private bool _closingfade;
-        private readonly SqlAccountRepo _accountRepo;
+        private readonly IServer _server;
 
-        public LoginForm()
+        public LoginForm(IServer server)
         {
             InitializeComponent();
-            _accountRepo = new SqlAccountRepo();
+            _server = server;
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace ISSApp
                 RememberMe.Checked = true;
             }
             Label5.ForeColor = RememberMe.Checked ? Color.DarkRed : Color.Gray;
-            swfLogin.Movie = Environment.CurrentDirectory.Replace(@"bin\x86\Debug", @"Resources\LoginImage.swf");
+            swfLogin.Movie = Environment.CurrentDirectory.Replace(@"bin\Debug", @"Resources\LoginImage.swf");
         }
 
         private void Fade_Tick(object sender, EventArgs e)
@@ -175,10 +175,10 @@ namespace ISSApp
                     }
                 }
 
-                var acc = _accountRepo.FindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
+                var acc = _server.AccountFindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
                 if (acc != null)
                 {
-                    var mainWindow = new MainWindow(this);
+                    var mainWindow = new MainWindow(this, _server);
                     mainWindow.Show();
                     Hide();
                 }
@@ -202,7 +202,7 @@ namespace ISSApp
 
         private void LblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var registerForm = new RegisterForm(this);
+            var registerForm = new RegisterForm(this, _server);
             registerForm.Show();
             Enabled = false;
         }

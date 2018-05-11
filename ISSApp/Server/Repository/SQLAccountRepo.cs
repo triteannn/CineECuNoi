@@ -1,5 +1,5 @@
-﻿using System;
-using ISSApp.Domain;
+﻿using ISSApp.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -53,8 +53,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database delete failed.");
                 }
@@ -126,8 +125,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getOne failed.");
                 }
@@ -175,12 +173,28 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getAll failed.");
                 }
             }
+        }
+
+        public int GetLastId()
+        {
+            var id = 0;
+            using (var connection = Globals.getDBConnection())
+            {
+                connection.Open();
+                var cmd = new SqlCommand(@"select max(Id) from Accounts", connection);
+                var reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+            }
+            return id;
         }
     }
 }

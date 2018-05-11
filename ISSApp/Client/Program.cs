@@ -1,11 +1,8 @@
 ﻿using ISSApp.Networking;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Client
@@ -32,7 +29,7 @@ namespace Client
             IServer server = (IServer)Activator.GetObject(typeof(IServer), "tcp://localhost:55555/DonareSangeISS");
 
 
-            Application.Run(new Form1(server));
+            Application.Run(new LoginForm(server));
         }
     }
 }

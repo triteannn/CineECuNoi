@@ -1,25 +1,22 @@
 ﻿using ISSApp.Domain;
-using ISSApp.Repository;
+using ISSApp.Networking;
 using System;
-using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace ISSApp
+namespace Client
 {
     public partial class RegisterForm : Form
     {
 
         private readonly LoginForm _loginForm;
-        private readonly SqlDonatorRepo _donatorRepo;
-        private readonly SqlAccountRepo _accountRepo;
+        private readonly IServer _server;
 
-        public RegisterForm(LoginForm loginForm)
+        public RegisterForm(LoginForm loginForm, IServer server)
         {
             InitializeComponent();
             _loginForm = loginForm;
-            _donatorRepo = new SqlDonatorRepo();
-            _accountRepo = new SqlAccountRepo();
+            _server = server;
         }
 
         private void LblLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -77,39 +74,15 @@ namespace ISSApp
             {
                 var donator = new Donator(TxtCnp.Text, TxtLastName.Text, TxtFirstName.Text, DOB.Value);
                 var account = new Account(TxtUsername.Text, TxtPassword.Text);
-                _accountRepo.Add(account);
+                _server.AccountAdd(account);
+                donator.IdA = _server.AccountGetLastId();
+                account.Id = donator.IdA;
 
-                using (var connection = Globals.getDBConnection())
-                {
-                    connection.Open();
-                    var cmd = new SqlCommand(@"select max(Id) from Accounts", connection);
-                    var reader = cmd.ExecuteReader();
-                    var id = 0;
-                    if (reader.Read())
-                    {
-                        id = reader.GetInt32(0);
-                    }
-                    donator.IdA = id;
-                    account.Id = id;
-                }
+                _server.DonatorAdd(donator);
 
-                _donatorRepo.Add(donator);
-
-                // update idD for account
-                using (var connection = Globals.getDBConnection())
-                {
-                    connection.Open();
-                    var cmd = new SqlCommand(@"select max(Id) from Donatori", connection);
-                    var reader = cmd.ExecuteReader();
-                    var id = 0;
-                    if (reader.Read())
-                    {
-                        id = reader.GetInt32(0);
-                    }
-                    donator.Id = id;
-                    account.IdD = id;
-                }
-                _accountRepo.Update(account);
+                donator.Id = _server.DonatorGetLastId();
+                account.IdD = donator.Id;
+                _server.AccountUpdate(account);
 
                 MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -149,7 +122,7 @@ namespace ISSApp
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            swfRegister.Movie = Environment.CurrentDirectory.Replace(@"bin\x86\Debug", @"Resources\RegisterImage.swf");
+            swfRegister.Movie = Environment.CurrentDirectory.Replace(@"bin\Debug", @"Resources\RegisterImage.swf");
         }
 
         private void TxtLastName_Enter(object sender, EventArgs e)

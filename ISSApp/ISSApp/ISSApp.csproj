@@ -123,52 +123,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Networking\IServer.cs" />
     <Compile Include="Networking\ServerService.cs" />
-    <Compile Include="Repository\SqlAccountRepo.cs" />
-    <Compile Include="Repository\SqlCentruDonareRepo.cs" />
-    <Compile Include="Repository\SqlSpitalRepo.cs" />
-    <Compile Include="Utils\Globals.cs" />
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Repository\ISqlRepo.cs" />
-    <Compile Include="Repository\SqlAngajatRepo.cs" />
-    <Compile Include="Repository\SqlDonatorRepo.cs" />
-    <Compile Include="Repository\SqlFormularCerereRepo.cs" />
-    <Compile Include="Repository\SqlFormularDonareRepo.cs" />
-    <Compile Include="Repository\SqlGlobuleRosiiRepo.cs" />
-    <Compile Include="Repository\SqlMedicRepo.cs" />
-    <Compile Include="Repository\SqlPlasmaRepo.cs" />
-    <Compile Include="Repository\SqlPungaSangeRepo.cs" />
-    <Compile Include="Repository\SqlTrombociteRepo.cs" />
     <Compile Include="Service\IService.cs" />
     <Compile Include="Service\ServiceAngajat.cs" />
     <Compile Include="Service\ServiceDonator.cs" />
     <Compile Include="Service\ServiceMedic.cs" />
     <Compile Include="Service\ServiceOungaSange.cs" />
     <Compile Include="Service\ServiceProdusSanguin.cs" />
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805092018514_InitialCreate.resx">
       <DependentUpon>201805092018514_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,7 +138,7 @@
       <DependentUpon>201805110700207_NewEntity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -185,9 +147,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegisterForm.resx">
-      <DependentUpon>RegisterForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

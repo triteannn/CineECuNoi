@@ -51,8 +51,7 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database insert failed.");
                 }
@@ -83,8 +82,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database delete failed.");
                 }
@@ -139,8 +137,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database update failed.");
                 }
@@ -177,8 +174,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getOne failed.");
                 }
@@ -204,12 +200,28 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getAll failed.");
                 }
             }
+        }
+
+        public int GetLastId()
+        {
+            var id = 0;
+            using (var connection = Globals.getDBConnection())
+            {
+                connection.Open();
+                var cmd = new SqlCommand(@"select max(Id) from Donatori", connection);
+                var reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+            }
+            return id;
         }
     }
 }

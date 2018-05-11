@@ -1,4 +1,4 @@
-﻿namespace ISSApp
+﻿namespace Client
 {
     partial class RegisterForm
     {
