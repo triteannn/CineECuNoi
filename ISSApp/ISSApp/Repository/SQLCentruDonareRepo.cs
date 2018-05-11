@@ -7,144 +7,171 @@ using System.Data.SqlClient;
 namespace ISSApp.Repository
 {
     public class SqlCentruDonareRepo : ISqlRepo<CentruDonare>
-    {/*
+    {
         public void Add(CentruDonare entity)
         {
-            using (Globals.getDBConnection())
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    string querry = "INSERT INTO CentreDonare(Denumire,IdAdr) VALUES(@Denumire,@IdAdresa)";
-                    SqlCommand command = new SqlCommand(querry, Globals.getDBConnection());
-                    command.Parameters.Add("@IdAdresa", SqlDbType.Int);
-                    command.Parameters["@IdAdresa"].Value = entity.IdAdr;
-                    command.Parameters.AddWithValue("@Denumire", entity.Denumire);
+                    command.CommandText =
+                        "INSERT INTO CentreDonare(Id, Denumire) VALUES (@Id, @Denumire)";
 
-                    Globals.getDBConnection().Open();
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = entity.Id;
+                    command.Parameters.Add(paramId);
+
+                    var paramDenumire = command.CreateParameter();
+                    paramDenumire.ParameterName = "@Denumire";
+                    paramDenumire.Value = entity.Denumire;
+                    command.Parameters.Add(paramDenumire);
+
                     command.ExecuteNonQuery();
-                } catch (SqlException)
+
+                }
+                catch (SqlException e)
                 {
                     throw new Exception("Database insert failed.");
                 }
+
             }
         }
 
         public CentruDonare Delete(CentruDonare entity)
         {
-            using (Globals.getDBConnection())
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    string query = "DELETE FROM CentreDonare WHERE Id = @IdEntity";
-                    SqlCommand command = new SqlCommand(query, Globals.getDBConnection());
-                    command.Parameters.Add("@IdEntity", SqlDbType.Int);
-                    command.Parameters["@IdEntity"].Value = entity.Id;
+                    command.CommandText = "DELETE FROM CentreDonare WHERE Id=@Id";
 
-                    Globals.getDBConnection().Open();
-                    command.ExecuteNonQuery();
-                    return entity;
-                } catch (SqlException)
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = entity.Id;
+                    command.Parameters.Add(paramId);
+
+                    var result = command.ExecuteNonQuery();
+                    if (result != 0)
+                    {
+                        return entity;
+                    }
+
+                    return null;
+
+                }
+                catch (SqlException e)
                 {
                     throw new Exception("Database delete failed.");
                 }
+
+            }
+        }
+
+        public CentruDonare Update(CentruDonare entity)
+        {
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText =
+                        "UPDATE CentreDonare SET Denumire=@Denumire WHERE Id=@Id";
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = entity.Id;
+                    command.Parameters.Add(paramId);
+
+                    var paramDenumire = command.CreateParameter();
+                    paramDenumire.ParameterName = "@Denumire";
+                    paramDenumire.Value = entity.Denumire;
+                    command.Parameters.Add(paramDenumire);
+
+                    var result = command.ExecuteNonQuery();
+                    if (result != 0)
+                    {
+                        return entity;
+                    }
+
+                    return null;
+                }
+                catch (SqlException e)
+                {
+                    throw new Exception("Database update failed.");
+                }
+            }
+        }
+
+        public CentruDonare FindEntity(int id)
+        {
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText = "SELECT * FROM CentreDonare WHERE Id=@Id";
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = id;
+                    command.Parameters.Add(paramId);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            CentruDonare centruDonare = new CentruDonare();
+                            centruDonare.Id = result.GetInt32(0);
+                            centruDonare.Denumire = result.GetString(1);
+    
+                            return centruDonare;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException e)
+                {
+                    throw new Exception("Database getOne failed.");
+                }
+
             }
         }
 
         public List<CentruDonare> FindAll()
         {
-            using (Globals.getDBConnection())
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
             {
                 try
                 {
                     List<CentruDonare> toReturn = new List<CentruDonare>();
-                    string query = "SELECT * FROM CentreDonare";
-                    SqlCommand command = new SqlCommand(query, Globals.getDBConnection());
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    command.CommandText = "SELECT * FROM CentreDonare";
+                    using (var result = command.ExecuteReader())
                     {
-                        toReturn.Add(new CentruDonare(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2)));
+                        while (result.Read())
+                        {
+                            CentruDonare psPlasma = new CentruDonare
+                            {
+                                Id = result.GetInt32(0),
+                                Denumire = result.GetString(1),
+                            };
+
+                            toReturn.Add(psPlasma);
+                        }
                     }
-                    reader.Close();
+
                     return toReturn;
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
-                    throw new Exception("Database get failed.");
+                    throw new Exception("Database getAll failed.");
                 }
             }
-        }
-
-        public CentruDonare FindEntity(int id)
-        {
-            using (Globals.getDBConnection())
-            {
-                try
-                {
-                    CentruDonare CentruDonare = null;
-                    List<CentruDonare> toReturn = new List<CentruDonare>();
-                    string query = "SELECT * FROM CentreDonare WHERE Id = @Id";
-                    SqlCommand command = new SqlCommand(query, Globals.getDBConnection());
-                    command.Parameters.Add("@Id", SqlDbType.Int);
-                    command.Parameters["@Id"].Value = id;
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        CentruDonare = new CentruDonare(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2));
-                    }
-                    reader.Close();
-                    return CentruDonare;
-                } catch (SqlException)
-                {
-                    throw new Exception("Database get failed.");
-                }
-            }
-        }
-
-        public CentruDonare Update(CentruDonare entity)
-        {
-            using (Globals.getDBConnection())
-            {
-                try
-                {
-                    string querry = "UPDATE CentreDonare SET Denumire=@Denumire, IdAdr=@IdAdr WHERE Id=@Id";
-                    SqlCommand command = new SqlCommand(querry, Globals.getDBConnection());
-                    command.Parameters.Add("@Id", SqlDbType.Int);
-                    command.Parameters["@Id"].Value = entity.Id;
-                    command.Parameters.Add("@IdAdr", SqlDbType.Int);
-                    command.Parameters["@IdAdr"].Value = entity.IdAdr;
-                    command.Parameters.AddWithValue("@Denumire", entity.Denumire);
-
-                    Globals.getDBConnection().Open();
-                    command.ExecuteNonQuery();
-                    return entity;
-                } catch (SqlException)
-                {
-                    throw new Exception("Database insert failed.");
-                }
-            }
-        }*/
-        public void Add(CentruDonare entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CentruDonare Delete(CentruDonare entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CentruDonare Update(CentruDonare entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public CentruDonare FindEntity(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<CentruDonare> FindAll()
-        {
-            throw new NotImplementedException();
         }
     }
         

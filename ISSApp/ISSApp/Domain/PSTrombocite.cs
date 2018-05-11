@@ -6,6 +6,7 @@ namespace ISSApp.Domain
     [Table("PSTrombocite")]
     public class PSTrombocite : IProdusSanguin
     {
+
         public int Id { get; set; }
         public DateTime DataRecoltare { get; set; }
         public float Cantitate { get; set; }
