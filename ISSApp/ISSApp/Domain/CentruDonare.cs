@@ -1,9 +1,11 @@
 ﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISSApp.Domain
 {
+    [Serializable]
     [Table("CentreDonare")]
     public class CentruDonare : IInstitutie
     {

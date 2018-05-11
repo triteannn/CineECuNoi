@@ -33,6 +33,7 @@ namespace Server
             RemotingServices.Marshal(service, "DonareSangeISS");
 
             Console.WriteLine("Server is up on " + GetLocalIPAddress() + " on port: " + props["port"]);
+            Console.ReadLine();
         }
 
         public static string GetLocalIPAddress()

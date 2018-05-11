@@ -1,7 +1,9 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISSApp.Domain
 {
+    [Serializable]
     [Table("Adrese")]
     public class Adresa
     {

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISSApp.Domain
 {
+    [Serializable]
     [Table("PungiSange")]
     public class PungaSange
     {
