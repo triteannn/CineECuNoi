@@ -13,9 +13,11 @@ namespace ISSApp.Domain
         public string Target { get; set; }
 
         public int IdCd { get; set; }
-        //public int IdFd { get; set; }
 
         public virtual CentruDonare CentruDonare { get; set; }
         public virtual FormularDonare FormularDonare { get; set; }
+
+        [NotMapped]
+        public int IdFd { get; set; }
     }
 }

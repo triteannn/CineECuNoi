@@ -21,12 +21,14 @@ namespace ISSApp.Domain
         public string Prenume { get; set; }
         public DateTime Dob { get; set; }
 
-        //public int? IdDc { get; set; }
         public int IdA { get; set; }
         public int? IdCd { get; set; }
 
         public virtual DateContact DateContact { get; set; }
         public virtual Account Account { get; set; }
         public virtual CentruDonare CentruDonare { get; set; }
+
+        [NotMapped]
+        public int IdDc { get; set; }
     }
 }

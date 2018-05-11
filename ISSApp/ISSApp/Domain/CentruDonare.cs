@@ -28,11 +28,12 @@ namespace ISSApp.Domain
         public int Id { get; set; }
         public string Denumire { get; set; }
 
-        //public int IdAdr { get; set; }
-
         public virtual Adresa Adresa { get; set; }
         public virtual ICollection<AngajatCentru> Angajati { get; set; }
         public virtual ICollection<Donator> Donatori { get; set; }
         public virtual ICollection<PungaSange> PungiSange { get; set; }
+
+        [NotMapped]
+        public int IdAdr { get; set; }
     }
 }

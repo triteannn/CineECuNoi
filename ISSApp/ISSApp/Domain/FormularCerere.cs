@@ -14,6 +14,8 @@ namespace ISSApp.Domain
         }
 
         public int Id { get; set; }
+
+
         public virtual ICollection<PSPlasma> PsPlasme { get; set; }
         public virtual ICollection<PSGlobuleRosii> PsGlobuleRosii { get; set; }
         public virtual ICollection<PSTrombocite> PsTrombocite { get; set; }

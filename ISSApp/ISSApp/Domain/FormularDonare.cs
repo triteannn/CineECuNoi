@@ -7,8 +7,6 @@ namespace ISSApp.Domain
     {
         public int Id { get; set; }
 
-        //public int IdPs { get; set; }
-
         public virtual PungaSange PungaSange { get; set; }
     }
 }

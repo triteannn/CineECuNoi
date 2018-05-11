@@ -174,13 +174,8 @@ namespace ISSApp
                         File.Delete(Environment.CurrentDirectory + @"\RememberedUser.xml");
                     }
                 }
-                //Account acc = null;
-                //new Thread(() => {
-                //    Thread.CurrentThread.IsBackground = true;
-                var acc = _accountRepo.FindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
 
-                //}
-                //).Start();
+                var acc = _accountRepo.FindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
                 if (acc != null)
                 {
                     var mainWindow = new MainWindow(this);
