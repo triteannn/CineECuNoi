@@ -117,6 +117,8 @@
       <DependentUpon>201805110700207_NewEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Networking\IServer.cs" />
+    <Compile Include="Networking\ServerService.cs" />
     <Compile Include="Repository\SqlAccountRepo.cs" />
     <Compile Include="Repository\SqlCentruDonareRepo.cs" />
     <Compile Include="Repository\SqlSpitalRepo.cs" />
@@ -149,7 +151,6 @@
     <Compile Include="Repository\SqlGlobuleRosiiRepo.cs" />
     <Compile Include="Repository\SqlMedicRepo.cs" />
     <Compile Include="Repository\SqlPlasmaRepo.cs" />
-    <Compile Include="Repository\SqlProdSanguinRepo.cs" />
     <Compile Include="Repository\SqlPungaSangeRepo.cs" />
     <Compile Include="Repository\SqlTrombociteRepo.cs" />
     <Compile Include="Service\IService.cs" />

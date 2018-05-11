@@ -229,5 +229,11 @@ namespace ISSApp.Repository
                 }
             }
         }
+
+        public List<PungaSange> FindByTarget(string target)
+        {
+            //TO IMPLEMET
+            return null;
+        }
     }
 }

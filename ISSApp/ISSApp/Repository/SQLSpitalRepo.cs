@@ -131,7 +131,6 @@ namespace ISSApp.Repository
                 try
                 {
                     var toReturn = new List<Spital>();
-                    Spital spital = null;
                     command.CommandText = "SELECT * FROM Spitale";
 
                     SqlDataReader reader = command.ExecuteReader();
