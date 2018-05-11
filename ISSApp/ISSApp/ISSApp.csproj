@@ -108,6 +108,8 @@
     <Compile Include="Domain\PungaSange.cs" />
     <Compile Include="Domain\Spital.cs" />
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="Exceptions\NetworkingException.cs" />
+    <Compile Include="Exceptions\RepositoryException.cs" />
     <Compile Include="Migrations\201805092018514_InitialCreate.cs" />
     <Compile Include="Migrations\201805092018514_InitialCreate.Designer.cs">
       <DependentUpon>201805092018514_InitialCreate.cs</DependentUpon>
