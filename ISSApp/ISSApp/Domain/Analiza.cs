@@ -59,5 +59,7 @@ namespace ISSApp.Domain
         public double Colesterol { get; set; }
 
         public virtual FormularDonare FormularDonare { get; set; }
+
+        public string ListaBoliDetectate;
     }
 }

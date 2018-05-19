@@ -16,5 +16,8 @@ namespace ISSApp.Domain
 
         [NotMapped]
         public int IdAn { get; set; }
+
+        [NotMapped]
+        public int IdDonator { get; set; } // ii ok?
     }
 }
