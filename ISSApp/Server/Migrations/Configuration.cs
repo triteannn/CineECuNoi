@@ -1,18 +1,18 @@
-namespace ISSApp.Migrations
+namespace Server.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ISSApp.DatabaseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Server.DatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ISSApp.DatabaseContext context)
+        protected override void Seed(Server.DatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 

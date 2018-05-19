@@ -26,7 +26,7 @@ namespace Server.Repository
 
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    paramDataRecoltare.Value = psPlasma.DataRecoltare;
+                    //paramDataRecoltare.Value = psPlasma.DataRecoltare;
                     command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
@@ -41,7 +41,7 @@ namespace Server.Repository
 
                     var paramIdFc = command.CreateParameter();
                     paramIdFc.ParameterName = "@IdFc";
-                    paramIdFc.Value = psPlasma.IdFc;
+                    //paramIdFc.Value = psPlasma.IdFc;
                     command.Parameters.Add(paramIdFc);
 
                     command.ExecuteNonQuery();
@@ -103,7 +103,7 @@ namespace Server.Repository
 
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    paramDataRecoltare.Value = psPlasma.DataRecoltare;
+                    //paramDataRecoltare.Value = psPlasma.DataRecoltare;
                     command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
@@ -118,7 +118,7 @@ namespace Server.Repository
 
                     var paramIdFc = command.CreateParameter();
                     paramIdFc.ParameterName = "@IdFc";
-                    paramIdFc.Value = psPlasma.IdFc;
+                    //paramIdFc.Value = psPlasma.IdFc;
                     command.Parameters.Add(paramIdFc);
 
                     var result = command.ExecuteNonQuery();
@@ -155,10 +155,10 @@ namespace Server.Repository
                         {
                             PSPlasma psPlasma = new PSPlasma();
                             psPlasma.Id = result.GetInt32(0);
-                            psPlasma.DataRecoltare = result.GetDateTime(1);
+                            //psPlasma.DataRecoltare = result.GetDateTime(1);
                             psPlasma.Cantitate = result.GetFloat(2);
                             psPlasma.Target = result.GetString(3);
-                            psPlasma.IdFc = result.GetInt32(4);
+                            //psPlasma.IdFc = result.GetInt32(4);
 
                             return psPlasma;
                         }
@@ -191,10 +191,10 @@ namespace Server.Repository
                             PSPlasma psPlasma = new PSPlasma
                             {
                                 Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
+                                //DataRecoltare = result.GetDateTime(1),
                                 Cantitate = result.GetFloat(2),
                                 Target = result.GetString(3),
-                                IdFc = result.GetInt32(4)
+                                //IdFc = result.GetInt32(4)
                             };
 
                             toReturn.Add(psPlasma);
@@ -232,10 +232,10 @@ namespace Server.Repository
                             PSPlasma psPlasma = new PSPlasma
                             {
                                 Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
+                                //DataRecoltare = result.GetDateTime(1),
                                 Cantitate = result.GetFloat(2),
                                 Target = result.GetString(3),
-                                IdFc = result.GetInt32(4)
+                                //IdFc = result.GetInt32(4)
                             };
 
                             toReturn.Add(psPlasma);

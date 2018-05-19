@@ -8,7 +8,7 @@ namespace ISSApp.Domain
     public class PSGlobuleRosii : IProdusSanguin
     {
         public int Id { get; set; }
-//        public DateTime DataRecoltare { get; set; }
+        //        public DateTime DataRecoltare { get; set; }
         public float Cantitate { get; set; }
         public string Target { get; set; }
 
@@ -19,6 +19,8 @@ namespace ISSApp.Domain
         public string Grupa { get; set; }
         public string Rh { get; set; }
         public int? IdCD { get; set; } //cheie catre centru donare
+
+        public virtual CentruDonare CentruDonare { get; set; }
 
     }
 }

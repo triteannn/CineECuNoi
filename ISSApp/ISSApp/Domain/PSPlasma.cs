@@ -8,18 +8,20 @@ namespace ISSApp.Domain
     public class PSPlasma : IProdusSanguin
     {
         public int Id { get; set; }
-//        public DateTime DataRecoltare { get; set; }
+        //        public DateTime DataRecoltare { get; set; }
         public float Cantitate { get; set; }
         public string Target { get; set; }
 
-//        public int? IdFc { get; set; }
+        //        public int? IdFc { get; set; }
 
-//        public virtual FormularCerere FormularCerere { get; set; }
+        //        public virtual FormularCerere FormularCerere { get; set; }
 
         public DateTime DataExpirare { get; set; }
         public string Grupa { get; set; }
         public string Rh { get; set; }
         public int? IdCD { get; set; } //cheie catre centru donare
+
+        public virtual CentruDonare CentruDonare { get; set; }
 
     }
 }

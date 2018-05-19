@@ -20,6 +20,7 @@ namespace ISSApp.Domain
         public virtual DateContact DateContact { get; set; }
         public virtual Account Account { get; set; }
         public virtual Spital Spital { get; set; }
+        public virtual FormularCerere FormularCerere { get; set; }
 
         [NotMapped]
         public int IdDc { get; set; }

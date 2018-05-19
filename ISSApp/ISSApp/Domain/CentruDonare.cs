@@ -35,6 +35,10 @@ namespace ISSApp.Domain
         public virtual ICollection<Donator> Donatori { get; set; }
         public virtual ICollection<PungaSange> PungiSange { get; set; }
 
+        public virtual ICollection<PSGlobuleRosii> GlobuleRosii { get; set; }
+        public virtual ICollection<PSPlasma> Plasme { get; set; }
+        public virtual ICollection<PSTrombocite> Trombocite { get; set; }
+
         [NotMapped]
         public int IdAdr { get; set; }
     }

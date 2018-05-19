@@ -26,7 +26,7 @@ namespace Server.Repository
 
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    paramDataRecoltare.Value = psTrombocite.DataRecoltare;
+                    //paramDataRecoltare.Value = psTrombocite.DataRecoltare;
                     command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
@@ -41,7 +41,7 @@ namespace Server.Repository
 
                     var paramIdFc = command.CreateParameter();
                     paramIdFc.ParameterName = "@IdFc";
-                    paramIdFc.Value = psTrombocite.IdFc;
+                    //paramIdFc.Value = psTrombocite.IdFc;
                     command.Parameters.Add(paramIdFc);
 
                     command.ExecuteNonQuery();
@@ -104,7 +104,7 @@ namespace Server.Repository
 
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    paramDataRecoltare.Value = psTrombocite.DataRecoltare;
+                    //paramDataRecoltare.Value = psTrombocite.DataRecoltare;
                     command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
@@ -119,7 +119,7 @@ namespace Server.Repository
 
                     var paramIdFc = command.CreateParameter();
                     paramIdFc.ParameterName = "@IdFc";
-                    paramIdFc.Value = psTrombocite.IdFc;
+                    //paramIdFc.Value = psTrombocite.IdFc;
                     command.Parameters.Add(paramIdFc);
 
                     var result = command.ExecuteNonQuery();
@@ -156,10 +156,10 @@ namespace Server.Repository
                         {
                             PSTrombocite psTrombocite = new PSTrombocite();
                             psTrombocite.Id = result.GetInt32(0);
-                            psTrombocite.DataRecoltare = result.GetDateTime(1);
+                            //psTrombocite.DataRecoltare = result.GetDateTime(1);
                             psTrombocite.Cantitate = result.GetFloat(2);
                             psTrombocite.Target = result.GetString(3);
-                            psTrombocite.IdFc = result.GetInt32(4);
+                            //psTrombocite.IdFc = result.GetInt32(4);
 
                             return psTrombocite;
                         }
@@ -192,10 +192,10 @@ namespace Server.Repository
                             PSTrombocite psTrombocite = new PSTrombocite
                             {
                                 Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
+                                //DataRecoltare = result.GetDateTime(1),
                                 Cantitate = result.GetFloat(2),
                                 Target = result.GetString(3),
-                                IdFc = result.GetInt32(4)
+                                //IdFc = result.GetInt32(4)
                             };
 
                             toReturn.Add(psTrombocite);
@@ -233,10 +233,10 @@ namespace Server.Repository
                             PSTrombocite psTrombocite = new PSTrombocite
                             {
                                 Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
+                                //DataRecoltare = result.GetDateTime(1),
                                 Cantitate = result.GetFloat(2),
                                 Target = result.GetString(3),
-                                IdFc = result.GetInt32(4)
+                                //IdFc = result.GetInt32(4)
                             };
 
                             toReturn.Add(psTrombocite);

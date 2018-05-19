@@ -8,7 +8,7 @@ namespace ISSApp.Domain
         float Cantitate { get; set; }
         string Target { get; set; }
 
-        FormularCerere FormularCerere { get; set; }
+        //FormularCerere FormularCerere { get; set; }
         DateTime DataExpirare { get; set; }
     }
 }

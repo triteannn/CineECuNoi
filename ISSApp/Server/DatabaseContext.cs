@@ -2,10 +2,15 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
-namespace ISSApp
+namespace Server
 {
     public class DatabaseContext : DbContext
     {
+        public DatabaseContext() : base("Server=den1.mssql3.gear.host; user=donaresangeiss; password=pistaislove@; database=donaresangeiss;")
+        {
+
+        }
+
         public DbSet<Account> Account { get; set; }
         public DbSet<Donator> Donator { get; set; }
         public DbSet<Medic> Medic { get; set; }
@@ -51,6 +56,7 @@ namespace ISSApp
             modelBuilder.Entity<CentruDonare>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<CentruDonare>().HasRequired(t => t.Adresa).WithOptional(t => t.CentruDonare).Map(t => t.MapKey("IdAdr"));
 
+
             modelBuilder.Entity<DateContact>().HasKey(t => t.Id);
             //modelBuilder.Entity<DateContact>().Property(t => t.IdAc).IsOptional();
             //modelBuilder.Entity<DateContact>().Property(t => t.IdM).IsOptional();
@@ -69,14 +75,16 @@ namespace ISSApp
 
             modelBuilder.Entity<FormularCerere>().HasKey(t => t.Id);
             modelBuilder.Entity<FormularCerere>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<FormularCerere>().HasMany(t => t.PsPlasme).WithOptional(t => t.FormularCerere).HasForeignKey(t => t.IdFc);
-            modelBuilder.Entity<FormularCerere>().HasMany(t => t.PsGlobuleRosii).WithOptional(t => t.FormularCerere).HasForeignKey(t => t.IdFc);
-            modelBuilder.Entity<FormularCerere>().HasMany(t => t.PsTrombocite).WithOptional(t => t.FormularCerere).HasForeignKey(t => t.IdFc);
+            //modelBuilder.Entity<FormularCerere>().HasMany(t => t.PsPlasme).WithOptional(t => t.FormularCerere).HasForeignKey(t => t.IdFc);
+            //modelBuilder.Entity<FormularCerere>().HasMany(t => t.PsGlobuleRosii).WithOptional(t => t.FormularCerere).HasForeignKey(t => t.IdFc);
+            //modelBuilder.Entity<FormularCerere>().HasMany(t => t.PsTrombocite).WithOptional(t => t.FormularCerere).HasForeignKey(t => t.IdFc);
+            modelBuilder.Entity<FormularCerere>().HasRequired(t => t.Medic).WithOptional(t => t.FormularCerere).Map(t => t.MapKey("IdM"));
 
             modelBuilder.Entity<FormularDonare>().HasKey(t => t.Id);
             modelBuilder.Entity<FormularDonare>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<FormularDonare>().HasOptional(t => t.PungaSange).WithRequired(t => t.FormularDonare);
             modelBuilder.Entity<FormularDonare>().HasRequired(t => t.Analiza).WithOptional(t => t.FormularDonare).Map(t => t.MapKey("IdAn"));
+            modelBuilder.Entity<FormularDonare>().HasRequired(t => t.Donator).WithOptional(t => t.FormularDonare).Map(t => t.MapKey("IdD"));
 
             modelBuilder.Entity<Medic>().HasKey(t => t.Id);
             modelBuilder.Entity<Medic>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -86,15 +94,18 @@ namespace ISSApp
 
             modelBuilder.Entity<PSGlobuleRosii>().HasKey(t => t.Id);
             modelBuilder.Entity<PSGlobuleRosii>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<PSGlobuleRosii>().HasOptional(t => t.FormularCerere).WithMany(t => t.PsGlobuleRosii).HasForeignKey(t => t.IdFc);
+            //modelBuilder.Entity<PSGlobuleRosii>().HasOptional(t => t.FormularCerere).WithMany(t => t.PsGlobuleRosii).HasForeignKey(t => t.IdFc);
+            modelBuilder.Entity<PSGlobuleRosii>().HasRequired(t => t.CentruDonare).WithMany(t => t.GlobuleRosii).HasForeignKey(t => t.IdCD);
 
             modelBuilder.Entity<PSPlasma>().HasKey(t => t.Id);
             modelBuilder.Entity<PSPlasma>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<PSPlasma>().HasOptional(t => t.FormularCerere).WithMany(t => t.PsPlasme).HasForeignKey(t => t.IdFc);
+            //modelBuilder.Entity<PSPlasma>().HasOptional(t => t.FormularCerere).WithMany(t => t.PsPlasme).HasForeignKey(t => t.IdFc);
+            modelBuilder.Entity<PSPlasma>().HasRequired(t => t.CentruDonare).WithMany(t => t.Plasme).HasForeignKey(t => t.IdCD);
 
             modelBuilder.Entity<PSTrombocite>().HasKey(t => t.Id);
             modelBuilder.Entity<PSTrombocite>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<PSTrombocite>().HasOptional(t => t.FormularCerere).WithMany(t => t.PsTrombocite).HasForeignKey(t => t.IdFc);
+            //modelBuilder.Entity<PSTrombocite>().HasOptional(t => t.FormularCerere).WithMany(t => t.PsTrombocite).HasForeignKey(t => t.IdFc);
+            modelBuilder.Entity<PSTrombocite>().HasRequired(t => t.CentruDonare).WithMany(t => t.Trombocite).HasForeignKey(t => t.IdCD);
 
             modelBuilder.Entity<PungaSange>().HasKey(t => t.Id);
             modelBuilder.Entity<PungaSange>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

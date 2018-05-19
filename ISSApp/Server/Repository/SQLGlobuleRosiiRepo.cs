@@ -1,5 +1,5 @@
-using System;
 using ISSApp.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -26,7 +26,7 @@ namespace Server.Repository
 
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    paramDataRecoltare.Value = psGlobuleRosii.DataRecoltare;
+                    //paramDataRecoltare.Value = psGlobuleRosii.DataRecoltare;
                     command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
@@ -41,13 +41,12 @@ namespace Server.Repository
 
                     var paramIdFc = command.CreateParameter();
                     paramIdFc.ParameterName = "@IdFc";
-                    paramIdFc.Value = psGlobuleRosii.IdFc;
+                    //paramIdFc.Value = psGlobuleRosii.IdFc;
                     command.Parameters.Add(paramIdFc);
-                    
+
                     command.ExecuteNonQuery();
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database insert failed.");
                 }
@@ -77,8 +76,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database delete failed.");
                 }
@@ -103,7 +101,7 @@ namespace Server.Repository
 
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    paramDataRecoltare.Value = psGlobuleRosii.DataRecoltare;
+                    //paramDataRecoltare.Value = psGlobuleRosii.DataRecoltare;
                     command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
@@ -118,7 +116,7 @@ namespace Server.Repository
 
                     var paramIdFc = command.CreateParameter();
                     paramIdFc.ParameterName = "@IdFc";
-                    paramIdFc.Value = psGlobuleRosii.IdFc;
+                    //paramIdFc.Value = psGlobuleRosii.IdFc;
                     command.Parameters.Add(paramIdFc);
 
                     var result = command.ExecuteNonQuery();
@@ -128,8 +126,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database update failed.");
                 }
@@ -155,10 +152,10 @@ namespace Server.Repository
                         {
                             PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii();
                             psGlobuleRosii.Id = result.GetInt32(0);
-                            psGlobuleRosii.DataRecoltare = result.GetDateTime(1);
+                            //psGlobuleRosii.DataRecoltare = result.GetDateTime(1);
                             psGlobuleRosii.Cantitate = result.GetFloat(2);
                             psGlobuleRosii.Target = result.GetString(3);
-                            psGlobuleRosii.IdFc = result.GetInt32(4);
+                            //psGlobuleRosii.IdFc = result.GetInt32(4);
 
                             return psGlobuleRosii;
                         }
@@ -166,8 +163,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getOne failed.");
                 }
@@ -188,13 +184,12 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii
-                            {
+                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii {
                                 Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
+                                //DataRecoltare = result.GetDateTime(1),
                                 Cantitate = result.GetFloat(2),
                                 Target = result.GetString(3),
-                                IdFc = result.GetInt32(4)
+                                //IdFc = result.GetInt32(4)
                             };
 
                             toReturn.Add(psGlobuleRosii);
@@ -202,8 +197,7 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getAll failed.");
                 }
@@ -229,13 +223,12 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii
-                            {
+                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii {
                                 Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
+                                //DataRecoltare = result.GetDateTime(1),
                                 Cantitate = result.GetFloat(2),
                                 Target = result.GetString(3),
-                                IdFc = result.GetInt32(4)
+                                //IdFc = result.GetInt32(4)
                             };
 
                             toReturn.Add(psGlobuleRosii);
@@ -243,8 +236,7 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new Exception("Database getAll failed.");
                 }

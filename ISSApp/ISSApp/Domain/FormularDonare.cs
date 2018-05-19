@@ -10,14 +10,15 @@ namespace ISSApp.Domain
         public int Id { get; set; }
         public DateTime DataCreare { get; set; }
         public string ListaBoli { get; set; }
+        //public int IdD { get; set; }
 
         public virtual PungaSange PungaSange { get; set; }
         public virtual Analiza Analiza { get; set; }
+        public virtual Donator Donator { get; set; }
 
         [NotMapped]
         public int IdAn { get; set; }
 
-        [NotMapped]
-        public int IdDonator { get; set; } // ii ok?
+
     }
 }
