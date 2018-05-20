@@ -116,6 +116,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\IService.cs" />
+    <Compile Include="Service\ServiceAnaliza.cs" />
     <Compile Include="Service\ServiceAngajat.cs" />
     <Compile Include="Service\ServiceDonator.cs" />
     <Compile Include="Service\ServiceMedic.cs" />
