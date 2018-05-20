@@ -372,20 +372,47 @@ namespace Server.Repository
             }
         }
 
-        public List<AngajatCentru> FindAll()
+        public List<Analiza> FindAll()
         {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    List<AngajatCentru> toReturn = new List<AngajatCentru>();
-                    command.CommandText = "SELECT * FROM AngajatiCentru";
+                    List<Analiza> toReturn = new List<Analiza>();
+                    command.CommandText = "SELECT * FROM Analize";
                     using (var result = command.ExecuteReader())
                     {
                         while (result.Read())
                         {
-                            toReturn.Add(new AngajatCentru(result.GetString(1), result.GetString(2), result.GetString(3), result.GetDateTime(4)));
+                            Analiza analiza = new Analiza
+                            {
+                                Id = result.GetInt32(0),
+                                DataRecoltarii = result.GetDateTime(1),
+                                Eritrocite = result.GetDouble(2),
+                                Hemoglobina = result.GetDouble(3),
+                                Hematocrit = result.GetDouble(4),
+                                VEM = result.GetDouble(5),
+                                HEM = result.GetDouble(6),
+                                CHEM = result.GetDouble(7),
+                                LatimeDistribEritrocit = result.GetDouble(8),
+                                Trombocite = result.GetDouble(9),
+                                VolumMediuTrombocitar = result.GetDouble(10),
+                                Trombocrit = result.GetDouble(11),
+                                LatimeDistribTrombocit = result.GetDouble(12),
+                                Leucocite = result.GetDouble(13),
+                                Granulocite = result.GetDouble(14),
+                                Limfocite = result.GetDouble(15),
+                                MID = result.GetDouble(16),
+                                NumarGranulocite = result.GetDouble(17),
+                                NumarLimfocite = result.GetDouble(18),
+                                NumarMID = result.GetDouble(19),
+                                Glicemie = result.GetDouble(20),
+                                ALT_TGP = result.GetDouble(21),
+                                Colesterol = result.GetDouble(22)
+
+                            };
+                            toReturn.Add(analiza);
                         }
                     }
 

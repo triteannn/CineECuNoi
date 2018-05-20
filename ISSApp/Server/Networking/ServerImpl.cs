@@ -781,15 +781,15 @@ namespace Server.Networking
         }
 
         
-        public void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza)
+        public void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza) // cum pun in service? In care service? 
         {
             try
             {
                 pungaSange.Grupa = grupa;
                 pungaSange.Rh = rh;
-                pungaSangeRepo.Update(pungaSange); 
+                pungaSangeRepo.Update(pungaSange);
 
-
+                analizaRepo.Add(analiza);
 
             }
             catch (RepositoryException e)
