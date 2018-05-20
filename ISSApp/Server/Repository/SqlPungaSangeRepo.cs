@@ -17,13 +17,9 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO PungiSange(Id, DataRecoltare, Grupa, Rh, Target, IdCd) VALUES (@Id, @DataRecoltare, @Grupa, @Rh, @Target, @IdCd)";
+                        "INSERT INTO PungiSange(DataRecoltare, Grupa, Rh, Target, IdCd, IdFd) VALUES ( @DataRecoltare, @Grupa, @Rh, @Target, @IdCd, @IdFd)";
 
-                    var paramId = command.CreateParameter();
-                    paramId.ParameterName = "@Id";
-                    paramId.Value = pungaSange.Id;
-                    command.Parameters.Add(paramId);
-
+                   
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
                     paramDataRecoltare.Value = pungaSange.DataRecoltare;
@@ -48,7 +44,69 @@ namespace Server.Repository
                     paramIdCd.ParameterName = "@IdCd";
                     paramIdCd.Value = pungaSange.IdCd;
                     command.Parameters.Add(paramIdCd);
-                
+
+                    var paramIdFd = command.CreateParameter();
+                    paramIdFd.ParameterName = "@IdFd";
+                    paramIdFd.Value = pungaSange.IdFd;
+                    command.Parameters.Add(paramIdFd);
+
+                    command.ExecuteNonQuery();
+
+                }
+                catch (SqlException)
+                {
+                    throw new Exception("Database insert failed.");
+                }
+
+            }
+        }
+
+        public void AddInitial(PungaSange pungaSange)
+        {
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+
+                    if (pungaSange.Target != null)
+                    {
+                        command.CommandText =
+                            "INSERT INTO PungiSange( DataRecoltare, Target, IdCd, IdFd) VALUES (@DataRecoltare, @Target, @IdCd, @IdFd)";
+
+                        var paramTarget = command.CreateParameter();
+                        paramTarget.ParameterName = "@Target";
+                        paramTarget.Value = pungaSange.Target;
+                        command.Parameters.Add(paramTarget);
+                    }
+                    else
+                    {
+                        command.CommandText =
+                            "INSERT INTO PungiSange( DataRecoltare, IdCd, IdFd) VALUES (@DataRecoltare, @IdCd, @IdFd)";
+
+                    }
+                    
+
+
+                    var paramDataRecoltare = command.CreateParameter();
+                    paramDataRecoltare.ParameterName = "@DataRecoltare";
+                    paramDataRecoltare.Value = pungaSange.DataRecoltare;
+                    command.Parameters.Add(paramDataRecoltare);
+
+                    
+
+                    var paramIdCd = command.CreateParameter();
+                    paramIdCd.ParameterName = "@IdCd";
+                    paramIdCd.Value = pungaSange.IdCd;
+                    command.Parameters.Add(paramIdCd);
+
+
+                    var paramIdFd = command.CreateParameter();
+                    paramIdFd.ParameterName = "@IdFd";
+                    paramIdFd.Value = pungaSange.IdFd;
+                    command.Parameters.Add(paramIdFd);
+
                     command.ExecuteNonQuery();
 
                 }
@@ -99,7 +157,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE PungiSange SET DataRecoltare=@DataRecoltare, Grupa=@Grupa, Rh=@Rh, Target=@Target, IdCd=@IdCd WHERE Id=@Id";
+                        "UPDATE PungiSange SET DataRecoltare=@DataRecoltare, Grupa=@Grupa, Rh=@Rh, Target=@Target WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -126,10 +184,6 @@ namespace Server.Repository
                     paramTarget.Value = pungaSange.Target;
                     command.Parameters.Add(paramTarget);
 
-                    var paramIdCd = command.CreateParameter();
-                    paramIdCd.ParameterName = "@IdCd";
-                    paramIdCd.Value = pungaSange.IdCd;
-                    command.Parameters.Add(paramIdCd);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
