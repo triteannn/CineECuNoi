@@ -119,7 +119,7 @@
     <Compile Include="Service\ServiceAngajat.cs" />
     <Compile Include="Service\ServiceDonator.cs" />
     <Compile Include="Service\ServiceMedic.cs" />
-    <Compile Include="Service\ServiceOungaSange.cs" />
+    <Compile Include="Service\ServicePungaSange.cs" />
     <Compile Include="Service\ServiceProdusSanguin.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
