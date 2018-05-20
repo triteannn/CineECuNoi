@@ -13,12 +13,17 @@ namespace ISSApp.Networking
         Account AccountFindAccountByCredentials(string username, string password);
         List<Account> AccountFindAll();
         int AccountGetLastId();
+        //
         //Angajat
         void AngajatAdd(AngajatCentru angajatCentru);
         AngajatCentru AngajatDelete(AngajatCentru angajatCentru);
         AngajatCentru AngajatUpdate(AngajatCentru angajatCentru);
         AngajatCentru AngajatFindEntity(int id);
         List<AngajatCentru> AngajatFindAll();
+
+        void AddAnaliza(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
+
+        //
         //CentruDonare
         void CentruDonareAdd(CentruDonare centru);
         CentruDonare CentruDonareDelete(CentruDonare centru);

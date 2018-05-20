@@ -775,5 +775,23 @@ namespace Server.Networking
                 throw new NetworkingException(e.Message);
             }
         }
+
+        
+        public void AddAnaliza(PungaSange pungaSange, string grupa, string rh, Analiza analiza)
+        {
+            try
+            {
+                pungaSange.Grupa = grupa;
+                pungaSange.Rh = rh;
+                pungaSangeRepo.Update(pungaSange); 
+
+
+
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
     }
 }

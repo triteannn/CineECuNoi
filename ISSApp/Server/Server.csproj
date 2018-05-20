@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ISQLRepo.cs" />
     <Compile Include="Repository\SQLAccountRepo.cs" />
+    <Compile Include="Repository\SQLAnalizaRepo.cs" />
     <Compile Include="Repository\SQLAngajatRepo.cs" />
     <Compile Include="Repository\SQLCentruDonareRepo.cs" />
     <Compile Include="Repository\SQLDonatorRepo.cs" />
