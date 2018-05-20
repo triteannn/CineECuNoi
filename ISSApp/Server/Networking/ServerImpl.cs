@@ -810,5 +810,17 @@ namespace Server.Networking
                 throw new NetworkingException(e.Message);
             }
         }
+
+        public Analiza AnalizaFindLastByDonator(int idDonator)
+        {
+            try
+            {
+                return analizaRepo.FindLastByDonator(idDonator);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
     }
 }
