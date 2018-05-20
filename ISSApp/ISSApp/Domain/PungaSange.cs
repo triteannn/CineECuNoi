@@ -43,5 +43,8 @@ namespace ISSApp.Domain
             this.Rh = null;
         }
 
+        public PungaSange()
+        {
+        }
     }
 }

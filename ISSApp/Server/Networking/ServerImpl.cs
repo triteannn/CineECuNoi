@@ -21,6 +21,7 @@ namespace Server.Networking
         private SqlPungaSangeRepo pungaSangeRepo;
         private SqlSpitalRepo spitalRepo;
         private SqlTrombociteRepo trombociteRepo;
+        private SQLAnalizaRepo analizaRepo;
 
         public ServerImpl()
         {
@@ -790,6 +791,18 @@ namespace Server.Networking
 
 
 
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<Analiza> AnalizaFindByDonator(int idDonator)
+        {
+            try
+            {
+                return analizaRepo.FindByDonator(idDonator);
             }
             catch (RepositoryException e)
             {
