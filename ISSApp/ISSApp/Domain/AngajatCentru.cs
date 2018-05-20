@@ -22,7 +22,7 @@ namespace ISSApp.Domain
         public string Prenume { get; set; }
         public DateTime Dob { get; set; }
 
-        public int IdA { get; set; }
+        //public int IdA { get; set; }
         public int IdCd { get; set; }
 
         public virtual Account Account { get; set; }

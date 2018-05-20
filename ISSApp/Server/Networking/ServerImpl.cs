@@ -37,6 +37,7 @@ namespace Server.Networking
             pungaSangeRepo = new SqlPungaSangeRepo();
             spitalRepo = new SqlSpitalRepo();
             trombociteRepo = new SqlTrombociteRepo();
+            analizaRepo = new SQLAnalizaRepo();
         }
 
         public void AccountAdd(Account account)

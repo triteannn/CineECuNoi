@@ -53,9 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext.cs" />
-    <Compile Include="Migrations\201805192250450_N_atiAveNoroc.cs" />
-    <Compile Include="Migrations\201805192250450_N_atiAveNoroc.Designer.cs">
-      <DependentUpon>201805192250450_N_atiAveNoroc.cs</DependentUpon>
+    <Compile Include="Migrations\201805201248039_Fix1.cs" />
+    <Compile Include="Migrations\201805201248039_Fix1.Designer.cs">
+      <DependentUpon>201805201248039_Fix1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Networking\ServerImpl.cs" />
@@ -88,8 +88,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805192250450_N_atiAveNoroc.resx">
-      <DependentUpon>201805192250450_N_atiAveNoroc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805201248039_Fix1.resx">
+      <DependentUpon>201805201248039_Fix1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

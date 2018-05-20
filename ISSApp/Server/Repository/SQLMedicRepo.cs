@@ -41,7 +41,7 @@ namespace Server.Repository
 
                     var paramIdA = command.CreateParameter();
                     paramIdA.ParameterName = "@IdA";
-                    paramIdA.Value = medic.IdA;
+                    //paramIdA.Value = medic.IdA;
                     command.Parameters.Add(paramIdA);
 
                     var paramIdS = command.CreateParameter();
@@ -121,7 +121,7 @@ namespace Server.Repository
 
                     var paramIdA = command.CreateParameter();
                     paramIdA.ParameterName = "@IdA";
-                    paramIdA.Value = medic.IdA;
+                    //paramIdA.Value = medic.IdA;
                     command.Parameters.Add(paramIdA);
 
                     var paramIdS = command.CreateParameter();
@@ -166,7 +166,7 @@ namespace Server.Repository
                             medic.Nume = result.GetString(2);
                             medic.Prenume = result.GetString(3);
                             medic.Dob = result.GetDateTime(4);
-                            medic.IdA = result.GetInt32(5);
+                            //medic.IdA = result.GetInt32(5);
                             medic.IdS = result.GetInt32(6);
 
                             return medic;
@@ -202,7 +202,7 @@ namespace Server.Repository
                                 Nume = result.GetString(2),
                                 Prenume = result.GetString(3),
                                 Dob = result.GetDateTime(4),
-                                IdA = result.GetInt32(5),
+                                //IdA = result.GetInt32(5),
                                 IdS = result.GetInt32(6)
                             };
 

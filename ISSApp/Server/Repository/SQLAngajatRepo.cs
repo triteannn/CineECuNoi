@@ -40,7 +40,7 @@ namespace Server.Repository
 
                     var paramIdA = command.CreateParameter();
                     paramIdA.ParameterName = "@IdA";
-                    paramIdA.Value = angajatCentru.IdA;
+                    //paramIdA.Value = angajatCentru.IdA;
                     command.Parameters.Add(paramIdA);
 
                     var paramIdCd = command.CreateParameter();
@@ -120,7 +120,7 @@ namespace Server.Repository
 
                     var paramIdA = command.CreateParameter();
                     paramIdA.ParameterName = "@IdA";
-                    paramIdA.Value = angajatCentru.IdA;
+                    //paramIdA.Value = angajatCentru.IdA;
                     command.Parameters.Add(paramIdA);
 
                     var paramIdCd = command.CreateParameter();

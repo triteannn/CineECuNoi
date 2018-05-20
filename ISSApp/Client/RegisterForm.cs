@@ -75,8 +75,9 @@ namespace Client
                 var donator = new Donator(TxtCnp.Text, TxtLastName.Text, TxtFirstName.Text, DOB.Value);
                 var account = new Account(TxtUsername.Text, TxtPassword.Text);
                 _server.AccountAdd(account);
-                donator.IdA = _server.AccountGetLastId();
-                account.Id = donator.IdA;
+                //Tudor, fix dis
+                //donator.IdA = _server.AccountGetLastId();
+                //account.Id = donator.IdA;
 
                 _server.DonatorAdd(donator);
 
