@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Client.Exceptions
+namespace ISSApp.Exceptions
 {
-    class SeviceException: Exception
+    public class SeviceException: Exception
     {
         public SeviceException(string message) : base(message)
         {
