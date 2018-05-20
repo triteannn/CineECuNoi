@@ -589,16 +589,19 @@ namespace Server.Networking
             }
         }
 
+
         public void PungaSangeAdd(PungaSange pungaSange)
         {
             try
             {
-                pungaSangeRepo.Add(pungaSange);
+                pungaSangeRepo.AddInitial(pungaSange);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
         }
+
+
 
         public PungaSange PungaSangeDelete(PungaSange pungaSange)
         {
