@@ -780,7 +780,7 @@ namespace Server.Networking
         }
 
         
-        public void AddAnaliza(PungaSange pungaSange, string grupa, string rh, Analiza analiza)
+        public void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza)
         {
             try
             {
