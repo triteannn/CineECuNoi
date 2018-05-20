@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -51,9 +52,9 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
 
-                } catch (SqlException)
+                } catch (RepositoryException)
                 {
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -82,9 +83,9 @@ namespace Server.Repository
 
                     return null;
 
-                } catch (SqlException)
+                } catch (RepositoryException)
                 {
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -137,9 +138,9 @@ namespace Server.Repository
                     }
 
                     return null;
-                } catch (SqlException)
+                } catch (RepositoryException)
                 {
-                    throw new Exception("Database update failed.");
+                    throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -174,9 +175,9 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (SqlException)
+                } catch (RepositoryException)
                 {
-                    throw new Exception("Database getOne failed.");
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
 
             }
@@ -200,9 +201,9 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                } catch (SqlException)
+                } catch (RepositoryException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
