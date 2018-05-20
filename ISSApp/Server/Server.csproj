@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201805201248039_Fix1.Designer.cs">
       <DependentUpon>201805201248039_Fix1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805201756273_PlusBoliAnaliza.cs" />
+    <Compile Include="Migrations\201805201756273_PlusBoliAnaliza.Designer.cs">
+      <DependentUpon>201805201756273_PlusBoliAnaliza.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Networking\ServerImpl.cs" />
     <Compile Include="Program.cs" />
@@ -92,6 +96,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805201248039_Fix1.resx">
       <DependentUpon>201805201248039_Fix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805201756273_PlusBoliAnaliza.resx">
+      <DependentUpon>201805201756273_PlusBoliAnaliza.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

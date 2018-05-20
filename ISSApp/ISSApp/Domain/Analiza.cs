@@ -60,9 +60,10 @@ namespace ISSApp.Domain
         public double Glicemie { get; set; }
         public double ALT_TGP { get; set; }
         public double Colesterol { get; set; }
+        public string ListaBoliDetectate { get; set; }
 
         public virtual FormularDonare FormularDonare { get; set; }
 
-        public string ListaBoliDetectate;
+        
     }
 }
