@@ -810,5 +810,37 @@ namespace Server.Networking
                 throw new NetworkingException(e.Message);
             }
         }
+
+        /*
+         * Se returneaza o lista cu pungile de sange, care au atasate CNP-ul donatorului.
+         */
+        public List<PungaSangeCuCNP> getPungaSangeCuCNP()
+        {
+            try
+            {
+                List<PungaSangeCuCNP> pungi = new List<PungaSangeCuCNP>();
+                foreach (var p in pungaSangeRepo.FindAll())
+                {
+                    FormularDonare formular = formularDonareRepo.FindEntity(p.IdFd);
+                    Donator donator = donatorRepo.FindEntity(formular.IdD);
+                    string CNP = donator.CNP;
+
+                    PungaSangeCuCNP punga = new PungaSangeCuCNP(
+                        CNP,
+                        p.Id,
+                        p.DataRecoltare,
+                        p.Grupa,
+                        p.Rh,
+                        p.Target
+                    );
+                    pungi.Add(punga);
+                }
+                return pungi;
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
     }
 }

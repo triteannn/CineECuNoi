@@ -22,6 +22,7 @@ namespace ISSApp.Networking
         List<AngajatCentru> AngajatFindAll();
 
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
+        List<PungaSangeCuCNP> getPungaSangeCuCNP(); 
 
         //
         //CentruDonare
