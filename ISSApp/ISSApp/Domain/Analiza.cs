@@ -7,6 +7,10 @@ namespace ISSApp.Domain
     [Table("Analize")]
     public class Analiza
     {
+        public Analiza()
+        {
+        }
+
         public Analiza(int id, DateTime dataRecoltarii, double eritrocite, double hemoglobina, double hematocrit, double vEM, double hEM, double cHEM, double latimeDistribEritrocit, double trombocite, double volumMediuTrombocitar, double trombocrit, double latimeDistribTrombocit, double leucocite, double granulocite, double limfocite, double mID, double numarGranulocite, double numarLimfocite, double numarMID, double glicemie, double aLT_TGP, double colesterol)
         {
             Id = id;

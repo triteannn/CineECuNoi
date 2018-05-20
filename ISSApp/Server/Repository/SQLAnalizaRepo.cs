@@ -255,5 +255,69 @@ namespace Server.Repository
                 }
             }
         }
+
+
+        public List<Analiza> FindByDonator(int idDonator)
+        {
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    List<Analiza> toReturn = new List<Analiza>();
+                    command.CommandText = "SELECT a.* " +
+                                          "FROM FormulareDonare fd INNER JOIN Analize a " +
+                                          "ON a.Id = fd.IdAn " +
+                                          "where fd.IdD = @IdD";
+
+                    var paramIdD = command.CreateParameter();
+                    paramIdD.ParameterName = "@IdD";
+                    paramIdD.Value = idDonator;
+                    command.Parameters.Add(paramIdD);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            Analiza analiza = new Analiza
+                            {
+                                Id = result.GetInt32(0),
+                                DataRecoltarii = result.GetDateTime(1),
+                                Eritrocite = result.GetDouble(2),
+                                Hemoglobina = result.GetDouble(3),
+                                Hematocrit = result.GetDouble(4),
+                                VEM = result.GetDouble(5),
+                                HEM = result.GetDouble(6),
+                                CHEM = result.GetDouble(7),
+                                LatimeDistribEritrocit = result.GetDouble(8),
+                                Trombocite = result.GetDouble(9),
+                                VolumMediuTrombocitar = result.GetDouble(10),
+                                Trombocrit = result.GetDouble(11),
+                                LatimeDistribTrombocit = result.GetDouble(12),
+                                Leucocite = result.GetDouble(13),
+                                Granulocite = result.GetDouble(14),
+                                Limfocite = result.GetDouble(15),
+                                MID = result.GetDouble(16),
+                                NumarGranulocite = result.GetDouble(17),
+                                NumarLimfocite = result.GetDouble(18),
+                                NumarMID = result.GetDouble(19),
+                                Glicemie = result.GetDouble(20),
+                                ALT_TGP = result.GetDouble(21),
+                                Colesterol = result.GetDouble(22)
+
+                            };
+
+                            toReturn.Add(analiza);
+                        }
+                    }
+
+                    return toReturn;
+                }
+                catch (SqlException)
+                {
+                    throw new Exception("Database FindByDonator failed.");
+                }
+            }
+        }
     }
 }
