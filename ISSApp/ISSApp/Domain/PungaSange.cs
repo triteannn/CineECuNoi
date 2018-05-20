@@ -21,6 +21,17 @@ namespace ISSApp.Domain
         [NotMapped]
         public int IdFd { get; set; }
 
+        public PungaSange(int id, DateTime dataRecoltare, string grupa, string rh, string target, int idCd, int idFd)
+        {
+            Id = id;
+            DataRecoltare = dataRecoltare;
+            Grupa = grupa;
+            Rh = rh;
+            Target = target;
+            IdCd = idCd;
+            IdFd = idFd;
+        }
+
         public PungaSange(DateTime DataRecoltare, string Target, int IdCd, int IdFd)
         {
             this.DataRecoltare = DataRecoltare;

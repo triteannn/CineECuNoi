@@ -130,7 +130,7 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -161,7 +161,7 @@ namespace Server.Repository
                     return null;
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -301,7 +301,7 @@ namespace Server.Repository
                     return null;
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -360,7 +360,7 @@ namespace Server.Repository
                     }
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -414,7 +414,7 @@ namespace Server.Repository
 
                     return toReturn;
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea analizelor din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -478,7 +478,7 @@ namespace Server.Repository
 
                     return toReturn;
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea analizelor unui donator din baza de date nu s-a putut realiza cu succes.");
                 }

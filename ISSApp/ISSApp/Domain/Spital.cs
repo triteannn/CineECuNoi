@@ -23,11 +23,13 @@ namespace ISSApp.Domain
         [NotMapped]
         public int IdAdr { get; set; }
 
-        public Spital(int id, string denumire)
+        public Spital(int id, string denumire, int idAdr)
         {
             Id = id;
             Denumire = denumire;
+            IdAdr = idAdr;
             Medici = new List<Medic>();
         }
+
     }
 }

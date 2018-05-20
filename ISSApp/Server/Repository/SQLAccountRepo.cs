@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -55,7 +56,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Database delete failed.");
                 }
 
             }
@@ -127,7 +128,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database getOne failed.");
+                    throw new RepositoryException("Database getOne failed.");
                 }
 
             }
@@ -175,7 +176,7 @@ namespace Server.Repository
                     return toReturn;
                 } catch (SqlException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Database getAll failed.");
                 }
             }
         }

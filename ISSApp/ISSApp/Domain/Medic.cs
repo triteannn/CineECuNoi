@@ -14,7 +14,7 @@ namespace ISSApp.Domain
         public string Prenume { get; set; }
         public DateTime Dob { get; set; }
 
-        //public int IdA { get; set; }
+        
         public int IdS { get; set; }
 
         public virtual DateContact DateContact { get; set; }
@@ -24,5 +24,8 @@ namespace ISSApp.Domain
 
         [NotMapped]
         public int IdDc { get; set; }
+
+        [NotMapped]
+        public int IdA { get; set; }
     }
 }

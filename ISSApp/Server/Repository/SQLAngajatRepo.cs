@@ -16,7 +16,7 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "INSERT INTO AngajatiCentru(CNP, Nume, Prenume, Dob, IdA, IdCd) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA, @IdCd)";
+                    command.CommandText = "INSERT INTO AngajatiCentru(CNP, Nume, Prenume, Dob, IdCd, IdA, IdDc) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdCd, @IdA, @IdDc)";
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -38,19 +38,24 @@ namespace Server.Repository
                     paramDob.Value = angajatCentru.Dob;
                     command.Parameters.Add(paramDob);
 
-                    var paramIdA = command.CreateParameter();
-                    paramIdA.ParameterName = "@IdA";
-                    //paramIdA.Value = angajatCentru.IdA;
-                    command.Parameters.Add(paramIdA);
-
                     var paramIdCd = command.CreateParameter();
                     paramIdCd.ParameterName = "@IdCd";
                     paramIdCd.Value = angajatCentru.IdCd;
                     command.Parameters.Add(paramIdCd);
 
+                    var paramIdA = command.CreateParameter();
+                    paramIdA.ParameterName = "@IdA";
+                    paramIdA.Value = angajatCentru.IdA;
+                    command.Parameters.Add(paramIdA);
+
+                    var paramIdDc = command.CreateParameter();
+                    paramIdDc.ParameterName = "@IdDc";
+                    paramIdDc.Value = angajatCentru.IdDc;
+                    command.Parameters.Add(paramIdDc);
+
                     command.ExecuteNonQuery();
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -65,12 +70,12 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM AngajatiCentru WHERE CNP=@CNP";
+                    command.CommandText = "DELETE FROM AngajatiCentru WHERE Id=@Id";
 
-                    var paramCNP = command.CreateParameter();
-                    paramCNP.ParameterName = "@CNP";
-                    paramCNP.Value = angajatCentru.CNP;
-                    command.Parameters.Add(paramCNP);
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = angajatCentru.Id;
+                    command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -81,7 +86,7 @@ namespace Server.Repository
                     return null;
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -96,7 +101,12 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "UPDATE AngajatiCentru SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA, IdCd=@IdCd WHERE CNP=@CNP";
+                    command.CommandText = "UPDATE AngajatiCentru SET CNP=@CNP, Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdCd=@IdCd, IdA=@IdA, IdDc=@IdDc WHERE Id=@Id";
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = angajatCentru.Id;
+                    command.Parameters.Add(paramId);
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -118,15 +128,20 @@ namespace Server.Repository
                     paramDob.Value = angajatCentru.Dob;
                     command.Parameters.Add(paramDob);
 
-                    var paramIdA = command.CreateParameter();
-                    paramIdA.ParameterName = "@IdA";
-                    //paramIdA.Value = angajatCentru.IdA;
-                    command.Parameters.Add(paramIdA);
-
                     var paramIdCd = command.CreateParameter();
                     paramIdCd.ParameterName = "@IdCd";
                     paramIdCd.Value = angajatCentru.IdCd;
                     command.Parameters.Add(paramIdCd);
+
+                    var paramIdA = command.CreateParameter();
+                    paramIdA.ParameterName = "@IdA";
+                    paramIdA.Value = angajatCentru.IdA;
+                    command.Parameters.Add(paramIdA);
+
+                    var paramIdDc = command.CreateParameter();
+                    paramIdDc.ParameterName = "@IdDc";
+                    paramIdDc.Value = angajatCentru.IdDc;
+                    command.Parameters.Add(paramIdDc);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -137,7 +152,7 @@ namespace Server.Repository
                     return null;
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -153,10 +168,10 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText = "SELECT * FROM AngajatiCentru WHERE Id=@Id";
-                    var paramCNP = command.CreateParameter();
-                    paramCNP.ParameterName = "@Id";
-                    paramCNP.Value = id;
-                    command.Parameters.Add(paramCNP);
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = id;
+                    command.Parameters.Add(paramId);
 
                     using (var result = command.ExecuteReader())
                     {
@@ -175,7 +190,7 @@ namespace Server.Repository
                     }
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -202,7 +217,7 @@ namespace Server.Repository
 
                     return toReturn;
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea angajatilor din baza de date nu s-a putut realiza cu succes.");
                 }

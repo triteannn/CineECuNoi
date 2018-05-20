@@ -3,6 +3,7 @@ using ISSApp.Domain;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -17,17 +18,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO PSTrombocite(Id, DataRecoltare, Cantitate, Target, IdFc) VALUES (@Id, @DataRecoltare, @Cantitate, @Target, @IdFc)";
-
-                    var paramId = command.CreateParameter();
-                    paramId.ParameterName = "@Id";
-                    paramId.Value = psTrombocite.Id;
-                    command.Parameters.Add(paramId);
-
-                    var paramDataRecoltare = command.CreateParameter();
-                    paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    //paramDataRecoltare.Value = psTrombocite.DataRecoltare;
-                    command.Parameters.Add(paramDataRecoltare);
+                        "INSERT INTO PSTrombocite(Cantitate, Target, DataExpirare, Grupa, Rh, IdCD) VALUES (@Cantitate, @Target, @DataExpirare, @Grupa, @Rh, @IdCD)";
 
                     var paramCantitate = command.CreateParameter();
                     paramCantitate.ParameterName = "@Cantitate";
@@ -39,17 +30,32 @@ namespace Server.Repository
                     paramTarget.Value = psTrombocite.Target;
                     command.Parameters.Add(paramTarget);
 
-                    var paramIdFc = command.CreateParameter();
-                    paramIdFc.ParameterName = "@IdFc";
-                    //paramIdFc.Value = psTrombocite.IdFc;
-                    command.Parameters.Add(paramIdFc);
+                    var paramDataExpirare = command.CreateParameter();
+                    paramDataExpirare.ParameterName = "@DataExpirare";
+                    paramDataExpirare.Value = psTrombocite.DataExpirare;
+                    command.Parameters.Add(paramDataExpirare);
+
+                    var paramGrupa = command.CreateParameter();
+                    paramGrupa.ParameterName = "@Grupa";
+                    paramGrupa.Value = psTrombocite.Grupa;
+                    command.Parameters.Add(paramGrupa);
+
+                    var paramRh = command.CreateParameter();
+                    paramRh.ParameterName = "@Rh";
+                    paramRh.Value = psTrombocite.Rh;
+                    command.Parameters.Add(paramRh);
+
+                    var paramIdCD = command.CreateParameter();
+                    paramIdCD.ParameterName = "@IdCD";
+                    paramIdCD.Value = psTrombocite.IdCD;
+                    command.Parameters.Add(paramIdCD);
 
                     command.ExecuteNonQuery();
 
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -81,7 +87,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -95,17 +101,12 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE PSTrombocite SET DataRecoltare=@DataRecoltare, Cantitate=@Cantitate, Target=@Target, IdFc=@IdFc WHERE Id=@Id";
+                        "UPDATE PSTrombocite SET Cantitate=@Cantitate, Target=@Target, DataExpirare=@DataExpirare, Grupa=@Grupa, @Rh=@Rh, IdCD=@IdCD WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
                     paramId.Value = psTrombocite.Id;
                     command.Parameters.Add(paramId);
-
-                    var paramDataRecoltare = command.CreateParameter();
-                    paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    //paramDataRecoltare.Value = psTrombocite.DataRecoltare;
-                    command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
                     paramCantitate.ParameterName = "@Cantitate";
@@ -117,10 +118,25 @@ namespace Server.Repository
                     paramTarget.Value = psTrombocite.Target;
                     command.Parameters.Add(paramTarget);
 
-                    var paramIdFc = command.CreateParameter();
-                    paramIdFc.ParameterName = "@IdFc";
-                    //paramIdFc.Value = psTrombocite.IdFc;
-                    command.Parameters.Add(paramIdFc);
+                    var paramDataExpirare = command.CreateParameter();
+                    paramDataExpirare.ParameterName = "@DataExpirare";
+                    paramDataExpirare.Value = psTrombocite.DataExpirare;
+                    command.Parameters.Add(paramDataExpirare);
+
+                    var paramGrupa = command.CreateParameter();
+                    paramGrupa.ParameterName = "@Grupa";
+                    paramGrupa.Value = psTrombocite.Grupa;
+                    command.Parameters.Add(paramGrupa);
+
+                    var paramRh = command.CreateParameter();
+                    paramRh.ParameterName = "@Rh";
+                    paramRh.Value = psTrombocite.Rh;
+                    command.Parameters.Add(paramRh);
+
+                    var paramIdCD = command.CreateParameter();
+                    paramIdCD.ParameterName = "@IdCD";
+                    paramIdCD.Value = psTrombocite.IdCD;
+                    command.Parameters.Add(paramIdCD);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -132,7 +148,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database update failed.");
+                    throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -156,10 +172,12 @@ namespace Server.Repository
                         {
                             PSTrombocite psTrombocite = new PSTrombocite();
                             psTrombocite.Id = result.GetInt32(0);
-                            //psTrombocite.DataRecoltare = result.GetDateTime(1);
-                            psTrombocite.Cantitate = result.GetFloat(2);
-                            psTrombocite.Target = result.GetString(3);
-                            //psTrombocite.IdFc = result.GetInt32(4);
+                            psTrombocite.Cantitate = result.GetFloat(1);
+                            psTrombocite.Target = result.GetString(2);
+                            psTrombocite.DataExpirare = result.GetDateTime(3);
+                            psTrombocite.Grupa = result.GetString(4);
+                            psTrombocite.Rh = result.GetString(5);
+                            psTrombocite.IdCD = result.GetInt32(6);
 
                             return psTrombocite;
                         }
@@ -170,7 +188,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getOne failed.");
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
 
             }
@@ -192,10 +210,12 @@ namespace Server.Repository
                             PSTrombocite psTrombocite = new PSTrombocite
                             {
                                 Id = result.GetInt32(0),
-                                //DataRecoltare = result.GetDateTime(1),
-                                Cantitate = result.GetFloat(2),
-                                Target = result.GetString(3),
-                                //IdFc = result.GetInt32(4)
+                                Cantitate = result.GetFloat(1),
+                                Target = result.GetString(2),
+                                DataExpirare = result.GetDateTime(3),
+                                Grupa = result.GetString(4),
+                                Rh = result.GetString(5),
+                                IdCD = result.GetInt32(6)
                             };
 
                             toReturn.Add(psTrombocite);
@@ -206,7 +226,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Returnarea trombocitelor din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -233,10 +253,12 @@ namespace Server.Repository
                             PSTrombocite psTrombocite = new PSTrombocite
                             {
                                 Id = result.GetInt32(0),
-                                //DataRecoltare = result.GetDateTime(1),
-                                Cantitate = result.GetFloat(2),
-                                Target = result.GetString(3),
-                                //IdFc = result.GetInt32(4)
+                                Cantitate = result.GetFloat(1),
+                                Target = result.GetString(2),
+                                DataExpirare = result.GetDateTime(3),
+                                Grupa = result.GetString(4),
+                                Rh = result.GetString(5),
+                                IdCD = result.GetInt32(6)
                             };
 
                             toReturn.Add(psTrombocite);
@@ -247,7 +269,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getTarget failed.");
+                    throw new RepositoryException("Returnarea trombocitelor pentru un target din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
