@@ -348,6 +348,14 @@ namespace Server.Networking
             }
         }
 
+        /*
+         * verifica existenta unui target cu cnpul mentionat
+         */
+        public bool ExistaCNP(string cnp)
+        {
+            return formularCerereRepo.ExistaCNP(cnp);
+        }
+
         public void FormularDonareAdd(FormularDonare formular)
         {
             try

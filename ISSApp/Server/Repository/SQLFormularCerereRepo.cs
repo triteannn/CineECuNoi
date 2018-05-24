@@ -1,5 +1,6 @@
 using ISSApp.Domain;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace Server.Repository
 {
@@ -32,6 +33,29 @@ namespace Server.Repository
         {
             // TODO implement here
             return null;
+        }
+
+        public bool ExistaCNP(string cnp)
+        {
+            using (var connection = Globals.getDBConnection())
+            {
+                connection.Open();
+                var cmd = new SqlCommand(@"select * from FormularCerere where Target=@cnp", connection);
+                cmd.Parameters.AddWithValue("@cnp", cnp);
+              
+                var reader = cmd.ExecuteReader();
+               
+                if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+
         }
     }
 }

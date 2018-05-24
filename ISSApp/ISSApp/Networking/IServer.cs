@@ -45,6 +45,7 @@ namespace ISSApp.Networking
         FormularCerere FormularCerereUpdate(FormularCerere formular);
         FormularCerere FormularCerereFindEntity(int id);
         List<FormularCerere> FormularCerereFindAll();
+        bool ExistaCNP(string cnp);
         //FormularDonare
         void FormularDonareAdd(FormularDonare formular);
         FormularDonare FormularDonareDelete(FormularDonare formular);
