@@ -112,6 +112,7 @@
     <Compile Include="Exceptions\NetworkingException.cs" />
     <Compile Include="Exceptions\RepositoryException.cs" />
     <Compile Include="Exceptions\SeviceException.cs" />
+    <Compile Include="Exceptions\ValidationException.cs" />
     <Compile Include="Networking\IServer.cs" />
     <Compile Include="Networking\ServerService.cs" />
     <Compile Include="Program.cs" />

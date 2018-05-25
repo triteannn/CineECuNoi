@@ -42,20 +42,15 @@ namespace Server.Repository
                 connection.Open();
                 var cmd = new SqlCommand(@"select * from FormularCerere where Target=@cnp", connection);
                 cmd.Parameters.AddWithValue("@cnp", cnp);
-              
+
                 var reader = cmd.ExecuteReader();
-               
+
                 if (reader.Read())
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
             }
             return false;
-
         }
     }
 }

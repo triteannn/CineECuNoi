@@ -12,6 +12,8 @@ namespace ISSApp.Domain
         public int Numar { get; set; }
         public string Oras { get; set; }
         public string Judet { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
 
         public Adresa()
         {

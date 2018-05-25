@@ -1,4 +1,6 @@
-﻿using ISSApp.Domain;
+﻿using Client.Validator;
+using ISSApp.Domain;
+using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
 using System.Runtime.InteropServices;
@@ -70,26 +72,38 @@ namespace Client
 
         private void BtnRegister_Click(object sender, EventArgs e)
         {
-            if (TxtCnp.Text.Length > 0 && TxtFirstName.Text.Length > 0 && TxtLastName.Text.Length > 0 && TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && !TxtFirstName.Text.Equals("Full name") && !TxtUsername.Text.Equals("Username") && !TxtPassword.Text.Equals("Password"))
+            if (TxtCnp.Text.Length > 0 && TxtFirstName.Text.Length > 0 && TxtLastName.Text.Length > 0 && TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && !TxtCnp.Text.Equals("CNP") && !TxtFirstName.Text.Equals("First name") && !TxtLastName.Text.Equals("Last name") && !TxtUsername.Text.Equals("Username") && !TxtPassword.Text.Equals("Password"))
             {
-                var donator = new Donator(TxtCnp.Text, TxtLastName.Text, TxtFirstName.Text, DOB.Value);
-                var account = new Account(TxtUsername.Text, TxtPassword.Text);
-                _server.AccountAdd(account);
-                //Tudor, fix dis
-                //donator.IdA = _server.AccountGetLastId();
-                //account.Id = donator.IdA;
+                try
+                {
+                    RegisterValidator.ValidateCnp(TxtCnp.Text);
+                    RegisterValidator.ValidateFirstName(TxtFirstName.Text);
+                    RegisterValidator.ValidateLastName(TxtLastName.Text);
+                    RegisterValidator.ValidateUsername(TxtUsername.Text);
+                    RegisterValidator.ValidatePassword(TxtPassword.Text);
+                    var donator = new Donator(TxtCnp.Text, TxtLastName.Text, TxtFirstName.Text, DOB.Value);
+                    var account = new Account(TxtUsername.Text, TxtPassword.Text);
+                    _server.AccountAdd(account);
 
-                _server.DonatorAdd(donator);
+                    donator.IdA = _server.AccountGetLastId();
+                    account.Id = donator.IdA;
 
-                donator.Id = _server.DonatorGetLastId();
-                account.IdD = donator.Id;
-                _server.AccountUpdate(account);
+                    _server.DonatorAdd(donator);
 
-                MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                _loginForm.EmptyFields();
-                _loginForm.Enabled = true;
-                Close();
+                    donator.Id = _server.DonatorGetLastId();
+                    account.IdD = donator.Id;
+                    _server.AccountUpdate(account);
+
+                    MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    _loginForm.EmptyFields();
+                    _loginForm.Enabled = true;
+                    Close();
+                } catch (ValidationException ex)
+                {
+                    MessageBox.Show(ex.Message, @"Validation error occured", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             else
                 MessageBox.Show(@"Fields can not be empty or left unchanged.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
