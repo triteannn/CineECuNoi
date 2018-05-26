@@ -90,6 +90,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
@@ -138,6 +139,17 @@
   <ItemGroup>
     <None Include="Resources\LoginImage.swf" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\bellinactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menuicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bellactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bellactive2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
