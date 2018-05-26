@@ -1,9 +1,9 @@
 ﻿using ISSApp.Domain;
+using ISSApp.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -119,7 +119,7 @@ namespace Server.Repository
                         if (result.Read())
                         {
 
-                            Account account = new Account(result.GetString(1), result.GetString(2));
+                            Account account = new Account(result.GetString(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetInt32(5));
                             return account;
                         }
 
@@ -145,13 +145,22 @@ namespace Server.Repository
                 var reader = cmd.ExecuteReader();
                 var user = "";
                 var pass = "";
+                var idD = new int();
+                var idM = new int();
+                var idAc = new int();
                 while (reader.Read())
                 {
                     user = reader.GetString(1);
                     pass = reader.GetString(2);
+                    if (reader[3] != DBNull.Value)
+                        idD = reader.GetInt32(3);
+                    if (reader[4] != DBNull.Value)
+                        idM = reader.GetInt32(4);
+                    if (reader[5] != DBNull.Value)
+                        idAc = reader.GetInt32(5);
                 }
                 if (user.Length > 0 && pass.Length > 0 && username.Equals(user) && password.Equals(pass))
-                    return new Account(user, pass);
+                    return new Account(user, pass, idD, idM, idAc);
                 return null;
             }
         }

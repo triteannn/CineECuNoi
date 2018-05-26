@@ -178,9 +178,17 @@ namespace Client
                 var acc = _server.AccountFindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
                 if (acc != null)
                 {
-                    var mainWindow = new DonatorWindow(this, _server);
-                    mainWindow.Show();
-                    Hide();
+                    if (acc.IdD != null && DropdownAS.selectedValue.Equals("Donator"))
+                    {
+                        var mainWindow = new DonatorWindow(this, _server);
+                        mainWindow.Show();
+                        Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"This account doesn't have the rights to login as " + DropdownAS.selectedValue,
+                            @"Insufficient permission", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                     MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
