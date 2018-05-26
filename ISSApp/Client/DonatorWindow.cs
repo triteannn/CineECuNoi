@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class MainWindow : Form
+    public partial class DonatorWindow : Form
     {
 
         private readonly LoginForm _loginForm;
         private readonly IServer _server;
 
-        public MainWindow(LoginForm loginForm, IServer server)
+        public DonatorWindow(LoginForm loginForm, IServer server)
         {
             InitializeComponent();
             _loginForm = loginForm;
@@ -54,6 +54,11 @@ namespace Client
                 return;
             ReleaseCapture();
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
+        }
+
+        private void DonatorWindow_Load(object sender, EventArgs e)
+        {
+            Text = @"Donator Window";
         }
     }
 }

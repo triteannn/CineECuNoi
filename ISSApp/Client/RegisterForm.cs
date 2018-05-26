@@ -86,7 +86,7 @@ namespace Client
                     _server.AccountAdd(account);
 
                     donator.IdA = _server.AccountGetLastId();
-                    account.Id = donator.IdA;
+                    account.Id = (int)donator.IdA;
 
                     _server.DonatorAdd(donator);
 

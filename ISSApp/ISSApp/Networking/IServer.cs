@@ -34,6 +34,7 @@ namespace ISSApp.Networking
         List<CentruDonare> CentruDonareFindAll();
         //Donator
         void DonatorAdd(Donator donator);
+        void DonatorAddFull(Donator donator);
         Donator DonatorDelete(Donator donator);
         Donator DonatorUpdate(Donator donator);
         Donator DonatorFindEntity(int id);

@@ -31,9 +31,9 @@ namespace ISSApp.Domain
         public virtual FormularDonare FormularDonare { get; set; }
 
         [NotMapped]
-        public int IdDc { get; set; }
+        public int? IdDc { get; set; }
 
         [NotMapped]
-        public int IdA { get; set; }
+        public int? IdA { get; set; }
     }
 }

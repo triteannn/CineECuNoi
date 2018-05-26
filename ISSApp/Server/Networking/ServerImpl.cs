@@ -9,19 +9,19 @@ namespace Server.Networking
 {
     public class ServerImpl : MarshalByRefObject, IServer
     {
-        private SqlAccountRepo accountRepo;
-        private SqlAngajatRepo angajatRepo;
-        private SqlCentruDonareRepo centruDonareRepo;
-        private SqlDonatorRepo donatorRepo;
-        private SqlFormularCerereRepo formularCerereRepo;
-        private SqlFormularDonareRepo formularDonareRepo;
-        private SqlGlobuleRosiiRepo globuleRosiiRepo;
-        private SqlMedicRepo medicRepo;
-        private SqlPlasmaRepo plasmaRepo;
-        private SqlPungaSangeRepo pungaSangeRepo;
-        private SqlSpitalRepo spitalRepo;
-        private SqlTrombociteRepo trombociteRepo;
-        private SQLAnalizaRepo analizaRepo;
+        private readonly SqlAccountRepo accountRepo;
+        private readonly SqlAngajatRepo angajatRepo;
+        private readonly SqlCentruDonareRepo centruDonareRepo;
+        private readonly SqlDonatorRepo donatorRepo;
+        private readonly SqlFormularCerereRepo formularCerereRepo;
+        private readonly SqlFormularDonareRepo formularDonareRepo;
+        private readonly SqlGlobuleRosiiRepo globuleRosiiRepo;
+        private readonly SqlMedicRepo medicRepo;
+        private readonly SqlPlasmaRepo plasmaRepo;
+        private readonly SqlPungaSangeRepo pungaSangeRepo;
+        private readonly SqlSpitalRepo spitalRepo;
+        private readonly SqlTrombociteRepo trombociteRepo;
+        private readonly SQLAnalizaRepo analizaRepo;
 
         public ServerImpl()
         {
@@ -232,6 +232,17 @@ namespace Server.Networking
             try
             {
                 donatorRepo.Add(donator);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public void DonatorAddFull(Donator donator)
+        {
+            try
+            {
+                donatorRepo.AddFull(donator);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
@@ -789,7 +800,7 @@ namespace Server.Networking
             }
         }
 
-        
+
         public void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza) // cum pun in service? In care service? 
         {
             try
@@ -800,8 +811,7 @@ namespace Server.Networking
 
                 analizaRepo.Add(analiza);
 
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -812,8 +822,7 @@ namespace Server.Networking
             try
             {
                 return analizaRepo.FindByDonator(idDonator);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -824,8 +833,7 @@ namespace Server.Networking
             try
             {
                 return analizaRepo.FindLastByDonator(idDonator);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }

@@ -178,7 +178,7 @@ namespace Client
                 var acc = _server.AccountFindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
                 if (acc != null)
                 {
-                    var mainWindow = new MainWindow(this, _server);
+                    var mainWindow = new DonatorWindow(this, _server);
                     mainWindow.Show();
                     Hide();
                 }
