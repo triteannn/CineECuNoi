@@ -221,8 +221,8 @@ namespace Client
 
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
-            string boli = "";
-            var FormularDonare = new FormularDonare(DateTime.Now,boli,(int)_loggedAccount.IdD);
+            var boli = "";
+            var FormularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD);
             //Send to db
         }
     }
