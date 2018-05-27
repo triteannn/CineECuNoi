@@ -28,6 +28,17 @@ namespace Client
             _donatorService = new DonatorService(_server);
             _loggedAccount = loggedAccount;
             _notifications = new List<string>();
+            foreach (DataGridViewColumn col in BloodResultsTable.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            BloodResultsTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            BloodResultsTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            BloodResultsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            BloodResultsTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            BloodResultsTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            BloodResultsTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,8 +75,10 @@ namespace Client
         {
             if (e.Button != MouseButtons.Left)
                 return;
+
             if (!_toggleMenu)
                 MenuToggle_Click(MenuToggle, null);
+
             ReleaseCapture();
             SendMessage(Handle, WmNclbuttondown, HtCaption, 0);
         }
@@ -104,6 +117,55 @@ namespace Client
 
             var centreDonare = _server.CentruDonareFindAll();
             centreDonare.ForEach(x => { DropdownCD.AddItem(x.Denumire); });
+            BloodResultsTable.Rows.Clear();
+            for (var j = 0; j < 21; ++j)
+                BloodResultsTable.Rows.Add();
+            BloodResultsTable.Rows[0].Cells[0].Value = "Erythrocytes";
+            BloodResultsTable.Rows[0].Cells[3].Value = "4.00 - 5.80";
+            BloodResultsTable.Rows[1].Cells[0].Value = "Haemoglobin";
+            BloodResultsTable.Rows[1].Cells[3].Value = "11.00 - 17.00";
+            BloodResultsTable.Rows[2].Cells[0].Value = "Hematocrit";
+            BloodResultsTable.Rows[2].Cells[3].Value = "35.00 - 52.00";
+            BloodResultsTable.Rows[3].Cells[0].Value = "VEM";
+            BloodResultsTable.Rows[3].Cells[3].Value = "75.00 - 100.00";
+            BloodResultsTable.Rows[4].Cells[0].Value = "HEM";
+            BloodResultsTable.Rows[4].Cells[3].Value = "25.00 - 33.00";
+            BloodResultsTable.Rows[5].Cells[0].Value = "CHEM";
+            BloodResultsTable.Rows[5].Cells[3].Value = "31.00 - 36.00";
+            BloodResultsTable.Rows[6].Cells[0].Value = "Erythrocytes distribution width";
+            BloodResultsTable.Rows[6].Cells[3].Value = "10.00 - 20.00";
+            BloodResultsTable.Rows[7].Cells[0].Value = "Platelets";
+            BloodResultsTable.Rows[7].Cells[3].Value = "120.00 - 400.00";
+            BloodResultsTable.Rows[8].Cells[0].Value = "Average platelets volume";
+            BloodResultsTable.Rows[8].Cells[3].Value = "6.00 - 10.00";
+            BloodResultsTable.Rows[9].Cells[0].Value = "Trombocrit";
+            BloodResultsTable.Rows[9].Cells[3].Value = "0.00 - 0.60";
+            BloodResultsTable.Rows[10].Cells[0].Value = "Trmbocrit distribution width";
+            BloodResultsTable.Rows[10].Cells[3].Value = "0.00 - 25.00";
+            BloodResultsTable.Rows[11].Cells[0].Value = "Leukocytes";
+            BloodResultsTable.Rows[11].Cells[3].Value = "4.00 - 10.50";
+            BloodResultsTable.Rows[12].Cells[0].Value = "Granulocytes (%)";
+            BloodResultsTable.Rows[12].Cells[3].Value = "42.00 - 75.00";
+            BloodResultsTable.Rows[13].Cells[0].Value = "Lymphocytes (%)";
+            BloodResultsTable.Rows[13].Cells[3].Value = "11.00 - 50.00";
+            BloodResultsTable.Rows[14].Cells[0].Value = "MID (EO + MO + BA) %";
+            BloodResultsTable.Rows[14].Cells[3].Value = "2.00 - 12.00";
+            BloodResultsTable.Rows[15].Cells[0].Value = "Number of granulocytes";
+            BloodResultsTable.Rows[15].Cells[3].Value = "2.00 - 8.00";
+            BloodResultsTable.Rows[16].Cells[0].Value = "Number of lymphocytes";
+            BloodResultsTable.Rows[16].Cells[3].Value = "1.00 - 5.00";
+            BloodResultsTable.Rows[17].Cells[0].Value = "Number of MID (EO + MO + BA)";
+            BloodResultsTable.Rows[17].Cells[3].Value = "0.00 - 1.40";
+            BloodResultsTable.Rows[18].Cells[0].Value = "Glucose";
+            BloodResultsTable.Rows[18].Cells[3].Value = "60.00 - 120.00";
+            BloodResultsTable.Rows[19].Cells[0].Value = "ALT/TGP";
+            BloodResultsTable.Rows[19].Cells[3].Value = "5.00 - 65.00";
+            BloodResultsTable.Rows[20].Cells[0].Value = "Cholesterol";
+            BloodResultsTable.Rows[20].Cells[3].Value = "110.00 - 220.00";
+            BloodResultsTable.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            BloodResultsTable.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            BloodResultsTable.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            BloodResultsTable.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private bool _toggleMenu = true;
@@ -113,19 +175,31 @@ namespace Client
             if (_toggleMenu)
             {
                 MainPanel.SendToBack();
+                BloodTestsPanel.SendToBack();
                 animator1.AnimationType = AnimationType.HorizSlide;
                 animator1.ShowSync(MenuPanel);
-                MainPanel.Enabled = false;
+                if (MainPanel.Visible)
+                    MainPanel.Enabled = false;
+                else if (BloodTestsPanel.Visible)
+                    BloodTestsPanel.Enabled = false;
                 _toggleMenu = false;
             }
             else
             {
                 animator1.AnimationType = AnimationType.HorizSlide;
                 animator1.HideSync(MenuPanel);
-                MainPanel.BringToFront();
+                if (MainPanel.Visible)
+                {
+                    MainPanel.BringToFront();
+                    MainPanel.Enabled = true;
+                }
+                else if (BloodTestsPanel.Visible)
+                {
+                    BloodTestsPanel.BringToFront();
+                    BloodTestsPanel.Enabled = true;
+                }
                 if (NotificationsPanel.Visible)
                     NotificationsPanel.BringToFront();
-                MainPanel.Enabled = true;
                 _toggleMenu = true;
             }
         }
@@ -179,6 +253,12 @@ namespace Client
 
         private void MenuButton1_Click(object sender, EventArgs e)
         {
+            _toggleMenu = true;
+            if (BloodTestsPanel.Visible)
+            {
+                animator1.AnimationType = AnimationType.Scale;
+                animator1.HideSync(BloodTestsPanel);
+            }
             animator1.AnimationType = AnimationType.HorizSlide;
             animator1.HideSync(MenuPanel);
             animator1.AnimationType = AnimationType.Scale;
@@ -244,6 +324,21 @@ namespace Client
                 var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
                 _server.FormularDonareAdd(formularDonare);
             }
+        }
+
+        private void MenuButton2_Click(object sender, EventArgs e)
+        {
+            _toggleMenu = true;
+            if (MainPanel.Visible)
+            {
+                animator1.AnimationType = AnimationType.Scale;
+                animator1.HideSync(MainPanel);
+            }
+            animator1.AnimationType = AnimationType.HorizSlide;
+            animator1.HideSync(MenuPanel);
+            animator1.AnimationType = AnimationType.Scale;
+            animator1.ShowSync(BloodTestsPanel);
+            BloodTestsPanel.Enabled = true;
         }
     }
 }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             AnimatorNS.Animation animation1 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonatorWindow));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.MenuToggle = new System.Windows.Forms.PictureBox();
@@ -38,11 +39,24 @@
             this.MenuButton2 = new System.Windows.Forms.Button();
             this.MenuButton1 = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.BtnSubmit = new System.Windows.Forms.Button();
+            this.PersonalInfoGb = new System.Windows.Forms.GroupBox();
+            this.TxtDob = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtCounty = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtCity = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtAddress = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtLastName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtFirstName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.DropdownCD = new Bunifu.Framework.UI.BunifuDropdown();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.TxtDonateFor = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.BtnSubmit = new System.Windows.Forms.Button();
             this.OthersGb = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
             this.Check16 = new Bunifu.Framework.UI.BunifuCheckbox();
@@ -82,36 +96,32 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.TxtEmail = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.PersonalInfoGb = new System.Windows.Forms.GroupBox();
-            this.bunifuDatepicker1 = new Bunifu.Framework.UI.BunifuDatepicker();
-            this.TxtCounty = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.TxtCity = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.TxtAddress = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.TxtLastName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.TxtFirstName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.Bell = new System.Windows.Forms.PictureBox();
             this.BellMovement = new System.Windows.Forms.Timer(this.components);
             this.NotificationsPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.animator1 = new AnimatorNS.Animator(this.components);
             this.label2 = new System.Windows.Forms.Label();
+            this.BloodTestsPanel = new System.Windows.Forms.Panel();
+            this.BloodResultsTable = new System.Windows.Forms.DataGridView();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.ValuesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AbnormalityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RezultatColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnalizaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).BeginInit();
             this.MenuPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.PersonalInfoGb.SuspendLayout();
             this.OthersGb.SuspendLayout();
             this.DiseasesGb.SuspendLayout();
             this.ContactDetailsGb.SuspendLayout();
-            this.PersonalInfoGb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bell)).BeginInit();
             this.NotificationsPanel.SuspendLayout();
+            this.BloodTestsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BloodResultsTable)).BeginInit();
             this.SuspendLayout();
             // 
             // PictureBox2
@@ -119,7 +129,7 @@
             this.animator1.SetDecoration(this.PictureBox2, AnimatorNS.DecorationType.None);
             this.PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox2.Image")));
             this.PictureBox2.Location = new System.Drawing.Point(908, 9);
-            this.PictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.PictureBox2.Name = "PictureBox2";
             this.PictureBox2.Size = new System.Drawing.Size(19, 20);
             this.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -132,7 +142,7 @@
             this.animator1.SetDecoration(this.PictureBox3, AnimatorNS.DecorationType.None);
             this.PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox3.Image")));
             this.PictureBox3.Location = new System.Drawing.Point(888, 6);
-            this.PictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.PictureBox3.Name = "PictureBox3";
             this.PictureBox3.Size = new System.Drawing.Size(15, 18);
             this.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -145,7 +155,7 @@
             this.animator1.SetDecoration(this.MenuToggle, AnimatorNS.DecorationType.None);
             this.MenuToggle.Image = global::Client.Properties.Resources.menuicon;
             this.MenuToggle.Location = new System.Drawing.Point(9, 47);
-            this.MenuToggle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MenuToggle.Margin = new System.Windows.Forms.Padding(2);
             this.MenuToggle.Name = "MenuToggle";
             this.MenuToggle.Size = new System.Drawing.Size(34, 36);
             this.MenuToggle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -159,10 +169,10 @@
             this.MenuPanel.Controls.Add(this.MenuButton2);
             this.MenuPanel.Controls.Add(this.MenuButton1);
             this.animator1.SetDecoration(this.MenuPanel, AnimatorNS.DecorationType.None);
-            this.MenuPanel.Location = new System.Drawing.Point(9, 88);
-            this.MenuPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MenuPanel.Location = new System.Drawing.Point(9, 82);
+            this.MenuPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(213, 476);
+            this.MenuPanel.Size = new System.Drawing.Size(213, 482);
             this.MenuPanel.TabIndex = 18;
             this.MenuPanel.Visible = false;
             // 
@@ -174,12 +184,13 @@
             this.MenuButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuButton2.ForeColor = System.Drawing.Color.White;
             this.MenuButton2.Location = new System.Drawing.Point(4, 62);
-            this.MenuButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MenuButton2.Margin = new System.Windows.Forms.Padding(2);
             this.MenuButton2.Name = "MenuButton2";
             this.MenuButton2.Size = new System.Drawing.Size(198, 46);
             this.MenuButton2.TabIndex = 27;
             this.MenuButton2.Text = "Blood tests history";
             this.MenuButton2.UseVisualStyleBackColor = false;
+            this.MenuButton2.Click += new System.EventHandler(this.MenuButton2_Click);
             this.MenuButton2.MouseLeave += new System.EventHandler(this.MenuButton2_MouseLeave);
             this.MenuButton2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton2_MouseMove);
             // 
@@ -191,7 +202,7 @@
             this.MenuButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuButton1.ForeColor = System.Drawing.Color.White;
             this.MenuButton1.Location = new System.Drawing.Point(4, 4);
-            this.MenuButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MenuButton1.Margin = new System.Windows.Forms.Padding(2);
             this.MenuButton1.Name = "MenuButton1";
             this.MenuButton1.Size = new System.Drawing.Size(198, 46);
             this.MenuButton1.TabIndex = 27;
@@ -206,24 +217,264 @@
             this.MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MainPanel.BackColor = System.Drawing.Color.White;
             this.MainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.MainPanel.Controls.Add(this.BtnSubmit);
+            this.MainPanel.Controls.Add(this.PersonalInfoGb);
             this.MainPanel.Controls.Add(this.DropdownCD);
             this.MainPanel.Controls.Add(this.label28);
             this.MainPanel.Controls.Add(this.label27);
             this.MainPanel.Controls.Add(this.TxtDonateFor);
-            this.MainPanel.Controls.Add(this.BtnSubmit);
             this.MainPanel.Controls.Add(this.OthersGb);
             this.MainPanel.Controls.Add(this.DiseasesGb);
             this.MainPanel.Controls.Add(this.ContactDetailsGb);
-            this.MainPanel.Controls.Add(this.PersonalInfoGb);
             this.animator1.SetDecoration(this.MainPanel, AnimatorNS.DecorationType.None);
-            this.MainPanel.Location = new System.Drawing.Point(9, 86);
-            this.MainPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainPanel.Location = new System.Drawing.Point(10, 86);
+            this.MainPanel.Margin = new System.Windows.Forms.Padding(2);
             this.MainPanel.MaximumSize = new System.Drawing.Size(916, 476);
             this.MainPanel.MinimumSize = new System.Drawing.Size(916, 476);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(916, 476);
             this.MainPanel.TabIndex = 19;
             this.MainPanel.Visible = false;
+            // 
+            // BtnSubmit
+            // 
+            this.BtnSubmit.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.BtnSubmit, AnimatorNS.DecorationType.None);
+            this.BtnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSubmit.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSubmit.ForeColor = System.Drawing.Color.White;
+            this.BtnSubmit.Location = new System.Drawing.Point(727, 401);
+            this.BtnSubmit.Name = "BtnSubmit";
+            this.BtnSubmit.Size = new System.Drawing.Size(103, 51);
+            this.BtnSubmit.TabIndex = 45;
+            this.BtnSubmit.Text = "Submit";
+            this.BtnSubmit.UseVisualStyleBackColor = false;
+            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
+            this.BtnSubmit.MouseLeave += new System.EventHandler(this.BtnSubmit_MouseLeave);
+            this.BtnSubmit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnSubmit_MouseMove);
+            // 
+            // PersonalInfoGb
+            // 
+            this.PersonalInfoGb.Controls.Add(this.TxtDob);
+            this.PersonalInfoGb.Controls.Add(this.TxtCounty);
+            this.PersonalInfoGb.Controls.Add(this.TxtCity);
+            this.PersonalInfoGb.Controls.Add(this.TxtAddress);
+            this.PersonalInfoGb.Controls.Add(this.TxtLastName);
+            this.PersonalInfoGb.Controls.Add(this.TxtFirstName);
+            this.PersonalInfoGb.Controls.Add(this.label3);
+            this.PersonalInfoGb.Controls.Add(this.label4);
+            this.PersonalInfoGb.Controls.Add(this.label7);
+            this.PersonalInfoGb.Controls.Add(this.label11);
+            this.PersonalInfoGb.Controls.Add(this.label6);
+            this.PersonalInfoGb.Controls.Add(this.label5);
+            this.animator1.SetDecoration(this.PersonalInfoGb, AnimatorNS.DecorationType.None);
+            this.PersonalInfoGb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PersonalInfoGb.ForeColor = System.Drawing.Color.DarkRed;
+            this.PersonalInfoGb.Location = new System.Drawing.Point(2, 4);
+            this.PersonalInfoGb.Margin = new System.Windows.Forms.Padding(2);
+            this.PersonalInfoGb.MaximumSize = new System.Drawing.Size(229, 466);
+            this.PersonalInfoGb.MinimumSize = new System.Drawing.Size(229, 466);
+            this.PersonalInfoGb.Name = "PersonalInfoGb";
+            this.PersonalInfoGb.Padding = new System.Windows.Forms.Padding(2);
+            this.PersonalInfoGb.Size = new System.Drawing.Size(229, 466);
+            this.PersonalInfoGb.TabIndex = 19;
+            this.PersonalInfoGb.TabStop = false;
+            this.PersonalInfoGb.Text = "Personal info";
+            // 
+            // TxtDob
+            // 
+            this.TxtDob.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtDob, AnimatorNS.DecorationType.None);
+            this.TxtDob.Enabled = false;
+            this.TxtDob.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtDob.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtDob.HintText = "";
+            this.TxtDob.isPassword = false;
+            this.TxtDob.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtDob.LineIdleColor = System.Drawing.Color.DimGray;
+            this.TxtDob.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtDob.LineThickness = 2;
+            this.TxtDob.Location = new System.Drawing.Point(5, 198);
+            this.TxtDob.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtDob.Name = "TxtDob";
+            this.TxtDob.Size = new System.Drawing.Size(217, 29);
+            this.TxtDob.TabIndex = 29;
+            this.TxtDob.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // TxtCounty
+            // 
+            this.TxtCounty.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtCounty, AnimatorNS.DecorationType.None);
+            this.TxtCounty.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCounty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtCounty.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtCounty.HintText = "";
+            this.TxtCounty.isPassword = false;
+            this.TxtCounty.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtCounty.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtCounty.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtCounty.LineThickness = 2;
+            this.TxtCounty.Location = new System.Drawing.Point(8, 397);
+            this.TxtCounty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtCounty.Name = "TxtCounty";
+            this.TxtCounty.Size = new System.Drawing.Size(217, 29);
+            this.TxtCounty.TabIndex = 28;
+            this.TxtCounty.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // TxtCity
+            // 
+            this.TxtCity.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtCity, AnimatorNS.DecorationType.None);
+            this.TxtCity.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtCity.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtCity.HintText = "";
+            this.TxtCity.isPassword = false;
+            this.TxtCity.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtCity.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtCity.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtCity.LineThickness = 2;
+            this.TxtCity.Location = new System.Drawing.Point(8, 331);
+            this.TxtCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtCity.Name = "TxtCity";
+            this.TxtCity.Size = new System.Drawing.Size(217, 29);
+            this.TxtCity.TabIndex = 27;
+            this.TxtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // TxtAddress
+            // 
+            this.TxtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtAddress, AnimatorNS.DecorationType.None);
+            this.TxtAddress.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtAddress.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtAddress.HintText = "";
+            this.TxtAddress.isPassword = false;
+            this.TxtAddress.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtAddress.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtAddress.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtAddress.LineThickness = 2;
+            this.TxtAddress.Location = new System.Drawing.Point(8, 265);
+            this.TxtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtAddress.Name = "TxtAddress";
+            this.TxtAddress.Size = new System.Drawing.Size(217, 29);
+            this.TxtAddress.TabIndex = 26;
+            this.TxtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // TxtLastName
+            // 
+            this.TxtLastName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtLastName, AnimatorNS.DecorationType.None);
+            this.TxtLastName.Enabled = false;
+            this.TxtLastName.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtLastName.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtLastName.HintText = "";
+            this.TxtLastName.isPassword = false;
+            this.TxtLastName.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtLastName.LineIdleColor = System.Drawing.Color.DimGray;
+            this.TxtLastName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtLastName.LineThickness = 2;
+            this.TxtLastName.Location = new System.Drawing.Point(7, 132);
+            this.TxtLastName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtLastName.Name = "TxtLastName";
+            this.TxtLastName.Size = new System.Drawing.Size(217, 29);
+            this.TxtLastName.TabIndex = 24;
+            this.TxtLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // TxtFirstName
+            // 
+            this.TxtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtFirstName, AnimatorNS.DecorationType.None);
+            this.TxtFirstName.Enabled = false;
+            this.TxtFirstName.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtFirstName.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtFirstName.HintText = "";
+            this.TxtFirstName.isPassword = false;
+            this.TxtFirstName.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtFirstName.LineIdleColor = System.Drawing.Color.DimGray;
+            this.TxtFirstName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtFirstName.LineThickness = 2;
+            this.TxtFirstName.Location = new System.Drawing.Point(7, 65);
+            this.TxtFirstName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtFirstName.Name = "TxtFirstName";
+            this.TxtFirstName.Size = new System.Drawing.Size(217, 29);
+            this.TxtFirstName.TabIndex = 23;
+            this.TxtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.animator1.SetDecoration(this.label3, AnimatorNS.DecorationType.None);
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(4, 39);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "First Name:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.animator1.SetDecoration(this.label4, AnimatorNS.DecorationType.None);
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(4, 106);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Last Name:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.animator1.SetDecoration(this.label7, AnimatorNS.DecorationType.None);
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(6, 371);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 20);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "County:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.animator1.SetDecoration(this.label11, AnimatorNS.DecorationType.None);
+            this.label11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 306);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(32, 20);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "City:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.animator1.SetDecoration(this.label6, AnimatorNS.DecorationType.None);
+            this.label6.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(5, 173);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 20);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Date of birth:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.animator1.SetDecoration(this.label5, AnimatorNS.DecorationType.None);
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(5, 239);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Address:";
             // 
             // DropdownCD
             // 
@@ -238,7 +489,7 @@
             this.DropdownCD.Items = new string[] {
         "Choose institution..."};
             this.DropdownCD.Location = new System.Drawing.Point(654, 353);
-            this.DropdownCD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DropdownCD.Margin = new System.Windows.Forms.Padding(4);
             this.DropdownCD.Name = "DropdownCD";
             this.DropdownCD.NomalColor = System.Drawing.Color.White;
             this.DropdownCD.onHoverColor = System.Drawing.Color.White;
@@ -287,28 +538,11 @@
             this.TxtDonateFor.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtDonateFor.LineThickness = 2;
             this.TxtDonateFor.Location = new System.Drawing.Point(252, 219);
+            this.TxtDonateFor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtDonateFor.Name = "TxtDonateFor";
             this.TxtDonateFor.Size = new System.Drawing.Size(260, 27);
             this.TxtDonateFor.TabIndex = 25;
             this.TxtDonateFor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // BtnSubmit
-            // 
-            this.BtnSubmit.BackColor = System.Drawing.Color.DarkRed;
-            this.animator1.SetDecoration(this.BtnSubmit, AnimatorNS.DecorationType.None);
-            this.BtnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSubmit.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSubmit.ForeColor = System.Drawing.Color.White;
-            this.BtnSubmit.Location = new System.Drawing.Point(723, 397);
-            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.BtnSubmit.Name = "BtnSubmit";
-            this.BtnSubmit.Size = new System.Drawing.Size(115, 55);
-            this.BtnSubmit.TabIndex = 24;
-            this.BtnSubmit.Text = "Submit";
-            this.BtnSubmit.UseVisualStyleBackColor = false;
-            this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
-            this.BtnSubmit.MouseLeave += new System.EventHandler(this.BtnSubmit_MouseLeave);
-            this.BtnSubmit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnSubmit_MouseMove);
             // 
             // OthersGb
             // 
@@ -322,11 +556,11 @@
             this.OthersGb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OthersGb.ForeColor = System.Drawing.Color.DarkRed;
             this.OthersGb.Location = new System.Drawing.Point(252, 272);
-            this.OthersGb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OthersGb.Margin = new System.Windows.Forms.Padding(2);
             this.OthersGb.MaximumSize = new System.Drawing.Size(383, 198);
             this.OthersGb.MinimumSize = new System.Drawing.Size(383, 198);
             this.OthersGb.Name = "OthersGb";
-            this.OthersGb.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OthersGb.Padding = new System.Windows.Forms.Padding(2);
             this.OthersGb.Size = new System.Drawing.Size(383, 198);
             this.OthersGb.TabIndex = 23;
             this.OthersGb.TabStop = false;
@@ -444,11 +678,11 @@
             this.DiseasesGb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DiseasesGb.ForeColor = System.Drawing.Color.DarkRed;
             this.DiseasesGb.Location = new System.Drawing.Point(540, 4);
-            this.DiseasesGb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DiseasesGb.Margin = new System.Windows.Forms.Padding(2);
             this.DiseasesGb.MaximumSize = new System.Drawing.Size(370, 247);
             this.DiseasesGb.MinimumSize = new System.Drawing.Size(370, 247);
             this.DiseasesGb.Name = "DiseasesGb";
-            this.DiseasesGb.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DiseasesGb.Padding = new System.Windows.Forms.Padding(2);
             this.DiseasesGb.Size = new System.Drawing.Size(370, 247);
             this.DiseasesGb.TabIndex = 23;
             this.DiseasesGb.TabStop = false;
@@ -815,11 +1049,11 @@
             this.ContactDetailsGb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ContactDetailsGb.ForeColor = System.Drawing.Color.DarkRed;
             this.ContactDetailsGb.Location = new System.Drawing.Point(249, 4);
-            this.ContactDetailsGb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ContactDetailsGb.Margin = new System.Windows.Forms.Padding(2);
             this.ContactDetailsGb.MaximumSize = new System.Drawing.Size(279, 177);
             this.ContactDetailsGb.MinimumSize = new System.Drawing.Size(279, 177);
             this.ContactDetailsGb.Name = "ContactDetailsGb";
-            this.ContactDetailsGb.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ContactDetailsGb.Padding = new System.Windows.Forms.Padding(2);
             this.ContactDetailsGb.Size = new System.Drawing.Size(279, 177);
             this.ContactDetailsGb.TabIndex = 20;
             this.ContactDetailsGb.TabStop = false;
@@ -839,6 +1073,7 @@
             this.TxtPhone.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtPhone.LineThickness = 2;
             this.TxtPhone.Location = new System.Drawing.Point(6, 134);
+            this.TxtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPhone.Name = "TxtPhone";
             this.TxtPhone.Size = new System.Drawing.Size(257, 29);
             this.TxtPhone.TabIndex = 22;
@@ -882,228 +1117,18 @@
             this.TxtEmail.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtEmail.LineThickness = 2;
             this.TxtEmail.Location = new System.Drawing.Point(6, 64);
+            this.TxtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(257, 29);
             this.TxtEmail.TabIndex = 9;
             this.TxtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // PersonalInfoGb
-            // 
-            this.PersonalInfoGb.Controls.Add(this.bunifuDatepicker1);
-            this.PersonalInfoGb.Controls.Add(this.TxtCounty);
-            this.PersonalInfoGb.Controls.Add(this.TxtCity);
-            this.PersonalInfoGb.Controls.Add(this.TxtAddress);
-            this.PersonalInfoGb.Controls.Add(this.TxtLastName);
-            this.PersonalInfoGb.Controls.Add(this.TxtFirstName);
-            this.PersonalInfoGb.Controls.Add(this.label3);
-            this.PersonalInfoGb.Controls.Add(this.label4);
-            this.PersonalInfoGb.Controls.Add(this.label7);
-            this.PersonalInfoGb.Controls.Add(this.label11);
-            this.PersonalInfoGb.Controls.Add(this.label6);
-            this.PersonalInfoGb.Controls.Add(this.label5);
-            this.animator1.SetDecoration(this.PersonalInfoGb, AnimatorNS.DecorationType.None);
-            this.PersonalInfoGb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PersonalInfoGb.ForeColor = System.Drawing.Color.DarkRed;
-            this.PersonalInfoGb.Location = new System.Drawing.Point(2, 4);
-            this.PersonalInfoGb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.PersonalInfoGb.MaximumSize = new System.Drawing.Size(229, 466);
-            this.PersonalInfoGb.MinimumSize = new System.Drawing.Size(229, 466);
-            this.PersonalInfoGb.Name = "PersonalInfoGb";
-            this.PersonalInfoGb.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.PersonalInfoGb.Size = new System.Drawing.Size(229, 466);
-            this.PersonalInfoGb.TabIndex = 19;
-            this.PersonalInfoGb.TabStop = false;
-            this.PersonalInfoGb.Text = "Personal info";
-            // 
-            // bunifuDatepicker1
-            // 
-            this.bunifuDatepicker1.BackColor = System.Drawing.Color.DarkRed;
-            this.bunifuDatepicker1.BorderRadius = 0;
-            this.animator1.SetDecoration(this.bunifuDatepicker1, AnimatorNS.DecorationType.None);
-            this.bunifuDatepicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuDatepicker1.ForeColor = System.Drawing.Color.White;
-            this.bunifuDatepicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.bunifuDatepicker1.FormatCustom = null;
-            this.bunifuDatepicker1.Location = new System.Drawing.Point(3, 195);
-            this.bunifuDatepicker1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.bunifuDatepicker1.Name = "bunifuDatepicker1";
-            this.bunifuDatepicker1.Size = new System.Drawing.Size(221, 45);
-            this.bunifuDatepicker1.TabIndex = 22;
-            this.bunifuDatepicker1.Value = new System.DateTime(2018, 6, 9, 0, 0, 0, 0);
-            // 
-            // TxtCounty
-            // 
-            this.TxtCounty.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.animator1.SetDecoration(this.TxtCounty, AnimatorNS.DecorationType.None);
-            this.TxtCounty.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCounty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtCounty.HintForeColor = System.Drawing.Color.Empty;
-            this.TxtCounty.HintText = "";
-            this.TxtCounty.isPassword = false;
-            this.TxtCounty.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtCounty.LineIdleColor = System.Drawing.Color.DarkRed;
-            this.TxtCounty.LineMouseHoverColor = System.Drawing.Color.DarkRed;
-            this.TxtCounty.LineThickness = 2;
-            this.TxtCounty.Location = new System.Drawing.Point(7, 411);
-            this.TxtCounty.Name = "TxtCounty";
-            this.TxtCounty.Size = new System.Drawing.Size(217, 29);
-            this.TxtCounty.TabIndex = 28;
-            this.TxtCounty.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // TxtCity
-            // 
-            this.TxtCity.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.animator1.SetDecoration(this.TxtCity, AnimatorNS.DecorationType.None);
-            this.TxtCity.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtCity.HintForeColor = System.Drawing.Color.Empty;
-            this.TxtCity.HintText = "";
-            this.TxtCity.isPassword = false;
-            this.TxtCity.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtCity.LineIdleColor = System.Drawing.Color.DarkRed;
-            this.TxtCity.LineMouseHoverColor = System.Drawing.Color.DarkRed;
-            this.TxtCity.LineThickness = 2;
-            this.TxtCity.Location = new System.Drawing.Point(7, 345);
-            this.TxtCity.Name = "TxtCity";
-            this.TxtCity.Size = new System.Drawing.Size(217, 29);
-            this.TxtCity.TabIndex = 27;
-            this.TxtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // TxtAddress
-            // 
-            this.TxtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.animator1.SetDecoration(this.TxtAddress, AnimatorNS.DecorationType.None);
-            this.TxtAddress.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtAddress.HintForeColor = System.Drawing.Color.Empty;
-            this.TxtAddress.HintText = "";
-            this.TxtAddress.isPassword = false;
-            this.TxtAddress.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtAddress.LineIdleColor = System.Drawing.Color.DarkRed;
-            this.TxtAddress.LineMouseHoverColor = System.Drawing.Color.DarkRed;
-            this.TxtAddress.LineThickness = 2;
-            this.TxtAddress.Location = new System.Drawing.Point(7, 279);
-            this.TxtAddress.Name = "TxtAddress";
-            this.TxtAddress.Size = new System.Drawing.Size(217, 29);
-            this.TxtAddress.TabIndex = 26;
-            this.TxtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // TxtLastName
-            // 
-            this.TxtLastName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.animator1.SetDecoration(this.TxtLastName, AnimatorNS.DecorationType.None);
-            this.TxtLastName.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtLastName.HintForeColor = System.Drawing.Color.Empty;
-            this.TxtLastName.HintText = "";
-            this.TxtLastName.isPassword = false;
-            this.TxtLastName.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtLastName.LineIdleColor = System.Drawing.Color.DarkRed;
-            this.TxtLastName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
-            this.TxtLastName.LineThickness = 2;
-            this.TxtLastName.Location = new System.Drawing.Point(7, 132);
-            this.TxtLastName.Name = "TxtLastName";
-            this.TxtLastName.Size = new System.Drawing.Size(217, 29);
-            this.TxtLastName.TabIndex = 24;
-            this.TxtLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // TxtFirstName
-            // 
-            this.TxtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.animator1.SetDecoration(this.TxtFirstName, AnimatorNS.DecorationType.None);
-            this.TxtFirstName.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtFirstName.HintForeColor = System.Drawing.Color.Empty;
-            this.TxtFirstName.HintText = "";
-            this.TxtFirstName.isPassword = false;
-            this.TxtFirstName.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtFirstName.LineIdleColor = System.Drawing.Color.DarkRed;
-            this.TxtFirstName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
-            this.TxtFirstName.LineThickness = 2;
-            this.TxtFirstName.Location = new System.Drawing.Point(7, 65);
-            this.TxtFirstName.Name = "TxtFirstName";
-            this.TxtFirstName.Size = new System.Drawing.Size(217, 29);
-            this.TxtFirstName.TabIndex = 23;
-            this.TxtFirstName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.animator1.SetDecoration(this.label3, AnimatorNS.DecorationType.None);
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 39);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "First Name:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.animator1.SetDecoration(this.label4, AnimatorNS.DecorationType.None);
-            this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 106);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Last Name:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.animator1.SetDecoration(this.label7, AnimatorNS.DecorationType.None);
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(5, 385);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 20);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "County:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.animator1.SetDecoration(this.label11, AnimatorNS.DecorationType.None);
-            this.label11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(5, 320);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 20);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "City:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.animator1.SetDecoration(this.label6, AnimatorNS.DecorationType.None);
-            this.label6.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(5, 173);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 20);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Date of birth:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.animator1.SetDecoration(this.label5, AnimatorNS.DecorationType.None);
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 253);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 20);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Address:";
             // 
             // Bell
             // 
             this.animator1.SetDecoration(this.Bell, AnimatorNS.DecorationType.None);
             this.Bell.Image = global::Client.Properties.Resources.bellinactive;
             this.Bell.Location = new System.Drawing.Point(888, 42);
-            this.Bell.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Bell.Margin = new System.Windows.Forms.Padding(2);
             this.Bell.Name = "Bell";
             this.Bell.Size = new System.Drawing.Size(38, 41);
             this.Bell.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1120,10 +1145,10 @@
             // 
             this.NotificationsPanel.Controls.Add(this.label1);
             this.animator1.SetDecoration(this.NotificationsPanel, AnimatorNS.DecorationType.None);
-            this.NotificationsPanel.Location = new System.Drawing.Point(692, 88);
-            this.NotificationsPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NotificationsPanel.Location = new System.Drawing.Point(692, 83);
+            this.NotificationsPanel.Margin = new System.Windows.Forms.Padding(2);
             this.NotificationsPanel.Name = "NotificationsPanel";
-            this.NotificationsPanel.Size = new System.Drawing.Size(235, 221);
+            this.NotificationsPanel.Size = new System.Drawing.Size(235, 226);
             this.NotificationsPanel.TabIndex = 0;
             this.NotificationsPanel.Visible = false;
             // 
@@ -1172,17 +1197,109 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 21;
             // 
+            // BloodTestsPanel
+            // 
+            this.BloodTestsPanel.AllowDrop = true;
+            this.BloodTestsPanel.BackColor = System.Drawing.Color.White;
+            this.BloodTestsPanel.Controls.Add(this.BloodResultsTable);
+            this.BloodTestsPanel.Controls.Add(this.bunifuSeparator1);
+            this.animator1.SetDecoration(this.BloodTestsPanel, AnimatorNS.DecorationType.None);
+            this.BloodTestsPanel.Location = new System.Drawing.Point(10, 85);
+            this.BloodTestsPanel.Name = "BloodTestsPanel";
+            this.BloodTestsPanel.Size = new System.Drawing.Size(917, 479);
+            this.BloodTestsPanel.TabIndex = 22;
+            this.BloodTestsPanel.Visible = false;
+            // 
+            // BloodResultsTable
+            // 
+            this.BloodResultsTable.AllowUserToAddRows = false;
+            this.BloodResultsTable.AllowUserToDeleteRows = false;
+            this.BloodResultsTable.AllowUserToResizeRows = false;
+            this.BloodResultsTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.BloodResultsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BloodResultsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AnalizaColumn,
+            this.RezultatColumn,
+            this.AbnormalityColumn,
+            this.ValuesColumn});
+            this.animator1.SetDecoration(this.BloodResultsTable, AnimatorNS.DecorationType.None);
+            this.BloodResultsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.BloodResultsTable.EnableHeadersVisualStyles = false;
+            this.BloodResultsTable.Location = new System.Drawing.Point(9, 89);
+            this.BloodResultsTable.MultiSelect = false;
+            this.BloodResultsTable.Name = "BloodResultsTable";
+            this.BloodResultsTable.ReadOnly = true;
+            this.BloodResultsTable.RowHeadersVisible = false;
+            this.BloodResultsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BloodResultsTable.Size = new System.Drawing.Size(898, 383);
+            this.BloodResultsTable.TabIndex = 1;
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.bunifuSeparator1, AnimatorNS.DecorationType.None);
+            this.bunifuSeparator1.ForeColor = System.Drawing.Color.DarkRed;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bunifuSeparator1.LineThickness = 2;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(0, 72);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(916, 11);
+            this.bunifuSeparator1.TabIndex = 0;
+            this.bunifuSeparator1.Transparency = 255;
+            this.bunifuSeparator1.Vertical = false;
+            // 
+            // ValuesColumn
+            // 
+            this.ValuesColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ValuesColumn.HeaderText = "Reference Values";
+            this.ValuesColumn.Name = "ValuesColumn";
+            this.ValuesColumn.ReadOnly = true;
+            this.ValuesColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AbnormalityColumn
+            // 
+            this.AbnormalityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AbnormalityColumn.HeaderText = "Abnormality";
+            this.AbnormalityColumn.Name = "AbnormalityColumn";
+            this.AbnormalityColumn.ReadOnly = true;
+            this.AbnormalityColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RezultatColumn
+            // 
+            this.RezultatColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RezultatColumn.HeaderText = "Result";
+            this.RezultatColumn.Name = "RezultatColumn";
+            this.RezultatColumn.ReadOnly = true;
+            this.RezultatColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AnalizaColumn
+            // 
+            this.AnalizaColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.AnalizaColumn.HeaderText = "Analysis";
+            this.AnalizaColumn.Name = "AnalizaColumn";
+            this.AnalizaColumn.ReadOnly = true;
+            this.AnalizaColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // DonatorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 574);
             this.ControlBox = false;
+            this.Controls.Add(this.BloodTestsPanel);
             this.Controls.Add(this.MainPanel);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.NotificationsPanel);
             this.Controls.Add(this.Bell);
             this.Controls.Add(this.MenuToggle);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.NotificationsPanel);
             this.Controls.Add(this.PictureBox3);
             this.Controls.Add(this.PictureBox2);
             this.Controls.Add(this.MenuPanel);
@@ -1190,7 +1307,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(938, 574);
             this.MinimumSize = new System.Drawing.Size(938, 574);
             this.Name = "DonatorWindow";
@@ -1204,16 +1321,18 @@
             this.MenuPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
+            this.PersonalInfoGb.ResumeLayout(false);
+            this.PersonalInfoGb.PerformLayout();
             this.OthersGb.ResumeLayout(false);
             this.DiseasesGb.ResumeLayout(false);
             this.DiseasesGb.PerformLayout();
             this.ContactDetailsGb.ResumeLayout(false);
             this.ContactDetailsGb.PerformLayout();
-            this.PersonalInfoGb.ResumeLayout(false);
-            this.PersonalInfoGb.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bell)).EndInit();
             this.NotificationsPanel.ResumeLayout(false);
             this.NotificationsPanel.PerformLayout();
+            this.BloodTestsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BloodResultsTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1283,13 +1402,20 @@
         private Bunifu.Framework.UI.BunifuCheckbox Check14;
         private System.Windows.Forms.Label label25;
         private Bunifu.Framework.UI.BunifuCheckbox Check15;
-        private Bunifu.Framework.UI.BunifuDatepicker bunifuDatepicker1;
-        private System.Windows.Forms.Button BtnSubmit;
         private System.Windows.Forms.Button MenuButton2;
         private System.Windows.Forms.Button MenuButton1;
         private System.Windows.Forms.Label label27;
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtDonateFor;
         private System.Windows.Forms.Label label28;
         private Bunifu.Framework.UI.BunifuDropdown DropdownCD;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtDob;
+        private System.Windows.Forms.Button BtnSubmit;
+        private System.Windows.Forms.Panel BloodTestsPanel;
+        private System.Windows.Forms.DataGridView BloodResultsTable;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AnalizaColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RezultatColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AbnormalityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValuesColumn;
     }
 }

@@ -1,9 +1,8 @@
 ﻿using ISSApp.Domain;
-using System;
+using ISSApp.Exceptions;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -32,10 +31,12 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
+                } finally
+                {
+                    connection.Close();
                 }
 
             }
@@ -44,6 +45,7 @@ namespace Server.Repository
         public CentruDonare Delete(CentruDonare entity)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -63,18 +65,20 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
+                } finally
+                {
+                    connection.Close();
                 }
-
             }
         }
 
         public CentruDonare Update(CentruDonare entity)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -104,10 +108,12 @@ namespace Server.Repository
                     }
 
                     return null;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
+                } finally
+                {
+                    connection.Close();
                 }
             }
         }
@@ -115,6 +121,7 @@ namespace Server.Repository
         public CentruDonare FindEntity(int id)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -133,17 +140,19 @@ namespace Server.Repository
                             centruDonare.Id = result.GetInt32(0);
                             centruDonare.Denumire = result.GetString(1);
                             centruDonare.IdAdr = result.GetInt32(2);
-    
+
                             return centruDonare;
                         }
 
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                } finally
+                {
+                    connection.Close();
                 }
 
             }
@@ -152,6 +161,7 @@ namespace Server.Repository
         public List<CentruDonare> FindAll()
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -162,8 +172,7 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            CentruDonare psPlasma = new CentruDonare
-                            {
+                            CentruDonare psPlasma = new CentruDonare {
                                 Id = result.GetInt32(0),
                                 Denumire = result.GetString(1),
                                 IdAdr = result.GetInt32(2)
@@ -174,13 +183,15 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea centrelor de donare din baza de date nu s-a putut realiza cu succes.");
+                } finally
+                {
+                    connection.Close();
                 }
             }
         }
     }
-        
+
 }
