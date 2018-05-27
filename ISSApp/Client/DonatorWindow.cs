@@ -101,6 +101,9 @@ namespace Client
                 ++i;
                 startPoint = new Point(startPoint.X, NotificationsPanel.Controls[NotificationsPanel.Controls.Count - 1].Location.Y);
             }
+
+            var centreDonare = _server.CentruDonareFindAll();
+            centreDonare.ForEach(x => { DropdownCD.AddItem(x.Denumire); });
         }
 
         private bool _toggleMenu = true;
@@ -222,8 +225,25 @@ namespace Client
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
             var boli = "";
-            var FormularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD);
-            //Send to db
+            foreach (Control control in DiseasesGb.Controls)
+            {
+                if (control is BunifuCheckbox aux)
+                {
+                    if (aux.Checked)
+                    {
+                        var name = aux.Name;
+                        boli += DiseasesGb.Controls["Lbl" + name.Split('k')[1]].Text;
+                        boli += ", ";
+                    }
+                }
+            }
+
+            boli = boli.Substring(0, boli.Length - 2);
+            if (_loggedAccount.IdD != null)
+            {
+                var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
+                _server.FormularDonareAdd(formularDonare);
+            }
         }
     }
 }

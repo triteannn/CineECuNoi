@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AnimatorNS.Animation animation3 = new AnimatorNS.Animation();
+            AnimatorNS.Animation animation1 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonatorWindow));
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
@@ -51,31 +51,31 @@
             this.label25 = new System.Windows.Forms.Label();
             this.Check15 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.DiseasesGb = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
+            this.Lbl2 = new System.Windows.Forms.Label();
             this.Check2 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.Lbl7 = new System.Windows.Forms.Label();
             this.Check7 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.Lbl13 = new System.Windows.Forms.Label();
             this.Check13 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.Lbl12 = new System.Windows.Forms.Label();
             this.Check12 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.Lbl11 = new System.Windows.Forms.Label();
             this.Check11 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.Lbl6 = new System.Windows.Forms.Label();
             this.Check6 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.Lbl5 = new System.Windows.Forms.Label();
             this.Check5 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.Lbl4 = new System.Windows.Forms.Label();
             this.Check4 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.Lbl3 = new System.Windows.Forms.Label();
             this.Check3 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label23 = new System.Windows.Forms.Label();
+            this.Lbl10 = new System.Windows.Forms.Label();
             this.Check10 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.Lbl9 = new System.Windows.Forms.Label();
             this.Check9 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.Lbl8 = new System.Windows.Forms.Label();
             this.Check8 = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.Lbl1 = new System.Windows.Forms.Label();
             this.Check1 = new Bunifu.Framework.UI.BunifuCheckbox();
             this.ContactDetailsGb = new System.Windows.Forms.GroupBox();
             this.TxtPhone = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -242,7 +242,7 @@
             this.DropdownCD.Name = "DropdownCD";
             this.DropdownCD.NomalColor = System.Drawing.Color.White;
             this.DropdownCD.onHoverColor = System.Drawing.Color.White;
-            this.DropdownCD.selectedIndex = -1;
+            this.DropdownCD.selectedIndex = 0;
             this.DropdownCD.Size = new System.Drawing.Size(254, 24);
             this.DropdownCD.TabIndex = 44;
             // 
@@ -414,31 +414,31 @@
             // 
             // DiseasesGb
             // 
-            this.DiseasesGb.Controls.Add(this.label21);
+            this.DiseasesGb.Controls.Add(this.Lbl2);
             this.DiseasesGb.Controls.Add(this.Check2);
-            this.DiseasesGb.Controls.Add(this.label18);
+            this.DiseasesGb.Controls.Add(this.Lbl7);
             this.DiseasesGb.Controls.Add(this.Check7);
-            this.DiseasesGb.Controls.Add(this.label17);
+            this.DiseasesGb.Controls.Add(this.Lbl13);
             this.DiseasesGb.Controls.Add(this.Check13);
-            this.DiseasesGb.Controls.Add(this.label16);
+            this.DiseasesGb.Controls.Add(this.Lbl12);
             this.DiseasesGb.Controls.Add(this.Check12);
-            this.DiseasesGb.Controls.Add(this.label15);
+            this.DiseasesGb.Controls.Add(this.Lbl11);
             this.DiseasesGb.Controls.Add(this.Check11);
-            this.DiseasesGb.Controls.Add(this.label14);
+            this.DiseasesGb.Controls.Add(this.Lbl6);
             this.DiseasesGb.Controls.Add(this.Check6);
-            this.DiseasesGb.Controls.Add(this.label13);
+            this.DiseasesGb.Controls.Add(this.Lbl5);
             this.DiseasesGb.Controls.Add(this.Check5);
-            this.DiseasesGb.Controls.Add(this.label9);
+            this.DiseasesGb.Controls.Add(this.Lbl4);
             this.DiseasesGb.Controls.Add(this.Check4);
-            this.DiseasesGb.Controls.Add(this.label20);
+            this.DiseasesGb.Controls.Add(this.Lbl3);
             this.DiseasesGb.Controls.Add(this.Check3);
-            this.DiseasesGb.Controls.Add(this.label23);
+            this.DiseasesGb.Controls.Add(this.Lbl10);
             this.DiseasesGb.Controls.Add(this.Check10);
-            this.DiseasesGb.Controls.Add(this.label22);
+            this.DiseasesGb.Controls.Add(this.Lbl9);
             this.DiseasesGb.Controls.Add(this.Check9);
-            this.DiseasesGb.Controls.Add(this.label19);
+            this.DiseasesGb.Controls.Add(this.Lbl8);
             this.DiseasesGb.Controls.Add(this.Check8);
-            this.DiseasesGb.Controls.Add(this.label8);
+            this.DiseasesGb.Controls.Add(this.Lbl1);
             this.DiseasesGb.Controls.Add(this.Check1);
             this.animator1.SetDecoration(this.DiseasesGb, AnimatorNS.DecorationType.None);
             this.DiseasesGb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -454,18 +454,18 @@
             this.DiseasesGb.TabStop = false;
             this.DiseasesGb.Text = "Diseases";
             // 
-            // label21
+            // Lbl2
             // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label21, AnimatorNS.DecorationType.None);
-            this.label21.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(34, 56);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(82, 20);
-            this.label21.TabIndex = 43;
-            this.label21.Text = "Tuberculosis";
+            this.Lbl2.AutoSize = true;
+            this.Lbl2.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl2, AnimatorNS.DecorationType.None);
+            this.Lbl2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl2.Location = new System.Drawing.Point(34, 56);
+            this.Lbl2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl2.Name = "Lbl2";
+            this.Lbl2.Size = new System.Drawing.Size(82, 20);
+            this.Lbl2.TabIndex = 43;
+            this.Lbl2.Text = "Tuberculosis";
             // 
             // Check2
             // 
@@ -481,18 +481,18 @@
             this.Check2.Size = new System.Drawing.Size(20, 20);
             this.Check2.TabIndex = 42;
             // 
-            // label18
+            // Lbl7
             // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label18, AnimatorNS.DecorationType.None);
-            this.label18.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(33, 198);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 20);
-            this.label18.TabIndex = 41;
-            this.label18.Text = "Brucellosis";
+            this.Lbl7.AutoSize = true;
+            this.Lbl7.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl7, AnimatorNS.DecorationType.None);
+            this.Lbl7.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl7.Location = new System.Drawing.Point(33, 198);
+            this.Lbl7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl7.Name = "Lbl7";
+            this.Lbl7.Size = new System.Drawing.Size(70, 20);
+            this.Lbl7.TabIndex = 41;
+            this.Lbl7.Text = "Brucellosis";
             // 
             // Check7
             // 
@@ -508,18 +508,18 @@
             this.Check7.Size = new System.Drawing.Size(20, 20);
             this.Check7.TabIndex = 40;
             // 
-            // label17
+            // Lbl13
             // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label17, AnimatorNS.DecorationType.None);
-            this.label17.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(261, 172);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(50, 20);
-            this.label17.TabIndex = 41;
-            this.label17.Text = "Cancer";
+            this.Lbl13.AutoSize = true;
+            this.Lbl13.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl13, AnimatorNS.DecorationType.None);
+            this.Lbl13.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl13.Location = new System.Drawing.Point(261, 172);
+            this.Lbl13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl13.Name = "Lbl13";
+            this.Lbl13.Size = new System.Drawing.Size(50, 20);
+            this.Lbl13.TabIndex = 41;
+            this.Lbl13.Text = "Cancer";
             // 
             // Check13
             // 
@@ -535,18 +535,18 @@
             this.Check13.Size = new System.Drawing.Size(20, 20);
             this.Check13.TabIndex = 40;
             // 
-            // label16
+            // Lbl12
             // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label16, AnimatorNS.DecorationType.None);
-            this.label16.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(261, 145);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 20);
-            this.label16.TabIndex = 41;
-            this.label16.Text = "Myopia";
+            this.Lbl12.AutoSize = true;
+            this.Lbl12.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl12, AnimatorNS.DecorationType.None);
+            this.Lbl12.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl12.Location = new System.Drawing.Point(261, 145);
+            this.Lbl12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl12.Name = "Lbl12";
+            this.Lbl12.Size = new System.Drawing.Size(49, 20);
+            this.Lbl12.TabIndex = 41;
+            this.Lbl12.Text = "Myopia";
             // 
             // Check12
             // 
@@ -562,18 +562,18 @@
             this.Check12.Size = new System.Drawing.Size(20, 20);
             this.Check12.TabIndex = 40;
             // 
-            // label15
+            // Lbl11
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label15, AnimatorNS.DecorationType.None);
-            this.label15.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(261, 116);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(87, 20);
-            this.label15.TabIndex = 41;
-            this.label15.Text = "Skin Diseases";
+            this.Lbl11.AutoSize = true;
+            this.Lbl11.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl11, AnimatorNS.DecorationType.None);
+            this.Lbl11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl11.Location = new System.Drawing.Point(261, 116);
+            this.Lbl11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl11.Name = "Lbl11";
+            this.Lbl11.Size = new System.Drawing.Size(87, 20);
+            this.Lbl11.TabIndex = 41;
+            this.Lbl11.Text = "Skin Diseases";
             // 
             // Check11
             // 
@@ -589,18 +589,18 @@
             this.Check11.Size = new System.Drawing.Size(20, 20);
             this.Check11.TabIndex = 40;
             // 
-            // label14
+            // Lbl6
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label14, AnimatorNS.DecorationType.None);
-            this.label14.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(33, 169);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(140, 20);
-            this.label14.TabIndex = 41;
-            this.label14.Text = "Psychological Diseases";
+            this.Lbl6.AutoSize = true;
+            this.Lbl6.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl6, AnimatorNS.DecorationType.None);
+            this.Lbl6.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl6.Location = new System.Drawing.Point(33, 169);
+            this.Lbl6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl6.Name = "Lbl6";
+            this.Lbl6.Size = new System.Drawing.Size(140, 20);
+            this.Lbl6.TabIndex = 41;
+            this.Lbl6.Text = "Psychological Diseases";
             // 
             // Check6
             // 
@@ -616,18 +616,18 @@
             this.Check6.Size = new System.Drawing.Size(20, 20);
             this.Check6.TabIndex = 40;
             // 
-            // label13
+            // Lbl5
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label13, AnimatorNS.DecorationType.None);
-            this.label13.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(33, 141);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 20);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "Epilepsy";
+            this.Lbl5.AutoSize = true;
+            this.Lbl5.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl5, AnimatorNS.DecorationType.None);
+            this.Lbl5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl5.Location = new System.Drawing.Point(33, 141);
+            this.Lbl5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl5.Name = "Lbl5";
+            this.Lbl5.Size = new System.Drawing.Size(55, 20);
+            this.Lbl5.TabIndex = 41;
+            this.Lbl5.Text = "Epilepsy";
             // 
             // Check5
             // 
@@ -643,18 +643,18 @@
             this.Check5.Size = new System.Drawing.Size(20, 20);
             this.Check5.TabIndex = 40;
             // 
-            // label9
+            // Lbl4
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label9, AnimatorNS.DecorationType.None);
-            this.label9.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(33, 112);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 20);
-            this.label9.TabIndex = 41;
-            this.label9.Text = "Malaria";
+            this.Lbl4.AutoSize = true;
+            this.Lbl4.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl4, AnimatorNS.DecorationType.None);
+            this.Lbl4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl4.Location = new System.Drawing.Point(33, 112);
+            this.Lbl4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl4.Name = "Lbl4";
+            this.Lbl4.Size = new System.Drawing.Size(51, 20);
+            this.Lbl4.TabIndex = 41;
+            this.Lbl4.Text = "Malaria";
             // 
             // Check4
             // 
@@ -670,18 +670,18 @@
             this.Check4.Size = new System.Drawing.Size(20, 20);
             this.Check4.TabIndex = 40;
             // 
-            // label20
+            // Lbl3
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label20, AnimatorNS.DecorationType.None);
-            this.label20.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(33, 84);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 20);
-            this.label20.TabIndex = 41;
-            this.label20.Text = "Syphilis";
+            this.Lbl3.AutoSize = true;
+            this.Lbl3.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl3, AnimatorNS.DecorationType.None);
+            this.Lbl3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl3.Location = new System.Drawing.Point(33, 84);
+            this.Lbl3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl3.Name = "Lbl3";
+            this.Lbl3.Size = new System.Drawing.Size(51, 20);
+            this.Lbl3.TabIndex = 41;
+            this.Lbl3.Text = "Syphilis";
             // 
             // Check3
             // 
@@ -697,18 +697,18 @@
             this.Check3.Size = new System.Drawing.Size(20, 20);
             this.Check3.TabIndex = 40;
             // 
-            // label23
+            // Lbl10
             // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label23, AnimatorNS.DecorationType.None);
-            this.label23.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(261, 87);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(93, 20);
-            this.label23.TabIndex = 23;
-            this.label23.Text = "Heart Diseases";
+            this.Lbl10.AutoSize = true;
+            this.Lbl10.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl10, AnimatorNS.DecorationType.None);
+            this.Lbl10.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl10.Location = new System.Drawing.Point(261, 87);
+            this.Lbl10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl10.Name = "Lbl10";
+            this.Lbl10.Size = new System.Drawing.Size(93, 20);
+            this.Lbl10.TabIndex = 23;
+            this.Lbl10.Text = "Heart Diseases";
             // 
             // Check10
             // 
@@ -724,18 +724,18 @@
             this.Check10.Size = new System.Drawing.Size(20, 20);
             this.Check10.TabIndex = 0;
             // 
-            // label22
+            // Lbl9
             // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label22, AnimatorNS.DecorationType.None);
-            this.label22.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(261, 59);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(58, 20);
-            this.label22.TabIndex = 23;
-            this.label22.Text = "Diabetes";
+            this.Lbl9.AutoSize = true;
+            this.Lbl9.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl9, AnimatorNS.DecorationType.None);
+            this.Lbl9.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl9.Location = new System.Drawing.Point(261, 59);
+            this.Lbl9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl9.Name = "Lbl9";
+            this.Lbl9.Size = new System.Drawing.Size(58, 20);
+            this.Lbl9.TabIndex = 23;
+            this.Lbl9.Text = "Diabetes";
             // 
             // Check9
             // 
@@ -751,18 +751,18 @@
             this.Check9.Size = new System.Drawing.Size(20, 20);
             this.Check9.TabIndex = 0;
             // 
-            // label19
+            // Lbl8
             // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label19, AnimatorNS.DecorationType.None);
-            this.label19.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(261, 29);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(39, 20);
-            this.label19.TabIndex = 23;
-            this.label19.Text = "Ulcer";
+            this.Lbl8.AutoSize = true;
+            this.Lbl8.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl8, AnimatorNS.DecorationType.None);
+            this.Lbl8.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl8.Location = new System.Drawing.Point(261, 29);
+            this.Lbl8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl8.Name = "Lbl8";
+            this.Lbl8.Size = new System.Drawing.Size(39, 20);
+            this.Lbl8.TabIndex = 23;
+            this.Lbl8.Text = "Ulcer";
             // 
             // Check8
             // 
@@ -778,18 +778,18 @@
             this.Check8.Size = new System.Drawing.Size(20, 20);
             this.Check8.TabIndex = 0;
             // 
-            // label8
+            // Lbl1
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.animator1.SetDecoration(this.label8, AnimatorNS.DecorationType.None);
-            this.label8.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(35, 28);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 20);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "Hepatitits";
+            this.Lbl1.AutoSize = true;
+            this.Lbl1.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.Lbl1, AnimatorNS.DecorationType.None);
+            this.Lbl1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl1.Location = new System.Drawing.Point(35, 28);
+            this.Lbl1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Lbl1.Name = "Lbl1";
+            this.Lbl1.Size = new System.Drawing.Size(60, 20);
+            this.Lbl1.TabIndex = 23;
+            this.Lbl1.Text = "Hepatitits";
             // 
             // Check1
             // 
@@ -1144,22 +1144,22 @@
             // 
             this.animator1.AnimationType = AnimatorNS.AnimationType.VertSlide;
             this.animator1.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.animator1.DefaultAnimation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.animator1.DefaultAnimation = animation1;
             // 
             // label2
             // 
@@ -1251,31 +1251,31 @@
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtLastName;
         private System.Windows.Forms.GroupBox DiseasesGb;
         private Bunifu.Framework.UI.BunifuCheckbox Check1;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label Lbl2;
         private Bunifu.Framework.UI.BunifuCheckbox Check2;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label Lbl7;
         private Bunifu.Framework.UI.BunifuCheckbox Check7;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label Lbl13;
         private Bunifu.Framework.UI.BunifuCheckbox Check13;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label Lbl12;
         private Bunifu.Framework.UI.BunifuCheckbox Check12;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label Lbl11;
         private Bunifu.Framework.UI.BunifuCheckbox Check11;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label Lbl6;
         private Bunifu.Framework.UI.BunifuCheckbox Check6;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label Lbl5;
         private Bunifu.Framework.UI.BunifuCheckbox Check5;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Lbl4;
         private Bunifu.Framework.UI.BunifuCheckbox Check4;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label Lbl3;
         private Bunifu.Framework.UI.BunifuCheckbox Check3;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label Lbl10;
         private Bunifu.Framework.UI.BunifuCheckbox Check10;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label Lbl9;
         private Bunifu.Framework.UI.BunifuCheckbox Check9;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label Lbl8;
         private Bunifu.Framework.UI.BunifuCheckbox Check8;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Lbl1;
         private System.Windows.Forms.GroupBox OthersGb;
         private System.Windows.Forms.Label label24;
         private Bunifu.Framework.UI.BunifuCheckbox Check16;
