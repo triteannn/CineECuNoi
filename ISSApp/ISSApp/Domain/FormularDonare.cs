@@ -7,6 +7,13 @@ namespace ISSApp.Domain
     [Table("FormulareDonare")]
     public class FormularDonare
     {
+        public FormularDonare(DateTime dataCreare,string listaBoli,int idD)
+        {
+            DataCreare = dataCreare;
+            ListaBoli = listaBoli;
+            IdD = idD;
+        }
+
         public int Id { get; set; }
         public DateTime DataCreare { get; set; }
         public string ListaBoli { get; set; }
@@ -18,6 +25,8 @@ namespace ISSApp.Domain
 
         [NotMapped]
         public int IdAn { get; set; }
+        [NotMapped]
+        public int IdD { get; set; }
 
 
     }

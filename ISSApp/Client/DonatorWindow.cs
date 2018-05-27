@@ -218,5 +218,12 @@ namespace Client
             MenuButton2.BackColor = Color.DarkRed;
             MenuButton2.ForeColor = Color.White;
         }
+
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            string boli = "";
+            var FormularDonare = new FormularDonare(DateTime.Now,boli,(int)_loggedAccount.IdD);
+            //Send to db
+        }
     }
 }
