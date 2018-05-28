@@ -21,7 +21,9 @@ namespace ISSApp.Networking
         AngajatCentru AngajatFindEntity(int id);
         List<AngajatCentru> AngajatFindAll();
 
+        //Analiza
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
+        Analiza AnalizaFindLastByDonator(int idDonator);
         List<PungaSangeCuCNP> getPungaSangeCuCNP(); 
 
         //

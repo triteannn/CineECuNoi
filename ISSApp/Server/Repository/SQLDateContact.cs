@@ -1,15 +1,18 @@
-﻿using ISSApp.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ISSApp.Domain;
 using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
-    public class SqlCentruDonareRepo : ISqlRepo<CentruDonare>
+    class SQLDateContact : ISqlRepo<DateContact>
     {
-        public void Add(CentruDonare entity)
+        public void Add(DateContact entity)
         {
             var connection = Globals.getDBConnection();
             connection.Open();
@@ -18,12 +21,17 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO CentreDonare(Denumire, IdAdr) VALUES (@Denumire, @IdAdr)";
+                        "INSERT INTO DateContact(Telefon, Email, IdAdr) VALUES (@Telefon, @Email, @IdAdr)";
 
-                    var paramDenumire = command.CreateParameter();
-                    paramDenumire.ParameterName = "@Denumire";
-                    paramDenumire.Value = entity.Denumire;
-                    command.Parameters.Add(paramDenumire);
+                    var paramTelefon = command.CreateParameter();
+                    paramTelefon.ParameterName = "@Telefon";
+                    paramTelefon.Value = entity.Telefon;
+                    command.Parameters.Add(paramTelefon);
+
+                    var paramEmail = command.CreateParameter();
+                    paramEmail.ParameterName = "@Email";
+                    paramEmail.Value = entity.Email;
+                    command.Parameters.Add(paramEmail);
 
                     var paramIdAdr = command.CreateParameter();
                     paramIdAdr.ParameterName = "@IdAdr";
@@ -41,14 +49,14 @@ namespace Server.Repository
             }
         }
 
-        public CentruDonare Delete(CentruDonare entity)
+        public DateContact Delete(DateContact entity)
         {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM CentreDonare WHERE Id=@Id";
+                    command.CommandText = "DELETE FROM DateContact WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -72,7 +80,7 @@ namespace Server.Repository
             }
         }
 
-        public CentruDonare Update(CentruDonare entity)
+        public DateContact Update(DateContact entity)
         {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
@@ -80,17 +88,22 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE CentreDonare SET Denumire=@Denumire, IdAdr=@IdAdr WHERE Id=@Id";
+                        "UPDATE DateContact SET Telefon=@Telefon, Email=@Email, IdAdr=@IdAdr WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
                     paramId.Value = entity.Id;
                     command.Parameters.Add(paramId);
 
-                    var paramDenumire = command.CreateParameter();
-                    paramDenumire.ParameterName = "@Denumire";
-                    paramDenumire.Value = entity.Denumire;
-                    command.Parameters.Add(paramDenumire);
+                    var paramTelefon = command.CreateParameter();
+                    paramTelefon.ParameterName = "@Telefon";
+                    paramTelefon.Value = entity.Telefon;
+                    command.Parameters.Add(paramTelefon);
+
+                    var paramEmail = command.CreateParameter();
+                    paramEmail.ParameterName = "@Email";
+                    paramEmail.Value = entity.Email;
+                    command.Parameters.Add(paramEmail);
 
                     var paramIdAdr = command.CreateParameter();
                     paramIdAdr.ParameterName = "@IdAdr";
@@ -112,14 +125,14 @@ namespace Server.Repository
             }
         }
 
-        public CentruDonare FindEntity(int id)
+        public DateContact FindEntity(int id)
         {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    command.CommandText = "SELECT * FROM CentreDonare WHERE Id=@Id";
+                    command.CommandText = "SELECT * FROM DateContact WHERE Id=@Id";
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
                     paramId.Value = id;
@@ -129,12 +142,13 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            CentruDonare centruDonare = new CentruDonare();
-                            centruDonare.Id = result.GetInt32(0);
-                            centruDonare.Denumire = result.GetString(1);
-                            centruDonare.IdAdr = result.GetInt32(2);
-    
-                            return centruDonare;
+                            int idData = result.GetInt32(0);
+                            String telefon = result.GetString(1);
+                            String email = result.GetString(2);
+                            int idAdresa = result.GetInt32(3);
+
+                            DateContact dataContact = new DateContact(idData, telefon, email, idAdresa);
+                            return dataContact;
                         }
 
                         return null;
@@ -149,27 +163,20 @@ namespace Server.Repository
             }
         }
 
-        public List<CentruDonare> FindAll()
+        public List<DateContact> FindAll()
         {
             IDbConnection connection = Globals.getDBConnection();
             using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    List<CentruDonare> toReturn = new List<CentruDonare>();
-                    command.CommandText = "SELECT * FROM CentreDonare";
+                    List<DateContact> toReturn = new List<DateContact>();
+                    command.CommandText = "SELECT * FROM DateContact";
                     using (var result = command.ExecuteReader())
                     {
                         while (result.Read())
                         {
-                            CentruDonare psPlasma = new CentruDonare
-                            {
-                                Id = result.GetInt32(0),
-                                Denumire = result.GetString(1),
-                                IdAdr = result.GetInt32(2)
-                            };
-
-                            toReturn.Add(psPlasma);
+                            toReturn.Add(new DateContact(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetInt32(3)));
                         }
                     }
 
@@ -177,10 +184,9 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new RepositoryException("Returnarea centrelor de donare din baza de date nu s-a putut realiza cu succes.");
+                    throw new RepositoryException("Returnarea datelor de contact din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
     }
-        
 }

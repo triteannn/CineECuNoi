@@ -18,7 +18,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO Donatori(CNP, Nume, Prenume, Dob, IdA, IdCd) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA, @IdCd)";
+                        "INSERT INTO Donatori(CNP, Nume, Prenume, Dob, IdCd, IdA, IdDc) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdCd, @IdA, @IdDc)";
 
                     var paramCnp = command.CreateParameter();
                     paramCnp.ParameterName = "@CNP";
@@ -40,19 +40,24 @@ namespace Server.Repository
                     paramDob.Value = donator.Dob;
                     command.Parameters.Add(paramDob);
 
-                    var paramIdA = command.CreateParameter();
-                    paramIdA.ParameterName = "@IdA";
-                    //paramIdA.Value = donator.IdA;
-                    command.Parameters.Add(paramIdA);
-
                     var paramIdCd = command.CreateParameter();
                     paramIdCd.ParameterName = "@IdCd";
                     paramIdCd.Value = donator.IdCd;
                     command.Parameters.Add(paramIdCd);
 
+                    var paramIdA = command.CreateParameter();
+                    paramIdA.ParameterName = "@IdA";
+                    paramIdA.Value = donator.IdA;
+                    command.Parameters.Add(paramIdA);
+
+                    var paramIdDc = command.CreateParameter();
+                    paramIdDc.ParameterName = "@IdDc";
+                    paramIdDc.Value = donator.IdDc;
+                    command.Parameters.Add(paramIdDc);
+
                     command.ExecuteNonQuery();
 
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -68,12 +73,12 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM Donatori WHERE CNP=@CNP";
+                    command.CommandText = "DELETE FROM Donatori WHERE Id=@Id";
 
-                    var paramCNP = command.CreateParameter();
-                    paramCNP.ParameterName = "@CNP";
-                    paramCNP.Value = donator.CNP;
-                    command.Parameters.Add(paramCNP);
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = donator.Id;
+                    command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -83,7 +88,7 @@ namespace Server.Repository
 
                     return null;
 
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -99,7 +104,13 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE Donatori SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA, IdCd=@IdCd WHERE CNP=@CNP";
+                        "UPDATE Donatori SET CNP=@CNP, Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdCd=@IdCd, IdA=@IdA, IdDc=@IdDc WHERE Id=@Id";
+
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = donator.Id;
+                    command.Parameters.Add(paramId);
 
                     var paramCNP = command.CreateParameter();
                     paramCNP.ParameterName = "@CNP";
@@ -121,15 +132,20 @@ namespace Server.Repository
                     paramDob.Value = donator.Dob;
                     command.Parameters.Add(paramDob);
 
-                    var paramIdA = command.CreateParameter();
-                    paramIdA.ParameterName = "@IdA";
-                    //paramIdA.Value = donator.IdA;
-                    command.Parameters.Add(paramIdA);
-
                     var paramIdCd = command.CreateParameter();
                     paramIdCd.ParameterName = "@IdCd";
                     paramIdCd.Value = donator.IdCd;
                     command.Parameters.Add(paramIdCd);
+
+                    var paramIdA = command.CreateParameter();
+                    paramIdA.ParameterName = "@IdA";
+                    paramIdA.Value = donator.IdA;
+                    command.Parameters.Add(paramIdA);
+                  
+                    var paramIdDc = command.CreateParameter();
+                    paramIdDc.ParameterName = "@IdDc";
+                    paramIdDc.Value = donator.IdDc;
+                    command.Parameters.Add(paramIdDc);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -138,7 +154,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -175,7 +191,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -196,12 +212,12 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            toReturn.Add(new Donator(result.GetString(0), result.GetString(1), result.GetString(2), result.GetDateTime(3)));
+                            toReturn.Add(new Donator(result.GetString(1), result.GetString(2), result.GetString(3), result.GetDateTime(4)));
                         }
                     }
 
                     return toReturn;
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
                 }

@@ -13,6 +13,19 @@ namespace ISSApp.Domain
         public string Oras { get; set; }
         public string Judet { get; set; }
 
+        public Adresa()
+        {
+        }
+
+        public Adresa(int id, string strada, int numar, string oras, string judet)
+        {
+            Id = id;
+            Strada = strada;
+            Numar = numar;
+            Oras = oras;
+            Judet = judet;
+        }
+
         public virtual Spital Spital { get; set; }
         public virtual CentruDonare CentruDonare { get; set; }
         public virtual DateContact DateContact { get; set; }

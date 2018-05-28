@@ -32,5 +32,8 @@ namespace ISSApp.Domain
 
         [NotMapped]
         public int IdDc { get; set; }
+
+        [NotMapped]
+        public int IdA { get; set; }
     }
 }

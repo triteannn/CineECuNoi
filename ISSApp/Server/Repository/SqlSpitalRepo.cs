@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -15,18 +16,23 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "INSERT INTO Spitale(Denumire) VALUES(@Denumire)";
+                    command.CommandText = "INSERT INTO Spitale(Denumire, IdAdr) VALUES(@Denumire, @IdAdr)";
 
                     var paramDenumire = command.CreateParameter();
                     paramDenumire.ParameterName = "@Denumire";
                     paramDenumire.Value = entity.Denumire;
                     command.Parameters.Add(paramDenumire);
 
+                    var paramIdAdr = command.CreateParameter();
+                    paramIdAdr.ParameterName = "@IdAdr";
+                    paramIdAdr.Value = entity.IdAdr;
+                    command.Parameters.Add(paramIdAdr);
+
                     command.ExecuteNonQuery();
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
-                    connection.Close();
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
             }
             connection.Close();
@@ -49,10 +55,10 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     command.ExecuteNonQuery();
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
-                    connection.Close();
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
             }
             connection.Close();
@@ -67,7 +73,7 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "UPDATE Spitale SET Denumire=@Denumire WHERE Id=@Id";
+                    command.CommandText = "UPDATE Spitale SET Denumire=@Denumire, IdAdr=@IdAdr WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -76,14 +82,19 @@ namespace Server.Repository
 
                     var paramDenumire = command.CreateParameter();
                     paramDenumire.ParameterName = "@Denumire";
-                    paramDenumire.Value = entity.Id;
+                    paramDenumire.Value = entity.Denumire;
                     command.Parameters.Add(paramDenumire);
 
+                    var paramIdAdr = command.CreateParameter();
+                    paramIdAdr.ParameterName = "@IdAdr";
+                    paramIdAdr.Value = entity.IdAdr;
+                    command.Parameters.Add(paramIdAdr);
+
                     command.ExecuteNonQuery();
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
-                    connection.Close();
-                    throw new Exception("Database update failed.");
+                    throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
             connection.Close();
@@ -109,7 +120,7 @@ namespace Server.Repository
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        spital = new Spital(reader.GetInt32(0), reader.GetString(1));
+                        spital = new Spital(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2));
                     }
                     reader.Close();
                     connection.Close();
@@ -117,7 +128,7 @@ namespace Server.Repository
                 } catch (SqlException)
                 {
                     connection.Close();
-                    throw new Exception("Database get failed.");
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
             }
         }
@@ -136,7 +147,7 @@ namespace Server.Repository
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        toReturn.Add(new Spital(reader.GetInt32(0), reader.GetString(1)));
+                        toReturn.Add(new Spital(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2)));
                     }
                     reader.Close();
                     connection.Close();
@@ -144,7 +155,7 @@ namespace Server.Repository
                 } catch (SqlException)
                 {
                     connection.Close();
-                    throw new Exception("Database get failed.");
+                    throw new RepositoryException("Returnarea spitalelor din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }

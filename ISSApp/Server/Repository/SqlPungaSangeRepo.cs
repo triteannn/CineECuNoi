@@ -3,6 +3,7 @@ using ISSApp.Domain;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -17,9 +18,9 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO PungiSange(DataRecoltare, Grupa, Rh, Target, IdCd, IdFd) VALUES ( @DataRecoltare, @Grupa, @Rh, @Target, @IdCd, @IdFd)";
+                        "INSERT INTO PungiSange(DataRecoltare, Grupa, Rh, Target, IdCd, IdFd) VALUES (@DataRecoltare, @Grupa, @Rh, @Target, @IdCd, @IdFd)";
 
-                   
+
                     var paramDataRecoltare = command.CreateParameter();
                     paramDataRecoltare.ParameterName = "@DataRecoltare";
                     paramDataRecoltare.Value = pungaSange.DataRecoltare;
@@ -55,7 +56,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -112,7 +113,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -143,7 +144,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -157,7 +158,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE PungiSange SET DataRecoltare=@DataRecoltare, Grupa=@Grupa, Rh=@Rh, Target=@Target WHERE Id=@Id";
+                        "UPDATE PungiSange SET DataRecoltare=@DataRecoltare, Grupa=@Grupa, Rh=@Rh, Target=@Target, IdCd=@IdCd, IdFd=@IdFd WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -184,6 +185,16 @@ namespace Server.Repository
                     paramTarget.Value = pungaSange.Target;
                     command.Parameters.Add(paramTarget);
 
+                    var paramIdCd = command.CreateParameter();
+                    paramIdCd.ParameterName = "@IdCd";
+                    paramIdCd.Value = pungaSange.IdCd;
+                    command.Parameters.Add(paramIdCd);
+
+                    var paramIdFd = command.CreateParameter();
+                    paramIdFd.ParameterName = "@IdFd";
+                    paramIdFd.Value = pungaSange.IdFd;
+                    command.Parameters.Add(paramIdFd);
+
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -195,7 +206,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database update failed.");
+                    throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -225,8 +236,9 @@ namespace Server.Repository
                                 Grupa = result.GetString(2),
                                 Rh = result.GetString(3),
                                 Target = result.GetString(4),
-                                IdCd = result.GetInt32(5)
-
+                                IdCd = result.GetInt32(5),
+                                IdFd = result.GetInt32(6)
+                          
                             };
 
                             return pungaSange;
@@ -238,7 +250,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getOne failed.");
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
 
             }
@@ -267,7 +279,8 @@ namespace Server.Repository
                                 Grupa = result.GetString(2),
                                 Rh = result.GetString(3),
                                 Target = result.GetString(4),
-                                IdCd = result.GetInt32(5)
+                                IdCd = result.GetInt32(5),
+                                IdFd = result.GetInt32(6)
 
                             };
 
@@ -279,7 +292,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Returnarea pungii de sange din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }

@@ -3,6 +3,7 @@ using ISSApp.Domain;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -17,17 +18,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO PSPlasme(Id, DataRecoltare, Cantitate, Target, IdFc) VALUES (@Id, @DataRecoltare, @Cantitate, @Target, @IdFc)";
-
-                    var paramId = command.CreateParameter();
-                    paramId.ParameterName = "@Id";
-                    paramId.Value = psPlasma.Id;
-                    command.Parameters.Add(paramId);
-
-                    var paramDataRecoltare = command.CreateParameter();
-                    paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    //paramDataRecoltare.Value = psPlasma.DataRecoltare;
-                    command.Parameters.Add(paramDataRecoltare);
+                        "INSERT INTO PSPlasme(Cantitate, Target, DataExpirare, Grupa, Rh, IdCD) VALUES (@Cantitate, @Target, @DataExpirare, @Grupa, @Rh, @IdCD)";
 
                     var paramCantitate = command.CreateParameter();
                     paramCantitate.ParameterName = "@Cantitate";
@@ -39,17 +30,32 @@ namespace Server.Repository
                     paramTarget.Value = psPlasma.Target;
                     command.Parameters.Add(paramTarget);
 
-                    var paramIdFc = command.CreateParameter();
-                    paramIdFc.ParameterName = "@IdFc";
-                    //paramIdFc.Value = psPlasma.IdFc;
-                    command.Parameters.Add(paramIdFc);
+                    var paramDataExpirare = command.CreateParameter();
+                    paramDataExpirare.ParameterName = "@DataExpirare";
+                    paramDataExpirare.Value = psPlasma.DataExpirare;
+                    command.Parameters.Add(paramDataExpirare);
+
+                    var paramGrupa = command.CreateParameter();
+                    paramGrupa.ParameterName = "@Grupa";
+                    paramGrupa.Value = psPlasma.Grupa;
+                    command.Parameters.Add(paramGrupa);
+
+                    var paramRh = command.CreateParameter();
+                    paramRh.ParameterName = "@Rh";
+                    paramRh.Value = psPlasma.Rh;
+                    command.Parameters.Add(paramRh);
+
+                    var paramIdCD = command.CreateParameter();
+                    paramIdCD.ParameterName = "@IdCD";
+                    paramIdCD.Value = psPlasma.IdCD;
+                    command.Parameters.Add(paramIdCD);
 
                     command.ExecuteNonQuery();
 
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -80,7 +86,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -94,17 +100,12 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE PSPlasme SET DataRecoltare=@DataRecoltare, Cantitate=@Cantitate, Target=@Target, IdFc=@IdFc WHERE Id=@Id";
+                        "UPDATE PSPlasme SET Cantitate=@Cantitate, Target=@Target, DataExpirare=@DataExpirare, Grupa=@Grupa, @Rh=@Rh, IdCD=@IdCD WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
                     paramId.Value = psPlasma.Id;
                     command.Parameters.Add(paramId);
-
-                    var paramDataRecoltare = command.CreateParameter();
-                    paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    //paramDataRecoltare.Value = psPlasma.DataRecoltare;
-                    command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
                     paramCantitate.ParameterName = "@Cantitate";
@@ -116,10 +117,25 @@ namespace Server.Repository
                     paramTarget.Value = psPlasma.Target;
                     command.Parameters.Add(paramTarget);
 
-                    var paramIdFc = command.CreateParameter();
-                    paramIdFc.ParameterName = "@IdFc";
-                    //paramIdFc.Value = psPlasma.IdFc;
-                    command.Parameters.Add(paramIdFc);
+                    var paramDataExpirare = command.CreateParameter();
+                    paramDataExpirare.ParameterName = "@DataExpirare";
+                    paramDataExpirare.Value = psPlasma.DataExpirare;
+                    command.Parameters.Add(paramDataExpirare);
+
+                    var paramGrupa = command.CreateParameter();
+                    paramGrupa.ParameterName = "@Grupa";
+                    paramGrupa.Value = psPlasma.Grupa;
+                    command.Parameters.Add(paramGrupa);
+
+                    var paramRh = command.CreateParameter();
+                    paramRh.ParameterName = "@Rh";
+                    paramRh.Value = psPlasma.Rh;
+                    command.Parameters.Add(paramRh);
+
+                    var paramIdCD = command.CreateParameter();
+                    paramIdCD.ParameterName = "@IdCD";
+                    paramIdCD.Value = psPlasma.IdCD;
+                    command.Parameters.Add(paramIdCD);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -131,7 +147,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database update failed.");
+                    throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -155,10 +171,12 @@ namespace Server.Repository
                         {
                             PSPlasma psPlasma = new PSPlasma();
                             psPlasma.Id = result.GetInt32(0);
-                            //psPlasma.DataRecoltare = result.GetDateTime(1);
-                            psPlasma.Cantitate = result.GetFloat(2);
-                            psPlasma.Target = result.GetString(3);
-                            //psPlasma.IdFc = result.GetInt32(4);
+                            psPlasma.Cantitate = result.GetFloat(1);
+                            psPlasma.Target = result.GetString(2);
+                            psPlasma.DataExpirare = result.GetDateTime(3);
+                            psPlasma.Grupa = result.GetString(4);
+                            psPlasma.Rh = result.GetString(5);
+                            psPlasma.IdCD = result.GetInt32(6);
 
                             return psPlasma;
                         }
@@ -169,7 +187,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getOne failed.");
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
 
             }
@@ -191,10 +209,12 @@ namespace Server.Repository
                             PSPlasma psPlasma = new PSPlasma
                             {
                                 Id = result.GetInt32(0),
-                                //DataRecoltare = result.GetDateTime(1),
-                                Cantitate = result.GetFloat(2),
-                                Target = result.GetString(3),
-                                //IdFc = result.GetInt32(4)
+                                Cantitate = result.GetFloat(1),
+                                Target = result.GetString(2),
+                                DataExpirare = result.GetDateTime(3),
+                                Grupa = result.GetString(4),
+                                Rh = result.GetString(5),
+                                IdCD = result.GetInt32(6)
                             };
 
                             toReturn.Add(psPlasma);
@@ -205,7 +225,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Returnarea plasmei din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -232,10 +252,12 @@ namespace Server.Repository
                             PSPlasma psPlasma = new PSPlasma
                             {
                                 Id = result.GetInt32(0),
-                                //DataRecoltare = result.GetDateTime(1),
-                                Cantitate = result.GetFloat(2),
-                                Target = result.GetString(3),
-                                //IdFc = result.GetInt32(4)
+                                Cantitate = result.GetFloat(1),
+                                Target = result.GetString(2),
+                                DataExpirare = result.GetDateTime(3),
+                                Grupa = result.GetString(4),
+                                Rh = result.GetString(5),
+                                IdCD = result.GetInt32(6)
                             };
 
                             toReturn.Add(psPlasma);
@@ -246,7 +268,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
-                    throw new Exception("Database getTarget failed.");
+                    throw new RepositoryException("Returnarea plasmei pentru un target din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }

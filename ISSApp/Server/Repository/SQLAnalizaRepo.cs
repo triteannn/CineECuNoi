@@ -130,7 +130,7 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -161,7 +161,7 @@ namespace Server.Repository
                     return null;
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -301,7 +301,7 @@ namespace Server.Repository
                     return null;
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -360,7 +360,7 @@ namespace Server.Repository
                     }
 
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -414,7 +414,7 @@ namespace Server.Repository
 
                     return toReturn;
                 }
-                catch (RepositoryException)
+                catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea analizelor din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -478,11 +478,81 @@ namespace Server.Repository
 
                     return toReturn;
                 }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Returnarea analizelor unui donator din baza de date nu s-a putut realiza cu succes.");
+                }
+            }
+        }
+
+        public Analiza FindLastByDonator(int idDonator)
+        {
+            IDbConnection connection = Globals.getDBConnection();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    List<Analiza> toReturn = new List<Analiza>();
+                    command.CommandText = "SELECT TOP 1 a.* " +
+                                          "FROM FormulareDonare fd INNER JOIN Analize a " +
+                                          "ON a.Id = fd.IdAn " +
+                                          "where fd.IdD = @IdD" +
+                                          "ORDER BY a.DataRecoltarii DESC";
+
+                    var paramIdD = command.CreateParameter();
+                    paramIdD.ParameterName = "@IdD";
+                    paramIdD.Value = idDonator;
+                    command.Parameters.Add(paramIdD);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            Analiza analiza = new Analiza
+                            {
+                                Id = result.GetInt32(0),
+                                DataRecoltarii = result.GetDateTime(1),
+                                Eritrocite = result.GetDouble(2),
+                                Hemoglobina = result.GetDouble(3),
+                                Hematocrit = result.GetDouble(4),
+                                VEM = result.GetDouble(5),
+                                HEM = result.GetDouble(6),
+                                CHEM = result.GetDouble(7),
+                                LatimeDistribEritrocit = result.GetDouble(8),
+                                Trombocite = result.GetDouble(9),
+                                VolumMediuTrombocitar = result.GetDouble(10),
+                                Trombocrit = result.GetDouble(11),
+                                LatimeDistribTrombocit = result.GetDouble(12),
+                                Leucocite = result.GetDouble(13),
+                                Granulocite = result.GetDouble(14),
+                                Limfocite = result.GetDouble(15),
+                                MID = result.GetDouble(16),
+                                NumarGranulocite = result.GetDouble(17),
+                                NumarLimfocite = result.GetDouble(18),
+                                NumarMID = result.GetDouble(19),
+                                Glicemie = result.GetDouble(20),
+                                ALT_TGP = result.GetDouble(21),
+                                Colesterol = result.GetDouble(22)
+
+                            };
+
+                            return analiza;
+                        }
+                    }
+
+                    return null;
+                }
                 catch (RepositoryException)
                 {
                     throw new RepositoryException("Returnarea analizelor unui donator din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
+
+
+
+
     }
+
+
 }

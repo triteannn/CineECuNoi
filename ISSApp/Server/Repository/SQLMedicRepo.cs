@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -17,7 +18,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO Medici(CNP, Nume, Prenume, Dob, IdA, IdS) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA, @IdS)";
+                        "INSERT INTO Medici(CNP, Nume, Prenume, Dob, IdS, IdA, IdDc) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdS, @IdA, @IdDc)";
 
                     var paramCnp = command.CreateParameter();
                     paramCnp.ParameterName = "@CNP";
@@ -39,21 +40,26 @@ namespace Server.Repository
                     paramDob.Value = medic.Dob;
                     command.Parameters.Add(paramDob);
 
+                    var paramIdS = command.CreateParameter();
+                    paramIdS.ParameterName = "@IdS";
+                    paramIdS.Value = medic.IdS;
+                    command.Parameters.Add(paramIdS);
+
                     var paramIdA = command.CreateParameter();
                     paramIdA.ParameterName = "@IdA";
-                    //paramIdA.Value = medic.IdA;
+                    paramIdA.Value = medic.IdA;
                     command.Parameters.Add(paramIdA);
 
-                    var paramIdS = command.CreateParameter();
-                    paramIdA.ParameterName = "@IdS";
-                    paramIdA.Value = medic.IdS;
-                    command.Parameters.Add(paramIdS);
+                    var paramIdDc = command.CreateParameter();
+                    paramIdDc.ParameterName = "@IdDc";
+                    paramIdDc.Value = medic.IdDc;
+                    command.Parameters.Add(paramIdDc);
 
                     command.ExecuteNonQuery();
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -66,12 +72,12 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM Medici WHERE CNP=@CNP";
+                    command.CommandText = "DELETE FROM Medici WHERE Id=@Id";
 
-                    var paramCNP = command.CreateParameter();
-                    paramCNP.ParameterName = "@CNP";
-                    paramCNP.Value = medic.CNP;
-                    command.Parameters.Add(paramCNP);
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = medic.Id;
+                    command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -83,7 +89,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -97,7 +103,12 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE Medici SET Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdA=@IdA, IdS=@IdS WHERE CNP=@CNP";
+                        "UPDATE Medici SET CNP=@CNP, Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdCd=@IdCd, IdA=@IdA, IdDc=@IdDc WHERE Id=@Id";
+
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = medic.Id;
+                    command.Parameters.Add(paramId);
 
                     var paramCnp = command.CreateParameter();
                     paramCnp.ParameterName = "@CNP";
@@ -119,15 +130,20 @@ namespace Server.Repository
                     paramDob.Value = medic.Dob;
                     command.Parameters.Add(paramDob);
 
+                    var paramIdS = command.CreateParameter();
+                    paramIdS.ParameterName = "@IdS";
+                    paramIdS.Value = medic.IdS;
+                    command.Parameters.Add(paramIdS);
+
                     var paramIdA = command.CreateParameter();
                     paramIdA.ParameterName = "@IdA";
-                    //paramIdA.Value = medic.IdA;
+                    paramIdA.Value = medic.IdA;
                     command.Parameters.Add(paramIdA);
 
-                    var paramIdS = command.CreateParameter();
-                    paramIdA.ParameterName = "@IdS";
-                    paramIdA.Value = medic.IdS;
-                    command.Parameters.Add(paramIdS);
+                    var paramIdDc = command.CreateParameter();
+                    paramIdDc.ParameterName = "@IdDc";
+                    paramIdDc.Value = medic.IdDc;
+                    command.Parameters.Add(paramIdDc);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -138,7 +154,7 @@ namespace Server.Repository
                     return null;
                 } catch (SqlException)
                 {
-                    throw new Exception("Database update failed.");
+                    throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -166,8 +182,9 @@ namespace Server.Repository
                             medic.Nume = result.GetString(2);
                             medic.Prenume = result.GetString(3);
                             medic.Dob = result.GetDateTime(4);
-                            //medic.IdA = result.GetInt32(5);
-                            medic.IdS = result.GetInt32(6);
+                            medic.IdS = result.GetInt32(5);
+                            medic.IdA = result.GetInt32(6);
+                            medic.IdDc = result.GetInt32(7);
 
                             return medic;
                         }
@@ -177,7 +194,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database getOne failed.");
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
 
             }
@@ -202,8 +219,9 @@ namespace Server.Repository
                                 Nume = result.GetString(2),
                                 Prenume = result.GetString(3),
                                 Dob = result.GetDateTime(4),
-                                //IdA = result.GetInt32(5),
-                                IdS = result.GetInt32(6)
+                                IdS = result.GetInt32(5),
+                                IdA = result.GetInt32(6),
+                                IdDc = result.GetInt32(7)
                             };
 
                             toReturn.Add(medic);
@@ -213,7 +231,7 @@ namespace Server.Repository
                     return toReturn;
                 } catch (SqlException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Returnarea medicilor din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }

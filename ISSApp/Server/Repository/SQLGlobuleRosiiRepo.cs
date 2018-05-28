@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -17,17 +18,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO PSGlobuleRosii(Id, DataRecoltare, Cantitate, Target, IdFc) VALUES (@Id, @DataRecoltare, @Cantitate, @Target, @IdFc)";
-
-                    var paramId = command.CreateParameter();
-                    paramId.ParameterName = "@Id";
-                    paramId.Value = psGlobuleRosii.Id;
-                    command.Parameters.Add(paramId);
-
-                    var paramDataRecoltare = command.CreateParameter();
-                    paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    //paramDataRecoltare.Value = psGlobuleRosii.DataRecoltare;
-                    command.Parameters.Add(paramDataRecoltare);
+                        "INSERT INTO PSGlobuleRosii(Cantitate, Target, DataExpirare, Grupa, Rh, IdCD) VALUES (@Cantitate, @Target, @DataExpirare, @Grupa, @Rh, @IdCD)";
 
                     var paramCantitate = command.CreateParameter();
                     paramCantitate.ParameterName = "@Cantitate";
@@ -39,16 +30,31 @@ namespace Server.Repository
                     paramTarget.Value = psGlobuleRosii.Target;
                     command.Parameters.Add(paramTarget);
 
-                    var paramIdFc = command.CreateParameter();
-                    paramIdFc.ParameterName = "@IdFc";
-                    //paramIdFc.Value = psGlobuleRosii.IdFc;
-                    command.Parameters.Add(paramIdFc);
+                    var paramDataExpirare = command.CreateParameter();
+                    paramDataExpirare.ParameterName = "@DataExpirare";
+                    paramDataExpirare.Value = psGlobuleRosii.DataExpirare;
+                    command.Parameters.Add(paramDataExpirare);
+
+                    var paramGrupa = command.CreateParameter();
+                    paramGrupa.ParameterName = "@Grupa";
+                    paramGrupa.Value = psGlobuleRosii.Grupa;
+                    command.Parameters.Add(paramGrupa);
+
+                    var paramRh = command.CreateParameter();
+                    paramRh.ParameterName = "@Rh";
+                    paramRh.Value = psGlobuleRosii.Rh;
+                    command.Parameters.Add(paramRh);
+
+                    var paramIdCD = command.CreateParameter();
+                    paramIdCD.ParameterName = "@IdCD";
+                    paramIdCD.Value = psGlobuleRosii.IdCD;
+                    command.Parameters.Add(paramIdCD);
 
                     command.ExecuteNonQuery();
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database insert failed.");
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -78,7 +84,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database delete failed.");
+                    throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
@@ -92,17 +98,12 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE PSGlobuleRosii SET DataRecoltare=@DataRecoltare, Cantitate=@Cantitate, Target=@Target, IdFc=@IdFc WHERE Id=@Id";
+                        "UPDATE PSGlobuleRosii SET Cantitate=@Cantitate, Target=@Target, DataExpirare=@DataExpirare, Grupa=@Grupa, @Rh=@Rh, IdCD=@IdCD WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
                     paramId.Value = psGlobuleRosii.Id;
                     command.Parameters.Add(paramId);
-
-                    var paramDataRecoltare = command.CreateParameter();
-                    paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    //paramDataRecoltare.Value = psGlobuleRosii.DataRecoltare;
-                    command.Parameters.Add(paramDataRecoltare);
 
                     var paramCantitate = command.CreateParameter();
                     paramCantitate.ParameterName = "@Cantitate";
@@ -114,10 +115,25 @@ namespace Server.Repository
                     paramTarget.Value = psGlobuleRosii.Target;
                     command.Parameters.Add(paramTarget);
 
-                    var paramIdFc = command.CreateParameter();
-                    paramIdFc.ParameterName = "@IdFc";
-                    //paramIdFc.Value = psGlobuleRosii.IdFc;
-                    command.Parameters.Add(paramIdFc);
+                    var paramDataExpirare = command.CreateParameter();
+                    paramDataExpirare.ParameterName = "@DataExpirare";
+                    paramDataExpirare.Value = psGlobuleRosii.DataExpirare;
+                    command.Parameters.Add(paramDataExpirare);
+
+                    var paramGrupa = command.CreateParameter();
+                    paramGrupa.ParameterName = "@Grupa";
+                    paramGrupa.Value = psGlobuleRosii.Grupa;
+                    command.Parameters.Add(paramGrupa);
+
+                    var paramRh = command.CreateParameter();
+                    paramRh.ParameterName = "@Rh";
+                    paramRh.Value = psGlobuleRosii.Rh;
+                    command.Parameters.Add(paramRh);
+
+                    var paramIdCD = command.CreateParameter();
+                    paramIdCD.ParameterName = "@IdCD";
+                    paramIdCD.Value = psGlobuleRosii.IdCD;
+                    command.Parameters.Add(paramIdCD);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
@@ -128,7 +144,7 @@ namespace Server.Repository
                     return null;
                 } catch (SqlException)
                 {
-                    throw new Exception("Database update failed.");
+                    throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -152,10 +168,12 @@ namespace Server.Repository
                         {
                             PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii();
                             psGlobuleRosii.Id = result.GetInt32(0);
-                            //psGlobuleRosii.DataRecoltare = result.GetDateTime(1);
-                            psGlobuleRosii.Cantitate = result.GetFloat(2);
-                            psGlobuleRosii.Target = result.GetString(3);
-                            //psGlobuleRosii.IdFc = result.GetInt32(4);
+                            psGlobuleRosii.Cantitate = result.GetFloat(1);
+                            psGlobuleRosii.Target = result.GetString(2);
+                            psGlobuleRosii.DataExpirare = result.GetDateTime(3);
+                            psGlobuleRosii.Grupa = result.GetString(4);
+                            psGlobuleRosii.Rh = result.GetString(5);
+                            psGlobuleRosii.IdCD = result.GetInt32(6);
 
                             return psGlobuleRosii;
                         }
@@ -165,7 +183,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
-                    throw new Exception("Database getOne failed.");
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
 
             }
@@ -186,11 +204,13 @@ namespace Server.Repository
                         {
                             PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii {
                                 Id = result.GetInt32(0),
-                                //DataRecoltare = result.GetDateTime(1),
-                                Cantitate = result.GetFloat(2),
-                                Target = result.GetString(3),
-                                //IdFc = result.GetInt32(4)
-                            };
+                                Cantitate = result.GetFloat(1),
+                                Target = result.GetString(2),
+                                DataExpirare = result.GetDateTime(3),
+                                Grupa = result.GetString(4),
+                                Rh = result.GetString(5),
+                                IdCD = result.GetInt32(6)
+                        };
 
                             toReturn.Add(psGlobuleRosii);
                         }
@@ -199,7 +219,7 @@ namespace Server.Repository
                     return toReturn;
                 } catch (SqlException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Returnarea globulelor rosii din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
@@ -225,10 +245,12 @@ namespace Server.Repository
                         {
                             PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii {
                                 Id = result.GetInt32(0),
-                                //DataRecoltare = result.GetDateTime(1),
-                                Cantitate = result.GetFloat(2),
-                                Target = result.GetString(3),
-                                //IdFc = result.GetInt32(4)
+                                Cantitate = result.GetFloat(1),
+                                Target = result.GetString(2),
+                                DataExpirare = result.GetDateTime(3),
+                                Grupa = result.GetString(4),
+                                Rh = result.GetString(5),
+                                IdCD = result.GetInt32(6)
                             };
 
                             toReturn.Add(psGlobuleRosii);
@@ -238,7 +260,7 @@ namespace Server.Repository
                     return toReturn;
                 } catch (SqlException)
                 {
-                    throw new Exception("Database getAll failed.");
+                    throw new RepositoryException("Returnarea globulelor rosii pentru un target din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }
