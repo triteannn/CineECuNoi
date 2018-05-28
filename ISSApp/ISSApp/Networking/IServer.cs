@@ -32,6 +32,7 @@ namespace ISSApp.Networking
         CentruDonare CentruDonareUpdate(CentruDonare centru);
         CentruDonare CentruDonareFindEntity(int id);
         List<CentruDonare> CentruDonareFindAll();
+        CentruDonare CentruDonareFindByDenumire(string denumire)
         //Donator
         void DonatorAdd(Donator donator);
         void DonatorAddFull(Donator donator);

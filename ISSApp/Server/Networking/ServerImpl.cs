@@ -227,6 +227,17 @@ namespace Server.Networking
             }
         }
 
+        public CentruDonare CentruDonareFindByDenumire(string denumire)
+        {
+            try
+            {
+                return centruDonareRepo.FindCentruDonareByDenumire(denumire);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public void DonatorAdd(Donator donator)
         {
             try

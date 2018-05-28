@@ -192,6 +192,50 @@ namespace Server.Repository
                 }
             }
         }
+
+        public CentruDonare FindCentruDonareByDenumire(string denumire)
+        {
+
+            IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText = "SELECT * FROM CentreDonare WHERE Denumire=@Denumire";
+                    var paramDenumire = command.CreateParameter();
+                    paramDenumire.ParameterName = "@Denumire";
+                    paramDenumire.Value = denumire;
+                    command.Parameters.Add(paramDenumire);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            CentruDonare centruDonare = new CentruDonare();
+                            centruDonare.Id = result.GetInt32(0);
+                            centruDonare.Denumire = result.GetString(1);
+                            centruDonare.IdAdr = result.GetInt32(2);
+
+                            return centruDonare;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+            }
+
+        }
     }
 
 }
