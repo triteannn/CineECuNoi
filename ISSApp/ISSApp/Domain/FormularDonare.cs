@@ -19,8 +19,8 @@ namespace ISSApp.Domain
         public DateTime DataCreare { get; set; }
         public string ListaBoli { get; set; }
 
-        [NotMapped]
-        public int IdD { get; set; } //modificat aici
+        //[NotMapped]
+        //public int IdD { get; set; } //modificat aici 
 
         public virtual PungaSange PungaSange { get; set; }
         public virtual Analiza Analiza { get; set; }

@@ -7,7 +7,7 @@ using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
-    public class SQLFormularDonare : ISqlRepo<FormularDonare>
+    public class SQLFormularDonareRepo : ISqlRepo<FormularDonare>
     {
         public void Add(FormularDonare formularDonare)
         {
