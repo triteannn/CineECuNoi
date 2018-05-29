@@ -7,8 +7,9 @@ namespace ISSApp.Domain
     [Table("FormulareDonare")]
     public class FormularDonare
     {
-        public FormularDonare(DateTime dataCreare, string listaBoli, int idD, string target)
+        public FormularDonare(int id, DateTime dataCreare, string listaBoli, int idD, string target)
         {
+            Id = id;
             DataCreare = dataCreare;
             ListaBoli = listaBoli;
             IdD = idD;

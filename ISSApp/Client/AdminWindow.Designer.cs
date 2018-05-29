@@ -365,7 +365,7 @@
             this.DonatorsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DonatorsTable.RowTemplate.Height = 24;
             this.DonatorsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DonatorsTable.Size = new System.Drawing.Size(938, 435);
+            this.DonatorsTable.Size = new System.Drawing.Size(1039, 435);
             this.DonatorsTable.TabIndex = 4;
             // 
             // bindingNavigator2
@@ -507,7 +507,7 @@
             this.EmployeesTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.EmployeesTable.RowTemplate.Height = 24;
             this.EmployeesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EmployeesTable.Size = new System.Drawing.Size(938, 435);
+            this.EmployeesTable.Size = new System.Drawing.Size(1039, 435);
             this.EmployeesTable.TabIndex = 4;
             // 
             // bindingNavigator3
@@ -649,7 +649,7 @@
             this.DoctorsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DoctorsTable.RowTemplate.Height = 24;
             this.DoctorsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DoctorsTable.Size = new System.Drawing.Size(938, 435);
+            this.DoctorsTable.Size = new System.Drawing.Size(1039, 435);
             this.DoctorsTable.TabIndex = 4;
             // 
             // bindingNavigator4
@@ -791,7 +791,7 @@
             this.HospitalsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.HospitalsTable.RowTemplate.Height = 24;
             this.HospitalsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HospitalsTable.Size = new System.Drawing.Size(938, 435);
+            this.HospitalsTable.Size = new System.Drawing.Size(1039, 435);
             this.HospitalsTable.TabIndex = 4;
             // 
             // bindingNavigator5
@@ -933,7 +933,7 @@
             this.TransfusionCentersTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.TransfusionCentersTable.RowTemplate.Height = 24;
             this.TransfusionCentersTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransfusionCentersTable.Size = new System.Drawing.Size(938, 435);
+            this.TransfusionCentersTable.Size = new System.Drawing.Size(1039, 435);
             this.TransfusionCentersTable.TabIndex = 4;
             // 
             // bindingNavigator6

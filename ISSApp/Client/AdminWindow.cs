@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -25,6 +26,73 @@ namespace Client
             _account = account;
             _dataSet = new DataSet();
             _bindingSource = new BindingSource();
+            foreach (DataGridViewColumn col in AccountsTable.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            foreach (DataGridViewColumn col in DonatorsTable.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            foreach (DataGridViewColumn col in EmployeesTable.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            foreach (DataGridViewColumn col in DoctorsTable.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            foreach (DataGridViewColumn col in HospitalsTable.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            AccountsTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            AccountsTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            AccountsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            AccountsTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            AccountsTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            AccountsTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            DonatorsTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            DonatorsTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            DonatorsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            DonatorsTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            DonatorsTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DonatorsTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            EmployeesTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            EmployeesTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            EmployeesTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            EmployeesTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            EmployeesTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            EmployeesTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            HospitalsTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            HospitalsTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            HospitalsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            HospitalsTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            HospitalsTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            HospitalsTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            TransfusionCentersTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            TransfusionCentersTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            TransfusionCentersTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            TransfusionCentersTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            TransfusionCentersTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            TransfusionCentersTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            DoctorsTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            DoctorsTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            DoctorsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            DoctorsTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            DoctorsTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DoctorsTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
         }
 
         public const int WmNclbuttondown = 0xA1;
@@ -106,6 +174,10 @@ namespace Client
                 _bindingSource.DataSource = dt;
                 AccountsTable.DataSource = _bindingSource;
                 bindingNavigator1.BindingSource = _bindingSource;
+                foreach (DataGridViewColumn col in AccountsTable.Columns)
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
             }
             if (index == 1)
             {

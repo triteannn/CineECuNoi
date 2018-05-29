@@ -1,17 +1,17 @@
 using ISSApp.Domain;
+using ISSApp.Exceptions;
+using Server.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
-    public class SQLFormularDonareRepo : ISqlRepo<FormularDonare>
+    public class SqlFormularDonareRepo : ISqlRepo<FormularDonare>
     {
         public void Add(FormularDonare formularDonare)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -42,8 +42,7 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
 
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -54,7 +53,7 @@ namespace Server.Repository
 
         public FormularDonare Delete(FormularDonare formularDonare)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -74,8 +73,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -85,7 +83,7 @@ namespace Server.Repository
 
         public FormularDonare Update(FormularDonare formularDonare)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -125,8 +123,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -135,7 +132,7 @@ namespace Server.Repository
 
         public FormularDonare FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -150,21 +147,20 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            int Id = result.GetInt32(0);
+                            int ID = result.GetInt32(0);
                             DateTime dataCreare = result.GetDateTime(1);
                             string listaBoli = result.GetString(2);
-                            int idAn = result.GetInt32(3);
-                            int idD = result.GetInt32(4);
+                            int idD = result.GetInt32(3);
+                            string target = result.GetString(4);
 
-                            FormularDonare formularDonare = new FormularDonare(Id, dataCreare, listaBoli, idAn, idD);
+                            FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idD, target);
                             return formularDonare;
                         }
 
                         return null;
                     }
 
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -174,7 +170,7 @@ namespace Server.Repository
 
         public List<FormularDonare> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -186,13 +182,12 @@ namespace Server.Repository
                         while (result.Read())
                         {
                             //toReturn.Add(new Donator(result.GetString(0), result.GetString(1), result.GetString(2), result.GetDateTime(3)));
-                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4)));
+                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetString(4)));
                         }
                     }
 
                     return toReturn;
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
                 }

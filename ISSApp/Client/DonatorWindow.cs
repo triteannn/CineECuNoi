@@ -321,8 +321,8 @@ namespace Client
             boli = boli.Substring(0, boli.Length - 2);
             if (_loggedAccount.IdD != null)
             {
-                var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
-                _server.FormularDonareAdd(formularDonare);
+                //var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
+                //_server.FormularDonareAdd(formularDonare);
             }
         }
 

@@ -172,6 +172,11 @@ namespace Server.Networking
             }
         }
 
+        public List<PungaSangeCuCNP> getPungaSangeCuCNP()
+        {
+            throw new NotImplementedException();
+        }
+
         public void CentruDonareAdd(CentruDonare centru)
         {
             try
@@ -828,6 +833,11 @@ namespace Server.Networking
             }
         }
 
+        public Analiza AnalizaFindLastByDonator(int idDonator)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Analiza> AnalizaFindByDonator(int idDonator)
         {
             try
@@ -842,7 +852,7 @@ namespace Server.Networking
         /*
          * Se returneaza o lista cu pungile de sange, care au atasate CNP-ul donatorului.
          */
-        public List<PungaSangeCuCNP> getPungaSangeCuCNP()
+        /*public List<PungaSangeCuCNP> getPungaSangeCuCNP()
         {
             try
             {
@@ -851,6 +861,6 @@ namespace Server.Networking
             {
                 throw new NetworkingException(e.Message);
             }
-        }
+        }*/
     }
 }
