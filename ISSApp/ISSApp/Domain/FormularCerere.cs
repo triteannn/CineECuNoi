@@ -22,12 +22,23 @@ namespace ISSApp.Domain
         //        public virtual ICollection<PSTrombocite> PsTrombocite { get; set; }
 
         public string Target { get; set; }
-        //public int IdM { get; set; }
+
+        [NotMapped]
+        public int IdM { get; set; }  //is this gut?
 
         public double CantTrombocite { get; set; }
         public double CantPlasma { get; set; }
         public double CantGlobuleRosii { get; set; }
 
         public virtual Medic Medic { get; set; }
+
+        public FormularCerere(int id, string target, double cantTrombocite, double cantPlasma, double cantGlobuleRosi, int idM)
+        {
+            Id = id;
+            Target = target;
+            CantTrombocite = cantTrombocite;
+            CantPlasma = cantPlasma;
+            IdM = idM;
+        }
     }
 }

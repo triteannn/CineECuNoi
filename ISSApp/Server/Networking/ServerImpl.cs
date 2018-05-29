@@ -839,7 +839,10 @@ namespace Server.Networking
             }
         }
 
-        public Analiza AnalizaFindLastByDonator(int idDonator)
+        /*
+         * Se returneaza o lista cu pungile de sange, care au atasate CNP-ul donatorului.
+         */
+        public List<PungaSangeCuCNP> getPungaSangeCuCNP()
         {
             try
             {

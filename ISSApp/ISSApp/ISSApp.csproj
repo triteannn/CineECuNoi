@@ -108,6 +108,7 @@
     <Compile Include="Domain\PSPlasma.cs" />
     <Compile Include="Domain\PSTrombocite.cs" />
     <Compile Include="Domain\PungaSange.cs" />
+    <Compile Include="Domain\PungaSangeCuCNP.cs" />
     <Compile Include="Domain\Spital.cs" />
     <Compile Include="Exceptions\NetworkingException.cs" />
     <Compile Include="Exceptions\RepositoryException.cs" />
