@@ -13,13 +13,22 @@ namespace ISSApp.Domain
             Password = password;
         }
 
+        public Account(string username, string password, int idD, int idM, int idAc)
+        {
+            Username = username;
+            Password = password;
+            IdD = idD;
+            IdM = idM;
+            IdAc = idAc;
+        }
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public int IdD { get; set; }
-        public int IdM { get; set; }
-        public int IdAc { get; set; }
+        public int? IdD { get; set; }
+        public int? IdM { get; set; }
+        public int? IdAc { get; set; }
 
         public virtual Donator Donator { get; set; }
         public virtual Medic Medic { get; set; }

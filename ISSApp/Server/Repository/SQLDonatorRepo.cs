@@ -1,15 +1,62 @@
 using ISSApp.Domain;
+using ISSApp.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
     public class SqlDonatorRepo : ISqlRepo<Donator>
     {
         public void Add(Donator donator)
+        {
+            var connection = Globals.getDBConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    command.CommandText =
+                        "INSERT INTO Donatori(CNP, Nume, Prenume, Dob, IdA) VALUES (@CNP, @Nume, @Prenume, @Dob, @IdA)";
+
+                    var paramCnp = command.CreateParameter();
+                    paramCnp.ParameterName = "@CNP";
+                    paramCnp.Value = donator.CNP;
+                    command.Parameters.Add(paramCnp);
+
+                    var paramNume = command.CreateParameter();
+                    paramNume.ParameterName = "@Nume";
+                    paramNume.Value = donator.Nume;
+                    command.Parameters.Add(paramNume);
+
+                    var paramPrenume = command.CreateParameter();
+                    paramPrenume.ParameterName = "@Prenume";
+                    paramPrenume.Value = donator.Prenume;
+                    command.Parameters.Add(paramPrenume);
+
+                    var paramDob = command.CreateParameter();
+                    paramDob.ParameterName = "@Dob";
+                    paramDob.Value = donator.Dob;
+                    command.Parameters.Add(paramDob);
+
+                    var paramIdA = command.CreateParameter();
+                    paramIdA.ParameterName = "@IdA";
+                    paramIdA.Value = donator.IdA;
+                    command.Parameters.Add(paramIdA);
+
+                    command.ExecuteNonQuery();
+
+                } catch (SqlException)
+                {
+                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
+                }
+
+            }
+
+        }
+
+        public void AddFull(Donator donator)
         {
             var connection = Globals.getDBConnection();
             connection.Open();
@@ -61,9 +108,7 @@ namespace Server.Repository
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
-
             }
-
         }
 
         public Donator Delete(Donator donator)
@@ -141,7 +186,7 @@ namespace Server.Repository
                     paramIdA.ParameterName = "@IdA";
                     paramIdA.Value = donator.IdA;
                     command.Parameters.Add(paramIdA);
-                  
+
                     var paramIdDc = command.CreateParameter();
                     paramIdDc.ParameterName = "@IdDc";
                     paramIdDc.Value = donator.IdDc;
@@ -197,6 +242,55 @@ namespace Server.Repository
                 }
 
             }
+        }
+
+        public Donator FindByUsername(string username)
+        {
+
+            // ToDo!!!!!!! AdyR
+            return null;
+
+//            IDbConnection connection = Globals.getDBConnection();
+//            connection.Open();
+//            using (var command = connection.CreateCommand())
+//            {
+//                try
+//                {
+//                    command.CommandText = "SELECT * FROM Donatori WHERE Denumire=@Username";
+//                    var paramUsername = command.CreateParameter();
+//                    paramUsername.ParameterName = "@Username";
+//                    paramUsername.Value = username;
+//                    command.Parameters.Add(paramUsername);
+//
+//                    using (var result = command.ExecuteReader())
+//                    {
+//                        if (result.Read())
+//                        {
+//                            int idDonator = result.GetInt32(0);
+//                            String cnp = result.GetString(1);
+//                            String nume = result.GetString(2);
+//                            String prenume = result.GetString(3);
+//                            DateTime date = result.GetDateTime(4);
+//
+//                            Donator donator = new Donator(cnp, nume, prenume, date);
+//                            return donator;
+//                        }
+//
+//                        return null;
+//                    }
+//
+//                }
+//                catch (SqlException)
+//                {
+//                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+//                }
+//                finally
+//                {
+//                    connection.Close();
+//                }
+//
+//            }
+
         }
 
         public List<Donator> FindAll()

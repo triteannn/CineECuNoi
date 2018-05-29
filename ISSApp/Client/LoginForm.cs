@@ -31,7 +31,14 @@ namespace Client
             {
                 using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Open, FileAccess.Read))
                 {
-                    TxtUsername.Text = serializer.Deserialize(fs) as string;
+                    var strr = new string[255];
+                    if (serializer.Deserialize(fs) is string str)
+                    {
+                        strr = str.Split(' ');
+                    }
+
+                    TxtUsername.Text = strr[0];
+                    DropdownAS.selectedIndex = int.Parse(strr[1]);
                 }
                 RememberMe.Checked = true;
             }
@@ -156,14 +163,14 @@ namespace Client
                     {
                         using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Open, FileAccess.Write))
                         {
-                            serializer.Serialize(fs, TxtUsername.Text);
+                            serializer.Serialize(fs, TxtUsername.Text + " " + DropdownAS.selectedIndex);
                         }
                     }
                     else
                     {
                         using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Create, FileAccess.Write))
                         {
-                            serializer.Serialize(fs, TxtUsername.Text);
+                            serializer.Serialize(fs, TxtUsername.Text + " " + DropdownAS.selectedIndex);
                         }
                     }
                 }
@@ -178,9 +185,17 @@ namespace Client
                 var acc = _server.AccountFindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
                 if (acc != null)
                 {
-                    var mainWindow = new MainWindow(this, _server);
-                    mainWindow.Show();
-                    Hide();
+                    if (acc.IdD != null && DropdownAS.selectedValue.Equals("Donator"))
+                    {
+                        var mainWindow = new DonatorWindow(this, _server, acc);
+                        mainWindow.Show();
+                        Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show(@"This account doesn't have the rights to login as " + DropdownAS.selectedValue,
+                            @"Insufficient permission", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                     MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -193,11 +208,13 @@ namespace Client
         internal void EmptyFields()
         {
             if (!RememberMe.Checked)
+            {
                 TxtUsername.Text = @"Username";
+                DropdownAS.selectedIndex = 0;
+            }
             RememberMe.Checked = TxtUsername.Text != @"Username";
             TxtPassword.Text = @"Password";
             TxtPassword.isPassword = false;
-            DropdownAS.selectedIndex = 0;
         }
 
         private void LblCreateAcc_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

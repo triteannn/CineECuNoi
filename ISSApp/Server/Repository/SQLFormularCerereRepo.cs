@@ -1,9 +1,7 @@
 using ISSApp.Domain;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -208,6 +206,24 @@ namespace Server.Repository
                     throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
                 }
             }
+        }
+
+        public bool ExistaCNP(string cnp)
+        {
+            using (var connection = Globals.getDBConnection())
+            {
+                connection.Open();
+                var cmd = new SqlCommand(@"select * from FormularCerere where Target=@cnp", connection);
+                cmd.Parameters.AddWithValue("@cnp", cnp);
+
+                var reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

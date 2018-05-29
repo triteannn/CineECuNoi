@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ISSApp.Networking;
+using ISSApp.Exceptions;
 
 namespace Client.Service
 {
@@ -13,7 +14,7 @@ namespace Client.Service
 
         public DonatorService(IServer server)
         {
-
+            _server = server;
         }
 
         /*
@@ -21,14 +22,22 @@ namespace Client.Service
          */
         public bool poateDona(int idDonator)
         {
-            DateTime ult = _server.AnalizaFindLastByDonator(idDonator).DataRecoltarii;
 
-            if (DateTime.Today.Subtract(ult).TotalDays > 90)
+            try
             {
-                return true;
-            }
+                DateTime ult = _server.AnalizaFindLastByDonator(idDonator).DataRecoltarii;
 
-            return false;
+                if (DateTime.Today.Subtract(ult).TotalDays > 90)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
         }
     }
 }

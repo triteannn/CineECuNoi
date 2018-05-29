@@ -149,7 +149,7 @@
             this.label9.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(19, 100);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(254, 17);
+            this.label9.Size = new System.Drawing.Size(237, 14);
             this.label9.TabIndex = 30;
             this.label9.Text = "Already have an account created? Click";
             // 
@@ -174,7 +174,7 @@
             this.Label8.ForeColor = System.Drawing.Color.DarkRed;
             this.Label8.Location = new System.Drawing.Point(24, 585);
             this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(81, 17);
+            this.Label8.Size = new System.Drawing.Size(72, 14);
             this.Label8.TabIndex = 27;
             this.Label8.Text = "(optional)";
             // 
@@ -185,7 +185,7 @@
             this.Label7.ForeColor = System.Drawing.Color.DarkRed;
             this.Label7.Location = new System.Drawing.Point(24, 536);
             this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(81, 17);
+            this.Label7.Size = new System.Drawing.Size(72, 14);
             this.Label7.TabIndex = 26;
             this.Label7.Text = "(optional)";
             // 
@@ -196,7 +196,7 @@
             this.Label6.ForeColor = System.Drawing.Color.DarkRed;
             this.Label6.Location = new System.Drawing.Point(72, 567);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(34, 17);
+            this.Label6.Size = new System.Drawing.Size(29, 14);
             this.Label6.TabIndex = 25;
             this.Label6.Text = "Rh:";
             // 
@@ -207,7 +207,7 @@
             this.Label5.ForeColor = System.Drawing.Color.DarkRed;
             this.Label5.Location = new System.Drawing.Point(20, 516);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(91, 17);
+            this.Label5.Size = new System.Drawing.Size(78, 14);
             this.Label5.TabIndex = 24;
             this.Label5.Text = "Blood type:";
             // 
@@ -278,7 +278,7 @@
             this.Label4.ForeColor = System.Drawing.Color.DarkRed;
             this.Label4.Location = new System.Drawing.Point(20, 457);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(50, 17);
+            this.Label4.Size = new System.Drawing.Size(46, 14);
             this.Label4.TabIndex = 20;
             this.Label4.Text = "birth:";
             // 
@@ -289,7 +289,7 @@
             this.Label3.ForeColor = System.Drawing.Color.DarkRed;
             this.Label3.Location = new System.Drawing.Point(20, 440);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(23, 17);
+            this.Label3.Size = new System.Drawing.Size(19, 14);
             this.Label3.TabIndex = 19;
             this.Label3.Text = "of";
             // 
@@ -300,7 +300,7 @@
             this.Label2.ForeColor = System.Drawing.Color.DarkRed;
             this.Label2.Location = new System.Drawing.Point(20, 422);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(41, 17);
+            this.Label2.Size = new System.Drawing.Size(37, 14);
             this.Label2.TabIndex = 18;
             this.Label2.Text = "Date";
             // 
@@ -313,7 +313,7 @@
             this.LblLogin.Location = new System.Drawing.Point(253, 100);
             this.LblLogin.Margin = new System.Windows.Forms.Padding(0);
             this.LblLogin.Name = "LblLogin";
-            this.LblLogin.Size = new System.Drawing.Size(36, 17);
+            this.LblLogin.Size = new System.Drawing.Size(33, 14);
             this.LblLogin.TabIndex = 0;
             this.LblLogin.TabStop = true;
             this.LblLogin.Text = "here";
@@ -325,7 +325,7 @@
             this.DOB.BackColor = System.Drawing.Color.DarkRed;
             this.DOB.BorderRadius = 0;
             this.DOB.ForeColor = System.Drawing.Color.White;
-            this.DOB.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.DOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DOB.FormatCustom = null;
             this.DOB.Location = new System.Drawing.Point(72, 424);
             this.DOB.Margin = new System.Windows.Forms.Padding(5);

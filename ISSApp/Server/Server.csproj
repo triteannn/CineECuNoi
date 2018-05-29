@@ -53,9 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext.cs" />
-    <Compile Include="Migrations\201805201248039_Fix1.cs" />
-    <Compile Include="Migrations\201805201248039_Fix1.Designer.cs">
-      <DependentUpon>201805201248039_Fix1.cs</DependentUpon>
+    <Compile Include="Migrations\201805250639597_InitialCreate.cs" />
+    <Compile Include="Migrations\201805250639597_InitialCreate.Designer.cs">
+      <DependentUpon>201805250639597_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Networking\ServerImpl.cs" />
@@ -90,8 +90,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805201248039_Fix1.resx">
-      <DependentUpon>201805201248039_Fix1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805250639597_InitialCreate.resx">
+      <DependentUpon>201805250639597_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

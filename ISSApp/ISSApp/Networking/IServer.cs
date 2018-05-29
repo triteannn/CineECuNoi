@@ -33,8 +33,11 @@ namespace ISSApp.Networking
         CentruDonare CentruDonareUpdate(CentruDonare centru);
         CentruDonare CentruDonareFindEntity(int id);
         List<CentruDonare> CentruDonareFindAll();
+
+        CentruDonare CentruDonareFindByDenumire(string denumire);
         //Donator
         void DonatorAdd(Donator donator);
+        void DonatorAddFull(Donator donator);
         Donator DonatorDelete(Donator donator);
         Donator DonatorUpdate(Donator donator);
         Donator DonatorFindEntity(int id);
@@ -46,6 +49,7 @@ namespace ISSApp.Networking
         FormularCerere FormularCerereUpdate(FormularCerere formular);
         FormularCerere FormularCerereFindEntity(int id);
         List<FormularCerere> FormularCerereFindAll();
+        bool ExistaCNP(string cnp);
         //FormularDonare
         void FormularDonareAdd(FormularDonare formular);
         FormularDonare FormularDonareDelete(FormularDonare formular);
