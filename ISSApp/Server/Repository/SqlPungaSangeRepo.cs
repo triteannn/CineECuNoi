@@ -1,9 +1,9 @@
-using System;
 using ISSApp.Domain;
+using ISSApp.Exceptions;
+using Server.Utils;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -11,7 +11,7 @@ namespace Server.Repository
     {
         public void Add(PungaSange pungaSange)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -53,8 +53,7 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -64,7 +63,7 @@ namespace Server.Repository
 
         public void AddInitial(PungaSange pungaSange)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -87,7 +86,7 @@ namespace Server.Repository
                             "INSERT INTO PungiSange( DataRecoltare, IdCd, IdFd) VALUES (@DataRecoltare, @IdCd, @IdFd)";
 
                     }
-                    
+
 
 
                     var paramDataRecoltare = command.CreateParameter();
@@ -95,7 +94,7 @@ namespace Server.Repository
                     paramDataRecoltare.Value = pungaSange.DataRecoltare;
                     command.Parameters.Add(paramDataRecoltare);
 
-                    
+
 
                     var paramIdCd = command.CreateParameter();
                     paramIdCd.ParameterName = "@IdCd";
@@ -110,8 +109,7 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -121,7 +119,7 @@ namespace Server.Repository
 
         public PungaSange Delete(PungaSange pungaSange)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -141,8 +139,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -152,7 +149,7 @@ namespace Server.Repository
 
         public PungaSange Update(PungaSange pungaSange)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -203,8 +200,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -213,7 +209,7 @@ namespace Server.Repository
 
         public PungaSange FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -229,8 +225,7 @@ namespace Server.Repository
                         if (result.Read())
                         {
 
-                            PungaSange pungaSange = new PungaSange
-                            {
+                            PungaSange pungaSange = new PungaSange {
                                 Id = result.GetInt32(0),
                                 DataRecoltare = result.GetDateTime(1),
                                 Grupa = result.GetString(2),
@@ -238,7 +233,7 @@ namespace Server.Repository
                                 Target = result.GetString(4),
                                 IdCd = result.GetInt32(5),
                                 IdFd = result.GetInt32(6)
-                          
+
                             };
 
                             return pungaSange;
@@ -247,8 +242,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -258,7 +252,7 @@ namespace Server.Repository
 
         public List<PungaSange> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -272,8 +266,7 @@ namespace Server.Repository
                         while (result.Read())
                         {
 
-                            PungaSange pungaSange = new PungaSange
-                            {
+                            PungaSange pungaSange = new PungaSange {
                                 Id = result.GetInt32(0),
                                 DataRecoltare = result.GetDateTime(1),
                                 Grupa = result.GetString(2),
@@ -289,8 +282,7 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea pungii de sange din baza de date nu s-a putut realiza cu succes.");
                 }

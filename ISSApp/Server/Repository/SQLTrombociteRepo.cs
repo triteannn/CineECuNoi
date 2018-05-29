@@ -1,9 +1,9 @@
-using System;
 using ISSApp.Domain;
+using ISSApp.Exceptions;
+using Server.Utils;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -11,7 +11,7 @@ namespace Server.Repository
     {
         public void Add(PSTrombocite psTrombocite)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -52,8 +52,7 @@ namespace Server.Repository
 
                     command.ExecuteNonQuery();
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -64,7 +63,7 @@ namespace Server.Repository
 
         public PSTrombocite Delete(PSTrombocite psTrombocite)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -84,8 +83,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -95,7 +93,7 @@ namespace Server.Repository
 
         public PSTrombocite Update(PSTrombocite psTrombocite)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -145,8 +143,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -155,7 +152,7 @@ namespace Server.Repository
 
         public PSTrombocite FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -185,8 +182,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -196,7 +192,7 @@ namespace Server.Repository
 
         public List<PSTrombocite> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -207,8 +203,7 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            PSTrombocite psTrombocite = new PSTrombocite
-                            {
+                            PSTrombocite psTrombocite = new PSTrombocite {
                                 Id = result.GetInt32(0),
                                 Cantitate = result.GetFloat(1),
                                 Target = result.GetString(2),
@@ -223,8 +218,7 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea trombocitelor din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -233,7 +227,7 @@ namespace Server.Repository
 
         public List<PSTrombocite> FindByTarget(string target)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -250,8 +244,7 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            PSTrombocite psTrombocite = new PSTrombocite
-                            {
+                            PSTrombocite psTrombocite = new PSTrombocite {
                                 Id = result.GetInt32(0),
                                 Cantitate = result.GetFloat(1),
                                 Target = result.GetString(2),
@@ -266,8 +259,7 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea trombocitelor pentru un target din baza de date nu s-a putut realiza cu succes.");
                 }
