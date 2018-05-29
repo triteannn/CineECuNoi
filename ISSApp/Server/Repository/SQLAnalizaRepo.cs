@@ -12,6 +12,7 @@ namespace Server.Repository
         public void Add(Analiza analiza)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -136,11 +137,13 @@ namespace Server.Repository
                 }
 
             }
+            connection.Close();
         }
 
         public Analiza Delete(Analiza analiza)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -153,6 +156,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return analiza;
@@ -172,6 +176,7 @@ namespace Server.Repository
         public Analiza Update(Analiza analiza)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -312,6 +317,7 @@ namespace Server.Repository
         public Analiza FindEntity(int id)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -371,6 +377,7 @@ namespace Server.Repository
         public List<Analiza> FindAll()
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -425,6 +432,7 @@ namespace Server.Repository
         public List<Analiza> FindByDonator(int idDonator)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -476,10 +484,12 @@ namespace Server.Repository
                         }
                     }
 
+                    connection.Close();
                     return toReturn;
                 }
                 catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Returnarea analizelor unui donator din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -488,6 +498,7 @@ namespace Server.Repository
         public Analiza FindLastByDonator(int idDonator)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try

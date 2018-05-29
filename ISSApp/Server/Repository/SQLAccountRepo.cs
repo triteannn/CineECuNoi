@@ -35,6 +35,7 @@ namespace Server.Repository
         public Account Delete(Account entity)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -60,11 +61,13 @@ namespace Server.Repository
                 }
 
             }
+           
         }
 
         public Account Update(Account entity)
         {
             var connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = "UPDATE Accounts SET Username=@Username, Password=@Password, IdD=@IdD WHERE Id=@Id";
@@ -104,6 +107,7 @@ namespace Server.Repository
         public Account FindEntity(int id)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -132,6 +136,7 @@ namespace Server.Repository
                 }
 
             }
+         
         }
 
         public Account FindAccountByCredentials(string username, string password)
@@ -168,6 +173,7 @@ namespace Server.Repository
         public List<Account> FindAll()
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
