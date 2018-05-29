@@ -52,11 +52,13 @@ namespace Server.Repository
                 }
 
             }
+            connection.Close();
         }
 
         public Adresa Delete(Adresa entity)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -69,6 +71,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                   
                     if (result != 0)
                     {
                         return entity;
@@ -79,6 +82,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -88,6 +92,7 @@ namespace Server.Repository
         public Adresa Update(Adresa entity)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -121,6 +126,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramJudet);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return entity;
@@ -130,6 +136,7 @@ namespace Server.Repository
                 }
                 catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -138,6 +145,7 @@ namespace Server.Repository
         public Adresa FindEntity(int id)
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -177,6 +185,7 @@ namespace Server.Repository
         public List<Adresa> FindAll()
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
