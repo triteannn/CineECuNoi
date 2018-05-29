@@ -1,4 +1,5 @@
-﻿using ISSApp.Domain;
+﻿using Client.Service;
+using ISSApp.Domain;
 using ISSApp.Networking;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Client
         private readonly Account _account;
         private readonly DataSet _dataSet;
         private readonly BindingSource _bindingSource;
+        private readonly AdminService _adminService;
 
         public AdminWindow(LoginForm loginForm, IServer server, Account account)
         {
@@ -26,32 +28,26 @@ namespace Client
             _account = account;
             _dataSet = new DataSet();
             _bindingSource = new BindingSource();
-            foreach (DataGridViewColumn col in AccountsTable.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-            foreach (DataGridViewColumn col in DonatorsTable.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-            foreach (DataGridViewColumn col in EmployeesTable.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-            foreach (DataGridViewColumn col in DoctorsTable.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-            foreach (DataGridViewColumn col in HospitalsTable.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-            foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
-            {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+            _adminService = new AdminService(_server);
+
+            AccountsTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            AccountsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            DonatorsTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DonatorsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            EmployeesTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            EmployeesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            DoctorsTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DoctorsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            HospitalsTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            HospitalsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            TransfusionCentersTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            TransfusionCentersTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             AccountsTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
             AccountsTable.DefaultCellStyle.SelectionForeColor = Color.White;
             AccountsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
@@ -114,6 +110,21 @@ namespace Client
         private void AdminWindow_Load(object sender, System.EventArgs e)
         {
             label1.Text = @"Logged in as " + _account.Username;
+            var dt = ToDataTable(_server.AccountFindAll(), "Accounts");
+            dt.Columns.Remove("Donator");
+            dt.Columns.Remove("Medic");
+            dt.Columns.Remove("AngajatCentru");
+            _bindingSource.DataSource = dt;
+            AccountsTable.DataSource = _bindingSource;
+            bindingNavigator1.BindingSource = _bindingSource;
+            foreach (DataGridViewColumn col in AccountsTable.Columns)
+            {
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            foreach (DataGridViewColumn col in AccountsTable.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         private void PictureBox3_Click(object sender, System.EventArgs e)
@@ -165,12 +176,12 @@ namespace Client
             var index = TabControl.SelectedIndex;
             if (index == 0)
             {
-                DonatorsTable.Rows.Clear();
-                EmployeesTable.Rows.Clear();
-                DoctorsTable.Rows.Clear();
-                HospitalsTable.Rows.Clear();
-                TransfusionCentersTable.Rows.Clear();
+                _dataSet.Tables.Clear();
                 var dt = ToDataTable(_server.AccountFindAll(), "Accounts");
+                dt.Columns.Remove("Donator");
+                dt.Columns.Remove("Medic");
+                dt.Columns.Remove("AngajatCentru");
+                _dataSet.Tables.Add(dt);
                 _bindingSource.DataSource = dt;
                 AccountsTable.DataSource = _bindingSource;
                 bindingNavigator1.BindingSource = _bindingSource;
@@ -178,47 +189,90 @@ namespace Client
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
+                foreach (DataGridViewColumn col in AccountsTable.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
             if (index == 1)
             {
-                AccountsTable.Rows.Clear();
-                EmployeesTable.Rows.Clear();
-                DoctorsTable.Rows.Clear();
-                HospitalsTable.Rows.Clear();
-                TransfusionCentersTable.Rows.Clear();
+                _dataSet.Tables.Clear();
+                var dt = ToDataTable(_server.DonatorFindAll(), "Donators");
+                dt.Columns.Remove("DateContact");
+                dt.Columns.Remove("CentruDonare");
+                dt.Columns.Remove("FormularDonare");
+                dt.Columns.Remove("Account");
+                _dataSet.Tables.Add(dt);
+                _bindingSource.DataSource = dt;
+                DonatorsTable.DataSource = _bindingSource;
+                bindingNavigator2.BindingSource = _bindingSource;
+                foreach (DataGridViewColumn col in DonatorsTable.Columns)
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                foreach (DataGridViewColumn col in DonatorsTable.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
+
+                DonatorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
             }
             if (index == 2)
             {
-                DonatorsTable.Rows.Clear();
-                AccountsTable.Rows.Clear();
-                DoctorsTable.Rows.Clear();
-                HospitalsTable.Rows.Clear();
-                TransfusionCentersTable.Rows.Clear();
+                _dataSet.Tables.Clear();
+                foreach (DataGridViewColumn col in EmployeesTable.Columns)
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                foreach (DataGridViewColumn col in EmployeesTable.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
             if (index == 3)
             {
-                DonatorsTable.Rows.Clear();
-                EmployeesTable.Rows.Clear();
-                AccountsTable.Rows.Clear();
-                HospitalsTable.Rows.Clear();
-                TransfusionCentersTable.Rows.Clear();
+                _dataSet.Tables.Clear();
+                foreach (DataGridViewColumn col in DoctorsTable.Columns)
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                foreach (DataGridViewColumn col in DoctorsTable.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
             if (index == 4)
             {
-                DonatorsTable.Rows.Clear();
-                EmployeesTable.Rows.Clear();
-                DoctorsTable.Rows.Clear();
-                AccountsTable.Rows.Clear();
-                TransfusionCentersTable.Rows.Clear();
+                _dataSet.Tables.Clear();
+                foreach (DataGridViewColumn col in HospitalsTable.Columns)
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                foreach (DataGridViewColumn col in HospitalsTable.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
             if (index == 5)
             {
-                DonatorsTable.Rows.Clear();
-                EmployeesTable.Rows.Clear();
-                DoctorsTable.Rows.Clear();
-                HospitalsTable.Rows.Clear();
-                AccountsTable.Rows.Clear();
+                _dataSet.Tables.Clear();
+                foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
+        }
+
+        private void BtnUpdateDb2_Click(object sender, EventArgs e)
+        {
+            var rowsAffected = _adminService.DonatorAdminUpdateDataBase(_dataSet);
+            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }

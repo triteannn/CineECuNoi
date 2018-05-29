@@ -4,6 +4,7 @@ using ISSApp.Networking;
 using Server.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Server.Networking
 {
@@ -314,6 +315,17 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.GetLastId();
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int DonatorAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return donatorRepo.AdminUpdateDataBase(dataSet);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);

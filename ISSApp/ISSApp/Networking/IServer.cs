@@ -1,5 +1,6 @@
 ﻿using ISSApp.Domain;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ISSApp.Networking
 {
@@ -24,7 +25,7 @@ namespace ISSApp.Networking
         //Analiza
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
         Analiza AnalizaFindLastByDonator(int idDonator);
-        List<PungaSangeCuCNP> getPungaSangeCuCNP(); 
+        List<PungaSangeCuCNP> getPungaSangeCuCNP();
 
         //
         //CentruDonare
@@ -43,6 +44,7 @@ namespace ISSApp.Networking
         Donator DonatorFindEntity(int id);
         List<Donator> DonatorFindAll();
         int DonatorGetLastId();
+        int DonatorAdminUpdateDataBase(DataSet dataSet);
         //FormularCerere
         void FormularCerereAdd(FormularCerere formular);
         FormularCerere FormularCerereDelete(FormularCerere formular);

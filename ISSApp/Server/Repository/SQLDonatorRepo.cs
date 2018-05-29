@@ -232,7 +232,7 @@ namespace Server.Repository
                             String prenume = result.GetString(3);
                             DateTime date = result.GetDateTime(4);
 
-                            Donator donator = new Donator(cnp, nume, prenume, date);
+                            Donator donator = new Donator(idDonator, cnp, nume, prenume, date);
                             return donator;
                         }
 
@@ -299,6 +299,7 @@ namespace Server.Repository
         public List<Donator> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -307,16 +308,30 @@ namespace Server.Repository
                     command.CommandText = "SELECT * FROM Donatori";
                     using (var result = command.ExecuteReader())
                     {
+                        int? idA = null;
+                        int? idDc = null;
+                        int? idCd = null;
                         while (result.Read())
                         {
-                            toReturn.Add(new Donator(result.GetString(1), result.GetString(2), result.GetString(3), result.GetDateTime(4)));
+                            if (result[5] != DBNull.Value)
+                                idCd = result.GetInt32(5);
+                            if (result[6] != DBNull.Value)
+                                idA = result.GetInt32(6);
+                            if (result[7] != DBNull.Value)
+                                idDc = result.GetInt32(7);
+                            toReturn.Add(new Donator(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetString(3),
+                                    result.GetDateTime(4).Date, idA, idDc, idCd));
                         }
                     }
 
                     return toReturn;
                 } catch (SqlException)
                 {
-                    throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
+                    throw new RepositoryException(
+                        "Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
+                } finally
+                {
+                    connection.Close();
                 }
             }
         }
@@ -336,6 +351,38 @@ namespace Server.Repository
                 }
             }
             return id;
+        }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            int rowsAffected;
+            using (var connection = Globals.GetDbConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    /*foreach (DataRow dataRow in dataSet.Tables["Donators"].Rows)
+                    {
+                        foreach (DataColumn dataColumn in dataSet.Tables["Donators"].Columns)
+                        {
+                            Console.WriteLine(dataRow[dataColumn]);
+                        }
+                    }*/
+
+                    //rowsAffected = da.Update(dataSet.Tables["Donators"]);
+                    //dataSet.Tables["Donators"].Clear();
+                    //da.Fill(dataSet, "Donators");
+                } catch (SqlException e)
+                {
+                    throw new RepositoryException(e.Message);
+                }
+            }
+            return 0;
         }
     }
 }

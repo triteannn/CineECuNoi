@@ -122,7 +122,7 @@ namespace Server.Repository
                         if (result.Read())
                         {
 
-                            Account account = new Account(result.GetString(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetInt32(5));
+                            Account account = new Account(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetInt32(5));
                             return account;
                         }
 
@@ -149,6 +149,7 @@ namespace Server.Repository
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.Parameters.AddWithValue("@Password", password);
                     var reader = cmd.ExecuteReader();
+                    var id = new int();
                     var user = "";
                     var pass = "";
                     var idD = new int();
@@ -156,6 +157,7 @@ namespace Server.Repository
                     var idAc = new int();
                     while (reader.Read())
                     {
+                        id = reader.GetInt32(0);
                         user = reader.GetString(1);
                         pass = reader.GetString(2);
                         if (reader[3] != DBNull.Value)
@@ -166,7 +168,7 @@ namespace Server.Repository
                             idAc = reader.GetInt32(5);
                     }
                     if (user.Length > 0 && pass.Length > 0 && username.Equals(user) && password.Equals(pass))
-                        return new Account(user, pass, idD, idM, idAc);
+                        return new Account(id, user, pass, idD, idM, idAc);
                     return null;
                 } catch (SqlException e)
                 {
@@ -183,16 +185,25 @@ namespace Server.Repository
             {
                 try
                 {
-                    List<Account> toReturn = new List<Account>();
+                    var toReturn = new List<Account>();
                     command.CommandText = "SELECT * FROM Accounts";
                     using (var result = command.ExecuteReader())
                     {
+                        var idD = 0;
+                        var idM = 0;
+                        var idAc = 0;
                         while (result.Read())
                         {
-                            toReturn.Add(new Account(result.GetString(1), result.GetString(2)));
+                            if (result[3] != DBNull.Value)
+                                idD = result.GetInt32(3);
+                            if (result[4] != DBNull.Value)
+                                idM = result.GetInt32(4);
+                            if (result[5] != DBNull.Value)
+                                idAc = result.GetInt32(5);
+                            toReturn.Add(new Account(result.GetInt32(0), result.GetString(1), result.GetString(2), idD, idM, idAc));
                         }
                     }
-
+                    connection.Close();
                     return toReturn;
                 } catch (SqlException)
                 {

@@ -13,8 +13,9 @@ namespace ISSApp.Domain
             Password = password;
         }
 
-        public Account(string username, string password, int idD, int idM, int idAc)
+        public Account(int id, string username, string password, int idD, int idM, int idAc)
         {
+            Id = id;
             Username = username;
             Password = password;
             IdD = idD;

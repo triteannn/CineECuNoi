@@ -118,6 +118,12 @@
             this.toolStripButton29 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton30 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb1 = new System.Windows.Forms.ToolStripButton();
+            this.BtnUpdateDb2 = new System.Windows.Forms.ToolStripButton();
+            this.BtnUpdateDb3 = new System.Windows.Forms.ToolStripButton();
+            this.BtnUpdateDb4 = new System.Windows.Forms.ToolStripButton();
+            this.BtnUpdateDb5 = new System.Windows.Forms.ToolStripButton();
+            this.BtnUpdateDb6 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             this.TabControl.SuspendLayout();
@@ -227,7 +233,8 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
+            this.bindingNavigatorDeleteItem,
+            this.BtnUpdateDb1});
             this.bindingNavigator1.Location = new System.Drawing.Point(3, 3);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -337,7 +344,7 @@
             this.AccountsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.AccountsTable.RowTemplate.Height = 24;
             this.AccountsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AccountsTable.Size = new System.Drawing.Size(1039, 435);
+            this.AccountsTable.Size = new System.Drawing.Size(1039, 448);
             this.AccountsTable.TabIndex = 0;
             // 
             // DonatorsTab
@@ -365,7 +372,7 @@
             this.DonatorsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DonatorsTable.RowTemplate.Height = 24;
             this.DonatorsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DonatorsTable.Size = new System.Drawing.Size(1039, 435);
+            this.DonatorsTable.Size = new System.Drawing.Size(1039, 448);
             this.DonatorsTable.TabIndex = 4;
             // 
             // bindingNavigator2
@@ -385,7 +392,8 @@
             this.toolStripButton6,
             this.toolStripSeparator3,
             this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.BtnUpdateDb2});
             this.bindingNavigator2.Location = new System.Drawing.Point(3, 3);
             this.bindingNavigator2.MoveFirstItem = this.toolStripButton3;
             this.bindingNavigator2.MoveLastItem = this.toolStripButton6;
@@ -507,7 +515,7 @@
             this.EmployeesTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.EmployeesTable.RowTemplate.Height = 24;
             this.EmployeesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EmployeesTable.Size = new System.Drawing.Size(1039, 435);
+            this.EmployeesTable.Size = new System.Drawing.Size(1039, 448);
             this.EmployeesTable.TabIndex = 4;
             // 
             // bindingNavigator3
@@ -527,7 +535,8 @@
             this.toolStripButton12,
             this.toolStripSeparator6,
             this.toolStripButton7,
-            this.toolStripButton8});
+            this.toolStripButton8,
+            this.BtnUpdateDb3});
             this.bindingNavigator3.Location = new System.Drawing.Point(3, 3);
             this.bindingNavigator3.MoveFirstItem = this.toolStripButton9;
             this.bindingNavigator3.MoveLastItem = this.toolStripButton12;
@@ -649,7 +658,7 @@
             this.DoctorsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DoctorsTable.RowTemplate.Height = 24;
             this.DoctorsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DoctorsTable.Size = new System.Drawing.Size(1039, 435);
+            this.DoctorsTable.Size = new System.Drawing.Size(1039, 448);
             this.DoctorsTable.TabIndex = 4;
             // 
             // bindingNavigator4
@@ -669,7 +678,8 @@
             this.toolStripButton18,
             this.toolStripSeparator9,
             this.toolStripButton13,
-            this.toolStripButton14});
+            this.toolStripButton14,
+            this.BtnUpdateDb4});
             this.bindingNavigator4.Location = new System.Drawing.Point(3, 3);
             this.bindingNavigator4.MoveFirstItem = this.toolStripButton15;
             this.bindingNavigator4.MoveLastItem = this.toolStripButton18;
@@ -791,7 +801,7 @@
             this.HospitalsTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.HospitalsTable.RowTemplate.Height = 24;
             this.HospitalsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HospitalsTable.Size = new System.Drawing.Size(1039, 435);
+            this.HospitalsTable.Size = new System.Drawing.Size(1039, 448);
             this.HospitalsTable.TabIndex = 4;
             // 
             // bindingNavigator5
@@ -811,7 +821,8 @@
             this.toolStripButton24,
             this.toolStripSeparator12,
             this.toolStripButton19,
-            this.toolStripButton20});
+            this.toolStripButton20,
+            this.BtnUpdateDb5});
             this.bindingNavigator5.Location = new System.Drawing.Point(3, 3);
             this.bindingNavigator5.MoveFirstItem = this.toolStripButton21;
             this.bindingNavigator5.MoveLastItem = this.toolStripButton24;
@@ -933,7 +944,7 @@
             this.TransfusionCentersTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.TransfusionCentersTable.RowTemplate.Height = 24;
             this.TransfusionCentersTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TransfusionCentersTable.Size = new System.Drawing.Size(1039, 435);
+            this.TransfusionCentersTable.Size = new System.Drawing.Size(1039, 448);
             this.TransfusionCentersTable.TabIndex = 4;
             // 
             // bindingNavigator6
@@ -953,7 +964,8 @@
             this.toolStripButton30,
             this.toolStripSeparator15,
             this.toolStripButton25,
-            this.toolStripButton26});
+            this.toolStripButton26,
+            this.BtnUpdateDb6});
             this.bindingNavigator6.Location = new System.Drawing.Point(3, 3);
             this.bindingNavigator6.MoveFirstItem = this.toolStripButton27;
             this.bindingNavigator6.MoveLastItem = this.toolStripButton30;
@@ -1049,6 +1061,67 @@
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
             this.toolStripSeparator15.Size = new System.Drawing.Size(6, 27);
+            // 
+            // BtnUpdateDb1
+            // 
+            this.BtnUpdateDb1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb1.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb1.Image")));
+            this.BtnUpdateDb1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb1.Name = "BtnUpdateDb1";
+            this.BtnUpdateDb1.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb1.Text = "Update Database";
+            // 
+            // BtnUpdateDb2
+            // 
+            this.BtnUpdateDb2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb2.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb2.Image")));
+            this.BtnUpdateDb2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb2.Name = "BtnUpdateDb2";
+            this.BtnUpdateDb2.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb2.Text = "Update Database";
+            this.BtnUpdateDb2.Click += new System.EventHandler(this.BtnUpdateDb2_Click);
+            // 
+            // BtnUpdateDb3
+            // 
+            this.BtnUpdateDb3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb3.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb3.Image")));
+            this.BtnUpdateDb3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb3.Name = "BtnUpdateDb3";
+            this.BtnUpdateDb3.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb3.Text = "Update Database";
+            // 
+            // BtnUpdateDb4
+            // 
+            this.BtnUpdateDb4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb4.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb4.Image")));
+            this.BtnUpdateDb4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb4.Name = "BtnUpdateDb4";
+            this.BtnUpdateDb4.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb4.Text = "Update Database";
+            // 
+            // BtnUpdateDb5
+            // 
+            this.BtnUpdateDb5.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb5.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb5.Image")));
+            this.BtnUpdateDb5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb5.Name = "BtnUpdateDb5";
+            this.BtnUpdateDb5.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb5.Text = "Update Database";
+            // 
+            // BtnUpdateDb6
+            // 
+            this.BtnUpdateDb6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb6.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb6.Image")));
+            this.BtnUpdateDb6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb6.Name = "BtnUpdateDb6";
+            this.BtnUpdateDb6.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb6.Text = "Update Database";
             // 
             // AdminWindow
             // 
@@ -1206,5 +1279,11 @@
         private System.Windows.Forms.DataGridView DoctorsTable;
         private System.Windows.Forms.DataGridView HospitalsTable;
         private System.Windows.Forms.DataGridView TransfusionCentersTable;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb1;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb2;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb3;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb4;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb5;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb6;
     }
 }
