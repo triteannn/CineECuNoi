@@ -210,6 +210,92 @@ namespace Server.Repository
             }
         }
 
+        public Medic FindByUsername(string username)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select med.* from Medici med, Accounts a where a.Username = @Username and a.IdM = med.Id";
+                    var paramUsername = command.CreateParameter();
+                    paramUsername.ParameterName = "@Username";
+                    paramUsername.Value = username;
+                    command.Parameters.Add(paramUsername);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            var medic = new Medic();
+                            medic.Id = result.GetInt32(0);
+                            medic.CNP = result.GetString(1);
+                            medic.Nume = result.GetString(2);
+                            medic.Prenume = result.GetString(3);
+                            medic.Dob = result.GetDateTime(4);
+                            medic.IdS = result.GetInt32(5);
+                            medic.IdA = result.GetInt32(6);
+                            medic.IdDc = result.GetInt32(7);
+
+                            return medic;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+            }
+
+        }
+
+        public Medic FindByIdAccount(int idAccount)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select med.* from Medici med, Accounts a where a.Id = @IdAcc and a.IdM = med.Id";
+                    var paramIdAcc = command.CreateParameter();
+                    paramIdAcc.ParameterName = "@IdAcc";
+                    paramIdAcc.Value = idAccount;
+                    command.Parameters.Add(paramIdAcc);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            var medic = new Medic();
+                            medic.Id = result.GetInt32(0);
+                            medic.CNP = result.GetString(1);
+                            medic.Nume = result.GetString(2);
+                            medic.Prenume = result.GetString(3);
+                            medic.Dob = result.GetDateTime(4);
+                            medic.IdS = result.GetInt32(5);
+                            medic.IdA = result.GetInt32(6);
+                            medic.IdDc = result.GetInt32(7);
+
+                            return medic;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+            }
+
+        }
+
         public List<Medic> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();

@@ -15,6 +15,7 @@ namespace ISSApp.Domain
         public string Rh { get; set; }
         public string Target { get; set; }
 
+        public PungaSangeCuCNP() { }
 
         public PungaSangeCuCNP(string CNP, int id, DateTime DataRecoltare, string grupa, string rh, string target)
         {

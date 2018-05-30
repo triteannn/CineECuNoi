@@ -24,5 +24,41 @@ namespace Client.Service
                 throw new SeviceException(e.Message);
             }
         }
+
+        public DataSet DonatorAdminGetDataSet()
+        {
+            try
+            {
+                return _server.DonatorAdminGetDataSet();
+            }catch(NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public int AccountAdminUpdateDataBase(DataSet dataSet)
+        {
+
+            try
+            {
+                return _server.AccountAdminUpdateDataBase(dataSet);
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public DataSet AccountAdminGetDataSet()
+        {
+            try
+            {
+                return _server.AccountAdminGetDataSet();
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
     }
 }

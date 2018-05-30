@@ -189,9 +189,9 @@ namespace Server.Repository
                     command.CommandText = "SELECT * FROM Accounts";
                     using (var result = command.ExecuteReader())
                     {
-                        var idD = 0;
-                        var idM = 0;
-                        var idAc = 0;
+                        int? idD = null;
+                        int? idM = null;
+                        int? idAc = null;
                         while (result.Read())
                         {
                             if (result[3] != DBNull.Value)
@@ -227,6 +227,46 @@ namespace Server.Repository
                 }
             }
             return id;
+        }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            int rowsAffected;
+            using (var connection = Globals.GetDbConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM Accounts", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    rowsAffected = da.Update(dataSet.Tables["Accounts"]);
+                }
+                catch (SqlException e)
+                {
+                    throw new RepositoryException(e.Message);
+                }
+            }
+            return rowsAffected;
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            using (var connection = Globals.GetDbConnection())
+            {
+                var ds = new DataSet();
+                var da = new SqlDataAdapter("SELECT * FROM Accounts", connection);
+                var cb = new SqlCommandBuilder(da);
+                da.DeleteCommand = cb.GetDeleteCommand();
+                da.InsertCommand = cb.GetInsertCommand();
+                da.UpdateCommand = cb.GetUpdateCommand();
+                var dt = new DataTable("Accounts");
+                ds.Tables.Add(dt);
+                da.Fill(ds, "Accounts");
+                return ds;
+            }
         }
     }
 }

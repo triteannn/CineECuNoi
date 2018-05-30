@@ -206,6 +206,84 @@ namespace Server.Repository
             }
         }
 
+        public AngajatCentru FindByUsername(string username)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select ang.* from Angajati ang, Accounts a where a.Username = @Username and a.IdAc = ang.Id";
+                    var paramUsername = command.CreateParameter();
+                    paramUsername.ParameterName = "@Username";
+                    paramUsername.Value = username;
+                    command.Parameters.Add(paramUsername);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
+
+                            AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
+                            return angajat;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+            }
+
+        }
+
+        public AngajatCentru FindByIdAccount(int idAccount)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select ang.* from Angajati ang, Accounts a where a.Id = @IdAcc  and a.IdAc = ang.Id";
+                    var paramIdAcc = command.CreateParameter();
+                    paramIdAcc.ParameterName = "@IdAcc";
+                    paramIdAcc.Value = idAccount;
+                    command.Parameters.Add(paramIdAcc);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
+
+                            AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
+                            return angajat;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+            }
+
+        }
+
         public List<AngajatCentru> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();

@@ -309,5 +309,52 @@ namespace Server.Repository
             //TO IMPLEMET
             return null;
         }
+
+
+        /*
+         * Returneaza toate pungile de sange care apartin Donatorului cu cnp-ul dat.
+         */
+        public List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp)
+        {
+
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    List<PungaSangeCuCNP> pungiSange = new List<PungaSangeCuCNP>();
+                    command.CommandText = "SELECT D.CNP, PS.Id, PS.DataRecoltare, PS.Grupa, PS.Rh, PS.Target " +
+                                          "FROM Donatori D " + 
+                                          "     INNER JOIN FormulareDonare FD ON D.Id=FD.IdD " +
+                                          "     INNER JOIN PungiSange PS ON FD.Id=PS.IdFd " + 
+                                          "WHERE D.CNP='" + cnp + "'";
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            PungaSangeCuCNP pungaSange = new PungaSangeCuCNP
+                            {
+                                CNP = result.GetString(0),
+                                Id = result.GetInt32(1),
+                                DataRecoltare = result.GetDateTime(2),
+                                Grupa = result.GetString(3),
+                                Rh = result.GetString(4),
+                                Target = result.GetString(5)
+                                //IdCd = result.GetInt32(6),
+                                //IdFd = result.GetInt32(7)  
+                            };
+                            pungiSange.Add(pungaSange);
+                        }
+                    }
+                    return pungiSange;
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Returnarea pungii de sange din baza de date nu s-a putut realiza cu succes.");
+                }
+            }
+        }
     }
 }
