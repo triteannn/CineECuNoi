@@ -21,6 +21,8 @@ namespace ISSApp.Networking
         AngajatCentru AngajatUpdate(AngajatCentru angajatCentru);
         AngajatCentru AngajatFindEntity(int id);
         List<AngajatCentru> AngajatFindAll();
+        AngajatCentru AngajatFindByIdAccount(int id);
+        AngajatCentru AngajatFindByUsername(string username);
 
         //Analiza
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);

@@ -173,6 +173,28 @@ namespace Server.Networking
             }
         }
 
+        public AngajatCentru AngajatFindByIdAccount(int id)
+        {
+            try
+            {
+                return angajatRepo.FindByIdAccount(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+        public AngajatCentru AngajatFindByUsername(string username)
+        {
+            try
+            {
+                return angajatRepo.FindByUsername(username);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
         public List<PungaSangeCuCNP> getPungaSangeCuCNP()
         {
             throw new NotImplementedException();
