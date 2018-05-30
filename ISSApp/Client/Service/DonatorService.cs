@@ -1,6 +1,7 @@
 ﻿using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
+using ISSApp.Domain;
 
 namespace Client.Service
 {
@@ -30,6 +31,32 @@ namespace Client.Service
 
                 return false;
             } catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public Donator findByIdAccount(int id)
+        {
+            try
+            {
+                return _server.DonatorFindByIdAccount(id);
+
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public Donator findByUsername(string username)
+        {
+            try
+            {
+                return _server.DonatorFindByUsername(username);
+
+            }
+            catch (NetworkingException e)
             {
                 throw new SeviceException(e.Message);
             }
