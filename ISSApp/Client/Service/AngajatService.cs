@@ -125,6 +125,72 @@ namespace Client.Service
             }
         }
 
+        public void addPlasma(float cantitate, DateTime dataExpirare, string grupa, string rh, int idCD)
+        {
+            try
+            {
+                PSPlasma plasma = new PSPlasma()
+                {
+                    Cantitate = cantitate,
+                    Target = null,
+                    DataExpirare = dataExpirare,
+                    Grupa = grupa,
+                    Rh = rh,
+                    IdCD = idCD
+                };
+                _server.PlasmaAdd(plasma);
+
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }           
+        }
+
+        public void addTrombocite(float cantitate, DateTime dataExpirare, string grupa, string rh, int idCD)
+        {
+            try
+            {
+                PSTrombocite trombocite = new PSTrombocite()
+                {
+                    Cantitate = cantitate,
+                    Target = null,
+                    DataExpirare = dataExpirare,
+                    Grupa = grupa,
+                    Rh = rh,
+                    IdCD = idCD
+                };
+                _server.TrombociteAdd(trombocite);
+
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public void addGlobule(float cantitate, DateTime dataExpirare, string grupa, string rh, int idCD)
+        {
+            try
+            {
+                PSGlobuleRosii globule = new PSGlobuleRosii()
+                {
+                    Cantitate = cantitate,
+                    Target = null,
+                    DataExpirare = dataExpirare,
+                    Grupa = grupa,
+                    Rh = rh,
+                    IdCD = idCD
+                };
+                _server.GlobuleRosiiAdd(globule);
+
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
         public AngajatCentru findByIdAccount(int id)
         {
             try
