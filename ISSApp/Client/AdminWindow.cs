@@ -16,7 +16,7 @@ namespace Client
         private readonly LoginForm _loginForm;
         private readonly IServer _server;
         private readonly Account _account;
-        private readonly DataSet _dataSet;
+        private DataSet _dataSet;
         private readonly BindingSource _bindingSource;
         private readonly AdminService _adminService;
 
@@ -202,8 +202,10 @@ namespace Client
                 dt.Columns.Remove("CentruDonare");
                 dt.Columns.Remove("FormularDonare");
                 dt.Columns.Remove("Account");
-                _dataSet.Tables.Add(dt);
-                _bindingSource.DataSource = dt;
+                _dataSet = _server.DonatorAdminGetDataSet();
+                _bindingSource.DataSource = _dataSet.Tables["Donatori"];
+                //_dataSet.Tables.Add(dt);
+                //_bindingSource.DataSource = dt;
                 DonatorsTable.DataSource = _bindingSource;
                 bindingNavigator2.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in DonatorsTable.Columns)
@@ -216,6 +218,9 @@ namespace Client
                 }
 
                 DonatorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             }
             if (index == 2)

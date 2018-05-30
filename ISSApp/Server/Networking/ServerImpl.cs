@@ -332,6 +332,18 @@ namespace Server.Networking
             }
         }
 
+        public DataSet DonatorAdminGetDataSet()
+        {
+            try
+            {
+                return donatorRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public void FormularCerereAdd(FormularCerere formular)
         {
             try

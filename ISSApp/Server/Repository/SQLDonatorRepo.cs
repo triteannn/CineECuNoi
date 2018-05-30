@@ -374,7 +374,7 @@ namespace Server.Repository
                         }
                     }*/
 
-                    //rowsAffected = da.Update(dataSet.Tables["Donators"]);
+                    rowsAffected = da.Update(dataSet.Tables["Donatori"]);
                     //dataSet.Tables["Donators"].Clear();
                     //da.Fill(dataSet, "Donators");
                 } catch (SqlException e)
@@ -383,6 +383,31 @@ namespace Server.Repository
                 }
             }
             return 0;
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            using (var connection = Globals.GetDbConnection())
+            {
+                var ds = new DataSet();
+                var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
+                var cb = new SqlCommandBuilder(da);
+                da.DeleteCommand = cb.GetDeleteCommand();
+                da.InsertCommand = cb.GetInsertCommand();
+                da.UpdateCommand = cb.GetUpdateCommand();
+                var dt = new DataTable("Donatori");
+                ds.Tables.Add(dt);
+                da.Fill(ds, "Donatori");
+                /*
+                foreach (DataRow dataRow in ds.Tables["Donatori"].Rows)
+                {
+                    foreach (DataColumn dataColumn in ds.Tables["Donatori"].Columns)
+                    {
+                        Console.WriteLine(dataRow[dataColumn]);
+                    }
+                }*/
+                return ds;
+            }
         }
     }
 }

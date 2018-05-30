@@ -45,6 +45,7 @@ namespace ISSApp.Networking
         List<Donator> DonatorFindAll();
         int DonatorGetLastId();
         int DonatorAdminUpdateDataBase(DataSet dataSet);
+        DataSet DonatorAdminGetDataSet();
         //FormularCerere
         void FormularCerereAdd(FormularCerere formular);
         FormularCerere FormularCerereDelete(FormularCerere formular);
