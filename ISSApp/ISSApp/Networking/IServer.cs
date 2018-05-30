@@ -1,5 +1,6 @@
 ﻿using ISSApp.Domain;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ISSApp.Networking
 {
@@ -20,11 +21,13 @@ namespace ISSApp.Networking
         AngajatCentru AngajatUpdate(AngajatCentru angajatCentru);
         AngajatCentru AngajatFindEntity(int id);
         List<AngajatCentru> AngajatFindAll();
+        AngajatCentru AngajatFindByIdAccount(int id);
+        AngajatCentru AngajatFindByUsername(string username);
 
         //Analiza
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
         Analiza AnalizaFindLastByDonator(int idDonator);
-        List<PungaSangeCuCNP> getPungaSangeCuCNP(); 
+        List<PungaSangeCuCNP> getPungaSangeCuCNP();
 
         //
         //CentruDonare
@@ -43,6 +46,11 @@ namespace ISSApp.Networking
         Donator DonatorFindEntity(int id);
         List<Donator> DonatorFindAll();
         int DonatorGetLastId();
+        int DonatorAdminUpdateDataBase(DataSet dataSet);
+        DataSet DonatorAdminGetDataSet();
+        Donator DonatorFindByUsername(string username);
+        Donator DonatorFindByIdAccount(int id);
+
         //FormularCerere
         void FormularCerereAdd(FormularCerere formular);
         FormularCerere FormularCerereDelete(FormularCerere formular);

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ISSApp.Exceptions;
 using ISSApp.Networking;
-using ISSApp.Exceptions;
+using System;
+using ISSApp.Domain;
 
 namespace Client.Service
 {
-    class DonatorService
+    public class DonatorService
     {
         private IServer _server;
 
@@ -33,6 +30,31 @@ namespace Client.Service
                 }
 
                 return false;
+            } catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public Donator findByIdAccount(int id)
+        {
+            try
+            {
+                return _server.DonatorFindByIdAccount(id);
+
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public Donator findByUsername(string username)
+        {
+            try
+            {
+                return _server.DonatorFindByUsername(username);
+
             }
             catch (NetworkingException e)
             {

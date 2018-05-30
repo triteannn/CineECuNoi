@@ -4,6 +4,7 @@ using ISSApp.Networking;
 using Server.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace Server.Networking
 {
@@ -172,6 +173,33 @@ namespace Server.Networking
             }
         }
 
+        public AngajatCentru AngajatFindByIdAccount(int id)
+        {
+            try
+            {
+                return angajatRepo.FindByIdAccount(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+        public AngajatCentru AngajatFindByUsername(string username)
+        {
+            try
+            {
+                return angajatRepo.FindByUsername(username);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+        public List<PungaSangeCuCNP> getPungaSangeCuCNP()
+        {
+            throw new NotImplementedException();
+        }
+
         public void CentruDonareAdd(CentruDonare centru)
         {
             try
@@ -293,6 +321,31 @@ namespace Server.Networking
             }
         }
 
+        public Donator DonatorFindByUsername(string username)
+        {
+            try
+            {
+                return donatorRepo.FindByUsername(username);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Donator DonatorFindByIdAccount(int id)
+        {
+            try
+            {
+                return donatorRepo.FindByIdAccount(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+
         public Donator DonatorUpdate(Donator donator)
         {
             try
@@ -310,6 +363,29 @@ namespace Server.Networking
             {
                 return donatorRepo.GetLastId();
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int DonatorAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return donatorRepo.AdminUpdateDataBase(dataSet);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DataSet DonatorAdminGetDataSet()
+        {
+            try
+            {
+                return donatorRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -828,6 +904,11 @@ namespace Server.Networking
             }
         }
 
+        public Analiza AnalizaFindLastByDonator(int idDonator)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Analiza> AnalizaFindByDonator(int idDonator)
         {
             try
@@ -842,7 +923,7 @@ namespace Server.Networking
         /*
          * Se returneaza o lista cu pungile de sange, care au atasate CNP-ul donatorului.
          */
-        public List<PungaSangeCuCNP> getPungaSangeCuCNP()
+        /*public List<PungaSangeCuCNP> getPungaSangeCuCNP()
         {
             try
             {
@@ -851,6 +932,6 @@ namespace Server.Networking
             {
                 throw new NetworkingException(e.Message);
             }
-        }
+        }*/
     }
 }

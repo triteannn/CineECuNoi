@@ -185,10 +185,17 @@ namespace Client
                 var acc = _server.AccountFindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
                 if (acc != null)
                 {
-                    if (acc.IdD != null && DropdownAS.selectedValue.Equals("Donator"))
+                    if (acc.IdD != 0 && DropdownAS.selectedValue.Equals("Donator"))
                     {
-                        var mainWindow = new DonatorWindow(this, _server, acc);
-                        mainWindow.Show();
+                        var donatorWindow = new DonatorWindow(this, _server, acc);
+                        donatorWindow.Show();
+                        Hide();
+                    }
+                    else if (DropdownAS.selectedValue.Equals("Admin") && acc.IdD == 0 & acc.IdAc == 0 &&
+                             acc.IdM == 0)
+                    {
+                        var adminWindow = new AdminWindow(this, _server, acc);
+                        adminWindow.Show();
                         Hide();
                     }
                     else

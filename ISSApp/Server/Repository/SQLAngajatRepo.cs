@@ -1,9 +1,10 @@
-using System;
 using ISSApp.Domain;
+using ISSApp.Exceptions;
+using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -11,7 +12,7 @@ namespace Server.Repository
     {
         public void Add(AngajatCentru angajatCentru)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -54,18 +55,17 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdDc);
 
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
-                
+
             }
         }
 
         public AngajatCentru Delete(AngajatCentru angajatCentru)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -85,18 +85,17 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
-                
+
             }
         }
 
         public AngajatCentru Update(AngajatCentru angajatCentru)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -151,18 +150,17 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
-                
+
             }
         }
 
         public AngajatCentru FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -189,8 +187,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -198,9 +195,87 @@ namespace Server.Repository
             }
         }
 
+        public AngajatCentru FindByUsername(string username)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select ang.* from Angajati ang, Accounts a where a.Username = @Username and a.IdAc = ang.Id";
+                    var paramUsername = command.CreateParameter();
+                    paramUsername.ParameterName = "@Username";
+                    paramUsername.Value = username;
+                    command.Parameters.Add(paramUsername);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
+
+                            AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
+                            return angajat;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+            }
+
+        }
+
+        public AngajatCentru FindByIdAccount(int idAccount)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select ang.* from Angajati ang, Accounts a where a.Id = @IdAcc  and a.IdAc = ang.Id";
+                    var paramIdAcc = command.CreateParameter();
+                    paramIdAcc.ParameterName = "@IdAcc";
+                    paramIdAcc.Value = idAccount;
+                    command.Parameters.Add(paramIdAcc);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
+
+                            AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
+                            return angajat;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+            }
+
+        }
+
         public List<AngajatCentru> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -216,8 +291,7 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea angajatilor din baza de date nu s-a putut realiza cu succes.");
                 }
