@@ -114,7 +114,8 @@ namespace Client
             dt.Columns.Remove("Donator");
             dt.Columns.Remove("Medic");
             dt.Columns.Remove("AngajatCentru");
-            _bindingSource.DataSource = dt;
+            _dataSet = _adminService.AccountAdminGetDataSet();
+            _bindingSource.DataSource = _dataSet.Tables["Accounts"];
             AccountsTable.DataSource = _bindingSource;
             bindingNavigator1.BindingSource = _bindingSource;
             foreach (DataGridViewColumn col in AccountsTable.Columns)
@@ -125,6 +126,10 @@ namespace Client
             {
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+            AccountsTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            AccountsTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            AccountsTable.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            AccountsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void PictureBox3_Click(object sender, System.EventArgs e)
@@ -177,12 +182,12 @@ namespace Client
             if (index == 0)
             {
                 _dataSet.Tables.Clear();
-                var dt = ToDataTable(_server.AccountFindAll(), "Accounts");
+                /*var dt = ToDataTable(_server.AccountFindAll(), "Accounts");
                 dt.Columns.Remove("Donator");
                 dt.Columns.Remove("Medic");
-                dt.Columns.Remove("AngajatCentru");
-                _dataSet.Tables.Add(dt);
-                _bindingSource.DataSource = dt;
+                dt.Columns.Remove("AngajatCentru");*/
+                _dataSet = _adminService.AccountAdminGetDataSet();
+                _bindingSource.DataSource = _dataSet.Tables["Accounts"];
                 AccountsTable.DataSource = _bindingSource;
                 bindingNavigator1.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in AccountsTable.Columns)
@@ -193,6 +198,10 @@ namespace Client
                 {
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
+                AccountsTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                AccountsTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                AccountsTable.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                AccountsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             if (index == 1)
             {
@@ -202,10 +211,8 @@ namespace Client
                 dt.Columns.Remove("CentruDonare");
                 dt.Columns.Remove("FormularDonare");
                 dt.Columns.Remove("Account");
-                _dataSet = _server.DonatorAdminGetDataSet();
+                _dataSet = _adminService.DonatorAdminGetDataSet();
                 _bindingSource.DataSource = _dataSet.Tables["Donatori"];
-                //_dataSet.Tables.Add(dt);
-                //_bindingSource.DataSource = dt;
                 DonatorsTable.DataSource = _bindingSource;
                 bindingNavigator2.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in DonatorsTable.Columns)
@@ -276,6 +283,13 @@ namespace Client
         private void BtnUpdateDb2_Click(object sender, EventArgs e)
         {
             var rowsAffected = _adminService.DonatorAdminUpdateDataBase(_dataSet);
+            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void BtnUpdateDb1_Click(object sender, EventArgs e)
+        {
+            var rowsAffected = _adminService.AccountAdminUpdateDataBase(_dataSet);
             MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }

@@ -44,16 +44,19 @@ namespace Server.Repository
 
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
+            connection.Close();
 
         }
 
         public FormularDonare Delete(FormularDonare formularDonare)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -66,6 +69,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return formularDonare;
@@ -75,6 +79,7 @@ namespace Server.Repository
 
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -84,6 +89,7 @@ namespace Server.Repository
         public FormularDonare Update(FormularDonare formularDonare)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -117,6 +123,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdD);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return formularDonare;
@@ -125,6 +132,7 @@ namespace Server.Repository
                     return null;
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -132,9 +140,11 @@ namespace Server.Repository
 
         public FormularDonare FindEntity(int id)
         {
-            IDbConnection connection = Globals.GetDbConnection();
-            using (var command = connection.CreateCommand())
+            using (IDbConnection connection = Globals.GetDbConnection())
             {
+                connection.Open();
+                var command = connection.CreateCommand();
+            
                 try
                 {
                     command.CommandText = "SELECT * FROM FormulareDonare WHERE Id=@Id";
@@ -160,7 +170,8 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (RepositoryException)
+                }
+                catch (RepositoryException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -171,6 +182,7 @@ namespace Server.Repository
         public List<FormularDonare> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -181,14 +193,16 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            //toReturn.Add(new Donator(result.GetString(0), result.GetString(1), result.GetString(2), result.GetDateTime(3)));
+                            // la momentul crearii functiei, in BD nu exista campul target(pozitia 4); am presupus ca se va face ulterior
                             toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetString(4)));
                         }
                     }
 
+                    connection.Close();
                     return toReturn;
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
                 }
             }

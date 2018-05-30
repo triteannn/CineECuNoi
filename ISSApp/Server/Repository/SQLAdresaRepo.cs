@@ -45,6 +45,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -69,6 +70,7 @@ namespace Server.Repository
 
                     var result = command.ExecuteNonQuery();
 
+                    connection.Close();
                     if (result != 0)
                     {
                         return entity;
@@ -139,10 +141,9 @@ namespace Server.Repository
 
         public Adresa FindEntity(int id)
         {
-            IDbConnection connection = Globals.GetDbConnection();
-            connection.Open();
-            using (var command = connection.CreateCommand())
-            {
+            using (IDbConnection connection = Globals.GetDbConnection()) { 
+                connection.Open();
+                var command = connection.CreateCommand();
                 try
                 {
                     command.CommandText = "SELECT * FROM Adrese WHERE Id=@Id";
@@ -193,10 +194,11 @@ namespace Server.Repository
                             toReturn.Add(new Adresa(result.GetInt32(0), result.GetString(1), result.GetInt32(2), result.GetString(3), result.GetString(4)));
                         }
                     }
-
+                    connection.Close();
                     return toReturn;
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Returnarea adreselor din baza de date nu s-a putut realiza cu succes.");
                 }
             }

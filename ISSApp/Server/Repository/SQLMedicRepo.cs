@@ -59,15 +59,18 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
+            connection.Close();
         }
 
         public Medic Delete(Medic medic)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -80,6 +83,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return medic;
@@ -89,6 +93,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -98,6 +103,7 @@ namespace Server.Repository
         public Medic Update(Medic medic)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -146,6 +152,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdDc);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return medic;
@@ -154,6 +161,7 @@ namespace Server.Repository
                     return null;
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -161,9 +169,10 @@ namespace Server.Repository
 
         public Medic FindEntity(int id)
         {
-            IDbConnection connection = Globals.GetDbConnection();
-            using (var command = connection.CreateCommand())
+            using (IDbConnection connection = Globals.GetDbConnection())
             {
+                connection.Open();
+                var command = connection.CreateCommand();
                 try
                 {
                     command.CommandText = "SELECT * FROM Medici WHERE Id=@Id";
@@ -192,7 +201,8 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -289,6 +299,7 @@ namespace Server.Repository
         public List<Medic> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -313,10 +324,11 @@ namespace Server.Repository
                             toReturn.Add(medic);
                         }
                     }
-
+                    connection.Close();
                     return toReturn;
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Returnarea medicilor din baza de date nu s-a putut realiza cu succes.");
                 }
             }

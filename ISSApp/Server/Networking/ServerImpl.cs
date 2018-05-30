@@ -118,6 +118,29 @@ namespace Server.Networking
             }
         }
 
+        public DataSet AccountAdminGetDataSet()
+        {
+            try
+            {
+                return accountRepo.AdminGetDataSet();
+            }
+            catch(RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int AccountAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return accountRepo.AdminUpdateDataBase(dataSet);
+            }catch(RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public void AngajatAdd(AngajatCentru angajatCentru)
         {
             try
@@ -944,6 +967,18 @@ namespace Server.Networking
             {
                 return analizaRepo.FindByDonator(idDonator);
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp)
+        {
+            try
+            {
+                return pungaSangeRepo.GetPungaSangeCuCNP(cnp);
+            }
+            catch (Exception e)
             {
                 throw new NetworkingException(e.Message);
             }
