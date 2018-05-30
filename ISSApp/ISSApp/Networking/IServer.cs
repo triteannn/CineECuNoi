@@ -70,12 +70,16 @@ namespace ISSApp.Networking
         PSGlobuleRosii GlobuleRosiiFindEntity(int id);
         List<PSGlobuleRosii> GlobuleRosiiFindAll();
         List<PSGlobuleRosii> GlobuleRosiiFindByTarget(string target);
+
         //Medic
         void MedicAdd(Medic medic);
         Medic MedicDelete(Medic medic);
         Medic MedicUpdate(Medic medic);
         Medic MedicFindEntity(int id);
         List<Medic> MedicFindAll();
+        Medic MedicFindByIdAccount(int id);
+        Medic MedicFindByUsername(string username);
+
         //Plasma
         void PlasmaAdd(PSPlasma psPlasma);
         PSPlasma PlasmaDelete(PSPlasma psPlasma);
