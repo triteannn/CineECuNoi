@@ -752,6 +752,7 @@ namespace Server.Networking
                 if (!formularCerereRepo.ExistaCNP(pungaSange.Target))
                 {
                     pungaSange.Target = null;
+
                 } 
 
                 pungaSangeRepo.AddInitial(pungaSange);
