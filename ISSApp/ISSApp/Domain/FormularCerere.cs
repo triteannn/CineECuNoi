@@ -38,6 +38,7 @@ namespace ISSApp.Domain
             Target = target;
             CantTrombocite = cantTrombocite;
             CantPlasma = cantPlasma;
+            CantGlobuleRosii = cantGlobuleRosi;
             IdM = idM;
         }
     }
