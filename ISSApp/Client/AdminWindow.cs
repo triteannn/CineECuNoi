@@ -245,6 +245,10 @@ namespace Client
             if (index == 3)
             {
                 _dataSet.Tables.Clear();
+                _dataSet = _adminService.MedicAdminGetDataSet();
+                _bindingSource.DataSource = _dataSet.Tables["Medici"];
+                DoctorsTable.DataSource = _bindingSource;
+                bindingNavigator1.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in DoctorsTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -290,6 +294,13 @@ namespace Client
         private void BtnUpdateDb1_Click(object sender, EventArgs e)
         {
             var rowsAffected = _adminService.AccountAdminUpdateDataBase(_dataSet);
+            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void BtnUpdateDb4_Click(object sender, EventArgs e)
+        {
+            var rowsAffected = _adminService.MedicAdminUpdateDataBase(_dataSet);
             MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }

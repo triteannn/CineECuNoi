@@ -817,6 +817,7 @@
             this.BtnUpdateDb4.Name = "BtnUpdateDb4";
             this.BtnUpdateDb4.Size = new System.Drawing.Size(129, 24);
             this.BtnUpdateDb4.Text = "Update Database";
+            this.BtnUpdateDb4.Click += new System.EventHandler(this.BtnUpdateDb4_Click);
             // 
             // HospitalsTab
             // 

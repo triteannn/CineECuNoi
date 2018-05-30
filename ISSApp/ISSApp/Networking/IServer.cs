@@ -81,6 +81,8 @@ namespace ISSApp.Networking
         List<Medic> MedicFindAll();
         Medic MedicFindByIdAccount(int id);
         Medic MedicFindByUsername(string username);
+        DataSet MedicAdminGetDataSet();
+        int MedicAdminUpdateDataBase(DataSet dataSet);
 
         //Plasma
         void PlasmaAdd(PSPlasma psPlasma);

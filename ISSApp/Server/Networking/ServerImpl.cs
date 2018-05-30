@@ -678,6 +678,30 @@ namespace Server.Networking
             }
         }
 
+        public DataSet MedicAdminGetDataSet()
+        {
+            try
+            {
+                return medicRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int MedicAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return medicRepo.AdminUpdateDataBase(dataSet);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public void PlasmaAdd(PSPlasma psPlasma)
         {
             try

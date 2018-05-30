@@ -60,5 +60,30 @@ namespace Client.Service
                 throw new SeviceException(e.Message);
             }
         }
+
+        public int MedicAdminUpdateDataBase(DataSet dataSet)
+        {
+
+            try
+            {
+                return _server.MedicAdminUpdateDataBase(dataSet);
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public DataSet MedicAdminGetDataSet()
+        {
+            try
+            {
+                return _server.MedicAdminGetDataSet();
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
     }
 }
