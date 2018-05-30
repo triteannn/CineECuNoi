@@ -191,6 +191,49 @@ namespace Client.Service
             }
         }
 
+        public void addAnaliza(PungaSange pungaSange, string grupa, string rh, double eritrocite, double hemoglobina, double hematocrit,
+            double vEM, double hEM, double cHEM, double latimeDistribEritrocit, double trombocite,
+            double volumMediuTrombocitar, double trombocrit, double latimeDistribTrombocit, double leucocite,
+            double granulocite, double limfocite, double mID, double numarGranulocite, double numarLimfocite,
+            double numarMID, double glicemie, double aLT_TGP, double colesterol, string listaBoliDetectate)
+        {
+            try
+            {
+                Analiza analiza = new Analiza()
+                {
+                    DataRecoltarii = pungaSange.DataRecoltare,
+                    Eritrocite = eritrocite,
+                    Hemoglobina = hemoglobina,
+                    Hematocrit = hematocrit,
+                    VEM = vEM,
+                    HEM = hEM,
+                    CHEM = cHEM,
+                    LatimeDistribEritrocit = latimeDistribEritrocit,
+                    Trombocite = trombocite,
+                    VolumMediuTrombocitar = volumMediuTrombocitar,
+                    Trombocrit = trombocrit,
+                    LatimeDistribTrombocit = latimeDistribTrombocit,
+                    Leucocite = leucocite,
+                    Granulocite = granulocite,
+                    Limfocite = limfocite,
+                    MID = mID,
+                    NumarGranulocite = numarGranulocite,
+                    NumarLimfocite = numarLimfocite,
+                    NumarMID = numarMID,
+                    Glicemie = glicemie,
+                    ALT_TGP = aLT_TGP,
+                    Colesterol = colesterol,
+                    ListaBoliDetectate = listaBoliDetectate,
+                };
+                _server.AnalizaAdd(pungaSange, grupa, rh, analiza);
+
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }           
+        }
+
         public AngajatCentru findByIdAccount(int id)
         {
             try

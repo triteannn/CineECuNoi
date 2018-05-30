@@ -10,7 +10,7 @@ namespace ISSApp.Domain
     public class Analiza
     {
         public Analiza() { }
-        public Analiza(int id, DateTime dataRecoltarii, double eritrocite, double hemoglobina, double hematocrit, double vEM, double hEM, double cHEM, double latimeDistribEritrocit, double trombocite, double volumMediuTrombocitar, double trombocrit, double latimeDistribTrombocit, double leucocite, double granulocite, double limfocite, double mID, double numarGranulocite, double numarLimfocite, double numarMID, double glicemie, double aLT_TGP, double colesterol)
+        public Analiza(int id, DateTime dataRecoltarii, double eritrocite, double hemoglobina, double hematocrit, double vEM, double hEM, double cHEM, double latimeDistribEritrocit, double trombocite, double volumMediuTrombocitar, double trombocrit, double latimeDistribTrombocit, double leucocite, double granulocite, double limfocite, double mID, double numarGranulocite, double numarLimfocite, double numarMID, double glicemie, double aLT_TGP, double colesterol, string listaBoliDetectate)
         {
             Id = id;
             DataRecoltarii = dataRecoltarii;
@@ -35,6 +35,7 @@ namespace ISSApp.Domain
             Glicemie = glicemie;
             ALT_TGP = aLT_TGP;
             Colesterol = colesterol;
+            ListaBoliDetectate = listaBoliDetectate;
         }
 
         public int Id { get; set; }

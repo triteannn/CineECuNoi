@@ -17,7 +17,7 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "INSERT INTO Analize(DataRecoltarii, Eritrocite, Hemoglobina, Hematocrit, VEM, HEM, CHEM, LatimeDistribEritrocit, Trombocite, VolumMediuTrombocitar, Trombocrit, LatimeDistribTrombocit, Leucocite, Granulocite, Limfocite, MID, NumarLimfocite, NumarMID, Glicemie, ALT_TGP, Colesterol) VALUES(@DataRecoltarii, @Eritrocite, @Hemoglobina, @Hematocrit, @VEM, @HEM, @CHEM, @LatimeDistribEritrocit, @Trombocite, @VolumMediuTrombocitar, @Trombocrit, @LatimeDistribTrombocit, @Leucocite, @Granulocite, @Limfocite, @MID, @NumarLimfocite, @NumarMID, @Glicemie, @ALT_TGP, @Colesterol)";
+                    command.CommandText = "INSERT INTO Analize(DataRecoltarii, Eritrocite, Hemoglobina, Hematocrit, VEM, HEM, CHEM, LatimeDistribEritrocit, Trombocite, VolumMediuTrombocitar, Trombocrit, LatimeDistribTrombocit, Leucocite, Granulocite, Limfocite, MID, NumarLimfocite, NumarMID, Glicemie, ALT_TGP, Colesterol, ListaBoliDetectate) VALUES(@DataRecoltarii, @Eritrocite, @Hemoglobina, @Hematocrit, @VEM, @HEM, @CHEM, @LatimeDistribEritrocit, @Trombocite, @VolumMediuTrombocitar, @Trombocrit, @LatimeDistribTrombocit, @Leucocite, @Granulocite, @Limfocite, @MID, @NumarLimfocite, @NumarMID, @Glicemie, @ALT_TGP, @Colesterol, @ListaBoliDetectate)";
 
                     var paramDataRecoltarii = command.CreateParameter();
                     paramDataRecoltarii.ParameterName = "@DataRecoltarii";
@@ -129,6 +129,11 @@ namespace Server.Repository
                     paramColesterol.Value = analiza.Colesterol;
                     command.Parameters.Add(paramColesterol);
 
+                    var paramBoli = command.CreateParameter();
+                    paramBoli.ParameterName = "@ListaBoliDetectate";
+                    paramBoli.Value = analiza.ListaBoliDetectate;
+                    command.Parameters.Add(paramBoli);
+
                     command.ExecuteNonQuery();
                 } catch (SqlException)
                 {
@@ -181,7 +186,7 @@ namespace Server.Repository
             {
                 try
                 {
-                    command.CommandText = "UPDATE Analize SET DataRecoltarii=@DataRecoltarii, Eritrocite=@Eritrocite, Hemoglobina=@Hemoglobina, Hematocrit=@Hematocrit, VEM=@VEM, HEM=@HEM, CHEM=@CHEM, LatimeDistribEritrocit=@LatimeDistribEritrocit, Trombocite=@Trombocite, VolumMediuTrombocitar=@VolumMediuTrombocitar, Trombocrit=@Trombocrit, LatimeDistribTrombocit=@LatimeDistribTrombocit, Leucocite=@Leucocite, Granulocite=@Granulocite, Limfocite=@Lmfocite, MID=@MID, NumarGranulocite=@NumarGranulocite, NumarLimfocite=@NumarLimfocite, NumarMID=@NumarMID, Glicemie=@Glicemie, ALT_TGP=@ALT_TGP, Colesterol=@Colesterol WHERE Id=@Id";  //WTF ???
+                    command.CommandText = "UPDATE Analize SET DataRecoltarii=@DataRecoltarii, Eritrocite=@Eritrocite, Hemoglobina=@Hemoglobina, Hematocrit=@Hematocrit, VEM=@VEM, HEM=@HEM, CHEM=@CHEM, LatimeDistribEritrocit=@LatimeDistribEritrocit, Trombocite=@Trombocite, VolumMediuTrombocitar=@VolumMediuTrombocitar, Trombocrit=@Trombocrit, LatimeDistribTrombocit=@LatimeDistribTrombocit, Leucocite=@Leucocite, Granulocite=@Granulocite, Limfocite=@Lmfocite, MID=@MID, NumarGranulocite=@NumarGranulocite, NumarLimfocite=@NumarLimfocite, NumarMID=@NumarMID, Glicemie=@Glicemie, ALT_TGP=@ALT_TGP, Colesterol=@Colesterol, ListaBoliDetectate=@ListaBoliDetectate WHERE Id=@Id";  //WTF ???
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
                     paramId.Value = analiza.Id;
@@ -296,6 +301,11 @@ namespace Server.Repository
                     paramColesterol.ParameterName = "@Colesterol";
                     paramColesterol.Value = analiza.Colesterol;
                     command.Parameters.Add(paramColesterol);
+
+                    var paramBoli = command.CreateParameter();
+                    paramBoli.ParameterName = "@ListaBoliDetectate";
+                    paramBoli.Value = analiza.ListaBoliDetectate;
+                    command.Parameters.Add(paramBoli);
 
                     var result = command.ExecuteNonQuery();
                     connection.Close();
@@ -356,7 +366,8 @@ namespace Server.Repository
                                 NumarMID = result.GetDouble(19),
                                 Glicemie = result.GetDouble(20),
                                 ALT_TGP = result.GetDouble(21),
-                                Colesterol = result.GetDouble(22)
+                                Colesterol = result.GetDouble(22),
+                                ListaBoliDetectate = result.GetString(23)
 
                             };
                             return analiza;
@@ -410,8 +421,8 @@ namespace Server.Repository
                                 NumarMID = result.GetDouble(19),
                                 Glicemie = result.GetDouble(20),
                                 ALT_TGP = result.GetDouble(21),
-                                Colesterol = result.GetDouble(22)
-
+                                Colesterol = result.GetDouble(22),
+                                ListaBoliDetectate = result.GetString(23)
                             };
                             toReturn.Add(analiza);
                         }
@@ -473,7 +484,8 @@ namespace Server.Repository
                                 NumarMID = result.GetDouble(19),
                                 Glicemie = result.GetDouble(20),
                                 ALT_TGP = result.GetDouble(21),
-                                Colesterol = result.GetDouble(22)
+                                Colesterol = result.GetDouble(22),
+                                ListaBoliDetectate = result.GetString(23)
 
                             };
 
@@ -538,7 +550,8 @@ namespace Server.Repository
                                 NumarMID = result.GetDouble(19),
                                 Glicemie = result.GetDouble(20),
                                 ALT_TGP = result.GetDouble(21),
-                                Colesterol = result.GetDouble(22)
+                                Colesterol = result.GetDouble(22),
+                                ListaBoliDetectate = result.GetString(23)
 
                             };
 
