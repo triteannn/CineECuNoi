@@ -7,8 +7,9 @@ namespace ISSApp.Domain
     [Table("FormulareDonare")]
     public class FormularDonare
     {
-        public FormularDonare(DateTime dataCreare, string listaBoli, int idD, string target)
+        public FormularDonare(int id, DateTime dataCreare, string listaBoli, int idD, string target)
         {
+            Id = id;
             DataCreare = dataCreare;
             ListaBoli = listaBoli;
             IdD = idD;
@@ -18,7 +19,9 @@ namespace ISSApp.Domain
         public int Id { get; set; }
         public DateTime DataCreare { get; set; }
         public string ListaBoli { get; set; }
-        //public int IdD { get; set; }
+
+        //[NotMapped]
+        //public int IdD { get; set; } //modificat aici 
 
         public virtual PungaSange PungaSange { get; set; }
         public virtual Analiza Analiza { get; set; }

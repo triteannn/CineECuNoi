@@ -1,9 +1,9 @@
-﻿using System;
-using ISSApp.Domain;
+﻿using ISSApp.Domain;
+using ISSApp.Exceptions;
+using Server.Utils;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -11,7 +11,8 @@ namespace Server.Repository
     {
         public void Add(Analiza analiza)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -129,18 +130,19 @@ namespace Server.Repository
                     command.Parameters.Add(paramColesterol);
 
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
+            connection.Close();
         }
 
         public Analiza Delete(Analiza analiza)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -153,6 +155,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return analiza;
@@ -160,8 +163,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -171,7 +173,8 @@ namespace Server.Repository
 
         public Analiza Update(Analiza analiza)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -300,8 +303,7 @@ namespace Server.Repository
 
                     return null;
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -311,7 +313,8 @@ namespace Server.Repository
 
         public Analiza FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -326,8 +329,7 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            Analiza analiza = new Analiza
-                            {
+                            Analiza analiza = new Analiza {
                                 Id = result.GetInt32(0),
                                 DataRecoltarii = result.GetDateTime(1),
                                 Eritrocite = result.GetDouble(2),
@@ -359,8 +361,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -370,7 +371,8 @@ namespace Server.Repository
 
         public List<Analiza> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -381,8 +383,7 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            Analiza analiza = new Analiza
-                            {
+                            Analiza analiza = new Analiza {
                                 Id = result.GetInt32(0),
                                 DataRecoltarii = result.GetDateTime(1),
                                 Eritrocite = result.GetDouble(2),
@@ -413,8 +414,7 @@ namespace Server.Repository
                     }
 
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea analizelor din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -424,7 +424,8 @@ namespace Server.Repository
 
         public List<Analiza> FindByDonator(int idDonator)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -444,8 +445,7 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            Analiza analiza = new Analiza
-                            {
+                            Analiza analiza = new Analiza {
                                 Id = result.GetInt32(0),
                                 DataRecoltarii = result.GetDateTime(1),
                                 Eritrocite = result.GetDouble(2),
@@ -476,10 +476,11 @@ namespace Server.Repository
                         }
                     }
 
+                    connection.Close();
                     return toReturn;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Returnarea analizelor unui donator din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -487,7 +488,8 @@ namespace Server.Repository
 
         public Analiza FindLastByDonator(int idDonator)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -508,8 +510,7 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            Analiza analiza = new Analiza
-                            {
+                            Analiza analiza = new Analiza {
                                 Id = result.GetInt32(0),
                                 DataRecoltarii = result.GetDateTime(1),
                                 Eritrocite = result.GetDouble(2),
@@ -541,8 +542,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Returnarea analizelor unui donator din baza de date nu s-a putut realiza cu succes.");
                 }

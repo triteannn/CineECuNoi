@@ -1,9 +1,9 @@
 using ISSApp.Domain;
-using System;
+using ISSApp.Exceptions;
+using Server.Utils;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -11,7 +11,7 @@ namespace Server.Repository
     {
         public void Add(PSGlobuleRosii psGlobuleRosii)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -62,7 +62,7 @@ namespace Server.Repository
 
         public PSGlobuleRosii Delete(PSGlobuleRosii psGlobuleRosii)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -92,7 +92,7 @@ namespace Server.Repository
 
         public PSGlobuleRosii Update(PSGlobuleRosii psGlobuleRosii)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -151,7 +151,7 @@ namespace Server.Repository
 
         public PSGlobuleRosii FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -191,7 +191,7 @@ namespace Server.Repository
 
         public List<PSGlobuleRosii> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -210,7 +210,7 @@ namespace Server.Repository
                                 Grupa = result.GetString(4),
                                 Rh = result.GetString(5),
                                 IdCD = result.GetInt32(6)
-                        };
+                            };
 
                             toReturn.Add(psGlobuleRosii);
                         }
@@ -226,7 +226,7 @@ namespace Server.Repository
 
         public List<PSGlobuleRosii> FindByTarget(string target)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try

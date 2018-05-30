@@ -1,8 +1,8 @@
 ﻿using ISSApp.Domain;
-using System;
+using ISSApp.Exceptions;
+using Server.Utils;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using ISSApp.Exceptions;
 
 namespace Server.Repository
 {
@@ -10,7 +10,7 @@ namespace Server.Repository
     {
         public void Add(Spital entity)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -29,8 +29,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdAdr);
 
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
@@ -41,7 +40,7 @@ namespace Server.Repository
         public Spital Delete(Spital entity)
         {
 
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -55,8 +54,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -67,7 +65,7 @@ namespace Server.Repository
 
         public Spital Update(Spital entity)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -91,8 +89,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdAdr);
 
                     command.ExecuteNonQuery();
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
@@ -103,7 +100,7 @@ namespace Server.Repository
 
         public Spital FindEntity(int id)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -135,7 +132,7 @@ namespace Server.Repository
 
         public List<Spital> FindAll()
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {

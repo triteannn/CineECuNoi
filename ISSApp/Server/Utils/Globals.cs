@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Configuration;
-using System.Drawing;
-using System.IO;
 
-namespace Server
+namespace Server.Utils
 {
     public sealed class Globals
     {
@@ -20,7 +16,7 @@ namespace Server
             get => _globals;
         }
 
-        public static SqlConnection getDBConnection()
+        public static SqlConnection GetDbConnection()
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseContext"].ToString());
         }

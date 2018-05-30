@@ -1,5 +1,6 @@
 ﻿using ISSApp.Domain;
 using ISSApp.Exceptions;
+using Server.Utils;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,7 @@ namespace Server.Repository
     {
         public void Add(CentruDonare entity)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -44,7 +45,7 @@ namespace Server.Repository
 
         public CentruDonare Delete(CentruDonare entity)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -77,7 +78,7 @@ namespace Server.Repository
 
         public CentruDonare Update(CentruDonare entity)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -120,7 +121,7 @@ namespace Server.Repository
 
         public CentruDonare FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -160,7 +161,7 @@ namespace Server.Repository
 
         public List<CentruDonare> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -196,7 +197,7 @@ namespace Server.Repository
         public CentruDonare FindCentruDonareByDenumire(string denumire)
         {
 
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -223,12 +224,10 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
-                }
-                finally
+                } finally
                 {
                     connection.Close();
                 }

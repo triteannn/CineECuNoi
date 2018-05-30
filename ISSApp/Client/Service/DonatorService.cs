@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ISSApp.Exceptions;
 using ISSApp.Networking;
-using ISSApp.Exceptions;
+using System;
 
 namespace Client.Service
 {
-    class DonatorService
+    public class DonatorService
     {
         private IServer _server;
 
@@ -33,8 +29,7 @@ namespace Client.Service
                 }
 
                 return false;
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new SeviceException(e.Message);
             }

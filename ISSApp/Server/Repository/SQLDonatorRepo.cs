@@ -1,5 +1,6 @@
 using ISSApp.Domain;
 using ISSApp.Exceptions;
+using Server.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,7 @@ namespace Server.Repository
     {
         public void Add(Donator donator)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -53,12 +54,12 @@ namespace Server.Repository
                 }
 
             }
-
+            connection.Close();
         }
 
         public void AddFull(Donator donator)
         {
-            var connection = Globals.getDBConnection();
+            var connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
@@ -113,7 +114,7 @@ namespace Server.Repository
 
         public Donator Delete(Donator donator)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -143,7 +144,8 @@ namespace Server.Repository
 
         public Donator Update(Donator donator)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -195,9 +197,10 @@ namespace Server.Repository
                     var result = command.ExecuteNonQuery();
                     if (result != 0)
                     {
+                        connection.Close();
                         return donator;
                     }
-
+                    connection.Close();
                     return null;
                 } catch (SqlException)
                 {
@@ -208,7 +211,7 @@ namespace Server.Repository
 
         public Donator FindEntity(int id)
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -229,7 +232,7 @@ namespace Server.Repository
                             String prenume = result.GetString(3);
                             DateTime date = result.GetDateTime(4);
 
-                            Donator donator = new Donator(cnp, nume, prenume, date);
+                            Donator donator = new Donator(idDonator, cnp, nume, prenume, date);
                             return donator;
                         }
 
@@ -291,7 +294,8 @@ namespace Server.Repository
 
         public List<Donator> FindAll()
         {
-            IDbConnection connection = Globals.getDBConnection();
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -300,16 +304,30 @@ namespace Server.Repository
                     command.CommandText = "SELECT * FROM Donatori";
                     using (var result = command.ExecuteReader())
                     {
+                        int? idA = null;
+                        int? idDc = null;
+                        int? idCd = null;
                         while (result.Read())
                         {
-                            toReturn.Add(new Donator(result.GetString(1), result.GetString(2), result.GetString(3), result.GetDateTime(4)));
+                            if (result[5] != DBNull.Value)
+                                idCd = result.GetInt32(5);
+                            if (result[6] != DBNull.Value)
+                                idA = result.GetInt32(6);
+                            if (result[7] != DBNull.Value)
+                                idDc = result.GetInt32(7);
+                            toReturn.Add(new Donator(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetString(3),
+                                    result.GetDateTime(4).Date, idA, idDc, idCd));
                         }
                     }
 
                     return toReturn;
                 } catch (SqlException)
                 {
-                    throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
+                    throw new RepositoryException(
+                        "Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
+                } finally
+                {
+                    connection.Close();
                 }
             }
         }
@@ -317,7 +335,7 @@ namespace Server.Repository
         public int GetLastId()
         {
             var id = 0;
-            using (var connection = Globals.getDBConnection())
+            using (var connection = Globals.GetDbConnection())
             {
                 connection.Open();
                 var cmd = new SqlCommand(@"select max(Id) from Donatori", connection);
@@ -329,6 +347,63 @@ namespace Server.Repository
                 }
             }
             return id;
+        }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            int rowsAffected;
+            using (var connection = Globals.GetDbConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    /*foreach (DataRow dataRow in dataSet.Tables["Donators"].Rows)
+                    {
+                        foreach (DataColumn dataColumn in dataSet.Tables["Donators"].Columns)
+                        {
+                            Console.WriteLine(dataRow[dataColumn]);
+                        }
+                    }*/
+
+                    rowsAffected = da.Update(dataSet.Tables["Donatori"]);
+                    //dataSet.Tables["Donators"].Clear();
+                    //da.Fill(dataSet, "Donators");
+                } catch (SqlException e)
+                {
+                    throw new RepositoryException(e.Message);
+                }
+            }
+            return 0;
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            using (var connection = Globals.GetDbConnection())
+            {
+                var ds = new DataSet();
+                var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
+                var cb = new SqlCommandBuilder(da);
+                da.DeleteCommand = cb.GetDeleteCommand();
+                da.InsertCommand = cb.GetInsertCommand();
+                da.UpdateCommand = cb.GetUpdateCommand();
+                var dt = new DataTable("Donatori");
+                ds.Tables.Add(dt);
+                da.Fill(ds, "Donatori");
+                /*
+                foreach (DataRow dataRow in ds.Tables["Donatori"].Rows)
+                {
+                    foreach (DataColumn dataColumn in ds.Tables["Donatori"].Columns)
+                    {
+                        Console.WriteLine(dataRow[dataColumn]);
+                    }
+                }*/
+                return ds;
+            }
         }
     }
 }
