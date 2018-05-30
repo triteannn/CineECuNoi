@@ -296,6 +296,46 @@ namespace Server.Repository
 
         }
 
+        public Donator FindByIdAccount(int idAccount)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select d.* from Donatori d, Accounts a where a.Id = @IdAcc and a.IdD = d.Id";
+                    var paramIdAcc = command.CreateParameter();
+                    paramIdAcc.ParameterName = "@IdAcc";
+                    paramIdAcc.Value = idAccount;
+                    command.Parameters.Add(paramIdAcc);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            int idDonator = result.GetInt32(0);
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
+
+                            Donator donator = new Donator(cnp, nume, prenume, date);
+                            return donator;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+            }
+
+        }
+
         public List<Donator> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();

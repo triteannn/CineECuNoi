@@ -299,6 +299,31 @@ namespace Server.Networking
             }
         }
 
+        public Donator DonatorFindByUsername(string username)
+        {
+            try
+            {
+                return donatorRepo.FindByUsername(username);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Donator DonatorFindByIdAccount(int id)
+        {
+            try
+            {
+                return donatorRepo.FindByIdAccount(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+
         public Donator DonatorUpdate(Donator donator)
         {
             try

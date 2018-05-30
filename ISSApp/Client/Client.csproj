@@ -81,7 +81,9 @@
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Service\AdminService.cs" />
+    <Compile Include="Service\AngajatService.cs" />
     <Compile Include="Service\DonatorService.cs" />
+    <Compile Include="Service\MedicService.cs" />
     <Compile Include="Validator\RegisterValidator.cs" />
     <EmbeddedResource Include="AdminWindow.resx">
       <DependentUpon>AdminWindow.cs</DependentUpon>
