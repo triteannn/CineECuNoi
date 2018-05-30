@@ -14,6 +14,8 @@ namespace ISSApp.Networking
         Account AccountFindAccountByCredentials(string username, string password);
         List<Account> AccountFindAll();
         int AccountGetLastId();
+        DataSet AccountAdminGetDataSet();
+        int AccountAdminUpdateDataBase(DataSet dataSet);
         //
         //Angajat
         void AngajatAdd(AngajatCentru angajatCentru);

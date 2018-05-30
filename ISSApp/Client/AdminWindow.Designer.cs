@@ -47,6 +47,7 @@
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb1 = new System.Windows.Forms.ToolStripButton();
             this.AccountsTable = new System.Windows.Forms.DataGridView();
             this.DonatorsTab = new System.Windows.Forms.TabPage();
             this.DonatorsTable = new System.Windows.Forms.DataGridView();
@@ -62,6 +63,7 @@
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb2 = new System.Windows.Forms.ToolStripButton();
             this.EmployeesTab = new System.Windows.Forms.TabPage();
             this.EmployeesTable = new System.Windows.Forms.DataGridView();
             this.bindingNavigator3 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -76,6 +78,7 @@
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb3 = new System.Windows.Forms.ToolStripButton();
             this.DoctorsTab = new System.Windows.Forms.TabPage();
             this.DoctorsTable = new System.Windows.Forms.DataGridView();
             this.bindingNavigator4 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -90,6 +93,7 @@
             this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb4 = new System.Windows.Forms.ToolStripButton();
             this.HospitalsTab = new System.Windows.Forms.TabPage();
             this.HospitalsTable = new System.Windows.Forms.DataGridView();
             this.bindingNavigator5 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -104,6 +108,7 @@
             this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton24 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb5 = new System.Windows.Forms.ToolStripButton();
             this.TransfusionCentersTab = new System.Windows.Forms.TabPage();
             this.TransfusionCentersTable = new System.Windows.Forms.DataGridView();
             this.bindingNavigator6 = new System.Windows.Forms.BindingNavigator(this.components);
@@ -118,11 +123,6 @@
             this.toolStripButton29 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton30 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.BtnUpdateDb1 = new System.Windows.Forms.ToolStripButton();
-            this.BtnUpdateDb2 = new System.Windows.Forms.ToolStripButton();
-            this.BtnUpdateDb3 = new System.Windows.Forms.ToolStripButton();
-            this.BtnUpdateDb4 = new System.Windows.Forms.ToolStripButton();
-            this.BtnUpdateDb5 = new System.Windows.Forms.ToolStripButton();
             this.BtnUpdateDb6 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
@@ -331,6 +331,17 @@
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
+            // BtnUpdateDb1
+            // 
+            this.BtnUpdateDb1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb1.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb1.Image")));
+            this.BtnUpdateDb1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb1.Name = "BtnUpdateDb1";
+            this.BtnUpdateDb1.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb1.Text = "Update Database";
+            this.BtnUpdateDb1.Click += new System.EventHandler(this.BtnUpdateDb1_Click);
+            // 
             // AccountsTable
             // 
             this.AccountsTable.AllowUserToResizeRows = false;
@@ -490,6 +501,17 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
             // 
+            // BtnUpdateDb2
+            // 
+            this.BtnUpdateDb2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb2.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb2.Image")));
+            this.BtnUpdateDb2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb2.Name = "BtnUpdateDb2";
+            this.BtnUpdateDb2.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb2.Text = "Update Database";
+            this.BtnUpdateDb2.Click += new System.EventHandler(this.BtnUpdateDb2_Click);
+            // 
             // EmployeesTab
             // 
             this.EmployeesTab.Controls.Add(this.EmployeesTable);
@@ -632,6 +654,16 @@
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            // 
+            // BtnUpdateDb3
+            // 
+            this.BtnUpdateDb3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb3.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb3.Image")));
+            this.BtnUpdateDb3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb3.Name = "BtnUpdateDb3";
+            this.BtnUpdateDb3.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb3.Text = "Update Database";
             // 
             // DoctorsTab
             // 
@@ -776,6 +808,16 @@
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(6, 27);
             // 
+            // BtnUpdateDb4
+            // 
+            this.BtnUpdateDb4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb4.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb4.Image")));
+            this.BtnUpdateDb4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb4.Name = "BtnUpdateDb4";
+            this.BtnUpdateDb4.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb4.Text = "Update Database";
+            // 
             // HospitalsTab
             // 
             this.HospitalsTab.Controls.Add(this.HospitalsTable);
@@ -919,6 +961,16 @@
             this.toolStripSeparator12.Name = "toolStripSeparator12";
             this.toolStripSeparator12.Size = new System.Drawing.Size(6, 27);
             // 
+            // BtnUpdateDb5
+            // 
+            this.BtnUpdateDb5.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb5.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb5.Image")));
+            this.BtnUpdateDb5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb5.Name = "BtnUpdateDb5";
+            this.BtnUpdateDb5.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb5.Text = "Update Database";
+            // 
             // TransfusionCentersTab
             // 
             this.TransfusionCentersTab.Controls.Add(this.TransfusionCentersTable);
@@ -1061,57 +1113,6 @@
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
             this.toolStripSeparator15.Size = new System.Drawing.Size(6, 27);
-            // 
-            // BtnUpdateDb1
-            // 
-            this.BtnUpdateDb1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.BtnUpdateDb1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BtnUpdateDb1.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb1.Image")));
-            this.BtnUpdateDb1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnUpdateDb1.Name = "BtnUpdateDb1";
-            this.BtnUpdateDb1.Size = new System.Drawing.Size(129, 24);
-            this.BtnUpdateDb1.Text = "Update Database";
-            // 
-            // BtnUpdateDb2
-            // 
-            this.BtnUpdateDb2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.BtnUpdateDb2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BtnUpdateDb2.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb2.Image")));
-            this.BtnUpdateDb2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnUpdateDb2.Name = "BtnUpdateDb2";
-            this.BtnUpdateDb2.Size = new System.Drawing.Size(129, 24);
-            this.BtnUpdateDb2.Text = "Update Database";
-            this.BtnUpdateDb2.Click += new System.EventHandler(this.BtnUpdateDb2_Click);
-            // 
-            // BtnUpdateDb3
-            // 
-            this.BtnUpdateDb3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.BtnUpdateDb3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BtnUpdateDb3.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb3.Image")));
-            this.BtnUpdateDb3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnUpdateDb3.Name = "BtnUpdateDb3";
-            this.BtnUpdateDb3.Size = new System.Drawing.Size(129, 24);
-            this.BtnUpdateDb3.Text = "Update Database";
-            // 
-            // BtnUpdateDb4
-            // 
-            this.BtnUpdateDb4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.BtnUpdateDb4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BtnUpdateDb4.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb4.Image")));
-            this.BtnUpdateDb4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnUpdateDb4.Name = "BtnUpdateDb4";
-            this.BtnUpdateDb4.Size = new System.Drawing.Size(129, 24);
-            this.BtnUpdateDb4.Text = "Update Database";
-            // 
-            // BtnUpdateDb5
-            // 
-            this.BtnUpdateDb5.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.BtnUpdateDb5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.BtnUpdateDb5.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb5.Image")));
-            this.BtnUpdateDb5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BtnUpdateDb5.Name = "BtnUpdateDb5";
-            this.BtnUpdateDb5.Size = new System.Drawing.Size(129, 24);
-            this.BtnUpdateDb5.Text = "Update Database";
             // 
             // BtnUpdateDb6
             // 
