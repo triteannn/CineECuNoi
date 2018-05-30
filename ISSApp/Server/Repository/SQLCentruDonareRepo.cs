@@ -235,6 +235,47 @@ namespace Server.Repository
             }
 
         }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            int rowsAffected;
+            using (var connection = Globals.GetDbConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM CentreDonare", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    rowsAffected = da.Update(dataSet.Tables["CentreDonare"]);
+                }
+                catch (SqlException e)
+                {
+                    throw new RepositoryException(e.Message);
+                }
+            }
+            return rowsAffected;
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            using (var connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var ds = new DataSet();
+                var da = new SqlDataAdapter("SELECT * FROM CentreDonare", connection);
+                var cb = new SqlCommandBuilder(da);
+                da.DeleteCommand = cb.GetDeleteCommand();
+                da.InsertCommand = cb.GetInsertCommand();
+                da.UpdateCommand = cb.GetUpdateCommand();
+                var dt = new DataTable("CentreDonare");
+                ds.Tables.Add(dt);
+                da.Fill(ds, "CentreDonare");
+                return ds;
+            }
+        }
     }
 
 }

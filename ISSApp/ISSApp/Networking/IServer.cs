@@ -25,6 +25,8 @@ namespace ISSApp.Networking
         List<AngajatCentru> AngajatFindAll();
         AngajatCentru AngajatFindByIdAccount(int id);
         AngajatCentru AngajatFindByUsername(string username);
+        DataSet AngajatAdminGetDataSet();
+        int AngajatAdminUpdateDataBase(DataSet dataSet);
 
         //Analiza
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
@@ -37,6 +39,8 @@ namespace ISSApp.Networking
         CentruDonare CentruDonareUpdate(CentruDonare centru);
         CentruDonare CentruDonareFindEntity(int id);
         List<CentruDonare> CentruDonareFindAll();
+        DataSet CentruDonareAdminGetDataSet();
+        int CentruDonareAdminUpdateDataBase(DataSet dataSet);
 
         CentruDonare CentruDonareFindByDenumire(string denumire);
         //Donator
@@ -106,6 +110,8 @@ namespace ISSApp.Networking
         Spital SpitalUpdate(Spital spital);
         Spital SpitalFindEntity(int id);
         List<Spital> SpitalFindAll();
+        DataSet SpitalAdminGetDataSet();
+        int SpitalAdminUpdateDataBase(DataSet dataSet);
         //Trombocite
         void TrombociteAdd(PSTrombocite psTrombocite);
         PSTrombocite TrombociteDelete(PSTrombocite psTrombocite);

@@ -85,5 +85,80 @@ namespace Client.Service
                 throw new SeviceException(e.Message);
             }
         }
+
+        public int AngajatAdminUpdateDataBase(DataSet dataSet)
+        {
+
+            try
+            {
+                return _server.AngajatAdminUpdateDataBase(dataSet);
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public DataSet AngajatAdminGetDataSet()
+        {
+            try
+            {
+                return _server.AngajatAdminGetDataSet();
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public int CentruDonareAdminUpdateDataBase(DataSet dataSet)
+        {
+
+            try
+            {
+                return _server.CentruDonareAdminUpdateDataBase(dataSet);
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public DataSet CentruDonareAdminGetDataSet()
+        {
+            try
+            {
+                return _server.CentruDonareAdminGetDataSet();
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public int SpitalAdminUpdateDataBase(DataSet dataSet)
+        {
+
+            try
+            {
+                return _server.SpitalAdminUpdateDataBase(dataSet);
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
+
+        public DataSet SpitalAdminGetDataSet()
+        {
+            try
+            {
+                return _server.SpitalAdminGetDataSet();
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
     }
 }

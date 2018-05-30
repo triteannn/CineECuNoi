@@ -26,6 +26,16 @@ namespace ISSApp.Domain
             Donatori = new List<Donator>();
             PungiSange = new List<PungaSange>();
         }
+        public CentruDonare(int id, string denumire,int? idAdr)
+        {
+            Id = id;
+            Denumire = denumire;
+            IdAdr = idAdr;
+
+            Angajati = new List<AngajatCentru>();
+            Donatori = new List<Donator>();
+            PungiSange = new List<PungaSange>();
+        }
 
         public int Id { get; set; }
         public string Denumire { get; set; }
@@ -40,6 +50,6 @@ namespace ISSApp.Domain
         public virtual ICollection<PSTrombocite> Trombocite { get; set; }
 
         [NotMapped]
-        public int IdAdr { get; set; }
+        public int? IdAdr { get; set; }
     }
 }

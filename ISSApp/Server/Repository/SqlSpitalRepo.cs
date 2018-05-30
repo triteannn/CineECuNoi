@@ -2,6 +2,7 @@
 using ISSApp.Exceptions;
 using Server.Utils;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Server.Repository
@@ -157,6 +158,47 @@ namespace Server.Repository
                     connection.Close();
                     throw new RepositoryException("Returnarea spitalelor din baza de date nu s-a putut realiza cu succes.");
                 }
+            }
+        }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            int rowsAffected;
+            using (var connection = Globals.GetDbConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM Spitale", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    rowsAffected = da.Update(dataSet.Tables["Spitale"]);
+                }
+                catch (SqlException e)
+                {
+                    throw new RepositoryException(e.Message);
+                }
+            }
+            return rowsAffected;
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            using (var connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var ds = new DataSet();
+                var da = new SqlDataAdapter("SELECT * FROM Spitale", connection);
+                var cb = new SqlCommandBuilder(da);
+                da.DeleteCommand = cb.GetDeleteCommand();
+                da.InsertCommand = cb.GetInsertCommand();
+                da.UpdateCommand = cb.GetUpdateCommand();
+                var dt = new DataTable("Spitale");
+                ds.Tables.Add(dt);
+                da.Fill(ds, "Spitale");
+                return ds;
             }
         }
     }

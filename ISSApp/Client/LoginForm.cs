@@ -44,6 +44,10 @@ namespace Client
             }
             Label5.ForeColor = RememberMe.Checked ? Color.DarkRed : Color.Gray;
             swfLogin.Movie = Environment.CurrentDirectory.Replace(@"bin\Debug", @"Resources\LoginImage.swf");
+            if(RememberMe.Checked)
+            {
+                ActiveControl = TxtPassword;
+            }
         }
 
         private void Fade_Tick(object sender, EventArgs e)

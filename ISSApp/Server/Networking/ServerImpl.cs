@@ -218,6 +218,30 @@ namespace Server.Networking
                 throw new NetworkingException(e.Message);
             }
         }
+        public DataSet AngajatAdminGetDataSet()
+        {
+            try
+            {
+                return angajatRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int AngajatAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return angajatRepo.AdminUpdateDataBase(dataSet);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public List<PungaSangeCuCNP> getPungaSangeCuCNP()
         {
             throw new NotImplementedException();
@@ -284,6 +308,30 @@ namespace Server.Networking
             {
                 return centruDonareRepo.FindCentruDonareByDenumire(denumire);
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DataSet CentruDonareAdminGetDataSet()
+        {
+            try
+            {
+                return centruDonareRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int CentruDonareAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return centruDonareRepo.AdminUpdateDataBase(dataSet);
+            }
+            catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -893,6 +941,30 @@ namespace Server.Networking
             {
                 return spitalRepo.Update(spital);
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DataSet SpitalAdminGetDataSet()
+        {
+            try
+            {
+                return spitalRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int SpitalAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return spitalRepo.AdminUpdateDataBase(dataSet);
+            }
+            catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }

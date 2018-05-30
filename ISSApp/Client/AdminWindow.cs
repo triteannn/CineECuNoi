@@ -233,6 +233,10 @@ namespace Client
             if (index == 2)
             {
                 _dataSet.Tables.Clear();
+                _dataSet = _adminService.AngajatAdminGetDataSet();
+                _bindingSource.DataSource = _dataSet.Tables["AngajatiCentru"];
+                EmployeesTable.DataSource = _bindingSource;
+                bindingNavigator1.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in EmployeesTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -241,6 +245,10 @@ namespace Client
                 {
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
+                DonatorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             if (index == 3)
             {
@@ -257,10 +265,18 @@ namespace Client
                 {
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
+                DonatorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             if (index == 4)
             {
                 _dataSet.Tables.Clear();
+                _dataSet = _adminService.SpitalAdminGetDataSet();
+                _bindingSource.DataSource = _dataSet.Tables["Spitale"];
+                HospitalsTable.DataSource = _bindingSource;
+                bindingNavigator1.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in HospitalsTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -273,6 +289,10 @@ namespace Client
             if (index == 5)
             {
                 _dataSet.Tables.Clear();
+                _dataSet = _adminService.CentruDonareAdminGetDataSet();
+                _bindingSource.DataSource = _dataSet.Tables["CentreDonare"];
+                TransfusionCentersTable.DataSource = _bindingSource;
+                bindingNavigator1.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -301,6 +321,27 @@ namespace Client
         private void BtnUpdateDb4_Click(object sender, EventArgs e)
         {
             var rowsAffected = _adminService.MedicAdminUpdateDataBase(_dataSet);
+            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void BtnUpdateDb3_Click(object sender, EventArgs e)
+        {
+            var rowsAffected = _adminService.AngajatAdminUpdateDataBase(_dataSet);
+            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void BtnUpdateDb5_Click(object sender, EventArgs e)
+        {
+            var rowsAffected = _adminService.SpitalAdminUpdateDataBase(_dataSet);
+            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void BtnUpdateDb6_Click(object sender, EventArgs e)
+        {
+            var rowsAffected = _adminService.CentruDonareAdminUpdateDataBase(_dataSet);
             MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }

@@ -664,6 +664,7 @@
             this.BtnUpdateDb3.Name = "BtnUpdateDb3";
             this.BtnUpdateDb3.Size = new System.Drawing.Size(129, 24);
             this.BtnUpdateDb3.Text = "Update Database";
+            this.BtnUpdateDb3.Click += new System.EventHandler(this.BtnUpdateDb3_Click);
             // 
             // DoctorsTab
             // 
@@ -971,6 +972,7 @@
             this.BtnUpdateDb5.Name = "BtnUpdateDb5";
             this.BtnUpdateDb5.Size = new System.Drawing.Size(129, 24);
             this.BtnUpdateDb5.Text = "Update Database";
+            this.BtnUpdateDb5.Click += new System.EventHandler(this.BtnUpdateDb5_Click);
             // 
             // TransfusionCentersTab
             // 
@@ -1124,6 +1126,7 @@
             this.BtnUpdateDb6.Name = "BtnUpdateDb6";
             this.BtnUpdateDb6.Size = new System.Drawing.Size(129, 24);
             this.BtnUpdateDb6.Text = "Update Database";
+            this.BtnUpdateDb6.Click += new System.EventHandler(this.BtnUpdateDb6_Click);
             // 
             // AdminWindow
             // 
