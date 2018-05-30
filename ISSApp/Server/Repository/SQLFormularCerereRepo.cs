@@ -1,11 +1,13 @@
 using ISSApp.Domain;
+using ISSApp.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Server.Repository
 {
-    public class SQLFormularCerere : ISqlRepo<FormularCerere>
+    public class SQLFormularCerereRepo : ISqlRepo<FormularCerere>
     {
         public void Add(FormularCerere formularCerere)
         {

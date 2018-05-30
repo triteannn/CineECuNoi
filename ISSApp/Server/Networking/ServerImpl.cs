@@ -13,8 +13,8 @@ namespace Server.Networking
         private readonly SqlAngajatRepo angajatRepo;
         private readonly SqlCentruDonareRepo centruDonareRepo;
         private readonly SqlDonatorRepo donatorRepo;
-        private readonly SqlFormularCerereRepo formularCerereRepo;
-        private readonly SqlFormularDonareRepo formularDonareRepo;
+        private readonly SQLFormularCerereRepo formularCerereRepo;
+        private readonly SQLFormularDonareRepo formularDonareRepo;
         private readonly SqlGlobuleRosiiRepo globuleRosiiRepo;
         private readonly SqlMedicRepo medicRepo;
         private readonly SqlPlasmaRepo plasmaRepo;
@@ -29,8 +29,8 @@ namespace Server.Networking
             angajatRepo = new SqlAngajatRepo();
             centruDonareRepo = new SqlCentruDonareRepo();
             donatorRepo = new SqlDonatorRepo();
-            formularCerereRepo = new SqlFormularCerereRepo();
-            formularDonareRepo = new SqlFormularDonareRepo();
+            formularCerereRepo = new SQLFormularCerereRepo();
+            formularDonareRepo = new SQLFormularDonareRepo();
             globuleRosiiRepo = new SqlGlobuleRosiiRepo();
             medicRepo = new SqlMedicRepo();
             plasmaRepo = new SqlPlasmaRepo();

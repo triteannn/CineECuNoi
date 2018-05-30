@@ -166,6 +166,7 @@ namespace Server.Repository
         public List<DateContact> FindAll()
         {
             IDbConnection connection = Globals.getDBConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try

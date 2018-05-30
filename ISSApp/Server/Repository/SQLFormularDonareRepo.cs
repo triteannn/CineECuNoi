@@ -156,7 +156,7 @@ namespace Server.Repository
                             int idAn = result.GetInt32(3);
                             int idD = result.GetInt32(4);
 
-                            FormularDonare formularDonare = new FormularDonare(Id, dataCreare, listaBoli, idAn, idD);
+                            FormularDonare formularDonare = new FormularDonare(Id, dataCreare, listaBoli, idAn, idD); // if we need the Id, we should modify
                             return formularDonare;
                         }
 
@@ -186,7 +186,7 @@ namespace Server.Repository
                         while (result.Read())
                         {
                             //toReturn.Add(new Donator(result.GetString(0), result.GetString(1), result.GetString(2), result.GetDateTime(3)));
-                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4)));
+                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4))); // if we need the Id, we should modify
                         }
                     }
 
