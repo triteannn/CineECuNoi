@@ -196,6 +196,28 @@ namespace Server.Networking
             }
         }
 
+        public AngajatCentru AngajatFindByIdAccount(int id)
+        {
+            try
+            {
+                return angajatRepo.FindByIdAccount(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+        public AngajatCentru AngajatFindByUsername(string username)
+        {
+            try
+            {
+                return angajatRepo.FindByUsername(username);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
         public List<PungaSangeCuCNP> getPungaSangeCuCNP()
         {
             throw new NotImplementedException();
@@ -621,6 +643,30 @@ namespace Server.Networking
             }
         }
 
+        public Medic MedicFindByIdAccount(int id)
+        {
+            try
+            {
+                return medicRepo.FindByIdAccount(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Medic MedicFindByUsername(string username)
+        {
+            try
+            {
+                return medicRepo.FindByUsername(username);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public Medic MedicUpdate(Medic medic)
         {
             try
@@ -916,6 +962,18 @@ namespace Server.Networking
             {
                 return analizaRepo.FindByDonator(idDonator);
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp)
+        {
+            try
+            {
+                return pungaSangeRepo.GetPungaSangeCuCNP(cnp);
+            }
+            catch (Exception e)
             {
                 throw new NetworkingException(e.Message);
             }

@@ -23,11 +23,12 @@ namespace ISSApp.Networking
         AngajatCentru AngajatUpdate(AngajatCentru angajatCentru);
         AngajatCentru AngajatFindEntity(int id);
         List<AngajatCentru> AngajatFindAll();
+        AngajatCentru AngajatFindByIdAccount(int id);
+        AngajatCentru AngajatFindByUsername(string username);
 
         //Analiza
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
         Analiza AnalizaFindLastByDonator(int idDonator);
-        List<PungaSangeCuCNP> getPungaSangeCuCNP();
 
         //
         //CentruDonare
@@ -71,12 +72,16 @@ namespace ISSApp.Networking
         PSGlobuleRosii GlobuleRosiiFindEntity(int id);
         List<PSGlobuleRosii> GlobuleRosiiFindAll();
         List<PSGlobuleRosii> GlobuleRosiiFindByTarget(string target);
+
         //Medic
         void MedicAdd(Medic medic);
         Medic MedicDelete(Medic medic);
         Medic MedicUpdate(Medic medic);
         Medic MedicFindEntity(int id);
         List<Medic> MedicFindAll();
+        Medic MedicFindByIdAccount(int id);
+        Medic MedicFindByUsername(string username);
+
         //Plasma
         void PlasmaAdd(PSPlasma psPlasma);
         PSPlasma PlasmaDelete(PSPlasma psPlasma);
@@ -91,6 +96,8 @@ namespace ISSApp.Networking
         PungaSange PungaSangeFindEntity(int id);
         List<PungaSange> PungaSangeFindAll();
         List<PungaSange> PungaSangeFindByTarget(string target);
+
+        List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp); 
         //Spital
         void SpitalAdd(Spital spital);
         Spital SpitalDelete(Spital spital);
