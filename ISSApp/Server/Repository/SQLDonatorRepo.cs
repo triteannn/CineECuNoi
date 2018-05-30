@@ -283,11 +283,6 @@ namespace Server.Repository
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
-                finally
-                {
-                    connection.Close();
-                }
-
             }
 
         }
