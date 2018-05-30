@@ -48,16 +48,19 @@ namespace Server.Repository
                     command.ExecuteNonQuery();
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
+            connection.Close();
 
         }
 
         public FormularCerere Delete(FormularCerere formularCerere)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -70,6 +73,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return formularCerere;
@@ -79,6 +83,7 @@ namespace Server.Repository
 
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -88,6 +93,7 @@ namespace Server.Repository
         public FormularCerere Update(FormularCerere formularCerere)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -126,6 +132,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdM);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return formularCerere;
@@ -134,6 +141,7 @@ namespace Server.Repository
                     return null;
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -141,9 +149,10 @@ namespace Server.Repository
 
         public FormularCerere FindEntity(int id)
         {
-            IDbConnection connection = Globals.GetDbConnection();
-            using (var command = connection.CreateCommand())
+            using (IDbConnection connection = Globals.GetDbConnection())
             {
+                connection.Open();
+                var command = connection.CreateCommand();
                 try
                 {
                     command.CommandText = "SELECT * FROM FormulareCerere WHERE Id=@Id";
@@ -170,7 +179,8 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (RepositoryException)
+                }
+                catch (RepositoryException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -181,6 +191,7 @@ namespace Server.Repository
         public List<FormularCerere> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -196,10 +207,11 @@ namespace Server.Repository
                             toReturn.Add(new FormularCerere(result.GetInt32(0), result.GetString(1), result.GetDouble(2), result.GetDouble(3), result.GetDouble(4), result.GetInt32(5)));
                         }
                     }
-
+                    connection.Close();
                     return toReturn;
                 } catch (RepositoryException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
                 }
             }

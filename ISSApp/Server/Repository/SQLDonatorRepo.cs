@@ -50,6 +50,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -104,9 +105,11 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdDc);
 
                     command.ExecuteNonQuery();
+                    connection.Close();
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -115,6 +118,7 @@ namespace Server.Repository
         public Donator Delete(Donator donator)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -127,6 +131,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return donator;
@@ -136,6 +141,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -211,9 +217,11 @@ namespace Server.Repository
 
         public Donator FindEntity(int id)
         {
-            IDbConnection connection = Globals.GetDbConnection();
-            using (var command = connection.CreateCommand())
+            using (IDbConnection connection = Globals.GetDbConnection())
             {
+                connection.Open();
+                var command = connection.CreateCommand();
+            
                 try
                 {
                     command.CommandText = "SELECT * FROM Donatori WHERE Id=@Id";
@@ -239,7 +247,8 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -380,6 +389,7 @@ namespace Server.Repository
         {
             using (var connection = Globals.GetDbConnection())
             {
+                connection.Open();
                 var ds = new DataSet();
                 var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
                 var cb = new SqlCommandBuilder(da);

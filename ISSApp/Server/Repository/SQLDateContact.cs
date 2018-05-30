@@ -40,15 +40,18 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
             }
+            connection.Close();
         }
 
         public DateContact Delete(DateContact entity)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -61,6 +64,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramId);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return entity;
@@ -70,6 +74,7 @@ namespace Server.Repository
 
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
 
@@ -79,6 +84,7 @@ namespace Server.Repository
         public DateContact Update(DateContact entity)
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -107,6 +113,7 @@ namespace Server.Repository
                     command.Parameters.Add(paramIdAdr);
 
                     var result = command.ExecuteNonQuery();
+                    connection.Close();
                     if (result != 0)
                     {
                         return entity;
@@ -115,6 +122,7 @@ namespace Server.Repository
                     return null;
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -122,9 +130,10 @@ namespace Server.Repository
 
         public DateContact FindEntity(int id)
         {
-            IDbConnection connection = Globals.GetDbConnection();
-            using (var command = connection.CreateCommand())
+            using (IDbConnection connection = Globals.GetDbConnection())
             {
+                connection.Open();
+                var command = connection.CreateCommand();
                 try
                 {
                     command.CommandText = "SELECT * FROM DateContact WHERE Id=@Id";
@@ -149,7 +158,8 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (SqlException)
+                }
+                catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -160,6 +170,7 @@ namespace Server.Repository
         public List<DateContact> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
@@ -173,10 +184,11 @@ namespace Server.Repository
                             toReturn.Add(new DateContact(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetInt32(3)));
                         }
                     }
-
+                    connection.Close();
                     return toReturn;
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Returnarea datelor de contact din baza de date nu s-a putut realiza cu succes.");
                 }
             }

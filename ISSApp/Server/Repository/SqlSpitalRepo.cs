@@ -31,6 +31,7 @@ namespace Server.Repository
                     command.ExecuteNonQuery();
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -56,6 +57,7 @@ namespace Server.Repository
                     command.ExecuteNonQuery();
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
                 }
             }
@@ -91,6 +93,7 @@ namespace Server.Repository
                     command.ExecuteNonQuery();
                 } catch (SqlException)
                 {
+                    connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }
