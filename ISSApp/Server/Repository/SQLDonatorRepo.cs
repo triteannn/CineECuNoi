@@ -246,50 +246,46 @@ namespace Server.Repository
 
         public Donator FindByUsername(string username)
         {
+            using (IDbConnection connection = Globals.getDBConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "select d.* from Donatori d, Accounts a where a.Username = @Username and a.IdD = d.Id";
+                    var paramUsername = command.CreateParameter();
+                    paramUsername.ParameterName = "@Username";
+                    paramUsername.Value = username;
+                    command.Parameters.Add(paramUsername);
 
-            // ToDo!!!!!!! AdyR
-            return null;
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            int idDonator = result.GetInt32(0);
+                            String cnp = result.GetString(1);
+                            String nume = result.GetString(2);
+                            String prenume = result.GetString(3);
+                            DateTime date = result.GetDateTime(4);
 
-//            IDbConnection connection = Globals.getDBConnection();
-//            connection.Open();
-//            using (var command = connection.CreateCommand())
-//            {
-//                try
-//                {
-//                    command.CommandText = "SELECT * FROM Donatori WHERE Denumire=@Username";
-//                    var paramUsername = command.CreateParameter();
-//                    paramUsername.ParameterName = "@Username";
-//                    paramUsername.Value = username;
-//                    command.Parameters.Add(paramUsername);
-//
-//                    using (var result = command.ExecuteReader())
-//                    {
-//                        if (result.Read())
-//                        {
-//                            int idDonator = result.GetInt32(0);
-//                            String cnp = result.GetString(1);
-//                            String nume = result.GetString(2);
-//                            String prenume = result.GetString(3);
-//                            DateTime date = result.GetDateTime(4);
-//
-//                            Donator donator = new Donator(cnp, nume, prenume, date);
-//                            return donator;
-//                        }
-//
-//                        return null;
-//                    }
-//
-//                }
-//                catch (SqlException)
-//                {
-//                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
-//                }
-//                finally
-//                {
-//                    connection.Close();
-//                }
-//
-//            }
+                            Donator donator = new Donator(cnp, nume, prenume, date);
+                            return donator;
+                        }
+
+                        return null;
+                    }
+
+                }
+                catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+
+            }
 
         }
 
