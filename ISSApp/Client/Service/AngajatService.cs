@@ -43,5 +43,17 @@ namespace Client.Service
                 throw new SeviceException(e.Message);
             }
         }
+
+        public List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp)
+        {
+            try
+            {
+                return _server.GetPungaSangeCuCNP(cnp);
+            }
+            catch (NetworkingException e)
+            {
+                throw new SeviceException(e.Message);
+            }
+        }
     }
 }

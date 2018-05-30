@@ -14,8 +14,8 @@ namespace Server.Networking
         private readonly SqlAngajatRepo angajatRepo;
         private readonly SqlCentruDonareRepo centruDonareRepo;
         private readonly SqlDonatorRepo donatorRepo;
-        private readonly SQLFormularCerereRepo formularCerereRepo;
-        private readonly SQLFormularDonareRepo formularDonareRepo;
+        private readonly SqlFormularCerereRepo formularCerereRepo;
+        private readonly SqlFormularDonareRepo formularDonareRepo;
         private readonly SqlGlobuleRosiiRepo globuleRosiiRepo;
         private readonly SqlMedicRepo medicRepo;
         private readonly SqlPlasmaRepo plasmaRepo;
@@ -30,8 +30,8 @@ namespace Server.Networking
             angajatRepo = new SqlAngajatRepo();
             centruDonareRepo = new SqlCentruDonareRepo();
             donatorRepo = new SqlDonatorRepo();
-            formularCerereRepo = new SQLFormularCerereRepo();
-            formularDonareRepo = new SQLFormularDonareRepo();
+            formularCerereRepo = new SqlFormularCerereRepo();
+            formularDonareRepo = new SqlFormularDonareRepo();
             globuleRosiiRepo = new SqlGlobuleRosiiRepo();
             medicRepo = new SqlMedicRepo();
             plasmaRepo = new SqlPlasmaRepo();
@@ -915,6 +915,18 @@ namespace Server.Networking
             {
                 return analizaRepo.FindByDonator(idDonator);
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp)
+        {
+            try
+            {
+                return pungaSangeRepo.GetPungaSangeCuCNP(cnp);
+            }
+            catch (Exception e)
             {
                 throw new NetworkingException(e.Message);
             }

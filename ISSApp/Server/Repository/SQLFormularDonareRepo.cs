@@ -182,7 +182,7 @@ namespace Server.Repository
                         while (result.Read())
                         {
                             //toReturn.Add(new Donator(result.GetString(0), result.GetString(1), result.GetString(2), result.GetDateTime(3)));
-                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4))); // if we need the Id, we should modify
+                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetString(4))); // if we need the Id, we should modify
                         }
                     }
 
