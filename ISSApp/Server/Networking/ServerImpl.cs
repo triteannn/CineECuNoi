@@ -620,6 +620,30 @@ namespace Server.Networking
             }
         }
 
+        public Medic MedicFindByIdAccount(int id)
+        {
+            try
+            {
+                return medicRepo.FindByIdAccount(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Medic MedicFindByUsername(string username)
+        {
+            try
+            {
+                return medicRepo.FindByUsername(username);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public Medic MedicUpdate(Medic medic)
         {
             try

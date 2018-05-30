@@ -227,9 +227,9 @@ namespace Server.Repository
                         if (result.Read())
                         {
                             int idDonator = result.GetInt32(0);
-                            String cnp = result.GetString(1);
-                            String nume = result.GetString(2);
-                            String prenume = result.GetString(3);
+                            string cnp = result.GetString(1);
+                            string nume = result.GetString(2);
+                            string prenume = result.GetString(3);
                             DateTime date = result.GetDateTime(4);
 
                             Donator donator = new Donator(idDonator, cnp, nume, prenume, date);
@@ -266,9 +266,9 @@ namespace Server.Repository
                         if (result.Read())
                         {
                             int idDonator = result.GetInt32(0);
-                            String cnp = result.GetString(1);
-                            String nume = result.GetString(2);
-                            String prenume = result.GetString(3);
+                            string cnp = result.GetString(1);
+                            string nume = result.GetString(2);
+                            string prenume = result.GetString(3);
                             DateTime date = result.GetDateTime(4);
 
                             Donator donator = new Donator(cnp, nume, prenume, date);
@@ -306,9 +306,9 @@ namespace Server.Repository
                         if (result.Read())
                         {
                             int idDonator = result.GetInt32(0);
-                            String cnp = result.GetString(1);
-                            String nume = result.GetString(2);
-                            String prenume = result.GetString(3);
+                            string cnp = result.GetString(1);
+                            string nume = result.GetString(2);
+                            string prenume = result.GetString(3);
                             DateTime date = result.GetDateTime(4);
 
                             Donator donator = new Donator(cnp, nume, prenume, date);
