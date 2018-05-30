@@ -249,7 +249,7 @@ namespace Server.Repository
 
         public Donator FindByUsername(string username)
         {
-            using (IDbConnection connection = Globals.getDBConnection())
+            using (IDbConnection connection = Globals.GetDbConnection())
             {
                 connection.Open();
                 var command = connection.CreateCommand();
