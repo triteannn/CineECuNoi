@@ -16,6 +16,15 @@ namespace ISSApp.Domain
             Target = target;
         }
 
+        public FormularDonare(DateTime dataCreare, string listaBoli, int idD, string target)
+        {
+            DataCreare = dataCreare;
+            ListaBoli = listaBoli;
+            IdD = idD;
+            Target = target;
+        }
+
+
         public int Id { get; set; }
         public DateTime DataCreare { get; set; }
         public string ListaBoli { get; set; }
@@ -28,10 +37,10 @@ namespace ISSApp.Domain
         public virtual Donator Donator { get; set; }
 
         [NotMapped]
-        public int IdAn { get; set; }
+        public int? IdAn { get; set; }
         [NotMapped]
         public int IdD { get; set; }
-        [NotMapped]
+
         public string Target { get; set; }
     }
 }

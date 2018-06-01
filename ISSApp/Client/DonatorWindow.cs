@@ -2,6 +2,7 @@
 using Bunifu.Framework.UI;
 using Client.Service;
 using ISSApp.Domain;
+using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
 using System.Collections.Generic;
@@ -264,6 +265,11 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(MainPanel);
             MainPanel.Enabled = true;
+            var donator = _server.DonatorFindByUsername(_loggedAccount.Username);
+            TxtFirstName.Text = donator.Prenume;
+            TxtLastName.Text = donator.Nume;
+            TxtDob.Text = donator.Dob.ToShortDateString();
+            //if exists(dateContact/adresa in dateContact) -> fill
         }
 
         private void BtnSubmit_MouseMove(object sender, MouseEventArgs e)
@@ -317,13 +323,25 @@ namespace Client
                     }
                 }
             }
-
-            boli = boli.Substring(0, boli.Length - 2);
+            if (boli.Length > 0)
+            {
+                boli = boli.Substring(0, boli.Length - 2);
+            }
             if (_loggedAccount.IdD != null)
             {
-                //var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
-                //_server.FormularDonareAdd(formularDonare);
+                try
+                {
+                    var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
+                    _donatorService.SubmitFormularDonare(formularDonare);
+                    MessageBox.Show(@"Your request has been registerd.", @"Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } catch (ServiceException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            //if not exists(dateContact/adresa) -> create
+            //update dateContact/adresa cu datele din formular
+            //set centruDonare la donator
         }
 
         private void MenuButton2_Click(object sender, EventArgs e)

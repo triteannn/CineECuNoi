@@ -4,6 +4,7 @@ using Server.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Server.Repository
 {
@@ -13,12 +14,34 @@ namespace Server.Repository
         {
             var connection = Globals.GetDbConnection();
             connection.Open();
-            using (var command = connection.CreateCommand())
+            var cmd = new SqlCommand("INSERT INTO FormulareDonare(DataCreare, ListaBoli, IdAn, IdD, Target) VALUES(@DataCreare, @ListaBoli, @IdAn, @IdD, @Target)");
+            cmd.Parameters.AddWithValue("@DataCreare", formularDonare.DataCreare);
+            cmd.Parameters.AddWithValue("@ListaBoli", formularDonare.ListaBoli);
+            if (formularDonare.IdAn != null)
+                cmd.Parameters.AddWithValue("@IdAn", formularDonare.IdAn);
+            else
+                cmd.Parameters.AddWithValue("@IdAn", DBNull.Value);
+            cmd.Parameters.AddWithValue("@IdD", formularDonare.IdD);
+            cmd.Parameters.AddWithValue("@Target", formularDonare.Target);
+            //var cmd = new SqlCommand("INSERT INTO FormulareDonare(DataCreare, ListaBoli, IdAn, IdD, Target) VALUES('2018-06-01 00:00:00', 'CdufahsioCrbgsgb', NULL, 7, 'Loti')");
+
+            try
+            {
+                cmd.Connection = connection;
+                cmd.ExecuteNonQuery();
+            } catch (SqlException ex)
+            {
+                throw new RepositoryException(ex.Message);
+            } finally
+            {
+                connection.Close();
+            }
+            /*using (var command = connection.CreateCommand())
             {
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO FormulareDonare(DataCreare, ListaBoli, IdAn, IdD) VALUES (@DataCreare, @ListaBoli, @IdAn, @IdD)";
+                        "INSERT INTO FormulareDonare(DataCreare, ListaBoli, IdAn, IdD, Target) VALUES (@DataCreare, @ListaBoli, @IdAn, @IdD, @Target)";
 
                     var paramDataCreare = command.CreateParameter();
                     paramDataCreare.ParameterName = "@DataCreare";
@@ -40,6 +63,11 @@ namespace Server.Repository
                     paramIdD.Value = formularDonare.IdD;
                     command.Parameters.Add(paramIdD);
 
+                    var paramTarget = command.CreateParameter();
+                    paramTarget.ParameterName = "@Target";
+                    paramTarget.Value = formularDonare.Target;
+                    command.Parameters.Add(paramTarget);
+
                     command.ExecuteNonQuery();
 
                 } catch (RepositoryException)
@@ -48,9 +76,7 @@ namespace Server.Repository
                     throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
                 }
 
-            }
-            connection.Close();
-
+            }*/
         }
 
         public FormularDonare Delete(FormularDonare formularDonare)
@@ -144,7 +170,7 @@ namespace Server.Repository
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-            
+
                 try
                 {
                     command.CommandText = "SELECT * FROM FormulareDonare WHERE Id=@Id";
@@ -170,8 +196,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
