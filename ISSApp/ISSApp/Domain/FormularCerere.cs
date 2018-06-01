@@ -29,6 +29,7 @@ namespace ISSApp.Domain
         public double CantTrombocite { get; set; }
         public double CantPlasma { get; set; }
         public double CantGlobuleRosii { get; set; }
+        public string Status { get; set; }
 
         public virtual Medic Medic { get; set; }
 

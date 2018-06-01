@@ -14,22 +14,27 @@ namespace Server.Repository
         {
             var connection = Globals.GetDbConnection();
             connection.Open();
-            using (var command = connection.CreateCommand())
+            if (FindAccountByUsername(entity.Username) == null)
             {
-                command.CommandText = "INSERT INTO Accounts(Username, Password) VALUES (@Username, @Password)";
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "INSERT INTO Accounts(Username, Password) VALUES (@Username, @Password)";
 
-                var paramUsername = command.CreateParameter();
-                paramUsername.ParameterName = "@Username";
-                paramUsername.Value = entity.Username;
-                command.Parameters.Add(paramUsername);
+                    var paramUsername = command.CreateParameter();
+                    paramUsername.ParameterName = "@Username";
+                    paramUsername.Value = entity.Username;
+                    command.Parameters.Add(paramUsername);
 
-                var paramPassword = command.CreateParameter();
-                paramPassword.ParameterName = "@Password";
-                paramPassword.Value = entity.Password;
-                command.Parameters.Add(paramPassword);
+                    var paramPassword = command.CreateParameter();
+                    paramPassword.ParameterName = "@Password";
+                    paramPassword.Value = entity.Password;
+                    command.Parameters.Add(paramPassword);
 
-                command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
+                }
             }
+            else
+                throw new RepositoryException("There is already an account registered with that username.");
             connection.Close();
         }
 
@@ -177,6 +182,44 @@ namespace Server.Repository
             }
         }
 
+        public Account FindAccountByUsername(string username)
+        {
+            using (var connection = Globals.GetDbConnection())
+            {
+                try
+                {
+                    connection.Open();
+                    var cmd = new SqlCommand(@"select * from Accounts where Username=@username", connection);
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    var reader = cmd.ExecuteReader();
+                    var id = new int();
+                    var user = "";
+                    var pass = "";
+                    var idD = new int();
+                    var idM = new int();
+                    var idAc = new int();
+                    while (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                        user = reader.GetString(1);
+                        pass = reader.GetString(2);
+                        if (reader[3] != DBNull.Value)
+                            idD = reader.GetInt32(3);
+                        if (reader[4] != DBNull.Value)
+                            idM = reader.GetInt32(4);
+                        if (reader[5] != DBNull.Value)
+                            idAc = reader.GetInt32(5);
+                    }
+                    if (user.Length > 0 && pass.Length > 0 && username.Equals(user))
+                        return new Account(id, user, pass, idD, idM, idAc);
+                    return null;
+                } catch (SqlException e)
+                {
+                    throw new RepositoryException(e.Message);
+                }
+            }
+        }
+
         public List<Account> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();
@@ -231,11 +274,12 @@ namespace Server.Repository
 
         public int AdminUpdateDataBase(DataSet dataSet)
         {
-            int rowsAffected;
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                try
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
                 {
+
                     connection.Open();
                     var da = new SqlDataAdapter("SELECT * FROM Accounts", connection);
                     var cb = new SqlCommandBuilder(da);
@@ -243,29 +287,37 @@ namespace Server.Repository
                     da.InsertCommand = cb.GetInsertCommand();
                     da.UpdateCommand = cb.GetUpdateCommand();
                     rowsAffected = da.Update(dataSet.Tables["Accounts"]);
+
                 }
-                catch (SqlException e)
-                {
-                    throw new RepositoryException(e.Message);
-                }
+                return rowsAffected;
+            } catch (SqlException)
+            {
+
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
             }
-            return rowsAffected;
         }
 
         public DataSet AdminGetDataSet()
         {
-            using (var connection = Globals.GetDbConnection())
+
+            try
             {
-                var ds = new DataSet();
-                var da = new SqlDataAdapter("SELECT * FROM Accounts", connection);
-                var cb = new SqlCommandBuilder(da);
-                da.DeleteCommand = cb.GetDeleteCommand();
-                da.InsertCommand = cb.GetInsertCommand();
-                da.UpdateCommand = cb.GetUpdateCommand();
-                var dt = new DataTable("Accounts");
-                ds.Tables.Add(dt);
-                da.Fill(ds, "Accounts");
-                return ds;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM Accounts", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("Accounts");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "Accounts");
+                    return ds;
+                }
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

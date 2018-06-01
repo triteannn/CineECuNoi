@@ -1,7 +1,7 @@
-﻿using ISSApp.Exceptions;
+﻿using ISSApp.Domain;
+using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
-using ISSApp.Domain;
 
 namespace Client.Service
 {
@@ -32,7 +32,7 @@ namespace Client.Service
                 return false;
             } catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -42,10 +42,9 @@ namespace Client.Service
             {
                 return _server.DonatorFindByIdAccount(id);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -55,10 +54,20 @@ namespace Client.Service
             {
                 return _server.DonatorFindByUsername(username);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
+            }
+        }
+
+        public void SubmitFormularDonare(FormularDonare formularDonare)
+        {
+            try
+            {
+                _server.FormularDonareAdd(formularDonare);
+            } catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
             }
         }
     }

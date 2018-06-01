@@ -38,7 +38,7 @@ namespace Server.Repository
 
                     var paramDob = command.CreateParameter();
                     paramDob.ParameterName = "@Dob";
-                    paramDob.Value = donator.Dob;
+                    paramDob.Value = new DateTime(donator.Dob.Year, donator.Dob.Month, donator.Dob.Day, 0, 0, 0);
                     command.Parameters.Add(paramDob);
 
                     var paramIdA = command.CreateParameter();
@@ -86,7 +86,8 @@ namespace Server.Repository
 
                     var paramDob = command.CreateParameter();
                     paramDob.ParameterName = "@Dob";
-                    paramDob.Value = donator.Dob;
+                    var dob = new DateTime(donator.Dob.Year, donator.Dob.Month, donator.Dob.Day, 0, 0, 0);
+                    paramDob.Value = dob;
                     command.Parameters.Add(paramDob);
 
                     var paramIdCd = command.CreateParameter();
@@ -221,7 +222,7 @@ namespace Server.Repository
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-            
+
                 try
                 {
                     command.CommandText = "SELECT * FROM Donatori WHERE Id=@Id";
@@ -247,8 +248,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -287,8 +287,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -327,8 +326,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -395,10 +393,10 @@ namespace Server.Repository
 
         public int AdminUpdateDataBase(DataSet dataSet)
         {
-            int rowsAffected;
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                try
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
                 {
                     connection.Open();
                     var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
@@ -407,29 +405,35 @@ namespace Server.Repository
                     da.InsertCommand = cb.GetInsertCommand();
                     da.UpdateCommand = cb.GetUpdateCommand();
                     rowsAffected = da.Update(dataSet.Tables["Donatori"]);
-                } catch (SqlException e)
-                {
-                    throw new RepositoryException(e.Message);
                 }
+                return rowsAffected;
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
             }
-            return rowsAffected;
         }
 
         public DataSet AdminGetDataSet()
         {
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                connection.Open();
-                var ds = new DataSet();
-                var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
-                var cb = new SqlCommandBuilder(da);
-                da.DeleteCommand = cb.GetDeleteCommand();
-                da.InsertCommand = cb.GetInsertCommand();
-                da.UpdateCommand = cb.GetUpdateCommand();
-                var dt = new DataTable("Donatori");
-                ds.Tables.Add(dt);
-                da.Fill(ds, "Donatori");
-                return ds;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM Donatori", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("Donatori");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "Donatori");
+                    return ds;
+                }
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

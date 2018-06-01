@@ -21,7 +21,7 @@ namespace Client.Service
                 return _server.DonatorAdminUpdateDataBase(dataSet);
             } catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -32,7 +32,7 @@ namespace Client.Service
                 return _server.DonatorAdminGetDataSet();
             }catch(NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -70,7 +70,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -82,7 +82,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -95,7 +95,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -107,7 +107,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -120,7 +120,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -132,7 +132,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -145,7 +145,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -157,7 +157,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
     }

@@ -38,7 +38,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }       
 
         }
@@ -121,7 +121,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -143,7 +143,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }           
         }
 
@@ -165,7 +165,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -187,7 +187,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -230,7 +230,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }           
         }
 
@@ -243,7 +243,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -256,7 +256,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
 
@@ -268,7 +268,7 @@ namespace Client.Service
             }
             catch (NetworkingException e)
             {
-                throw new SeviceException(e.Message);
+                throw new ServiceException(e.Message);
             }
         }
     }

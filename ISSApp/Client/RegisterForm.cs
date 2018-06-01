@@ -103,6 +103,10 @@ namespace Client
                 {
                     MessageBox.Show(ex.Message, @"Validation error occured", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
+                } catch (NetworkingException ex)
+                {
+                    MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
             else

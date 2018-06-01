@@ -1,6 +1,7 @@
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -37,7 +38,7 @@ namespace Server.Repository
 
                     var paramDob = command.CreateParameter();
                     paramDob.ParameterName = "@Dob";
-                    paramDob.Value = medic.Dob;
+                    paramDob.Value = new DateTime(medic.Dob.Year, medic.Dob.Month, medic.Dob.Day, 0, 0, 0);
                     command.Parameters.Add(paramDob);
 
                     var paramIdS = command.CreateParameter();
@@ -201,8 +202,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -244,8 +244,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -287,8 +286,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -336,10 +334,10 @@ namespace Server.Repository
 
         public int AdminUpdateDataBase(DataSet dataSet)
         {
-            int rowsAffected;
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                try
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
                 {
                     connection.Open();
                     var da = new SqlDataAdapter("SELECT * FROM Medici", connection);
@@ -349,29 +347,34 @@ namespace Server.Repository
                     da.UpdateCommand = cb.GetUpdateCommand();
                     rowsAffected = da.Update(dataSet.Tables["Medici"]);
                 }
-                catch (SqlException e)
-                {
-                    throw new RepositoryException(e.Message);
-                }
+                return rowsAffected;
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
             }
-            return rowsAffected;
         }
 
         public DataSet AdminGetDataSet()
         {
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                connection.Open();
-                var ds = new DataSet();
-                var da = new SqlDataAdapter("SELECT * FROM Medici", connection);
-                var cb = new SqlCommandBuilder(da);
-                da.DeleteCommand = cb.GetDeleteCommand();
-                da.InsertCommand = cb.GetInsertCommand();
-                da.UpdateCommand = cb.GetUpdateCommand();
-                var dt = new DataTable("Medici");
-                ds.Tables.Add(dt);
-                da.Fill(ds, "Medici");
-                return ds;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM Medici", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("Medici");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "Medici");
+                    return ds;
+                }
+            } catch (Exception)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

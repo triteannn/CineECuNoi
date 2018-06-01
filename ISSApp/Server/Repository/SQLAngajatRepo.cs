@@ -37,7 +37,8 @@ namespace Server.Repository
 
                     var paramDob = command.CreateParameter();
                     paramDob.ParameterName = "@Dob";
-                    paramDob.Value = angajatCentru.Dob;
+                    paramDob.Value = new DateTime(angajatCentru.Dob.Year, angajatCentru.Dob.Month, angajatCentru.Dob.Day, 0, 0, 0);
+                    ;
                     command.Parameters.Add(paramDob);
 
                     var paramIdCd = command.CreateParameter();
@@ -197,8 +198,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -236,8 +236,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -275,8 +274,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -313,42 +311,54 @@ namespace Server.Repository
 
         public int AdminUpdateDataBase(DataSet dataSet)
         {
-            int rowsAffected;
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                try
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    try
+                    {
+                        connection.Open();
+                        var da = new SqlDataAdapter("SELECT * FROM AngajatiCentru", connection);
+                        var cb = new SqlCommandBuilder(da);
+                        da.DeleteCommand = cb.GetDeleteCommand();
+                        da.InsertCommand = cb.GetInsertCommand();
+                        da.UpdateCommand = cb.GetUpdateCommand();
+                        rowsAffected = da.Update(dataSet.Tables["AngajatiCentru"]);
+                    } catch (SqlException e)
+                    {
+                        throw new RepositoryException(e.Message);
+                    }
+                }
+                return rowsAffected;
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
+            }
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            try
+            {
+                using (var connection = Globals.GetDbConnection())
                 {
                     connection.Open();
+                    var ds = new DataSet();
                     var da = new SqlDataAdapter("SELECT * FROM AngajatiCentru", connection);
                     var cb = new SqlCommandBuilder(da);
                     da.DeleteCommand = cb.GetDeleteCommand();
                     da.InsertCommand = cb.GetInsertCommand();
                     da.UpdateCommand = cb.GetUpdateCommand();
-                    rowsAffected = da.Update(dataSet.Tables["AngajatiCentru"]);
+                    var dt = new DataTable("AngajatiCentru");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "AngajatiCentru");
+                    return ds;
                 }
-                catch (SqlException e)
-                {
-                    throw new RepositoryException(e.Message);
-                }
-            }
-            return rowsAffected;
-        }
-
-        public DataSet AdminGetDataSet()
-        {
-            using (var connection = Globals.GetDbConnection())
+            } catch (SqlException)
             {
-                connection.Open();
-                var ds = new DataSet();
-                var da = new SqlDataAdapter("SELECT * FROM AngajatiCentru", connection);
-                var cb = new SqlCommandBuilder(da);
-                da.DeleteCommand = cb.GetDeleteCommand();
-                da.InsertCommand = cb.GetInsertCommand();
-                da.UpdateCommand = cb.GetUpdateCommand();
-                var dt = new DataTable("AngajatiCentru");
-                ds.Tables.Add(dt);
-                da.Fill(ds, "AngajatiCentru");
-                return ds;
+
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

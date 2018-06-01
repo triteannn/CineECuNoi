@@ -44,7 +44,7 @@ namespace Client
             }
             Label5.ForeColor = RememberMe.Checked ? Color.DarkRed : Color.Gray;
             swfLogin.Movie = Environment.CurrentDirectory.Replace(@"bin\Debug", @"Resources\LoginImage.swf");
-            if(RememberMe.Checked)
+            if (RememberMe.Checked)
             {
                 ActiveControl = TxtPassword;
             }
@@ -163,19 +163,9 @@ namespace Client
                 if (RememberMe.Checked)
                 {
                     var serializer = new XmlSerializer(typeof(string));
-                    if (File.Exists(Environment.CurrentDirectory + @"\RememberedUser.xml"))
+                    using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Create, FileAccess.Write))
                     {
-                        using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Open, FileAccess.Write))
-                        {
-                            serializer.Serialize(fs, TxtUsername.Text + " " + DropdownAS.selectedIndex);
-                        }
-                    }
-                    else
-                    {
-                        using (var fs = new FileStream(Environment.CurrentDirectory + @"\RememberedUser.xml", FileMode.Create, FileAccess.Write))
-                        {
-                            serializer.Serialize(fs, TxtUsername.Text + " " + DropdownAS.selectedIndex);
-                        }
+                        serializer.Serialize(fs, TxtUsername.Text + " " + DropdownAS.selectedIndex);
                     }
                 }
                 else

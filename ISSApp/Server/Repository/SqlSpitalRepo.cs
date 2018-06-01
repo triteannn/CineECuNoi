@@ -163,10 +163,10 @@ namespace Server.Repository
 
         public int AdminUpdateDataBase(DataSet dataSet)
         {
-            int rowsAffected;
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                try
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
                 {
                     connection.Open();
                     var da = new SqlDataAdapter("SELECT * FROM Spitale", connection);
@@ -175,30 +175,36 @@ namespace Server.Repository
                     da.InsertCommand = cb.GetInsertCommand();
                     da.UpdateCommand = cb.GetUpdateCommand();
                     rowsAffected = da.Update(dataSet.Tables["Spitale"]);
+
                 }
-                catch (SqlException e)
-                {
-                    throw new RepositoryException(e.Message);
-                }
+                return rowsAffected;
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
             }
-            return rowsAffected;
         }
 
         public DataSet AdminGetDataSet()
         {
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                connection.Open();
-                var ds = new DataSet();
-                var da = new SqlDataAdapter("SELECT * FROM Spitale", connection);
-                var cb = new SqlCommandBuilder(da);
-                da.DeleteCommand = cb.GetDeleteCommand();
-                da.InsertCommand = cb.GetInsertCommand();
-                da.UpdateCommand = cb.GetUpdateCommand();
-                var dt = new DataTable("Spitale");
-                ds.Tables.Add(dt);
-                da.Fill(ds, "Spitale");
-                return ds;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM Spitale", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("Spitale");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "Spitale");
+                    return ds;
+                }
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -173,13 +174,16 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            CentruDonare psPlasma = new CentruDonare {
+                            int? idAdr = null;
+                            if (result[2] != DBNull.Value)
+                                idAdr = result.GetInt32(2);
+                            CentruDonare centru = new CentruDonare {
                                 Id = result.GetInt32(0),
                                 Denumire = result.GetString(1),
-                                IdAdr = result.GetInt32(2)
+                                IdAdr = idAdr
                             };
 
-                            toReturn.Add(psPlasma);
+                            toReturn.Add(centru);
                         }
                     }
 
@@ -238,10 +242,10 @@ namespace Server.Repository
 
         public int AdminUpdateDataBase(DataSet dataSet)
         {
-            int rowsAffected;
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                try
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
                 {
                     connection.Open();
                     var da = new SqlDataAdapter("SELECT * FROM CentreDonare", connection);
@@ -251,29 +255,36 @@ namespace Server.Repository
                     da.UpdateCommand = cb.GetUpdateCommand();
                     rowsAffected = da.Update(dataSet.Tables["CentreDonare"]);
                 }
-                catch (SqlException e)
-                {
-                    throw new RepositoryException(e.Message);
-                }
+                return rowsAffected;
+            } catch (SqlException)
+            {
+
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
+
             }
-            return rowsAffected;
         }
 
         public DataSet AdminGetDataSet()
         {
-            using (var connection = Globals.GetDbConnection())
+            try
             {
-                connection.Open();
-                var ds = new DataSet();
-                var da = new SqlDataAdapter("SELECT * FROM CentreDonare", connection);
-                var cb = new SqlCommandBuilder(da);
-                da.DeleteCommand = cb.GetDeleteCommand();
-                da.InsertCommand = cb.GetInsertCommand();
-                da.UpdateCommand = cb.GetUpdateCommand();
-                var dt = new DataTable("CentreDonare");
-                ds.Tables.Add(dt);
-                da.Fill(ds, "CentreDonare");
-                return ds;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM CentreDonare", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("CentreDonare");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "CentreDonare");
+                    return ds;
+                }
+            } catch (SqlException)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

@@ -42,6 +42,8 @@ namespace ISSApp.Domain
         public string Nume { get; set; }
         public string Prenume { get; set; }
         public DateTime Dob { get; set; }
+        public string Grupa { get; set; }
+        public string Rh { get; set; }
 
         //public int IdA { get; set; }
         public int? IdCd { get; set; }

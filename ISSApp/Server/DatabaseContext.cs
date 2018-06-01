@@ -42,7 +42,7 @@ namespace Server
 
             modelBuilder.Entity<AngajatCentru>().HasKey(t => t.Id);
             modelBuilder.Entity<AngajatCentru>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<AngajatCentru>().HasRequired(t => t.Account).WithOptional(t => t.AngajatCentru).Map(t=>t.MapKey("IdA")); //
+            modelBuilder.Entity<AngajatCentru>().HasRequired(t => t.Account).WithOptional(t => t.AngajatCentru).Map(t => t.MapKey("IdA")).WillCascadeOnDelete(true); //
             modelBuilder.Entity<AngajatCentru>().HasRequired(t => t.CentruDonare).WithMany(t => t.Angajati).HasForeignKey(t => t.IdCd); //
             modelBuilder.Entity<AngajatCentru>().HasRequired(t => t.DateContact).WithOptional(t => t.AngajatCentru).Map(t => t.MapKey("IdDc"));
 
@@ -58,12 +58,15 @@ namespace Server
             modelBuilder.Entity<Donator>().HasKey(t => t.Id);
             modelBuilder.Entity<Donator>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Donator>().HasRequired(t => t.DateContact).WithOptional(t => t.Donator).Map(t => t.MapKey("IdDc"));
-            modelBuilder.Entity<Donator>().HasRequired(t => t.Account).WithOptional(t => t.Donator).Map(t=>t.MapKey("IdA")); //
+            modelBuilder.Entity<Donator>().HasRequired(t => t.Account).WithOptional(t => t.Donator).Map(t => t.MapKey("IdA")).WillCascadeOnDelete(true); //
             modelBuilder.Entity<Donator>().HasOptional(t => t.CentruDonare).WithMany(t => t.Donatori).HasForeignKey(t => t.IdCd);
+            modelBuilder.Entity<Donator>().Property(t => t.Grupa).IsOptional();
+            modelBuilder.Entity<Donator>().Property(t => t.Rh).IsOptional();
 
             modelBuilder.Entity<FormularCerere>().HasKey(t => t.Id);
             modelBuilder.Entity<FormularCerere>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<FormularCerere>().HasRequired(t => t.Medic).WithOptional(t => t.FormularCerere).Map(t => t.MapKey("IdM"));
+            modelBuilder.Entity<FormularCerere>().Property(t => t.Status).IsOptional();
 
             modelBuilder.Entity<FormularDonare>().HasKey(t => t.Id);
             modelBuilder.Entity<FormularDonare>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -74,7 +77,7 @@ namespace Server
             modelBuilder.Entity<Medic>().HasKey(t => t.Id);
             modelBuilder.Entity<Medic>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Medic>().HasRequired(t => t.DateContact).WithOptional(t => t.Medic).Map(t => t.MapKey("IdDc"));
-            modelBuilder.Entity<Medic>().HasRequired(t => t.Account).WithOptional(t => t.Medic).Map(t => t.MapKey("IdA")); //
+            modelBuilder.Entity<Medic>().HasRequired(t => t.Account).WithOptional(t => t.Medic).Map(t => t.MapKey("IdA")).WillCascadeOnDelete(true); //
             modelBuilder.Entity<Medic>().HasRequired(t => t.Spital).WithMany(t => t.Medici).HasForeignKey(t => t.IdS);
 
             modelBuilder.Entity<PSGlobuleRosii>().HasKey(t => t.Id);

@@ -1,5 +1,6 @@
 ﻿using Client.Service;
 using ISSApp.Domain;
+using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Client
         private readonly IServer _server;
         private readonly Account _account;
         private DataSet _dataSet;
-        private readonly BindingSource _bindingSource;
+        private BindingSource _bindingSource;
         private readonly AdminService _adminService;
 
         public AdminWindow(LoginForm loginForm, IServer server, Account account)
@@ -176,16 +177,15 @@ namespace Client
             return dt;
         }
 
-        private void TabControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             var index = TabControl.SelectedIndex;
+            _bindingSource = new BindingSource();
             if (index == 0)
             {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
                 _dataSet.Tables.Clear();
-                /*var dt = ToDataTable(_server.AccountFindAll(), "Accounts");
-                dt.Columns.Remove("Donator");
-                dt.Columns.Remove("Medic");
-                dt.Columns.Remove("AngajatCentru");*/
                 _dataSet = _adminService.AccountAdminGetDataSet();
                 _bindingSource.DataSource = _dataSet.Tables["Accounts"];
                 AccountsTable.DataSource = _bindingSource;
@@ -205,13 +205,20 @@ namespace Client
             }
             if (index == 1)
             {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
                 _dataSet.Tables.Clear();
-                var dt = ToDataTable(_server.DonatorFindAll(), "Donators");
-                dt.Columns.Remove("DateContact");
-                dt.Columns.Remove("CentruDonare");
-                dt.Columns.Remove("FormularDonare");
-                dt.Columns.Remove("Account");
                 _dataSet = _adminService.DonatorAdminGetDataSet();
+                var childDataSet = _adminService.AccountAdminGetDataSet();
+                var tab = childDataSet.Tables["Accounts"];
+                childDataSet.Tables.Clear();
+                _dataSet.Tables.Add(tab);
+                var parentCol = _dataSet.Tables["Donatori"].Columns[0];
+                var childCol = _dataSet.Tables["Accounts"].Columns["IdD"];
+                var fk = new ForeignKeyConstraint(parentCol, childCol);
+                fk.DeleteRule = Rule.Cascade;
+                _dataSet.Tables["Accounts"].Constraints.Add(fk);
+                _dataSet.EnforceConstraints = true;
                 _bindingSource.DataSource = _dataSet.Tables["Donatori"];
                 DonatorsTable.DataSource = _bindingSource;
                 bindingNavigator2.BindingSource = _bindingSource;
@@ -225,18 +232,32 @@ namespace Client
                 }
 
                 DonatorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DonatorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DonatorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DonatorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
+                DonatorsTable.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DonatorsTable.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             if (index == 2)
             {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
                 _dataSet.Tables.Clear();
                 _dataSet = _adminService.AngajatAdminGetDataSet();
+                var childDataSet = _adminService.AccountAdminGetDataSet();
+                var tab = childDataSet.Tables["Accounts"];
+                childDataSet.Tables.Clear();
+                _dataSet.Tables.Add(tab);
+                var parentCol = _dataSet.Tables["AngajatiCentru"].Columns[0];
+                var childCol = _dataSet.Tables["Accounts"].Columns["IdAc"];
+                var fk = new ForeignKeyConstraint(parentCol, childCol);
+                fk.DeleteRule = Rule.Cascade;
+                _dataSet.Tables["Accounts"].Constraints.Add(fk);
+                _dataSet.EnforceConstraints = true;
                 _bindingSource.DataSource = _dataSet.Tables["AngajatiCentru"];
                 EmployeesTable.DataSource = _bindingSource;
-                bindingNavigator1.BindingSource = _bindingSource;
+                bindingNavigator3.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in EmployeesTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -245,18 +266,30 @@ namespace Client
                 {
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
-                DonatorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DonatorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DonatorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DonatorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                EmployeesTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                EmployeesTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                EmployeesTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                EmployeesTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             if (index == 3)
             {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
                 _dataSet.Tables.Clear();
                 _dataSet = _adminService.MedicAdminGetDataSet();
+                var childDataSet = _adminService.AccountAdminGetDataSet();
+                var tab = childDataSet.Tables["Accounts"];
+                childDataSet.Tables.Clear();
+                _dataSet.Tables.Add(tab);
+                var parentCol = _dataSet.Tables["Medici"].Columns[0];
+                var childCol = _dataSet.Tables["Accounts"].Columns["IdM"];
+                var fk = new ForeignKeyConstraint(parentCol, childCol);
+                fk.DeleteRule = Rule.Cascade;
+                _dataSet.Tables["Accounts"].Constraints.Add(fk);
+                _dataSet.EnforceConstraints = true;
                 _bindingSource.DataSource = _dataSet.Tables["Medici"];
                 DoctorsTable.DataSource = _bindingSource;
-                bindingNavigator1.BindingSource = _bindingSource;
+                bindingNavigator4.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in DoctorsTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -265,18 +298,20 @@ namespace Client
                 {
                     col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
-                DonatorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DonatorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DonatorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                DonatorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DoctorsTable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DoctorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DoctorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                DoctorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             if (index == 4)
             {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
                 _dataSet.Tables.Clear();
                 _dataSet = _adminService.SpitalAdminGetDataSet();
                 _bindingSource.DataSource = _dataSet.Tables["Spitale"];
                 HospitalsTable.DataSource = _bindingSource;
-                bindingNavigator1.BindingSource = _bindingSource;
+                bindingNavigator5.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in HospitalsTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -288,11 +323,13 @@ namespace Client
             }
             if (index == 5)
             {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
                 _dataSet.Tables.Clear();
                 _dataSet = _adminService.CentruDonareAdminGetDataSet();
                 _bindingSource.DataSource = _dataSet.Tables["CentreDonare"];
                 TransfusionCentersTable.DataSource = _bindingSource;
-                bindingNavigator1.BindingSource = _bindingSource;
+                bindingNavigator6.BindingSource = _bindingSource;
                 foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
                 {
                     col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -306,44 +343,93 @@ namespace Client
 
         private void BtnUpdateDb2_Click(object sender, EventArgs e)
         {
-            var rowsAffected = _adminService.DonatorAdminUpdateDataBase(_dataSet);
-            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                var rowsAffected = _adminService.DonatorAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb2, null);
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void BtnUpdateDb1_Click(object sender, EventArgs e)
         {
-            var rowsAffected = _adminService.AccountAdminUpdateDataBase(_dataSet);
-            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                var rowsAffected = _adminService.AccountAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb1, null);
+
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void BtnUpdateDb4_Click(object sender, EventArgs e)
         {
-            var rowsAffected = _adminService.MedicAdminUpdateDataBase(_dataSet);
-            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                var rowsAffected = _adminService.MedicAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb4, null);
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void BtnUpdateDb3_Click(object sender, EventArgs e)
         {
-            var rowsAffected = _adminService.AngajatAdminUpdateDataBase(_dataSet);
-            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                var rowsAffected = _adminService.AngajatAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb3, null);
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void BtnUpdateDb5_Click(object sender, EventArgs e)
         {
-            var rowsAffected = _adminService.SpitalAdminUpdateDataBase(_dataSet);
-            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                var rowsAffected = _adminService.SpitalAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb5, null);
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void BtnUpdateDb6_Click(object sender, EventArgs e)
         {
-            var rowsAffected = _adminService.CentruDonareAdminUpdateDataBase(_dataSet);
-            MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                var rowsAffected = _adminService.CentruDonareAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb6, null);
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }
