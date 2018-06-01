@@ -208,6 +208,7 @@ namespace Client
 
         internal void EmptyFields()
         {
+            ActiveControl = BtnLogin;
             if (!RememberMe.Checked)
             {
                 TxtUsername.Text = @"Username";

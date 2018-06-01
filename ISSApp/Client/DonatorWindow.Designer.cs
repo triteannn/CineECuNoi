@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AnimatorNS.Animation animation5 = new AnimatorNS.Animation();
+            AnimatorNS.Animation animation2 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonatorWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.MenuButton2 = new System.Windows.Forms.Button();
             this.MenuButton1 = new System.Windows.Forms.Button();
@@ -105,10 +105,13 @@
             this.AbnormalityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValuesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.LblDate = new System.Windows.Forms.Label();
+            this.BtnPrevious = new System.Windows.Forms.Button();
             this.Bell = new System.Windows.Forms.PictureBox();
             this.MenuToggle = new System.Windows.Forms.PictureBox();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
+            this.BtnNext = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.PersonalInfoGb.SuspendLayout();
@@ -1090,22 +1093,22 @@
             // 
             this.animator1.AnimationType = AnimatorNS.AnimationType.VertSlide;
             this.animator1.Cursor = null;
-            animation5.AnimateOnlyDifferences = true;
-            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
-            animation5.LeafCoeff = 0F;
-            animation5.MaxTime = 1F;
-            animation5.MinTime = 0F;
-            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
-            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
-            animation5.MosaicSize = 0;
-            animation5.Padding = new System.Windows.Forms.Padding(0);
-            animation5.RotateCoeff = 0F;
-            animation5.RotateLimit = 0F;
-            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
-            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
-            animation5.TimeCoeff = 0F;
-            animation5.TransparencyCoeff = 0F;
-            this.animator1.DefaultAnimation = animation5;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.animator1.DefaultAnimation = animation2;
             // 
             // label2
             // 
@@ -1121,6 +1124,9 @@
             // 
             this.BloodTestsPanel.AllowDrop = true;
             this.BloodTestsPanel.BackColor = System.Drawing.Color.White;
+            this.BloodTestsPanel.Controls.Add(this.BtnNext);
+            this.BloodTestsPanel.Controls.Add(this.BtnPrevious);
+            this.BloodTestsPanel.Controls.Add(this.LblDate);
             this.BloodTestsPanel.Controls.Add(this.BloodResultsTable);
             this.BloodTestsPanel.Controls.Add(this.bunifuSeparator1);
             this.animator1.SetDecoration(this.BloodTestsPanel, AnimatorNS.DecorationType.None);
@@ -1137,14 +1143,14 @@
             this.BloodResultsTable.AllowUserToDeleteRows = false;
             this.BloodResultsTable.AllowUserToResizeRows = false;
             this.BloodResultsTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.BloodResultsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BloodResultsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AnalizaColumn,
@@ -1154,14 +1160,14 @@
             this.animator1.SetDecoration(this.BloodResultsTable, AnimatorNS.DecorationType.None);
             this.BloodResultsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.BloodResultsTable.EnableHeadersVisualStyles = false;
-            this.BloodResultsTable.Location = new System.Drawing.Point(12, 110);
+            this.BloodResultsTable.Location = new System.Drawing.Point(12, 65);
             this.BloodResultsTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BloodResultsTable.MultiSelect = false;
             this.BloodResultsTable.Name = "BloodResultsTable";
             this.BloodResultsTable.ReadOnly = true;
             this.BloodResultsTable.RowHeadersVisible = false;
             this.BloodResultsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.BloodResultsTable.Size = new System.Drawing.Size(1197, 471);
+            this.BloodResultsTable.Size = new System.Drawing.Size(1197, 511);
             this.BloodResultsTable.TabIndex = 1;
             // 
             // AnalizaColumn
@@ -1203,13 +1209,38 @@
             this.bunifuSeparator1.ForeColor = System.Drawing.Color.DarkRed;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuSeparator1.LineThickness = 2;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(0, 89);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(0, 44);
             this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Size = new System.Drawing.Size(1221, 14);
             this.bunifuSeparator1.TabIndex = 0;
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = false;
+            // 
+            // LblDate
+            // 
+            this.LblDate.AutoSize = true;
+            this.animator1.SetDecoration(this.LblDate, AnimatorNS.DecorationType.None);
+            this.LblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDate.ForeColor = System.Drawing.Color.DarkRed;
+            this.LblDate.Location = new System.Drawing.Point(5, 27);
+            this.LblDate.Name = "LblDate";
+            this.LblDate.Size = new System.Drawing.Size(0, 20);
+            this.LblDate.TabIndex = 2;
+            // 
+            // BtnPrevious
+            // 
+            this.BtnPrevious.BackgroundImage = global::Client.Properties.Resources.leftarrow;
+            this.BtnPrevious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.animator1.SetDecoration(this.BtnPrevious, AnimatorNS.DecorationType.None);
+            this.BtnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrevious.Location = new System.Drawing.Point(487, 8);
+            this.BtnPrevious.Name = "BtnPrevious";
+            this.BtnPrevious.Size = new System.Drawing.Size(41, 39);
+            this.BtnPrevious.TabIndex = 3;
+            this.BtnPrevious.UseVisualStyleBackColor = true;
             // 
             // Bell
             // 
@@ -1264,6 +1295,19 @@
             this.PictureBox2.TabStop = false;
             this.PictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
             // 
+            // BtnNext
+            // 
+            this.BtnNext.BackgroundImage = global::Client.Properties.Resources.rightarrow;
+            this.BtnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.animator1.SetDecoration(this.BtnNext, AnimatorNS.DecorationType.None);
+            this.BtnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNext.Location = new System.Drawing.Point(679, 8);
+            this.BtnNext.Name = "BtnNext";
+            this.BtnNext.Size = new System.Drawing.Size(41, 39);
+            this.BtnNext.TabIndex = 4;
+            this.BtnNext.UseVisualStyleBackColor = true;
+            // 
             // DonatorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1305,6 +1349,7 @@
             this.NotificationsPanel.ResumeLayout(false);
             this.NotificationsPanel.PerformLayout();
             this.BloodTestsPanel.ResumeLayout(false);
+            this.BloodTestsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BloodResultsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bell)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).EndInit();
@@ -1394,5 +1439,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RezultatColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn AbnormalityColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValuesColumn;
+        private System.Windows.Forms.Button BtnPrevious;
+        private System.Windows.Forms.Label LblDate;
+        private System.Windows.Forms.Button BtnNext;
     }
 }

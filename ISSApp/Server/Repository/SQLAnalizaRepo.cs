@@ -327,10 +327,11 @@ namespace Server.Repository
 
         public Analiza FindEntity(int id)
         {
-            using (IDbConnection connection = Globals.GetDbConnection()) {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
                 connection.Open();
                 var command = connection.CreateCommand();
-            
+
                 try
                 {
                     command.CommandText = "SELECT * FROM Analize WHERE Id=@Id";
@@ -505,10 +506,11 @@ namespace Server.Repository
 
         public Analiza FindLastByDonator(int idDonator)
         {
-            using (IDbConnection connection = Globals.GetDbConnection()) {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
                 connection.Open();
                 var command = connection.CreateCommand();
-            
+
                 try
                 {
                     List<Analiza> toReturn = new List<Analiza>();

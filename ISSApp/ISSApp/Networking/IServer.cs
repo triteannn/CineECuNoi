@@ -31,6 +31,7 @@ namespace ISSApp.Networking
         //Analiza
         void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
         Analiza AnalizaFindLastByDonator(int idDonator);
+        List<Analiza> AnalizaFindByDonator(int idDonator);
 
         //
         //CentruDonare
@@ -103,7 +104,7 @@ namespace ISSApp.Networking
         List<PungaSange> PungaSangeFindAll();
         List<PungaSange> PungaSangeFindByTarget(string target);
 
-        List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp); 
+        List<PungaSangeCuCNP> GetPungaSangeCuCNP(string cnp);
         //Spital
         void SpitalAdd(Spital spital);
         Spital SpitalDelete(Spital spital);

@@ -2,6 +2,7 @@
 using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
+using System.Collections.Generic;
 
 namespace Client.Service
 {
@@ -65,6 +66,17 @@ namespace Client.Service
             try
             {
                 _server.FormularDonareAdd(formularDonare);
+            } catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
+
+        public List<Analiza> AnalizaFindByDonator(int idDonator)
+        {
+            try
+            {
+                return _server.AnalizaFindByDonator(idDonator);
             } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);

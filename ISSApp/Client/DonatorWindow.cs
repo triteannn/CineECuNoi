@@ -20,6 +20,7 @@ namespace Client
         private readonly DonatorService _donatorService;
         private readonly Account _loggedAccount;
         private readonly List<string> _notifications;
+        private List<Analiza> _analize;
 
         public DonatorWindow(LoginForm loginForm, IServer server, Account loggedAccount)
         {
@@ -40,6 +41,9 @@ namespace Client
             BloodResultsTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
             BloodResultsTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             BloodResultsTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            BtnPrevious.FlatAppearance.BorderSize = 0;
+            BtnNext.FlatAppearance.BorderSize = 0;
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -357,6 +361,61 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(BloodTestsPanel);
             BloodTestsPanel.Enabled = true;
+
+            _analize = _server.AnalizaFindByDonator((int)_loggedAccount.IdD);
+            _analize.Sort((x, y) => {
+                return x.DataRecoltarii.CompareTo(y.DataRecoltarii);
+            });
+
+            LoadAnaliza(_analize[_analize.Count - 1]);
+
+            LblDate.Text = "Date: " + _analize[_analize.Count - 1].DataRecoltarii.ToString("dd-MM-yyyy");
+        }
+
+        private void LoadAnaliza(Analiza analiza)
+        {
+            BloodResultsTable.Rows[0].Cells[1].Value = analiza.Eritrocite;
+            BloodResultsTable.Rows[0].Cells[2].Value = (analiza.Eritrocite >= 4.0 && analiza.Eritrocite <= 5.8) ? "" : "Yes";
+            BloodResultsTable.Rows[1].Cells[1].Value = analiza.Hemoglobina;
+            BloodResultsTable.Rows[1].Cells[2].Value = (analiza.Hemoglobina >= 11.0 && analiza.Hemoglobina <= 17.0) ? "" : "Yes";
+            BloodResultsTable.Rows[2].Cells[1].Value = analiza.Hematocrit;
+            BloodResultsTable.Rows[2].Cells[2].Value = (analiza.Hematocrit >= 35.0 && analiza.Hematocrit <= 52.0) ? "" : "Yes";
+            BloodResultsTable.Rows[3].Cells[1].Value = analiza.VEM;
+            BloodResultsTable.Rows[3].Cells[2].Value = (analiza.VEM >= 75.0 && analiza.VEM <= 100.0) ? "" : "Yes";
+            BloodResultsTable.Rows[4].Cells[1].Value = analiza.HEM;
+            BloodResultsTable.Rows[4].Cells[2].Value = (analiza.HEM >= 25.0 && analiza.HEM <= 33.0) ? "" : "Yes";
+            BloodResultsTable.Rows[5].Cells[1].Value = analiza.CHEM;
+            BloodResultsTable.Rows[5].Cells[2].Value = (analiza.CHEM >= 31.0 && analiza.CHEM <= 36.0) ? "" : "Yes";
+            BloodResultsTable.Rows[6].Cells[1].Value = analiza.LatimeDistribEritrocit;
+            BloodResultsTable.Rows[6].Cells[2].Value = (analiza.LatimeDistribEritrocit >= 10.0 && analiza.LatimeDistribEritrocit <= 20.0) ? "" : "Yes";
+            BloodResultsTable.Rows[7].Cells[1].Value = analiza.Trombocite;
+            BloodResultsTable.Rows[7].Cells[2].Value = (analiza.Trombocite >= 120.0 && analiza.Trombocite <= 400.0) ? "" : "Yes";
+            BloodResultsTable.Rows[8].Cells[1].Value = analiza.VolumMediuTrombocitar;
+            BloodResultsTable.Rows[8].Cells[2].Value = (analiza.VolumMediuTrombocitar >= 6.0 && analiza.VolumMediuTrombocitar <= 10.0) ? "" : "Yes";
+            BloodResultsTable.Rows[9].Cells[1].Value = analiza.Trombocrit;
+            BloodResultsTable.Rows[9].Cells[2].Value = (analiza.Trombocrit >= 0.0 && analiza.Trombocrit <= 0.6) ? "" : "Yes";
+            BloodResultsTable.Rows[10].Cells[1].Value = analiza.LatimeDistribTrombocit;
+            BloodResultsTable.Rows[10].Cells[2].Value = (analiza.LatimeDistribTrombocit >= 0.0 && analiza.LatimeDistribTrombocit <= 25.0) ? "" : "Yes";
+            BloodResultsTable.Rows[11].Cells[1].Value = analiza.Leucocite;
+            BloodResultsTable.Rows[11].Cells[2].Value = (analiza.Leucocite >= 4.0 && analiza.Leucocite <= 10.5) ? "" : "Yes";
+            BloodResultsTable.Rows[12].Cells[1].Value = analiza.Granulocite;
+            BloodResultsTable.Rows[12].Cells[2].Value = (analiza.Granulocite >= 42.0 && analiza.Granulocite <= 75.0) ? "" : "Yes";
+            BloodResultsTable.Rows[13].Cells[1].Value = analiza.Limfocite;
+            BloodResultsTable.Rows[13].Cells[2].Value = (analiza.Limfocite >= 11.0 && analiza.Limfocite <= 50.0) ? "" : "Yes";
+            BloodResultsTable.Rows[14].Cells[1].Value = analiza.MID;
+            BloodResultsTable.Rows[14].Cells[2].Value = (analiza.MID >= 2.0 && analiza.MID <= 12.0) ? "" : "Yes";
+            BloodResultsTable.Rows[15].Cells[1].Value = analiza.NumarGranulocite;
+            BloodResultsTable.Rows[15].Cells[2].Value = (analiza.NumarGranulocite >= 2.0 && analiza.NumarGranulocite <= 8.0) ? "" : "Yes";
+            BloodResultsTable.Rows[16].Cells[1].Value = analiza.NumarLimfocite;
+            BloodResultsTable.Rows[16].Cells[2].Value = (analiza.NumarLimfocite >= 1.0 && analiza.NumarLimfocite <= 5.0) ? "" : "Yes";
+            BloodResultsTable.Rows[17].Cells[1].Value = analiza.NumarMID;
+            BloodResultsTable.Rows[17].Cells[2].Value = (analiza.NumarMID >= 0.0 && analiza.NumarMID <= 1.4) ? "" : "Yes";
+            BloodResultsTable.Rows[18].Cells[1].Value = analiza.Glicemie;
+            BloodResultsTable.Rows[18].Cells[2].Value = (analiza.Glicemie >= 60.0 && analiza.Glicemie <= 120.0) ? "" : "Yes";
+            BloodResultsTable.Rows[19].Cells[1].Value = analiza.ALT_TGP;
+            BloodResultsTable.Rows[19].Cells[2].Value = (analiza.ALT_TGP >= 5.0 && analiza.ALT_TGP <= 65.0) ? "" : "Yes";
+            BloodResultsTable.Rows[20].Cells[1].Value = analiza.Colesterol;
+            BloodResultsTable.Rows[20].Cells[2].Value = (analiza.Colesterol >= 110.0 && analiza.Colesterol <= 220.0) ? "" : "Yes";
         }
     }
 }
