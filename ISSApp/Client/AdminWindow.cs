@@ -186,22 +186,30 @@ namespace Client
                 foreach (DataTable table in _dataSet.Tables)
                     table.Constraints.Clear();
                 _dataSet.Tables.Clear();
-                _dataSet = _adminService.AccountAdminGetDataSet();
-                _bindingSource.DataSource = _dataSet.Tables["Accounts"];
-                AccountsTable.DataSource = _bindingSource;
-                bindingNavigator1.BindingSource = _bindingSource;
-                foreach (DataGridViewColumn col in AccountsTable.Columns)
+                using (var worker = new BackgroundWorker())
                 {
-                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    worker.DoWork += (obj, ea) => {
+                        _dataSet = _adminService.AccountAdminGetDataSet();
+                    };
+                    worker.RunWorkerAsync();
+                    worker.RunWorkerCompleted += (obj, ea) => {
+                        _bindingSource.DataSource = _dataSet.Tables["Accounts"];
+                        AccountsTable.DataSource = _bindingSource;
+                        bindingNavigator1.BindingSource = _bindingSource;
+                        foreach (DataGridViewColumn col in AccountsTable.Columns)
+                        {
+                            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                        foreach (DataGridViewColumn col in AccountsTable.Columns)
+                        {
+                            col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        }
+                        AccountsTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        AccountsTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        AccountsTable.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        AccountsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    };
                 }
-                foreach (DataGridViewColumn col in AccountsTable.Columns)
-                {
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
-                }
-                AccountsTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                AccountsTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                AccountsTable.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                AccountsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
             if (index == 1)
             {
@@ -308,17 +316,25 @@ namespace Client
                 foreach (DataTable table in _dataSet.Tables)
                     table.Constraints.Clear();
                 _dataSet.Tables.Clear();
-                _dataSet = _adminService.SpitalAdminGetDataSet();
-                _bindingSource.DataSource = _dataSet.Tables["Spitale"];
-                HospitalsTable.DataSource = _bindingSource;
-                bindingNavigator5.BindingSource = _bindingSource;
-                foreach (DataGridViewColumn col in HospitalsTable.Columns)
+                using (var worker = new BackgroundWorker())
                 {
-                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                foreach (DataGridViewColumn col in HospitalsTable.Columns)
-                {
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    worker.DoWork += (obj, ea) => {
+                        _dataSet = _adminService.SpitalAdminGetDataSet();
+                    };
+                    worker.RunWorkerAsync();
+                    worker.RunWorkerCompleted += (obj, ea) => {
+                        _bindingSource.DataSource = _dataSet.Tables["Spitale"];
+                        HospitalsTable.DataSource = _bindingSource;
+                        bindingNavigator5.BindingSource = _bindingSource;
+                        foreach (DataGridViewColumn col in HospitalsTable.Columns)
+                        {
+                            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                        foreach (DataGridViewColumn col in HospitalsTable.Columns)
+                        {
+                            col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        }
+                    };
                 }
             }
             if (index == 5)
@@ -326,17 +342,25 @@ namespace Client
                 foreach (DataTable table in _dataSet.Tables)
                     table.Constraints.Clear();
                 _dataSet.Tables.Clear();
-                _dataSet = _adminService.CentruDonareAdminGetDataSet();
-                _bindingSource.DataSource = _dataSet.Tables["CentreDonare"];
-                TransfusionCentersTable.DataSource = _bindingSource;
-                bindingNavigator6.BindingSource = _bindingSource;
-                foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
+                using (var worker = new BackgroundWorker())
                 {
-                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
-                {
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                    worker.DoWork += (obj, ea) => {
+                        _dataSet = _adminService.CentruDonareAdminGetDataSet();
+                    };
+                    worker.RunWorkerAsync();
+                    worker.RunWorkerCompleted += (obj, ea) => {
+                        _bindingSource.DataSource = _dataSet.Tables["CentreDonare"];
+                        TransfusionCentersTable.DataSource = _bindingSource;
+                        bindingNavigator6.BindingSource = _bindingSource;
+                        foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
+                        {
+                            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                        foreach (DataGridViewColumn col in TransfusionCentersTable.Columns)
+                        {
+                            col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        }
+                    };
                 }
             }
         }

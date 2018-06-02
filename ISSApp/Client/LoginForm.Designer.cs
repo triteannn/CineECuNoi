@@ -90,7 +90,7 @@
             this.LblCreateAcc.Location = new System.Drawing.Point(125, 84);
             this.LblCreateAcc.Margin = new System.Windows.Forms.Padding(0);
             this.LblCreateAcc.Name = "LblCreateAcc";
-            this.LblCreateAcc.Size = new System.Drawing.Size(125, 17);
+            this.LblCreateAcc.Size = new System.Drawing.Size(116, 14);
             this.LblCreateAcc.TabIndex = 0;
             this.LblCreateAcc.TabStop = true;
             this.LblCreateAcc.Text = "Create an account!";
@@ -188,7 +188,7 @@
             this.Label5.Location = new System.Drawing.Point(65, 350);
             this.Label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(106, 17);
+            this.Label5.Size = new System.Drawing.Size(97, 14);
             this.Label5.TabIndex = 14;
             this.Label5.Text = "Remember me?";
             // 
@@ -213,7 +213,7 @@
             this.Label1.ForeColor = System.Drawing.Color.DarkRed;
             this.Label1.Location = new System.Drawing.Point(29, 297);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(74, 17);
+            this.Label1.Size = new System.Drawing.Size(64, 14);
             this.Label1.TabIndex = 13;
             this.Label1.Text = "Login as:";
             // 
@@ -248,7 +248,7 @@
             this.Label3.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.Location = new System.Drawing.Point(29, 68);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(332, 17);
+            this.Label3.Size = new System.Drawing.Size(310, 14);
             this.Label3.TabIndex = 15;
             this.Label3.Text = "Don\'t have an account? Create one right now, it only";
             // 
@@ -259,13 +259,13 @@
             this.Label4.Font = new System.Drawing.Font("Georgia", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.Location = new System.Drawing.Point(30, 84);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(103, 17);
+            this.Label4.Size = new System.Drawing.Size(97, 14);
             this.Label4.TabIndex = 16;
             this.Label4.Text = "takes a minute!";
             // 
             // PictureBox3
             // 
-            this.PictureBox3.Image = global::ISSApp.Properties.Resources.minimize;
+            this.PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox3.Image")));
             this.PictureBox3.Location = new System.Drawing.Point(724, 9);
             this.PictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBox3.Name = "PictureBox3";
@@ -277,7 +277,7 @@
             // 
             // PictureBox2
             // 
-            this.PictureBox2.Image = global::ISSApp.Properties.Resources.exitBtn;
+            this.PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox2.Image")));
             this.PictureBox2.Location = new System.Drawing.Point(756, 11);
             this.PictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBox2.Name = "PictureBox2";
@@ -289,7 +289,7 @@
             // 
             // PictureBox1
             // 
-            this.PictureBox1.Image = global::ISSApp.Properties.Resources.bloodBackground;
+            this.PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox1.Image")));
             this.PictureBox1.Location = new System.Drawing.Point(-1, 14);
             this.PictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBox1.Name = "PictureBox1";

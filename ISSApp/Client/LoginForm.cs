@@ -1,5 +1,7 @@
-﻿using ISSApp.Networking;
+﻿using ISSApp.Domain;
+using ISSApp.Networking;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -158,6 +160,9 @@ namespace Client
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+            BtnLogin.Enabled = false;
+            var worker = new BackgroundWorker();
+
             if (TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && DropdownAS.selectedIndex > 0 && TxtUsername.Text != @"Username" && TxtPassword.Text != @"Password")
             {
                 if (RememberMe.Checked)
@@ -176,34 +181,44 @@ namespace Client
                     }
                 }
 
-                var acc = _server.AccountFindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
-                if (acc != null)
-                {
-                    if (acc.IdD != 0 && DropdownAS.selectedValue.Equals("Donator"))
+                Account acc = null;
+                worker.DoWork += (obj, ea) => {
+                    acc = _server.AccountFindAccountByCredentials(TxtUsername.Text, TxtPassword.Text);
+                };
+                worker.RunWorkerAsync();
+                worker.RunWorkerCompleted += (obj, ea) => {
+                    BtnLogin.Enabled = true;
+                    if (acc != null)
                     {
-                        var donatorWindow = new DonatorWindow(this, _server, acc);
-                        donatorWindow.Show();
-                        Hide();
-                    }
-                    else if (DropdownAS.selectedValue.Equals("Admin") && acc.IdD == 0 & acc.IdAc == 0 &&
-                             acc.IdM == 0)
-                    {
-                        var adminWindow = new AdminWindow(this, _server, acc);
-                        adminWindow.Show();
-                        Hide();
+                        if (acc.IdD != 0 && DropdownAS.selectedValue.Equals("Donator"))
+                        {
+                            var donatorWindow = new DonatorWindow(this, _server, acc);
+                            donatorWindow.Show();
+                            Hide();
+                        }
+                        else if (DropdownAS.selectedValue.Equals("Admin") && acc.IdD == 0 & acc.IdAc == 0 &&
+                                    acc.IdM == 0)
+                        {
+                            var adminWindow = new AdminWindow(this, _server, acc);
+                            adminWindow.Show();
+                            Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"This account doesn't have the rights to login as " + DropdownAS.selectedValue,
+                                @"Insufficient permission", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
-                    {
-                        MessageBox.Show(@"This account doesn't have the rights to login as " + DropdownAS.selectedValue,
-                            @"Insufficient permission", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                    MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        MessageBox.Show(@"Invalid username or password.", @"Please check your credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    worker.Dispose();
+                };
             }
             else
+            {
                 MessageBox.Show(@"Fields can not be empty or left unchanged.", @"", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                BtnLogin.Enabled = true;
+            }
         }
 
         internal void EmptyFields()
