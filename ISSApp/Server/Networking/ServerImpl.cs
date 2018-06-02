@@ -13,6 +13,7 @@ namespace Server.Networking
         private readonly SqlAccountRepo accountRepo;
         private readonly SqlAngajatRepo angajatRepo;
         private readonly SqlCentruDonareRepo centruDonareRepo;
+        private readonly SQLDateContact dateContactRepo;
         private readonly SqlDonatorRepo donatorRepo;
         private readonly SqlFormularCerereRepo formularCerereRepo;
         private readonly SqlFormularDonareRepo formularDonareRepo;
@@ -29,6 +30,7 @@ namespace Server.Networking
             accountRepo = new SqlAccountRepo();
             angajatRepo = new SqlAngajatRepo();
             centruDonareRepo = new SqlCentruDonareRepo();
+            dateContactRepo = new SQLDateContact();
             donatorRepo = new SqlDonatorRepo();
             formularCerereRepo = new SqlFormularCerereRepo();
             formularDonareRepo = new SqlFormularDonareRepo();
@@ -330,6 +332,77 @@ namespace Server.Networking
             try
             {
                 return centruDonareRepo.AdminUpdateDataBase(dataSet);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public void DateContactAdd(DateContact entity)
+        {
+            try
+            {
+                dateContactRepo.Add(entity);
+            }
+            catch(RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+        public DateContact DateContactDelete(DateContact entity)
+        {
+            try
+            {
+                return dateContactRepo.Delete(entity);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DateContact DateContactUpdate(DateContact entity)
+        {
+            try
+            {
+                return dateContactRepo.Update(entity);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DateContact DateContactFindEntity(int id)
+        {
+            try
+            {
+                return dateContactRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<DateContact> DateContactFindAll()
+        {
+            try
+            {
+                return dateContactRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DateContact DateContactGetDateByIdDonator(int idDonator)
+        {
+            try
+            {
+                return dateContactRepo.GetDateByIdDonator(idDonator);
             }
             catch (RepositoryException e)
             {

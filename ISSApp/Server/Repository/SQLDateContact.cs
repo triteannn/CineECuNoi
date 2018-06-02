@@ -193,5 +193,40 @@ namespace Server.Repository
                 }
             }
         }
+
+        public DateContact GetDateByIdDonator(int idDonator)
+        {
+            var connection = Globals.GetDbConnection();
+            connection.Open();
+            DateContact dateContact = null;
+            var cmd = new SqlCommand("SELECT dc.* FROM Donatori d INNER JOIN DateContact dc ON d.IdDC=dc.Id WHERE d.Id = @id");
+            cmd.Parameters.AddWithValue("@id", idDonator);
+            
+            try
+            {
+                cmd.Connection = connection;
+                using (var result = cmd.ExecuteReader())
+                {
+                    if (result.Read())
+                    {
+                        int idData = result.GetInt32(0);
+                        String telefon = result.GetString(1);
+                        String email = result.GetString(2);
+                        int idAdresa = result.GetInt32(3);
+
+                        dateContact = new DateContact(idData, telefon, email, idAdresa);
+                    }
+                }
+                return dateContact;
+            }
+            catch (SqlException ex)
+            {
+                throw new RepositoryException(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

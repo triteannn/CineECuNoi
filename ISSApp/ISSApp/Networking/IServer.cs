@@ -43,6 +43,14 @@ namespace ISSApp.Networking
         DataSet CentruDonareAdminGetDataSet();
         int CentruDonareAdminUpdateDataBase(DataSet dataSet);
 
+        //DateContact
+        void DateContactAdd(DateContact entity);
+        DateContact DateContactDelete(DateContact entity);
+        DateContact DateContactUpdate(DateContact entity);
+        DateContact DateContactFindEntity(int id);
+        List<DateContact> DateContactFindAll();
+        DateContact DateContactGetDateByIdDonator(int idDonator);
+
         CentruDonare CentruDonareFindByDenumire(string denumire);
         //Donator
         void DonatorAdd(Donator donator);
