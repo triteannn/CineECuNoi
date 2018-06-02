@@ -11,6 +11,7 @@ namespace Server.Networking
     public class ServerImpl : MarshalByRefObject, IServer
     {
         private readonly SqlAccountRepo accountRepo;
+        private readonly SQLAdresaRepo adresaRepo;
         private readonly SqlAngajatRepo angajatRepo;
         private readonly SqlCentruDonareRepo centruDonareRepo;
         private readonly SQLDateContact dateContactRepo;
@@ -28,6 +29,7 @@ namespace Server.Networking
         public ServerImpl()
         {
             accountRepo = new SqlAccountRepo();
+            adresaRepo = new SQLAdresaRepo();
             angajatRepo = new SqlAngajatRepo();
             centruDonareRepo = new SqlCentruDonareRepo();
             dateContactRepo = new SQLDateContact();
@@ -115,6 +117,78 @@ namespace Server.Networking
             {
                 return accountRepo.GetLastId();
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public void AdresaAdd(Adresa entity)
+        {
+            try
+            {
+                adresaRepo.Add(entity);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Adresa AdresaDelete(Adresa entity)
+        {
+            try
+            {
+                return adresaRepo.Delete(entity);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Adresa AdresaUpdate(Adresa entity)
+        {
+            try
+            {
+                return adresaRepo.Update(entity);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Adresa AdresaFindEntity(int id)
+        {
+            try
+            {
+                return adresaRepo.FindEntity(id);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<Adresa> AdresaFindAll()
+        {
+            try
+            {
+                return adresaRepo.FindAll();
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Adresa AdresaGetAdresaByDateContactId(int idDC)
+        {
+            try
+            {
+                return adresaRepo.GetAdresaByDateContactId(idDC);
+            }
+            catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }

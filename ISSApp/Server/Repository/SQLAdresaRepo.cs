@@ -203,5 +203,41 @@ namespace Server.Repository
                 }
             }
         }
+
+        public Adresa GetAdresaByDateContactId(int idDC)
+        {
+            var connection = Globals.GetDbConnection();
+            connection.Open();
+            Adresa adresa = null;
+            var cmd = new SqlCommand("SELECT adr.* FROM DateContact dc INNER JOIN Adrese adr ON dc.IdA=adr.Id WHERE dc.Id = @id");
+            cmd.Parameters.AddWithValue("@id", idDC);
+
+            try
+            {
+                cmd.Connection = connection;
+                using (var result = cmd.ExecuteReader())
+                {
+                    if (result.Read())
+                    {
+                        int idAdresa = result.GetInt32(0);
+                        String strada = result.GetString(1);
+                        int numar = result.GetInt32(2);
+                        String oras = result.GetString(3);
+                        String judet = result.GetString(4);
+
+                        adresa = new Adresa(idAdresa, strada, numar, oras, judet);
+                    }
+                }
+                return adresa;
+            }
+            catch (SqlException ex)
+            {
+                throw new RepositoryException(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

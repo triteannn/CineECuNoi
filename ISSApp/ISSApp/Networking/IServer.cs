@@ -16,7 +16,15 @@ namespace ISSApp.Networking
         int AccountGetLastId();
         DataSet AccountAdminGetDataSet();
         int AccountAdminUpdateDataBase(DataSet dataSet);
-        //
+
+        //Adresa
+        void AdresaAdd(Adresa entity);
+        Adresa AdresaDelete(Adresa entity);
+        Adresa AdresaUpdate(Adresa entity);
+        Adresa AdresaFindEntity(int id);
+        List<Adresa> AdresaFindAll();
+        Adresa AdresaGetAdresaByDateContactId(int idDC);
+
         //Angajat
         void AngajatAdd(AngajatCentru angajatCentru);
         AngajatCentru AngajatDelete(AngajatCentru angajatCentru);
