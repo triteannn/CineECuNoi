@@ -93,11 +93,20 @@ namespace Client
         {
             Text = @"Donator Window";
             label2.Text = @"Logged in as " + _loggedAccount.Username;
-            if (true)
+            
+            if (_donatorService.poateDona((int)_loggedAccount.IdD))
             {
                 _notifications.Add("Au trecut cel putin 6 luni de la ultima donare. Sunteti eligibil pentru a dona din nou! ☺");
-                _notifications.Add("Pista e zeul zeilor");
             }
+            if (_donatorService.NevoieSangeCentru((int)_loggedAccount.IdD))
+            {
+                _notifications.Add("Centrul de donare la care ati donat ultima data are mare nevoie de sange!");
+            }
+            if(_notifications.Count > 0)
+            {
+                BellMovement.Enabled = true;
+            }
+
 
             var i = 1;
             var startPoint = new Point(6, 19);

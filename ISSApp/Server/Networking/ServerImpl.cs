@@ -1055,7 +1055,14 @@ namespace Server.Networking
 
         public Analiza AnalizaFindLastByDonator(int idDonator)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return analizaRepo.FindLastByDonator(idDonator);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
         }
 
         public List<Analiza> AnalizaFindByDonator(int idDonator)

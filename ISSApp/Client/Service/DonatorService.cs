@@ -82,5 +82,17 @@ namespace Client.Service
                 throw new ServiceException(e.Message);
             }
         }
+
+        public bool NevoieSangeCentru(int idDonator)
+        {
+            try
+            {
+                return true;
+            }
+            catch(NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
     }
 }

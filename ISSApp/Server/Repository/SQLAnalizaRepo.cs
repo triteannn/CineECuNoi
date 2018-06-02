@@ -517,7 +517,7 @@ namespace Server.Repository
                     command.CommandText = "SELECT TOP 1 a.* " +
                                           "FROM FormulareDonare fd INNER JOIN Analize a " +
                                           "ON a.Id = fd.IdAn " +
-                                          "where fd.IdD = @IdD" +
+                                          "where fd.IdD = @IdD " +
                                           "ORDER BY a.DataRecoltarii DESC";
 
                     var paramIdD = command.CreateParameter();
