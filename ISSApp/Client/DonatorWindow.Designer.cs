@@ -99,19 +99,19 @@
             this.animator1 = new AnimatorNS.Animator(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.BloodTestsPanel = new System.Windows.Forms.Panel();
+            this.BtnNext = new System.Windows.Forms.Button();
+            this.BtnPrevious = new System.Windows.Forms.Button();
+            this.LblDate = new System.Windows.Forms.Label();
             this.BloodResultsTable = new System.Windows.Forms.DataGridView();
             this.AnalizaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RezultatColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AbnormalityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValuesColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.LblDate = new System.Windows.Forms.Label();
-            this.BtnPrevious = new System.Windows.Forms.Button();
             this.Bell = new System.Windows.Forms.PictureBox();
             this.MenuToggle = new System.Windows.Forms.PictureBox();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
-            this.BtnNext = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.PersonalInfoGb.SuspendLayout();
@@ -207,7 +207,7 @@
             this.BtnSubmit.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSubmit.ForeColor = System.Drawing.Color.White;
             this.BtnSubmit.Location = new System.Drawing.Point(969, 494);
-            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSubmit.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(137, 63);
             this.BtnSubmit.TabIndex = 45;
@@ -250,7 +250,7 @@
             this.TxtDob.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtDob, AnimatorNS.DecorationType.None);
             this.TxtDob.Enabled = false;
-            this.TxtDob.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtDob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtDob.HintForeColor = System.Drawing.Color.Empty;
             this.TxtDob.HintText = "";
@@ -270,7 +270,7 @@
             // 
             this.TxtCounty.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtCounty, AnimatorNS.DecorationType.None);
-            this.TxtCounty.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCounty.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtCounty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtCounty.HintForeColor = System.Drawing.Color.Empty;
             this.TxtCounty.HintText = "";
@@ -290,7 +290,7 @@
             // 
             this.TxtCity.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtCity, AnimatorNS.DecorationType.None);
-            this.TxtCity.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtCity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtCity.HintForeColor = System.Drawing.Color.Empty;
             this.TxtCity.HintText = "";
@@ -310,7 +310,7 @@
             // 
             this.TxtAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtAddress, AnimatorNS.DecorationType.None);
-            this.TxtAddress.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtAddress.HintForeColor = System.Drawing.Color.Empty;
             this.TxtAddress.HintText = "";
@@ -331,7 +331,7 @@
             this.TxtLastName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtLastName, AnimatorNS.DecorationType.None);
             this.TxtLastName.Enabled = false;
-            this.TxtLastName.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtLastName.HintForeColor = System.Drawing.Color.Empty;
             this.TxtLastName.HintText = "";
@@ -352,7 +352,7 @@
             this.TxtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtFirstName, AnimatorNS.DecorationType.None);
             this.TxtFirstName.Enabled = false;
-            this.TxtFirstName.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtFirstName.HintForeColor = System.Drawing.Color.Empty;
             this.TxtFirstName.HintText = "";
@@ -372,10 +372,10 @@
             // 
             this.label3.AutoSize = true;
             this.animator1.SetDecoration(this.label3, AnimatorNS.DecorationType.None);
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(5, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 23);
+            this.label3.Size = new System.Drawing.Size(106, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "First Name:";
             // 
@@ -383,10 +383,10 @@
             // 
             this.label4.AutoSize = true;
             this.animator1.SetDecoration(this.label4, AnimatorNS.DecorationType.None);
-            this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(5, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 23);
+            this.label4.Size = new System.Drawing.Size(104, 24);
             this.label4.TabIndex = 1;
             this.label4.Text = "Last Name:";
             // 
@@ -394,10 +394,10 @@
             // 
             this.label7.AutoSize = true;
             this.animator1.SetDecoration(this.label7, AnimatorNS.DecorationType.None);
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(8, 457);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 23);
+            this.label7.Size = new System.Drawing.Size(74, 24);
             this.label7.TabIndex = 16;
             this.label7.Text = "County:";
             // 
@@ -405,10 +405,10 @@
             // 
             this.label11.AutoSize = true;
             this.animator1.SetDecoration(this.label11, AnimatorNS.DecorationType.None);
-            this.label11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(8, 377);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 23);
+            this.label11.Size = new System.Drawing.Size(45, 24);
             this.label11.TabIndex = 15;
             this.label11.Text = "City:";
             // 
@@ -416,10 +416,10 @@
             // 
             this.label6.AutoSize = true;
             this.animator1.SetDecoration(this.label6, AnimatorNS.DecorationType.None);
-            this.label6.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(7, 213);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 23);
+            this.label6.Size = new System.Drawing.Size(114, 24);
             this.label6.TabIndex = 11;
             this.label6.Text = "Date of birth:";
             // 
@@ -427,10 +427,10 @@
             // 
             this.label5.AutoSize = true;
             this.animator1.SetDecoration(this.label5, AnimatorNS.DecorationType.None);
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(7, 294);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 23);
+            this.label5.Size = new System.Drawing.Size(85, 24);
             this.label5.TabIndex = 12;
             this.label5.Text = "Address:";
             // 
@@ -447,7 +447,7 @@
             this.DropdownCD.Items = new string[] {
         "Choose institution..."};
             this.DropdownCD.Location = new System.Drawing.Point(872, 434);
-            this.DropdownCD.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.DropdownCD.Margin = new System.Windows.Forms.Padding(5);
             this.DropdownCD.Name = "DropdownCD";
             this.DropdownCD.NomalColor = System.Drawing.Color.White;
             this.DropdownCD.onHoverColor = System.Drawing.Color.White;
@@ -460,11 +460,11 @@
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.label28, AnimatorNS.DecorationType.None);
-            this.label28.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.DarkRed;
             this.label28.Location = new System.Drawing.Point(924, 389);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(205, 31);
+            this.label28.Size = new System.Drawing.Size(254, 31);
             this.label28.TabIndex = 44;
             this.label28.Text = "Transfusion Center:";
             // 
@@ -472,11 +472,11 @@
             // 
             this.label27.AutoSize = true;
             this.animator1.SetDecoration(this.label27, AnimatorNS.DecorationType.None);
-            this.label27.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.DarkRed;
             this.label27.Location = new System.Drawing.Point(335, 239);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(210, 23);
+            this.label27.Size = new System.Drawing.Size(254, 24);
             this.label27.TabIndex = 26;
             this.label27.Text = "Donate for someone specific:";
             // 
@@ -484,7 +484,7 @@
             // 
             this.TxtDonateFor.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtDonateFor, AnimatorNS.DecorationType.None);
-            this.TxtDonateFor.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDonateFor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtDonateFor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtDonateFor.HintForeColor = System.Drawing.Color.Empty;
             this.TxtDonateFor.HintText = "Optional";
@@ -526,7 +526,7 @@
             // 
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.label24, AnimatorNS.DecorationType.None);
-            this.label24.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(41, 100);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(464, 60);
@@ -536,7 +536,7 @@
             // 
             // Check16
             // 
-            this.Check16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check16.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check16.Checked = false;
             this.Check16.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -552,7 +552,7 @@
             // 
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.label26, AnimatorNS.DecorationType.None);
-            this.label26.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(41, 41);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(435, 59);
@@ -561,7 +561,7 @@
             // 
             // Check14
             // 
-            this.Check14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check14.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check14.Checked = false;
             this.Check14.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -577,7 +577,7 @@
             // 
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.label25, AnimatorNS.DecorationType.None);
-            this.label25.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(41, 164);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(464, 58);
@@ -587,7 +587,7 @@
             // 
             // Check15
             // 
-            this.Check15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check15.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check15.Checked = false;
             this.Check15.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -646,16 +646,16 @@
             this.Lbl2.AutoSize = true;
             this.Lbl2.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl2, AnimatorNS.DecorationType.None);
-            this.Lbl2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl2.Location = new System.Drawing.Point(45, 69);
             this.Lbl2.Name = "Lbl2";
-            this.Lbl2.Size = new System.Drawing.Size(99, 23);
+            this.Lbl2.Size = new System.Drawing.Size(119, 24);
             this.Lbl2.TabIndex = 43;
             this.Lbl2.Text = "Tuberculosis";
             // 
             // Check2
             // 
-            this.Check2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check2.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check2.Checked = false;
             this.Check2.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -672,16 +672,16 @@
             this.Lbl7.AutoSize = true;
             this.Lbl7.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl7, AnimatorNS.DecorationType.None);
-            this.Lbl7.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl7.Location = new System.Drawing.Point(44, 244);
             this.Lbl7.Name = "Lbl7";
-            this.Lbl7.Size = new System.Drawing.Size(85, 23);
+            this.Lbl7.Size = new System.Drawing.Size(101, 24);
             this.Lbl7.TabIndex = 41;
             this.Lbl7.Text = "Brucellosis";
             // 
             // Check7
             // 
-            this.Check7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check7.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check7.Checked = false;
             this.Check7.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -698,16 +698,16 @@
             this.Lbl13.AutoSize = true;
             this.Lbl13.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl13, AnimatorNS.DecorationType.None);
-            this.Lbl13.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl13.Location = new System.Drawing.Point(348, 212);
             this.Lbl13.Name = "Lbl13";
-            this.Lbl13.Size = new System.Drawing.Size(61, 23);
+            this.Lbl13.Size = new System.Drawing.Size(71, 24);
             this.Lbl13.TabIndex = 41;
             this.Lbl13.Text = "Cancer";
             // 
             // Check13
             // 
-            this.Check13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check13.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check13.Checked = false;
             this.Check13.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -724,16 +724,16 @@
             this.Lbl12.AutoSize = true;
             this.Lbl12.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl12, AnimatorNS.DecorationType.None);
-            this.Lbl12.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl12.Location = new System.Drawing.Point(348, 178);
             this.Lbl12.Name = "Lbl12";
-            this.Lbl12.Size = new System.Drawing.Size(60, 23);
+            this.Lbl12.Size = new System.Drawing.Size(71, 24);
             this.Lbl12.TabIndex = 41;
             this.Lbl12.Text = "Myopia";
             // 
             // Check12
             // 
-            this.Check12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check12.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check12.Checked = false;
             this.Check12.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -750,16 +750,16 @@
             this.Lbl11.AutoSize = true;
             this.Lbl11.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl11, AnimatorNS.DecorationType.None);
-            this.Lbl11.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl11.Location = new System.Drawing.Point(348, 143);
             this.Lbl11.Name = "Lbl11";
-            this.Lbl11.Size = new System.Drawing.Size(109, 23);
+            this.Lbl11.Size = new System.Drawing.Size(127, 24);
             this.Lbl11.TabIndex = 41;
             this.Lbl11.Text = "Skin Diseases";
             // 
             // Check11
             // 
-            this.Check11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check11.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check11.Checked = false;
             this.Check11.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -776,16 +776,16 @@
             this.Lbl6.AutoSize = true;
             this.Lbl6.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl6, AnimatorNS.DecorationType.None);
-            this.Lbl6.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl6.Location = new System.Drawing.Point(44, 208);
             this.Lbl6.Name = "Lbl6";
-            this.Lbl6.Size = new System.Drawing.Size(174, 23);
+            this.Lbl6.Size = new System.Drawing.Size(207, 24);
             this.Lbl6.TabIndex = 41;
             this.Lbl6.Text = "Psychological Diseases";
             // 
             // Check6
             // 
-            this.Check6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check6.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check6.Checked = false;
             this.Check6.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -802,16 +802,16 @@
             this.Lbl5.AutoSize = true;
             this.Lbl5.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl5, AnimatorNS.DecorationType.None);
-            this.Lbl5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl5.Location = new System.Drawing.Point(44, 174);
             this.Lbl5.Name = "Lbl5";
-            this.Lbl5.Size = new System.Drawing.Size(68, 23);
+            this.Lbl5.Size = new System.Drawing.Size(82, 24);
             this.Lbl5.TabIndex = 41;
             this.Lbl5.Text = "Epilepsy";
             // 
             // Check5
             // 
-            this.Check5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check5.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check5.Checked = false;
             this.Check5.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -828,16 +828,16 @@
             this.Lbl4.AutoSize = true;
             this.Lbl4.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl4, AnimatorNS.DecorationType.None);
-            this.Lbl4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl4.Location = new System.Drawing.Point(44, 138);
             this.Lbl4.Name = "Lbl4";
-            this.Lbl4.Size = new System.Drawing.Size(61, 23);
+            this.Lbl4.Size = new System.Drawing.Size(70, 24);
             this.Lbl4.TabIndex = 41;
             this.Lbl4.Text = "Malaria";
             // 
             // Check4
             // 
-            this.Check4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check4.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check4.Checked = false;
             this.Check4.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -854,16 +854,16 @@
             this.Lbl3.AutoSize = true;
             this.Lbl3.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl3, AnimatorNS.DecorationType.None);
-            this.Lbl3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl3.Location = new System.Drawing.Point(44, 103);
             this.Lbl3.Name = "Lbl3";
-            this.Lbl3.Size = new System.Drawing.Size(62, 23);
+            this.Lbl3.Size = new System.Drawing.Size(74, 24);
             this.Lbl3.TabIndex = 41;
             this.Lbl3.Text = "Syphilis";
             // 
             // Check3
             // 
-            this.Check3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check3.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check3.Checked = false;
             this.Check3.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -880,16 +880,16 @@
             this.Lbl10.AutoSize = true;
             this.Lbl10.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl10, AnimatorNS.DecorationType.None);
-            this.Lbl10.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl10.Location = new System.Drawing.Point(348, 107);
             this.Lbl10.Name = "Lbl10";
-            this.Lbl10.Size = new System.Drawing.Size(116, 23);
+            this.Lbl10.Size = new System.Drawing.Size(136, 24);
             this.Lbl10.TabIndex = 23;
             this.Lbl10.Text = "Heart Diseases";
             // 
             // Check10
             // 
-            this.Check10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check10.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check10.Checked = false;
             this.Check10.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -906,16 +906,16 @@
             this.Lbl9.AutoSize = true;
             this.Lbl9.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl9, AnimatorNS.DecorationType.None);
-            this.Lbl9.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl9.Location = new System.Drawing.Point(348, 73);
             this.Lbl9.Name = "Lbl9";
-            this.Lbl9.Size = new System.Drawing.Size(71, 23);
+            this.Lbl9.Size = new System.Drawing.Size(83, 24);
             this.Lbl9.TabIndex = 23;
             this.Lbl9.Text = "Diabetes";
             // 
             // Check9
             // 
-            this.Check9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check9.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check9.Checked = false;
             this.Check9.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -932,16 +932,16 @@
             this.Lbl8.AutoSize = true;
             this.Lbl8.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl8, AnimatorNS.DecorationType.None);
-            this.Lbl8.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl8.Location = new System.Drawing.Point(348, 36);
             this.Lbl8.Name = "Lbl8";
-            this.Lbl8.Size = new System.Drawing.Size(46, 23);
+            this.Lbl8.Size = new System.Drawing.Size(54, 24);
             this.Lbl8.TabIndex = 23;
             this.Lbl8.Text = "Ulcer";
             // 
             // Check8
             // 
-            this.Check8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check8.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check8.Checked = false;
             this.Check8.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -958,16 +958,16 @@
             this.Lbl1.AutoSize = true;
             this.Lbl1.BackColor = System.Drawing.Color.Transparent;
             this.animator1.SetDecoration(this.Lbl1, AnimatorNS.DecorationType.None);
-            this.Lbl1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl1.Location = new System.Drawing.Point(47, 34);
             this.Lbl1.Name = "Lbl1";
-            this.Lbl1.Size = new System.Drawing.Size(71, 23);
+            this.Lbl1.Size = new System.Drawing.Size(85, 24);
             this.Lbl1.TabIndex = 23;
             this.Lbl1.Text = "Hepatitits";
             // 
             // Check1
             // 
-            this.Check1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Check1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check1.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.Check1.Checked = false;
             this.Check1.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -1003,7 +1003,7 @@
             // 
             this.TxtPhone.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtPhone, AnimatorNS.DecorationType.None);
-            this.TxtPhone.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtPhone.HintForeColor = System.Drawing.Color.Empty;
             this.TxtPhone.HintText = "";
@@ -1023,10 +1023,10 @@
             // 
             this.label10.AutoSize = true;
             this.animator1.SetDecoration(this.label10, AnimatorNS.DecorationType.None);
-            this.label10.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(8, 48);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 23);
+            this.label10.Size = new System.Drawing.Size(68, 24);
             this.label10.TabIndex = 19;
             this.label10.Text = "E-mail:";
             // 
@@ -1034,10 +1034,10 @@
             // 
             this.label12.AutoSize = true;
             this.animator1.SetDecoration(this.label12, AnimatorNS.DecorationType.None);
-            this.label12.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(8, 132);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 23);
+            this.label12.Size = new System.Drawing.Size(71, 24);
             this.label12.TabIndex = 20;
             this.label12.Text = "Phone:";
             // 
@@ -1045,7 +1045,7 @@
             // 
             this.TxtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtEmail, AnimatorNS.DecorationType.None);
-            this.TxtEmail.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtEmail.HintForeColor = System.Drawing.Color.Empty;
             this.TxtEmail.HintText = "";
@@ -1131,11 +1131,51 @@
             this.BloodTestsPanel.Controls.Add(this.bunifuSeparator1);
             this.animator1.SetDecoration(this.BloodTestsPanel, AnimatorNS.DecorationType.None);
             this.BloodTestsPanel.Location = new System.Drawing.Point(13, 105);
-            this.BloodTestsPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BloodTestsPanel.Margin = new System.Windows.Forms.Padding(4);
             this.BloodTestsPanel.Name = "BloodTestsPanel";
             this.BloodTestsPanel.Size = new System.Drawing.Size(1223, 590);
             this.BloodTestsPanel.TabIndex = 22;
             this.BloodTestsPanel.Visible = false;
+            // 
+            // BtnNext
+            // 
+            this.BtnNext.BackgroundImage = global::Client.Properties.Resources.rightarrow;
+            this.BtnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.animator1.SetDecoration(this.BtnNext, AnimatorNS.DecorationType.None);
+            this.BtnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNext.Location = new System.Drawing.Point(679, 8);
+            this.BtnNext.Name = "BtnNext";
+            this.BtnNext.Size = new System.Drawing.Size(41, 39);
+            this.BtnNext.TabIndex = 4;
+            this.BtnNext.UseVisualStyleBackColor = true;
+            this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            // 
+            // BtnPrevious
+            // 
+            this.BtnPrevious.BackgroundImage = global::Client.Properties.Resources.leftarrow;
+            this.BtnPrevious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.animator1.SetDecoration(this.BtnPrevious, AnimatorNS.DecorationType.None);
+            this.BtnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrevious.Location = new System.Drawing.Point(487, 8);
+            this.BtnPrevious.Name = "BtnPrevious";
+            this.BtnPrevious.Size = new System.Drawing.Size(41, 39);
+            this.BtnPrevious.TabIndex = 3;
+            this.BtnPrevious.UseVisualStyleBackColor = true;
+            this.BtnPrevious.Click += new System.EventHandler(this.BtnPrevious_Click);
+            // 
+            // LblDate
+            // 
+            this.LblDate.AutoSize = true;
+            this.animator1.SetDecoration(this.LblDate, AnimatorNS.DecorationType.None);
+            this.LblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDate.ForeColor = System.Drawing.Color.DarkRed;
+            this.LblDate.Location = new System.Drawing.Point(5, 27);
+            this.LblDate.Name = "LblDate";
+            this.LblDate.Size = new System.Drawing.Size(0, 20);
+            this.LblDate.TabIndex = 2;
             // 
             // BloodResultsTable
             // 
@@ -1161,7 +1201,7 @@
             this.BloodResultsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.BloodResultsTable.EnableHeadersVisualStyles = false;
             this.BloodResultsTable.Location = new System.Drawing.Point(12, 65);
-            this.BloodResultsTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BloodResultsTable.Margin = new System.Windows.Forms.Padding(4);
             this.BloodResultsTable.MultiSelect = false;
             this.BloodResultsTable.Name = "BloodResultsTable";
             this.BloodResultsTable.ReadOnly = true;
@@ -1210,37 +1250,12 @@
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bunifuSeparator1.LineThickness = 2;
             this.bunifuSeparator1.Location = new System.Drawing.Point(0, 44);
-            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Size = new System.Drawing.Size(1221, 14);
             this.bunifuSeparator1.TabIndex = 0;
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = false;
-            // 
-            // LblDate
-            // 
-            this.LblDate.AutoSize = true;
-            this.animator1.SetDecoration(this.LblDate, AnimatorNS.DecorationType.None);
-            this.LblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDate.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblDate.Location = new System.Drawing.Point(5, 27);
-            this.LblDate.Name = "LblDate";
-            this.LblDate.Size = new System.Drawing.Size(0, 20);
-            this.LblDate.TabIndex = 2;
-            // 
-            // BtnPrevious
-            // 
-            this.BtnPrevious.BackgroundImage = global::Client.Properties.Resources.leftarrow;
-            this.BtnPrevious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.animator1.SetDecoration(this.BtnPrevious, AnimatorNS.DecorationType.None);
-            this.BtnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnPrevious.Location = new System.Drawing.Point(487, 8);
-            this.BtnPrevious.Name = "BtnPrevious";
-            this.BtnPrevious.Size = new System.Drawing.Size(41, 39);
-            this.BtnPrevious.TabIndex = 3;
-            this.BtnPrevious.UseVisualStyleBackColor = true;
             // 
             // Bell
             // 
@@ -1294,19 +1309,6 @@
             this.PictureBox2.TabIndex = 13;
             this.PictureBox2.TabStop = false;
             this.PictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
-            // 
-            // BtnNext
-            // 
-            this.BtnNext.BackgroundImage = global::Client.Properties.Resources.rightarrow;
-            this.BtnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.animator1.SetDecoration(this.BtnNext, AnimatorNS.DecorationType.None);
-            this.BtnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNext.Location = new System.Drawing.Point(679, 8);
-            this.BtnNext.Name = "BtnNext";
-            this.BtnNext.Size = new System.Drawing.Size(41, 39);
-            this.BtnNext.TabIndex = 4;
-            this.BtnNext.UseVisualStyleBackColor = true;
             // 
             // DonatorWindow
             // 

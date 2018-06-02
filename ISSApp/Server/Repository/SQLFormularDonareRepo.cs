@@ -232,5 +232,36 @@ namespace Server.Repository
                 }
             }
         }
+
+        public List<FormularDonare> FindByDonator(int id)
+        {
+            List<FormularDonare> toReturn = new List<FormularDonare>();
+            var connection = Globals.GetDbConnection();
+            connection.Open();
+            var cmd = new SqlCommand("SELECT * FROM FormulareDonare WHERE IdD=@IdD");
+            cmd.Parameters.AddWithValue("@IdD", id);
+            
+            try
+            {
+                cmd.Connection = connection;
+                using (var result = cmd.ExecuteReader())
+                {
+                    while (result.Read())
+                    {
+                        toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetString(4)));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new RepositoryException(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+                
+            }
+            return toReturn;
+        }
     }
 }

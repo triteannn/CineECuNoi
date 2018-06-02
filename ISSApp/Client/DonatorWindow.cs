@@ -21,6 +21,7 @@ namespace Client
         private readonly Account _loggedAccount;
         private readonly List<string> _notifications;
         private List<Analiza> _analize;
+        private int _pagAnaliza;
 
         public DonatorWindow(LoginForm loginForm, IServer server, Account loggedAccount)
         {
@@ -367,13 +368,21 @@ namespace Client
                 return x.DataRecoltarii.CompareTo(y.DataRecoltarii);
             });
 
-            LoadAnaliza(_analize[_analize.Count - 1]);
+            if (_analize.Count > 0)
+            {
+                LoadAnaliza(_analize[_analize.Count - 1]);
+                _pagAnaliza = _analize.Count - 1;
 
-            LblDate.Text = "Date: " + _analize[_analize.Count - 1].DataRecoltarii.ToString("dd-MM-yyyy");
+                if (_pagAnaliza == 0)
+                    BtnPrevious.Enabled = false;
+                BtnNext.Enabled = false;
+
+            }
         }
 
         private void LoadAnaliza(Analiza analiza)
         {
+            LblDate.Text = "Date: " + analiza.DataRecoltarii.ToString("dd-MM-yyyy");
             BloodResultsTable.Rows[0].Cells[1].Value = analiza.Eritrocite;
             BloodResultsTable.Rows[0].Cells[2].Value = (analiza.Eritrocite >= 4.0 && analiza.Eritrocite <= 5.8) ? "" : "Yes";
             BloodResultsTable.Rows[1].Cells[1].Value = analiza.Hemoglobina;
@@ -416,6 +425,34 @@ namespace Client
             BloodResultsTable.Rows[19].Cells[2].Value = (analiza.ALT_TGP >= 5.0 && analiza.ALT_TGP <= 65.0) ? "" : "Yes";
             BloodResultsTable.Rows[20].Cells[1].Value = analiza.Colesterol;
             BloodResultsTable.Rows[20].Cells[2].Value = (analiza.Colesterol >= 110.0 && analiza.Colesterol <= 220.0) ? "" : "Yes";
+        }
+
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            _pagAnaliza = _pagAnaliza - 1;
+            LoadAnaliza(_analize[_pagAnaliza]);
+            if (_pagAnaliza == 0)
+                BtnPrevious.Enabled = false;
+            else
+                BtnPrevious.Enabled = true;
+            if (_pagAnaliza == _analize.Count - 1)
+                BtnNext.Enabled = false;
+            else
+                BtnNext.Enabled = true;
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            _pagAnaliza = _pagAnaliza + 1;
+            LoadAnaliza(_analize[_pagAnaliza]);
+            if (_pagAnaliza == 0)
+                BtnPrevious.Enabled = false;
+            else
+                BtnPrevious.Enabled = true;
+            if (_pagAnaliza == _analize.Count - 1)
+                BtnNext.Enabled = false;
+            else
+                BtnNext.Enabled = true;
         }
     }
 }
