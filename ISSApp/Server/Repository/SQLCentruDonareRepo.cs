@@ -138,10 +138,14 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            CentruDonare centruDonare = new CentruDonare();
+                            var centruDonare = new CentruDonare();
                             centruDonare.Id = result.GetInt32(0);
                             centruDonare.Denumire = result.GetString(1);
-                            centruDonare.IdAdr = result.GetInt32(2);
+                            int? idAdr = null;
+                            if (result[2] != DBNull.Value)
+                                idAdr = result.GetInt32(2);
+                            centruDonare.IdAdr = idAdr;
+                            centruDonare.NeedBlood = result.GetInt32(3);
 
                             return centruDonare;
                         }
@@ -217,10 +221,14 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            CentruDonare centruDonare = new CentruDonare();
-                            centruDonare.Id = result.GetInt32(0);
-                            centruDonare.Denumire = result.GetString(1);
-                            centruDonare.IdAdr = result.GetInt32(2);
+                            int? idAdr = null;
+                            if (result[2] != DBNull.Value)
+                                idAdr = result.GetInt32(2);
+                            var centruDonare = new CentruDonare {
+                                Id = result.GetInt32(0),
+                                Denumire = result.GetString(1),
+                                IdAdr = idAdr
+                            };
 
                             return centruDonare;
                         }

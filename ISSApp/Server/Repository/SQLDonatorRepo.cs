@@ -235,13 +235,28 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            int idDonator = result.GetInt32(0);
-                            string cnp = result.GetString(1);
-                            string nume = result.GetString(2);
-                            string prenume = result.GetString(3);
-                            DateTime date = result.GetDateTime(4);
+                            int? idA = null;
+                            int? idDc = null;
+                            int? idCd = null;
+                            string grupa = "";
+                            string rh = "";
+                            var idDonator = result.GetInt32(0);
+                            var cnp = result.GetString(1);
+                            var nume = result.GetString(2);
+                            var prenume = result.GetString(3);
+                            var date = result.GetDateTime(4);
+                            if (result[5] != DBNull.Value)
+                                idCd = result.GetInt32(5);
+                            if (result[6] != DBNull.Value)
+                                idA = result.GetInt32(6);
+                            if (result[7] != DBNull.Value)
+                                idDc = result.GetInt32(7);
+                            if (result[8] != DBNull.Value)
+                                grupa = result.GetString(8);
+                            if (result[9] != DBNull.Value)
+                                rh = result.GetString(9);
 
-                            Donator donator = new Donator(idDonator, cnp, nume, prenume, date);
+                            Donator donator = new Donator(idDonator, cnp, nume, prenume, date, idA, idDc, idCd, grupa, rh);
                             return donator;
                         }
 

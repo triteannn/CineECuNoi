@@ -141,7 +141,8 @@ namespace Server.Repository
 
         public Adresa FindEntity(int id)
         {
-            using (IDbConnection connection = Globals.GetDbConnection()) { 
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
                 connection.Open();
                 var command = connection.CreateCommand();
                 try
@@ -209,7 +210,7 @@ namespace Server.Repository
             var connection = Globals.GetDbConnection();
             connection.Open();
             Adresa adresa = null;
-            var cmd = new SqlCommand("SELECT adr.* FROM DateContact dc INNER JOIN Adrese adr ON dc.IdA=adr.Id WHERE dc.Id = @id");
+            var cmd = new SqlCommand("SELECT adr.* FROM DateContact dc INNER JOIN Adrese adr ON dc.IdAdr=adr.Id WHERE dc.Id = @id");
             cmd.Parameters.AddWithValue("@id", idDC);
 
             try
@@ -229,12 +230,10 @@ namespace Server.Repository
                     }
                 }
                 return adresa;
-            }
-            catch (SqlException ex)
+            } catch (SqlException ex)
             {
                 throw new RepositoryException(ex.Message);
-            }
-            finally
+            } finally
             {
                 connection.Close();
             }

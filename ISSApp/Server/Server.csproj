@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201806011927559_Pista.Designer.cs">
       <DependentUpon>201806011927559_Pista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806021434189_Flag.cs" />
+    <Compile Include="Migrations\201806021434189_Flag.Designer.cs">
+      <DependentUpon>201806021434189_Flag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Networking\ServerImpl.cs" />
     <Compile Include="Program.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806011927559_Pista.resx">
       <DependentUpon>201806011927559_Pista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021434189_Flag.resx">
+      <DependentUpon>201806021434189_Flag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

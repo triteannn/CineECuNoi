@@ -11,9 +11,16 @@ namespace ISSApp.Domain
         public string Telefon { get; set; }
         public string Email { get; set; }
 
-        public DateContact(int id, string telefon, string email, int idAdr)
+        public DateContact(int id, string telefon, string email, int? idAdr)
         {
             Id = id;
+            Telefon = telefon;
+            Email = email;
+            IdAdr = idAdr;
+        }
+
+        public DateContact(string telefon, string email, int? idAdr)
+        {
             Telefon = telefon;
             Email = email;
             IdAdr = idAdr;
@@ -25,6 +32,6 @@ namespace ISSApp.Domain
         public virtual AngajatCentru AngajatCentru { get; set; }
 
         [NotMapped]
-        public int IdAdr { get; set; }
+        public int? IdAdr { get; set; }
     }
 }

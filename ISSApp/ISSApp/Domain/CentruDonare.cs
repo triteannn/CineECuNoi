@@ -26,7 +26,7 @@ namespace ISSApp.Domain
             Donatori = new List<Donator>();
             PungiSange = new List<PungaSange>();
         }
-        public CentruDonare(int id, string denumire,int? idAdr)
+        public CentruDonare(int id, string denumire, int? idAdr)
         {
             Id = id;
             Denumire = denumire;
@@ -51,5 +51,7 @@ namespace ISSApp.Domain
 
         [NotMapped]
         public int? IdAdr { get; set; }
+
+        public int NeedBlood { get; set; }
     }
 }

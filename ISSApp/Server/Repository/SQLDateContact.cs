@@ -158,8 +158,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -201,7 +200,7 @@ namespace Server.Repository
             DateContact dateContact = null;
             var cmd = new SqlCommand("SELECT dc.* FROM Donatori d INNER JOIN DateContact dc ON d.IdDC=dc.Id WHERE d.Id = @id");
             cmd.Parameters.AddWithValue("@id", idDonator);
-            
+
             try
             {
                 cmd.Connection = connection;
@@ -218,14 +217,52 @@ namespace Server.Repository
                     }
                 }
                 return dateContact;
-            }
-            catch (SqlException ex)
+            } catch (SqlException ex)
             {
                 throw new RepositoryException(ex.Message);
-            }
-            finally
+            } finally
             {
                 connection.Close();
+            }
+        }
+
+        public DateContact FindLastEntity()
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "SELECT * FROM DateContact WHERE Id=@Id";
+                    var paramId = command.CreateParameter();
+                    paramId.ParameterName = "@Id";
+                    paramId.Value = "(SELECT MAX(Id) FROM DateContact)";
+                    command.Parameters.Add(paramId);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            int idData = result.GetInt32(0);
+                            String telefon = result.GetString(1);
+                            String email = result.GetString(2);
+                            int? idAdresa = null;
+                            if (result[3] != DBNull.Value)
+                                idAdresa = result.GetInt32(3);
+
+                            DateContact dataContact = new DateContact(idData, telefon, email, idAdresa);
+                            return dataContact;
+                        }
+
+                        return null;
+                    }
+
+                } catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+
             }
         }
     }

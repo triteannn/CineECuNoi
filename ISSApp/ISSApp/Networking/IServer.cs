@@ -58,6 +58,7 @@ namespace ISSApp.Networking
         DateContact DateContactFindEntity(int id);
         List<DateContact> DateContactFindAll();
         DateContact DateContactGetDateByIdDonator(int idDonator);
+        DateContact DateContactFindLastEntity();
 
         CentruDonare CentruDonareFindByDenumire(string denumire);
         //Donator

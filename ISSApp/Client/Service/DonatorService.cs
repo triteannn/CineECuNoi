@@ -87,9 +87,12 @@ namespace Client.Service
         {
             try
             {
-                return true;
-            }
-            catch(NetworkingException e)
+                int? idCd = _server.DonatorFindEntity(idDonator).IdCd;
+                if (idCd != null)
+                    if (_server.CentruDonareFindEntity((int)idCd).NeedBlood == 1)
+                        return true;
+                return false;
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }

@@ -127,8 +127,7 @@ namespace Server.Networking
             try
             {
                 adresaRepo.Add(entity);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -139,8 +138,7 @@ namespace Server.Networking
             try
             {
                 return adresaRepo.Delete(entity);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -151,8 +149,7 @@ namespace Server.Networking
             try
             {
                 return adresaRepo.Update(entity);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -163,8 +160,7 @@ namespace Server.Networking
             try
             {
                 return adresaRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -175,8 +171,7 @@ namespace Server.Networking
             try
             {
                 return adresaRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -187,8 +182,7 @@ namespace Server.Networking
             try
             {
                 return adresaRepo.GetAdresaByDateContactId(idDC);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -199,8 +193,7 @@ namespace Server.Networking
             try
             {
                 return accountRepo.AdminGetDataSet();
-            }
-            catch(RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -211,7 +204,7 @@ namespace Server.Networking
             try
             {
                 return accountRepo.AdminUpdateDataBase(dataSet);
-            }catch(RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -277,8 +270,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.FindByIdAccount(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -288,8 +280,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.FindByUsername(username);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -299,8 +290,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.AdminGetDataSet();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -311,8 +301,7 @@ namespace Server.Networking
             try
             {
                 return angajatRepo.AdminUpdateDataBase(dataSet);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -394,8 +383,7 @@ namespace Server.Networking
             try
             {
                 return centruDonareRepo.AdminGetDataSet();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -406,8 +394,7 @@ namespace Server.Networking
             try
             {
                 return centruDonareRepo.AdminUpdateDataBase(dataSet);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -418,8 +405,7 @@ namespace Server.Networking
             try
             {
                 dateContactRepo.Add(entity);
-            }
-            catch(RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -429,8 +415,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.Delete(entity);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -441,8 +426,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.Update(entity);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -453,8 +437,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.FindEntity(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -465,8 +448,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.FindAll();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -477,8 +459,18 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.GetDateByIdDonator(idDonator);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
             }
-            catch (RepositoryException e)
+        }
+
+        public DateContact DateContactFindLastEntity()
+        {
+            try
+            {
+                return dateContactRepo.FindLastEntity();
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -544,8 +536,7 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.FindByUsername(username);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -556,8 +547,7 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.FindByIdAccount(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -602,8 +592,7 @@ namespace Server.Networking
             try
             {
                 return donatorRepo.AdminGetDataSet();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -843,8 +832,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.FindByIdAccount(id);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -855,8 +843,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.FindByUsername(username);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -878,8 +865,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.AdminGetDataSet();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -890,8 +876,7 @@ namespace Server.Networking
             try
             {
                 return medicRepo.AdminUpdateDataBase(dataSet);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -972,7 +957,7 @@ namespace Server.Networking
                 {
                     pungaSange.Target = null;
 
-                } 
+                }
 
                 pungaSangeRepo.AddInitial(pungaSange);
             } catch (RepositoryException e)
@@ -1098,8 +1083,7 @@ namespace Server.Networking
             try
             {
                 return spitalRepo.AdminGetDataSet();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -1110,8 +1094,7 @@ namespace Server.Networking
             try
             {
                 return spitalRepo.AdminUpdateDataBase(dataSet);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -1205,8 +1188,7 @@ namespace Server.Networking
             try
             {
                 return analizaRepo.FindLastByDonator(idDonator);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -1228,8 +1210,7 @@ namespace Server.Networking
             try
             {
                 return pungaSangeRepo.GetPungaSangeCuCNP(cnp);
-            }
-            catch (Exception e)
+            } catch (Exception e)
             {
                 throw new NetworkingException(e.Message);
             }

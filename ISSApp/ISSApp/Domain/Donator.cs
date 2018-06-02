@@ -37,6 +37,20 @@ namespace ISSApp.Domain
             IdCd = idCd;
         }
 
+        public Donator(int id, string cnp, string nume, string prenume, DateTime dob, int? idA, int? idDc, int? idCd, string grupa, string rh)
+        {
+            Id = id;
+            CNP = cnp;
+            Nume = nume;
+            Prenume = prenume;
+            Dob = dob;
+            IdA = idA;
+            IdDc = idDc;
+            IdCd = idCd;
+            Grupa = grupa;
+            Rh = rh;
+        }
+
         public int Id { get; set; }
         public string CNP { get; set; }
         public string Nume { get; set; }

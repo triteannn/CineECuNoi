@@ -94,6 +94,19 @@ namespace Client
             Text = @"Donator Window";
             label2.Text = @"Logged in as " + _loggedAccount.Username;
             
+            if (!_donatorService.poateDona((int)_loggedAccount.IdD))
+            {
+                BtnSubmit.Enabled = false;
+                LblDonate.Text = "*You can not donate yet.";
+                BtnSubmit.BackColor = Color.DimGray;
+            }
+            else
+            {
+                BtnSubmit.Enabled = true;
+                BtnSubmit.BackColor = Color.DarkRed;
+                LblDonate.Text = "";
+            }
+
             if (_donatorService.poateDona((int)_loggedAccount.IdD))
             {
                 _notifications.Add("Au trecut cel putin 6 luni de la ultima donare. Sunteti eligibil pentru a dona din nou! ☺");
@@ -102,7 +115,7 @@ namespace Client
             {
                 _notifications.Add("Centrul de donare la care ati donat ultima data are mare nevoie de sange!");
             }
-            if(_notifications.Count > 0)
+            if (_notifications.Count > 0)
             {
                 BellMovement.Enabled = true;
             }
@@ -117,13 +130,23 @@ namespace Client
                     Text = notification,
                     Font = new Font(FontFamily.GenericSansSerif, 8, FontStyle.Italic),
                     AutoSize = true,
-                    MaximumSize = new Size(250, 0),
+                    MaximumSize = new Size(240, 0),
                     Location = new Point(startPoint.X, startPoint.Y + 11)
                 };
                 NotificationsPanel.Controls.Add(label);
                 var separator = new BunifuSeparator {
                     Location = new Point(startPoint.X + 3, label.Location.Y + label.Height + 5),
-                    Size = new Size(287, 10)
+                    Size = new Size(220, 10),
+                    BorderStyle = BorderStyle.None
+                };
+                var pen = new Pen(SystemColors.Control);
+                separator.Paint += (sender1, e1) => {
+                    e1.Graphics.DrawRectangle(pen,
+                    e1.ClipRectangle.Left,
+                    e1.ClipRectangle.Top,
+                    e1.ClipRectangle.Width - 1,
+                    e1.ClipRectangle.Height - 1);
+                    base.OnPaint(e1);
                 };
                 NotificationsPanel.Controls.Add(separator);
                 ++i;
@@ -283,7 +306,19 @@ namespace Client
             TxtFirstName.Text = donator.Prenume;
             TxtLastName.Text = donator.Nume;
             TxtDob.Text = donator.Dob.ToShortDateString();
-            //if exists(dateContact/adresa in dateContact) -> fill
+            var dateContact = _server.DateContactGetDateByIdDonator((int)_loggedAccount.IdD);
+            if (dateContact != null)
+            {
+                TxtPhone.Text = dateContact.Telefon;
+                TxtEmail.Text = dateContact.Email;
+                var adresa = _server.AdresaGetAdresaByDateContactId(dateContact.Id);
+                if (adresa != null)
+                {
+                    TxtAddress.Text = adresa.Strada + " " + adresa.Numar;
+                    TxtCity.Text = adresa.Oras;
+                    TxtCounty.Text = adresa.Judet;
+                }
+            }
         }
 
         private void BtnSubmit_MouseMove(object sender, MouseEventArgs e)
@@ -347,15 +382,72 @@ namespace Client
                 {
                     var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
                     _donatorService.SubmitFormularDonare(formularDonare);
+                    var dateContact = _server.DateContactGetDateByIdDonator((int)_loggedAccount.IdD);
+                    Adresa newAdr = null;
+                    if (dateContact != null)
+                    {
+                        dateContact.Telefon = TxtPhone.Text;
+                        dateContact.Email = TxtEmail.Text;
+                        var adresa = _server.AdresaGetAdresaByDateContactId(dateContact.Id);
+                        if (adresa != null)
+                        {
+                            var str = TxtAddress.Text.Split(' ');
+
+                            adresa.Numar = int.Parse(str[str.Length - 1]);
+                            adresa.Strada = "";
+                            for (var i = 0; i < str.Length - 1; ++i)
+                                adresa.Strada += str[i];
+                            adresa.Oras = TxtCity.Text;
+                            adresa.Judet = TxtCounty.Text;
+
+                            _server.AdresaUpdate(adresa);
+
+                            newAdr = adresa;
+                        }
+                        else
+                        {
+                            var str = TxtAddress.Text.Split(' ');
+
+                            var numar = int.Parse(str[str.Length - 1]);
+                            var strada = "";
+                            for (var i = 0; i < str.Length - 1; ++i)
+                                strada += str[i];
+                            var newAdresa = new Adresa {
+                                Strada = strada,
+                                Numar = numar,
+                                Oras = TxtCity.Text,
+                                Judet = TxtCounty.Text
+                            };
+                            _server.AdresaAdd(newAdresa);
+
+                            newAdr = newAdresa;
+                        }
+                        _server.DateContactUpdate(dateContact);
+                    }
+                    else
+                    {
+                        var newDateContact = new DateContact(TxtPhone.Text, TxtEmail.Text, newAdr.Id);
+                        _server.DateContactAdd(newDateContact);
+                        var donatorr = _server.DonatorFindEntity((int)_loggedAccount.IdD);
+                        donatorr.IdDc = _server.DateContactFindLastEntity().Id;
+                        _server.DonatorUpdate(donatorr);
+                    }
+
+                    var donator = _server.DonatorFindEntity((int)_loggedAccount.IdD);
+                    var cd = DropdownCD.selectedValue;
+                    if (!cd.Equals("Choose institution..."))
+                    {
+                        cd = cd.TrimEnd();
+                        cd = cd.TrimStart();
+                        donator.IdCd = _server.CentruDonareFindByDenumire(cd).Id;
+                        _server.DonatorUpdate(donator);
+                    }
                     MessageBox.Show(@"Your request has been registerd.", @"Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } catch (ServiceException ex)
                 {
                     MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            //if not exists(dateContact/adresa) -> create
-            //update dateContact/adresa cu datele din formular
-            //set centruDonare la donator
         }
 
         private void MenuButton2_Click(object sender, EventArgs e)
@@ -462,6 +554,19 @@ namespace Client
                 BtnNext.Enabled = false;
             else
                 BtnNext.Enabled = true;
+        }
+
+        private void NotificationsPanel_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(Pens.DarkRed, new Point(e.ClipRectangle.Left, e.ClipRectangle.Top + e.ClipRectangle.Height - 2), new Point(e.ClipRectangle.Left, e.ClipRectangle.Top + 4));
+            e.Graphics.DrawLine(Pens.DarkRed, new Point(e.ClipRectangle.Left, e.ClipRectangle.Top + e.ClipRectangle.Height - 1), new Point(e.ClipRectangle.Left + e.ClipRectangle.Width - 4, e.ClipRectangle.Top + e.ClipRectangle.Height - 1));
+            base.OnPaint(e);
+        }
+
+        private void MenuPanel_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLine(Pens.DarkRed, new Point(e.ClipRectangle.Left + e.ClipRectangle.Width - 1, e.ClipRectangle.Top + e.ClipRectangle.Height - 4), new Point(e.ClipRectangle.Left + e.ClipRectangle.Width - 1, e.ClipRectangle.Top + 4));
+            base.OnPaint(e);
         }
     }
 }
