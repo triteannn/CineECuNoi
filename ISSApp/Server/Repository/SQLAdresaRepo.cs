@@ -96,7 +96,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE Adrese SET Strada=@Strada, Numar=@Numar, Oras=@Oras, Judet=@Judet WHERE Id=@Id";
+                        "UPDATE Adrese SET Strada=@Strada, Numar=@Numar, Oras=@Oras, Judet=@Judet, Longitude=@Longitude, Latitude=@Latitude WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -122,6 +122,16 @@ namespace Server.Repository
                     paramJudet.ParameterName = "@Judet";
                     paramJudet.Value = entity.Judet;
                     command.Parameters.Add(paramJudet);
+
+                    var paramLongitude = command.CreateParameter();
+                    paramLongitude.ParameterName = "@Longitude";
+                    paramLongitude.Value = entity.Longitude;
+                    command.Parameters.Add(paramLongitude);
+
+                    var paramLatitude = command.CreateParameter();
+                    paramLatitude.ParameterName = "@Latitude";
+                    paramLatitude.Value = entity.Latitude;
+                    command.Parameters.Add(paramLatitude);
 
                     var result = command.ExecuteNonQuery();
                     connection.Close();

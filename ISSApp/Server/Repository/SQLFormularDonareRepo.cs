@@ -183,13 +183,20 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
+                            int? idD = null;
+                            int? idAn = null;
                             int ID = result.GetInt32(0);
                             DateTime dataCreare = result.GetDateTime(1);
                             string listaBoli = result.GetString(2);
-                            int idD = result.GetInt32(3);
-                            string target = result.GetString(4);
+                            if (result[3] != DBNull.Value)
+                                idAn = result.GetInt32(3);
+                            if (result[4] != DBNull.Value)
+                                idD = result.GetInt32(4);
+                            string target = "";
+                            if (result[5] != DBNull.Value)
+                                target = result.GetString(5);
 
-                            FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idD, target);
+                            FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target);
                             return formularDonare;
                         }
 
@@ -219,7 +226,7 @@ namespace Server.Repository
                         while (result.Read())
                         {
                             // la momentul crearii functiei, in BD nu exista campul target(pozitia 4); am presupus ca se va face ulterior
-                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetString(4)));
+                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetString(5)));
                         }
                     }
 
@@ -240,7 +247,7 @@ namespace Server.Repository
             connection.Open();
             var cmd = new SqlCommand("SELECT * FROM FormulareDonare WHERE IdD=@IdD");
             cmd.Parameters.AddWithValue("@IdD", id);
-            
+
             try
             {
                 cmd.Connection = connection;
@@ -248,20 +255,62 @@ namespace Server.Repository
                 {
                     while (result.Read())
                     {
-                        toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetString(4)));
+                        toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetString(5)));
                     }
                 }
-            }
-            catch (SqlException ex)
+            } catch (SqlException ex)
             {
                 throw new RepositoryException(ex.Message);
-            }
-            finally
+            } finally
             {
                 connection.Close();
-                
+
             }
             return toReturn;
+        }
+
+        public FormularDonare GetLastFormular(int idDonator)
+        {
+            var connection = Globals.GetDbConnection();
+            connection.Open();
+            var cmd = new SqlCommand("SELECT TOP 1 * FROM FormulareDonare WHERE IdD = @idD ORDER BY DataCreare DESC");
+            cmd.Parameters.AddWithValue("@idD", idDonator);
+
+            try
+            {
+                cmd.Connection = connection;
+                using (var result = cmd.ExecuteReader())
+                {
+                    if (result.Read())
+                    {
+                        int? idD = null;
+                        int? idAn = null;
+                        int ID = result.GetInt32(0);
+                        DateTime dataCreare = result.GetDateTime(1);
+                        string listaBoli = "";
+                        if (result[2] != DBNull.Value)
+                            result.GetString(2);
+                        if (result[3] != DBNull.Value)
+                            idAn = result.GetInt32(3);
+                        if (result[4] != DBNull.Value)
+                            idD = result.GetInt32(4);
+                        string target = "";
+                        if (result[5] != DBNull.Value)
+                            target = result.GetString(5);
+
+                        FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target);
+                        return formularDonare;
+                    }
+
+                    return null;
+                }
+            } catch (SqlException ex)
+            {
+                throw new RepositoryException(ex.Message);
+            } finally
+            {
+                connection.Close();
+            }
         }
     }
 }

@@ -4,10 +4,14 @@ using Client.Service;
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using ISSApp.Networking;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net.Http;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Client
@@ -92,9 +96,10 @@ namespace Client
         private void DonatorWindow_Load(object sender, EventArgs e)
         {
             Text = @"Donator Window";
-            label2.Text = @"Logged in as " + _loggedAccount.Username;
-            
-            if (!_donatorService.poateDona((int)_loggedAccount.IdD))
+            var donator = _server.DonatorFindByIdAccount(_loggedAccount.Id);
+            label2.Text = @"Logged in as " + donator.Nume + " " + donator.Prenume;
+
+            if (!_donatorService.PoateCreaFormular((int)_loggedAccount.IdD))
             {
                 BtnSubmit.Enabled = false;
                 LblDonate.Text = "*You can not donate yet.";
@@ -357,6 +362,30 @@ namespace Client
             MenuButton2.ForeColor = Color.White;
         }
 
+        private async Task<Tuple<double, double>> GetLatAndLng(Adresa adresa)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync(new Uri("https://maps.googleapis.com/maps/api/geocode/json?address=" + adresa.Strada + "+" + adresa.Numar + "+" + adresa.Oras + "+" + adresa.Judet + "&key=AIzaSyDzrWge-cBKSAeDF23KQq28tMAhtFSJOeo"));
+            var jsonObject = (JObject)JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
+            var results = (JArray)(jsonObject.Property("results").Value);
+            JObject geometryObject = new JObject();
+            foreach (JObject parsedObject in results.Children<JObject>())
+            {
+                foreach (JProperty parsedProperty in parsedObject.Properties())
+                {
+                    var propertyName = parsedProperty.Name;
+                    if (propertyName.Equals("geometry"))
+                    {
+                        geometryObject = (JObject)parsedProperty.Value;
+                    }
+                }
+            }
+            var locationObject = (JObject)(geometryObject.Property("location").Value);
+            var latitude = (JValue)(locationObject.Property("lat").Value);
+            var longitutde = (JValue)(locationObject.Property("lng").Value);
+            return new Tuple<double, double>(double.Parse(latitude.ToString()), double.Parse(longitutde.ToString()));
+        }
+
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
             var boli = "";
@@ -380,7 +409,7 @@ namespace Client
             {
                 try
                 {
-                    var formularDonare = new FormularDonare(DateTime.Now, boli, (int)_loggedAccount.IdD, TxtDonateFor.Text);
+                    var formularDonare = new FormularDonare(DateTime.Now, boli, null, (int)_loggedAccount.IdD, TxtDonateFor.Text);
                     _donatorService.SubmitFormularDonare(formularDonare);
                     var dateContact = _server.DateContactGetDateByIdDonator((int)_loggedAccount.IdD);
                     Adresa newAdr = null;
@@ -400,8 +429,14 @@ namespace Client
                             adresa.Oras = TxtCity.Text;
                             adresa.Judet = TxtCounty.Text;
 
-                            _server.AdresaUpdate(adresa);
+                            TaskCompletionSource<Tuple<double, double>> result = new TaskCompletionSource<Tuple<double, double>>();
+                            Func<Task> action = async () => { result.SetResult(await GetLatAndLng(adresa)); };
 
+                            TaskEx.Run(action);
+                            adresa.Latitude = result.Task.Result.Item1;
+                            adresa.Longitude = result.Task.Result.Item2;
+
+                            _server.AdresaUpdate(adresa);
                             newAdr = adresa;
                         }
                         else
@@ -418,6 +453,14 @@ namespace Client
                                 Oras = TxtCity.Text,
                                 Judet = TxtCounty.Text
                             };
+
+                            TaskCompletionSource<Tuple<double, double>> result = new TaskCompletionSource<Tuple<double, double>>();
+                            Func<Task> action = async () => { result.SetResult(await GetLatAndLng(newAdresa)); };
+
+                            TaskEx.Run(action);
+                            newAdresa.Latitude = result.Task.Result.Item1;
+                            newAdresa.Longitude = result.Task.Result.Item2;
+
                             _server.AdresaAdd(newAdresa);
 
                             newAdr = newAdresa;
@@ -443,6 +486,8 @@ namespace Client
                         _server.DonatorUpdate(donator);
                     }
                     MessageBox.Show(@"Your request has been registerd.", @"Thank you!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    BtnSubmit.Enabled = false;
+                    LblDonate.Text = "*You have just submitted a request.";
                 } catch (ServiceException ex)
                 {
                     MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -36,6 +36,7 @@
             this.MenuButton2 = new System.Windows.Forms.Button();
             this.MenuButton1 = new System.Windows.Forms.Button();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.LblDonate = new System.Windows.Forms.Label();
             this.BtnSubmit = new System.Windows.Forms.Button();
             this.PersonalInfoGb = new System.Windows.Forms.GroupBox();
             this.TxtDob = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -112,7 +113,6 @@
             this.MenuToggle = new System.Windows.Forms.PictureBox();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
-            this.LblDonate = new System.Windows.Forms.Label();
             this.MenuPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.PersonalInfoGb.SuspendLayout();
@@ -201,6 +201,17 @@
             this.MainPanel.Size = new System.Drawing.Size(916, 476);
             this.MainPanel.TabIndex = 19;
             this.MainPanel.Visible = false;
+            // 
+            // LblDonate
+            // 
+            this.LblDonate.AutoSize = true;
+            this.animator1.SetDecoration(this.LblDonate, AnimatorNS.DecorationType.None);
+            this.LblDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblDonate.ForeColor = System.Drawing.Color.DarkRed;
+            this.LblDonate.Location = new System.Drawing.Point(675, 455);
+            this.LblDonate.Name = "LblDonate";
+            this.LblDonate.Size = new System.Drawing.Size(0, 13);
+            this.LblDonate.TabIndex = 46;
             // 
             // BtnSubmit
             // 
@@ -1342,17 +1353,6 @@
             this.PictureBox2.TabIndex = 13;
             this.PictureBox2.TabStop = false;
             this.PictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
-            // 
-            // LblDonate
-            // 
-            this.LblDonate.AutoSize = true;
-            this.animator1.SetDecoration(this.LblDonate, AnimatorNS.DecorationType.None);
-            this.LblDonate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDonate.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblDonate.Location = new System.Drawing.Point(724, 455);
-            this.LblDonate.Name = "LblDonate";
-            this.LblDonate.Size = new System.Drawing.Size(0, 13);
-            this.LblDonate.TabIndex = 46;
             // 
             // DonatorWindow
             // 

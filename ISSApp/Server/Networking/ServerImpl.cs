@@ -716,6 +716,17 @@ namespace Server.Networking
             }
         }
 
+        public FormularDonare FormularDonareGetLastFormular(int idDonator)
+        {
+            try
+            {
+                return formularDonareRepo.GetLastFormular(idDonator);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public void GlobuleRosiiAdd(PSGlobuleRosii psGlobuleRosii)
         {
             try

@@ -87,6 +87,7 @@ namespace ISSApp.Networking
         FormularDonare FormularDonareUpdate(FormularDonare formular);
         FormularDonare FormularDonareFindEntity(int id);
         List<FormularDonare> FormularDonareFindAll();
+        FormularDonare FormularDonareGetLastFormular(int idDonator);
         //GlobuleRosii
         void GlobuleRosiiAdd(PSGlobuleRosii psGlobuleRosii);
         PSGlobuleRosii GlobuleRosiiDelete(PSGlobuleRosii psGlobuleRosii);

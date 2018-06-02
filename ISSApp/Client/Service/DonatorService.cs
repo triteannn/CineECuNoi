@@ -25,7 +25,7 @@ namespace Client.Service
             {
                 DateTime ult = _server.AnalizaFindLastByDonator(idDonator).DataRecoltarii;
 
-                if (DateTime.Today.Subtract(ult).TotalDays > 90)
+                if (DateTime.Today.Subtract(ult).TotalDays > 180)
                 {
                     return true;
                 }
@@ -91,6 +91,25 @@ namespace Client.Service
                 if (idCd != null)
                     if (_server.CentruDonareFindEntity((int)idCd).NeedBlood == 1)
                         return true;
+                return false;
+            } catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
+
+        public bool PoateCreaFormular(int idDonator)
+        {
+
+            try
+            {
+                DateTime ult = _server.FormularDonareGetLastFormular(idDonator).DataCreare;
+
+                if (DateTime.Today.Subtract(ult).TotalDays > 180)
+                {
+                    return true;
+                }
+
                 return false;
             } catch (NetworkingException e)
             {
