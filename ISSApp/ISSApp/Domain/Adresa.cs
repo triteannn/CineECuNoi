@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Device.Location;
 
 namespace ISSApp.Domain
 {
@@ -34,6 +35,18 @@ namespace ISSApp.Domain
             Numar = numar;
             Oras = oras;
             Judet = judet;
+        }
+
+        /*
+         * returneaza distanta in metri intre cele 2 adrese
+         */
+        public static double DistantaIntreAdrese(Adresa sursa, Adresa destinatie)
+        {
+
+            var sCoord = new GeoCoordinate(sursa.Latitude, sursa.Longitude);
+            var eCoord = new GeoCoordinate(destinatie.Latitude, destinatie.Longitude);
+
+            return sCoord.GetDistanceTo(eCoord);
         }
 
         public virtual Spital Spital { get; set; }
