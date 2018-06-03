@@ -168,10 +168,20 @@ namespace Server.Repository
                         if (result.Read())
                         {
                             int idAdresa = result.GetInt32(0);
-                            String strada = result.GetString(1);
+
+                            String strada = "";
+                            if(result[1]!= DBNull.Value)
+                                result.GetString(1);
+
                             int numar = result.GetInt32(2);
-                            String oras = result.GetString(3);
-                            String judet = result.GetString(4);
+
+                            String oras = "";
+                            if(result[3]!= DBNull.Value)
+                                result.GetString(3);
+
+                            String judet = "";
+                            if(result[4]!= DBNull.Value)
+                                result.GetString(4);
 
                             Adresa adresa = new Adresa(idAdresa, strada, numar, oras, judet);
                             return adresa;
@@ -202,7 +212,22 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            toReturn.Add(new Adresa(result.GetInt32(0), result.GetString(1), result.GetInt32(2), result.GetString(3), result.GetString(4)));
+                            int idAdresa = result.GetInt32(0);
+
+                            String strada = "";
+                            if (result[1] != DBNull.Value)
+                                result.GetString(1);
+
+                            int numar = result.GetInt32(2);
+
+                            String oras = "";
+                            if (result[3] != DBNull.Value)
+                                result.GetString(3);
+
+                            String judet = "";
+                            if (result[4] != DBNull.Value)
+                                result.GetString(4);
+                            toReturn.Add(new Adresa(idAdresa, strada, numar, oras, judet));
                         }
                     }
                     connection.Close();
@@ -231,10 +256,20 @@ namespace Server.Repository
                     if (result.Read())
                     {
                         int idAdresa = result.GetInt32(0);
-                        String strada = result.GetString(1);
+
+                        String strada = "";
+                        if (result[1] != DBNull.Value)
+                            result.GetString(1);
+
                         int numar = result.GetInt32(2);
-                        String oras = result.GetString(3);
-                        String judet = result.GetString(4);
+
+                        String oras = "";
+                        if (result[3] != DBNull.Value)
+                            result.GetString(3);
+
+                        String judet = "";
+                        if (result[4] != DBNull.Value)
+                            result.GetString(4);
 
                         adresa = new Adresa(idAdresa, strada, numar, oras, judet);
                     }
