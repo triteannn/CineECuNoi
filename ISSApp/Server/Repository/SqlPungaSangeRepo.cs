@@ -1,3 +1,4 @@
+using System;
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
@@ -9,59 +10,93 @@ namespace Server.Repository
 {
     public class SqlPungaSangeRepo : ISqlRepo<PungaSange>
     {
-        //doar ca sa dau push :)
+ 
         public void Add(PungaSange pungaSange)
         {
+
             var connection = Globals.GetDbConnection();
             connection.Open();
-            using (var command = connection.CreateCommand())
+            var cmd = new SqlCommand("INSERT INTO PungiSange(DataRecoltare, Grupa, Rh, Target, IdCd, IdFd) VALUES (@DataRecoltare, @Grupa, @Rh, @Target, @IdCd, @IdFd)");
+            cmd.Parameters.AddWithValue("@DataRecoltare", pungaSange.DataRecoltare);
+            if (pungaSange.Grupa != null)
+                cmd.Parameters.AddWithValue("@Grupa", pungaSange.Grupa);
+            else
+                cmd.Parameters.AddWithValue("@Grupa", DBNull.Value);
+            if (pungaSange.Rh != null)
+                cmd.Parameters.AddWithValue("@Rh", pungaSange.Rh);
+            else
+                cmd.Parameters.AddWithValue("@Rh", DBNull.Value);
+            if (pungaSange.Target != null)
+                cmd.Parameters.AddWithValue("@Target", pungaSange.Target);
+            else
+                cmd.Parameters.AddWithValue("@Target", DBNull.Value);
+            cmd.Parameters.AddWithValue("@IdCd", pungaSange.IdCd);
+            cmd.Parameters.AddWithValue("@IdFd", pungaSange.IdFd);
+            try
             {
-                try
-                {
-                    command.CommandText =
-                        "INSERT INTO PungiSange(DataRecoltare, Grupa, Rh, Target, IdCd, IdFd) VALUES (@DataRecoltare, @Grupa, @Rh, @Target, @IdCd, @IdFd)";
-
-
-                    var paramDataRecoltare = command.CreateParameter();
-                    paramDataRecoltare.ParameterName = "@DataRecoltare";
-                    paramDataRecoltare.Value = pungaSange.DataRecoltare;
-                    command.Parameters.Add(paramDataRecoltare);
-
-                    var paramGrupa = command.CreateParameter();
-                    paramGrupa.ParameterName = "@Grupa";
-                    paramGrupa.Value = pungaSange.Grupa;
-                    command.Parameters.Add(paramGrupa);
-
-                    var paramRh = command.CreateParameter();
-                    paramRh.ParameterName = "@Rh";
-                    paramRh.Value = pungaSange.Rh;
-                    command.Parameters.Add(paramRh);
-
-                    var paramTarget = command.CreateParameter();
-                    paramTarget.ParameterName = "@Target";
-                    paramTarget.Value = pungaSange.Target;
-                    command.Parameters.Add(paramTarget);
-
-                    var paramIdCd = command.CreateParameter();
-                    paramIdCd.ParameterName = "@IdCd";
-                    paramIdCd.Value = pungaSange.IdCd;
-                    command.Parameters.Add(paramIdCd);
-
-                    var paramIdFd = command.CreateParameter();
-                    paramIdFd.ParameterName = "@IdFd";
-                    paramIdFd.Value = pungaSange.IdFd;
-                    command.Parameters.Add(paramIdFd);
-
-                    command.ExecuteNonQuery();
-
-                } catch (SqlException)
-                {
-                    connection.Close();
-                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
-                }
-
+                cmd.Connection = connection;
+                cmd.ExecuteNonQuery();
             }
-            connection.Close();
+            catch (SqlException ex)
+            {
+                throw new RepositoryException(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+
+            //            var connection = Globals.GetDbConnection();
+            //            connection.Open();
+            //            using (var command = connection.CreateCommand())
+            //            {
+            //                try
+            //                {
+            //                    command.CommandText =
+            //                        "INSERT INTO PungiSange(DataRecoltare, Grupa, Rh, Target, IdCd, IdFd) VALUES (@DataRecoltare, @Grupa, @Rh, @Target, @IdCd, @IdFd)";
+            //
+            //
+            //                    var paramDataRecoltare = command.CreateParameter();
+            //                    paramDataRecoltare.ParameterName = "@DataRecoltare";
+            //                    paramDataRecoltare.Value = pungaSange.DataRecoltare;
+            //                    command.Parameters.Add(paramDataRecoltare);
+            //
+            //                    var paramGrupa = command.CreateParameter();
+            //                    paramGrupa.ParameterName = "@Grupa";
+            //                    paramGrupa.Value = pungaSange.Grupa;
+            //                    command.Parameters.Add(paramGrupa);
+            //
+            //                    var paramRh = command.CreateParameter();
+            //                    paramRh.ParameterName = "@Rh";
+            //                    paramRh.Value = pungaSange.Rh;
+            //                    command.Parameters.Add(paramRh);
+            //
+            //                    var paramTarget = command.CreateParameter();
+            //                    paramTarget.ParameterName = "@Target";
+            //                    paramTarget.Value = pungaSange.Target;
+            //                    command.Parameters.Add(paramTarget);
+            //
+            //                    var paramIdCd = command.CreateParameter();
+            //                    paramIdCd.ParameterName = "@IdCd";
+            //                    paramIdCd.Value = pungaSange.IdCd;
+            //                    command.Parameters.Add(paramIdCd);
+            //
+            //                    var paramIdFd = command.CreateParameter();
+            //                    paramIdFd.ParameterName = "@IdFd";
+            //                    paramIdFd.Value = pungaSange.IdFd;
+            //                    command.Parameters.Add(paramIdFd);
+            //
+            //                    command.ExecuteNonQuery();
+            //
+            //                } catch (SqlException)
+            //                {
+            //                    connection.Close();
+            //                    throw new RepositoryException("Inserarea in baza de date nu s-a putut realiza cu succes.");
+            //                }
+            //
+            //            }
+            //            connection.Close();
         }
 
         public void AddInitial(PungaSange pungaSange)
@@ -178,17 +213,26 @@ namespace Server.Repository
 
                     var paramGrupa = command.CreateParameter();
                     paramGrupa.ParameterName = "@Grupa";
-                    paramGrupa.Value = pungaSange.Grupa;
+                    if (pungaSange.Grupa != null)
+                        paramGrupa.Value = pungaSange.Grupa;
+                    else
+                        paramGrupa.Value = DBNull.Value;
                     command.Parameters.Add(paramGrupa);
 
                     var paramRh = command.CreateParameter();
                     paramRh.ParameterName = "@Rh";
-                    paramRh.Value = pungaSange.Rh;
+                    if (pungaSange.Rh != null)
+                        paramRh.Value = pungaSange.Rh;
+                    else
+                        paramRh.Value = DBNull.Value;   
                     command.Parameters.Add(paramRh);
 
                     var paramTarget = command.CreateParameter();
                     paramTarget.ParameterName = "@Target";
-                    paramTarget.Value = pungaSange.Target;
+                    if (pungaSange.Target != null)
+                        paramTarget.Value = pungaSange.Target;
+                    else
+                        paramTarget.Value = DBNull.Value;
                     command.Parameters.Add(paramTarget);
 
                     var paramIdCd = command.CreateParameter();
@@ -236,19 +280,21 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
+                            int idPunga = result.GetInt32(0);
+                            DateTime dataRecoltare = result.GetDateTime(1);
+                            string grupa = "";
+                            if (result[2] != DBNull.Value)
+                                grupa = result.GetString(2);
+                            string rh = "";
+                            if (result[3] != DBNull.Value)
+                                rh = result.GetString(3);
+                            string target = "";
+                            if (result[4] != DBNull.Value)
+                                target = result.GetString(4);
+                            int idCd = result.GetInt32(5);
+                            int idFd = result.GetInt32(6);
 
-                            PungaSange pungaSange = new PungaSange
-                            {
-                                Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
-                                Grupa = result.GetString(2),
-                                Rh = result.GetString(3),
-                                Target = result.GetString(4),
-                                IdCd = result.GetInt32(5),
-                                IdFd = result.GetInt32(6)
-
-                            };
-
+                            PungaSange pungaSange = new PungaSange(idPunga, dataRecoltare, grupa, rh, target, idCd, idFd);
                             return pungaSange;
                         }
 
@@ -281,16 +327,21 @@ namespace Server.Repository
                         while (result.Read())
                         {
 
-                            PungaSange pungaSange = new PungaSange {
-                                Id = result.GetInt32(0),
-                                DataRecoltare = result.GetDateTime(1),
-                                Grupa = result.GetString(2),
-                                Rh = result.GetString(3),
-                                Target = result.GetString(4),
-                                IdCd = result.GetInt32(5),
-                                IdFd = result.GetInt32(6)
+                            int idPunga = result.GetInt32(0);
+                            DateTime dataRecoltare = result.GetDateTime(1);
+                            string grupa = "";
+                            if (result[2] != DBNull.Value)
+                                grupa = result.GetString(2);
+                            string rh = "";
+                            if (result[3] != DBNull.Value)
+                                rh = result.GetString(3);
+                            string target = "";
+                            if (result[4] != DBNull.Value)
+                                target = result.GetString(4);
+                            int idCd = result.GetInt32(5);
+                            int idFd = result.GetInt32(6);
 
-                            };
+                            PungaSange pungaSange = new PungaSange(idPunga, dataRecoltare, grupa, rh, target, idCd, idFd);
 
                             toReturn.Add(pungaSange);
                         }
@@ -335,17 +386,21 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            PungaSangeCuCNP pungaSange = new PungaSangeCuCNP
-                            {
-                                CNP = result.GetString(0),
-                                Id = result.GetInt32(1),
-                                DataRecoltare = result.GetDateTime(2),
-                                Grupa = result.GetString(3),
-                                Rh = result.GetString(4),
-                                Target = result.GetString(5)
-                                //IdCd = result.GetInt32(6),
-                                //IdFd = result.GetInt32(7)  
-                            };
+                            string cnpDonator = result.GetString(0);
+                            int idPunga = result.GetInt32(1);
+                            DateTime dataRecoltare = result.GetDateTime(2);
+                            string grupa = "";
+                            if (result[3] != DBNull.Value)
+                                grupa = result.GetString(3);
+                            string rh = "";
+                            if (result[4] != DBNull.Value)
+                                rh = result.GetString(4);
+                            string target = "";
+                            if (result[5] != DBNull.Value)
+                                target = result.GetString(5);
+
+                            PungaSangeCuCNP pungaSange = new PungaSangeCuCNP(cnpDonator, idPunga, dataRecoltare, grupa, rh, target);
+
                             pungiSange.Add(pungaSange);
                         }
                     }
