@@ -147,6 +147,7 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(RequestsPanel);
             RequestsPanel.Enabled = true;
+
         }
 
         public const int WmNclbuttondown = 0xA1;

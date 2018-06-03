@@ -99,20 +99,33 @@ namespace Client
             var donator = _server.DonatorFindByIdAccount(_loggedAccount.Id);
             label2.Text = @"Logged in as " + donator.Nume + " " + donator.Prenume;
 
-            if (!_donatorService.PoateCreaFormular((int)_loggedAccount.IdD))
+            try
             {
-                LblDonate.Text = "*You can not donate yet.";
-                BtnSubmit.BackColor = Color.DimGray;
-            }
-            else
+                if (!_donatorService.PoateCreaFormular((int)_loggedAccount.IdD))
+                {
+                    LblDonate.Text = "*You can not donate yet.";
+                    BtnSubmit.BackColor = Color.DimGray;
+                }
+                else
+                {
+                    BtnSubmit.BackColor = Color.DarkRed;
+                    LblDonate.Text = "";
+                }
+            } catch (ServiceException)
             {
                 BtnSubmit.BackColor = Color.DarkRed;
                 LblDonate.Text = "";
             }
 
-            if (_donatorService.poateDona((int)_loggedAccount.IdD))
+            try
             {
-                _notifications.Add("Au trecut cel putin 6 luni de la ultima donare. Sunteti eligibil pentru a dona din nou! ☺");
+                if (_donatorService.poateDona((int)_loggedAccount.IdD))
+                {
+                    _notifications.Add("Au trecut cel putin 6 luni de la ultima donare. Sunteti eligibil pentru a dona din nou! ☺");
+                }
+            } catch (ServiceException)
+            {
+
             }
             if (_donatorService.NevoieSangeCentru((int)_loggedAccount.IdD))
             {
@@ -231,8 +244,11 @@ namespace Client
                 animator1.HideSync(MenuPanel);
                 if (MainPanel.Visible)
                 {
-                    MainPanel.BringToFront();
-                    MainPanel.Enabled = true;
+                    if (MainPanel.Enabled)
+                    {
+                        MainPanel.BringToFront();
+                        MainPanel.Enabled = true;
+                    }
                 }
                 else if (BloodTestsPanel.Visible)
                 {

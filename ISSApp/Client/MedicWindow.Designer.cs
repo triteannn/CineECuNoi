@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AnimatorNS.Animation animation3 = new AnimatorNS.Animation();
+            AnimatorNS.Animation animation1 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedicWindow));
-            this.PictureBox3 = new System.Windows.Forms.PictureBox();
-            this.PictureBox2 = new System.Windows.Forms.PictureBox();
-            this.MenuToggle = new System.Windows.Forms.PictureBox();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.MenuButton2 = new System.Windows.Forms.Button();
             this.MenuButton1 = new System.Windows.Forms.Button();
@@ -66,55 +63,50 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).BeginInit();
+            this.bunifuSeparator2 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.TxtPlatelets1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TxtErythrocytes1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtPlasma1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TxtName = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.TxtBloodType1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.TxtRh1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.TxtTransfusionCenter = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.MenuToggle = new System.Windows.Forms.PictureBox();
+            this.PictureBox3 = new System.Windows.Forms.PictureBox();
+            this.PictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ImageProgress = new System.Windows.Forms.PictureBox();
+            this.BtnNext = new System.Windows.Forms.Button();
+            this.BtnPrevious = new System.Windows.Forms.Button();
+            this.LblRequested = new System.Windows.Forms.Label();
+            this.LblSent = new System.Windows.Forms.Label();
+            this.LblReceived = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.BtnCancel = new System.Windows.Forms.Button();
+            this.BtnReceived = new System.Windows.Forms.Button();
             this.MenuPanel.SuspendLayout();
+            this.RequestsPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageProgress)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // PictureBox3
-            // 
-            this.animator1.SetDecoration(this.PictureBox3, AnimatorNS.DecorationType.None);
-            this.PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox3.Image")));
-            this.PictureBox3.Location = new System.Drawing.Point(906, 8);
-            this.PictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.PictureBox3.Name = "PictureBox3";
-            this.PictureBox3.Size = new System.Drawing.Size(15, 18);
-            this.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PictureBox3.TabIndex = 16;
-            this.PictureBox3.TabStop = false;
-            this.PictureBox3.Click += new System.EventHandler(this.PictureBox3_Click);
-            // 
-            // PictureBox2
-            // 
-            this.animator1.SetDecoration(this.PictureBox2, AnimatorNS.DecorationType.None);
-            this.PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox2.Image")));
-            this.PictureBox2.Location = new System.Drawing.Point(926, 11);
-            this.PictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.PictureBox2.Name = "PictureBox2";
-            this.PictureBox2.Size = new System.Drawing.Size(19, 20);
-            this.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PictureBox2.TabIndex = 15;
-            this.PictureBox2.TabStop = false;
-            this.PictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
-            // 
-            // MenuToggle
-            // 
-            this.animator1.SetDecoration(this.MenuToggle, AnimatorNS.DecorationType.None);
-            this.MenuToggle.Image = global::Client.Properties.Resources.menuicon;
-            this.MenuToggle.Location = new System.Drawing.Point(11, 52);
-            this.MenuToggle.Margin = new System.Windows.Forms.Padding(2);
-            this.MenuToggle.Name = "MenuToggle";
-            this.MenuToggle.Size = new System.Drawing.Size(34, 36);
-            this.MenuToggle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MenuToggle.TabIndex = 17;
-            this.MenuToggle.TabStop = false;
-            this.MenuToggle.Click += new System.EventHandler(this.MenuToggle_Click);
-            this.MenuToggle.MouseHover += new System.EventHandler(this.MenuToggle_MouseHover);
             // 
             // MenuPanel
             // 
@@ -169,27 +161,40 @@
             // 
             this.animator1.AnimationType = AnimatorNS.AnimationType.VertSlide;
             this.animator1.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.animator1.DefaultAnimation = animation3;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.animator1.DefaultAnimation = animation1;
             // 
             // RequestsPanel
             // 
             this.RequestsPanel.BackColor = System.Drawing.Color.White;
             this.RequestsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.RequestsPanel.Controls.Add(this.groupBox6);
+            this.RequestsPanel.Controls.Add(this.LblReceived);
+            this.RequestsPanel.Controls.Add(this.LblSent);
+            this.RequestsPanel.Controls.Add(this.LblRequested);
+            this.RequestsPanel.Controls.Add(this.label17);
+            this.RequestsPanel.Controls.Add(this.ImageProgress);
+            this.RequestsPanel.Controls.Add(this.label16);
+            this.RequestsPanel.Controls.Add(this.TxtTransfusionCenter);
+            this.RequestsPanel.Controls.Add(this.groupBox4);
+            this.RequestsPanel.Controls.Add(this.groupBox5);
+            this.RequestsPanel.Controls.Add(this.BtnNext);
+            this.RequestsPanel.Controls.Add(this.BtnPrevious);
+            this.RequestsPanel.Controls.Add(this.bunifuSeparator2);
             this.animator1.SetDecoration(this.RequestsPanel, AnimatorNS.DecorationType.None);
             this.RequestsPanel.Location = new System.Drawing.Point(11, 92);
             this.RequestsPanel.Name = "RequestsPanel";
@@ -641,6 +646,451 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 22;
             // 
+            // bunifuSeparator2
+            // 
+            this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
+            this.animator1.SetDecoration(this.bunifuSeparator2, AnimatorNS.DecorationType.None);
+            this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.bunifuSeparator2.LineThickness = 2;
+            this.bunifuSeparator2.Location = new System.Drawing.Point(590, -2);
+            this.bunifuSeparator2.Name = "bunifuSeparator2";
+            this.bunifuSeparator2.Size = new System.Drawing.Size(26, 396);
+            this.bunifuSeparator2.TabIndex = 0;
+            this.bunifuSeparator2.Transparency = 255;
+            this.bunifuSeparator2.Vertical = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.TxtPlatelets1);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.TxtErythrocytes1);
+            this.groupBox4.Controls.Add(this.TxtPlasma1);
+            this.groupBox4.Controls.Add(this.label12);
+            this.animator1.SetDecoration(this.groupBox4, AnimatorNS.DecorationType.None);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.DarkRed;
+            this.groupBox4.Location = new System.Drawing.Point(298, 60);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(286, 245);
+            this.groupBox4.TabIndex = 45;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Blood products:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.animator1.SetDecoration(this.label10, AnimatorNS.DecorationType.None);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.DarkRed;
+            this.label10.Location = new System.Drawing.Point(41, 57);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(122, 18);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Platelets quantity:";
+            // 
+            // TxtPlatelets1
+            // 
+            this.TxtPlatelets1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtPlatelets1, AnimatorNS.DecorationType.None);
+            this.TxtPlatelets1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPlatelets1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtPlatelets1.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtPlatelets1.HintText = "";
+            this.TxtPlatelets1.isPassword = false;
+            this.TxtPlatelets1.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtPlatelets1.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtPlatelets1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtPlatelets1.LineThickness = 2;
+            this.TxtPlatelets1.Location = new System.Drawing.Point(168, 46);
+            this.TxtPlatelets1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtPlatelets1.Name = "TxtPlatelets1";
+            this.TxtPlatelets1.Size = new System.Drawing.Size(98, 29);
+            this.TxtPlatelets1.TabIndex = 4;
+            this.TxtPlatelets1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.animator1.SetDecoration(this.label11, AnimatorNS.DecorationType.None);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.DarkRed;
+            this.label11.Location = new System.Drawing.Point(47, 124);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(116, 18);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Plasma quantity:";
+            // 
+            // TxtErythrocytes1
+            // 
+            this.TxtErythrocytes1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtErythrocytes1, AnimatorNS.DecorationType.None);
+            this.TxtErythrocytes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtErythrocytes1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtErythrocytes1.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtErythrocytes1.HintText = "";
+            this.TxtErythrocytes1.isPassword = false;
+            this.TxtErythrocytes1.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtErythrocytes1.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtErythrocytes1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtErythrocytes1.LineThickness = 2;
+            this.TxtErythrocytes1.Location = new System.Drawing.Point(168, 181);
+            this.TxtErythrocytes1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtErythrocytes1.Name = "TxtErythrocytes1";
+            this.TxtErythrocytes1.Size = new System.Drawing.Size(98, 29);
+            this.TxtErythrocytes1.TabIndex = 6;
+            this.TxtErythrocytes1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // TxtPlasma1
+            // 
+            this.TxtPlasma1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtPlasma1, AnimatorNS.DecorationType.None);
+            this.TxtPlasma1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtPlasma1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtPlasma1.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtPlasma1.HintText = "";
+            this.TxtPlasma1.isPassword = false;
+            this.TxtPlasma1.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtPlasma1.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtPlasma1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtPlasma1.LineThickness = 2;
+            this.TxtPlasma1.Location = new System.Drawing.Point(168, 113);
+            this.TxtPlasma1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtPlasma1.Name = "TxtPlasma1";
+            this.TxtPlasma1.Size = new System.Drawing.Size(98, 29);
+            this.TxtPlasma1.TabIndex = 5;
+            this.TxtPlasma1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.animator1.SetDecoration(this.label12, AnimatorNS.DecorationType.None);
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkRed;
+            this.label12.Location = new System.Drawing.Point(14, 192);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(149, 18);
+            this.label12.TabIndex = 35;
+            this.label12.Text = "Erythrocytes quantity:";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.TxtName);
+            this.groupBox5.Controls.Add(this.TxtBloodType1);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.TxtRh1);
+            this.animator1.SetDecoration(this.groupBox5, AnimatorNS.DecorationType.None);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.Color.DarkRed;
+            this.groupBox5.Location = new System.Drawing.Point(5, 60);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(287, 245);
+            this.groupBox5.TabIndex = 44;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Pacient";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.animator1.SetDecoration(this.label13, AnimatorNS.DecorationType.None);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.DarkRed;
+            this.label13.Location = new System.Drawing.Point(24, 40);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(52, 18);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Name:";
+            // 
+            // TxtName
+            // 
+            this.TxtName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtName, AnimatorNS.DecorationType.None);
+            this.TxtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtName.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtName.HintText = "";
+            this.TxtName.isPassword = false;
+            this.TxtName.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtName.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtName.LineThickness = 2;
+            this.TxtName.Location = new System.Drawing.Point(27, 66);
+            this.TxtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtName.Name = "TxtName";
+            this.TxtName.Size = new System.Drawing.Size(217, 29);
+            this.TxtName.TabIndex = 1;
+            this.TxtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // TxtBloodType1
+            // 
+            this.TxtBloodType1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtBloodType1, AnimatorNS.DecorationType.None);
+            this.TxtBloodType1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBloodType1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtBloodType1.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtBloodType1.HintText = "";
+            this.TxtBloodType1.isPassword = false;
+            this.TxtBloodType1.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtBloodType1.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtBloodType1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtBloodType1.LineThickness = 2;
+            this.TxtBloodType1.Location = new System.Drawing.Point(27, 133);
+            this.TxtBloodType1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtBloodType1.Name = "TxtBloodType1";
+            this.TxtBloodType1.Size = new System.Drawing.Size(217, 29);
+            this.TxtBloodType1.TabIndex = 2;
+            this.TxtBloodType1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.animator1.SetDecoration(this.label14, AnimatorNS.DecorationType.None);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.DarkRed;
+            this.label14.Location = new System.Drawing.Point(24, 175);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(31, 18);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "Rh:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.animator1.SetDecoration(this.label15, AnimatorNS.DecorationType.None);
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.DarkRed;
+            this.label15.Location = new System.Drawing.Point(24, 107);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(82, 18);
+            this.label15.TabIndex = 39;
+            this.label15.Text = "Blood type:";
+            // 
+            // TxtRh1
+            // 
+            this.TxtRh1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtRh1, AnimatorNS.DecorationType.None);
+            this.TxtRh1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtRh1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtRh1.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtRh1.HintText = "";
+            this.TxtRh1.isPassword = false;
+            this.TxtRh1.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtRh1.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtRh1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtRh1.LineThickness = 2;
+            this.TxtRh1.Location = new System.Drawing.Point(27, 201);
+            this.TxtRh1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtRh1.Name = "TxtRh1";
+            this.TxtRh1.Size = new System.Drawing.Size(217, 29);
+            this.TxtRh1.TabIndex = 3;
+            this.TxtRh1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.animator1.SetDecoration(this.label16, AnimatorNS.DecorationType.None);
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkRed;
+            this.label16.Location = new System.Drawing.Point(24, 324);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(135, 18);
+            this.label16.TabIndex = 47;
+            this.label16.Text = "Transfusion center:";
+            // 
+            // TxtTransfusionCenter
+            // 
+            this.TxtTransfusionCenter.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtTransfusionCenter, AnimatorNS.DecorationType.None);
+            this.TxtTransfusionCenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTransfusionCenter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtTransfusionCenter.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtTransfusionCenter.HintText = "";
+            this.TxtTransfusionCenter.isPassword = false;
+            this.TxtTransfusionCenter.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtTransfusionCenter.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtTransfusionCenter.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtTransfusionCenter.LineThickness = 2;
+            this.TxtTransfusionCenter.Location = new System.Drawing.Point(27, 350);
+            this.TxtTransfusionCenter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtTransfusionCenter.Name = "TxtTransfusionCenter";
+            this.TxtTransfusionCenter.Size = new System.Drawing.Size(537, 29);
+            this.TxtTransfusionCenter.TabIndex = 46;
+            this.TxtTransfusionCenter.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.animator1.SetDecoration(this.label17, AnimatorNS.DecorationType.None);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.DarkRed;
+            this.label17.Location = new System.Drawing.Point(622, 17);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(126, 29);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Progress:";
+            // 
+            // MenuToggle
+            // 
+            this.animator1.SetDecoration(this.MenuToggle, AnimatorNS.DecorationType.None);
+            this.MenuToggle.Image = global::Client.Properties.Resources.menuicon;
+            this.MenuToggle.Location = new System.Drawing.Point(11, 52);
+            this.MenuToggle.Margin = new System.Windows.Forms.Padding(2);
+            this.MenuToggle.Name = "MenuToggle";
+            this.MenuToggle.Size = new System.Drawing.Size(34, 36);
+            this.MenuToggle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MenuToggle.TabIndex = 17;
+            this.MenuToggle.TabStop = false;
+            this.MenuToggle.Click += new System.EventHandler(this.MenuToggle_Click);
+            this.MenuToggle.MouseHover += new System.EventHandler(this.MenuToggle_MouseHover);
+            // 
+            // PictureBox3
+            // 
+            this.animator1.SetDecoration(this.PictureBox3, AnimatorNS.DecorationType.None);
+            this.PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox3.Image")));
+            this.PictureBox3.Location = new System.Drawing.Point(906, 8);
+            this.PictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureBox3.Name = "PictureBox3";
+            this.PictureBox3.Size = new System.Drawing.Size(15, 18);
+            this.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureBox3.TabIndex = 16;
+            this.PictureBox3.TabStop = false;
+            this.PictureBox3.Click += new System.EventHandler(this.PictureBox3_Click);
+            // 
+            // PictureBox2
+            // 
+            this.animator1.SetDecoration(this.PictureBox2, AnimatorNS.DecorationType.None);
+            this.PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox2.Image")));
+            this.PictureBox2.Location = new System.Drawing.Point(926, 11);
+            this.PictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.PictureBox2.Name = "PictureBox2";
+            this.PictureBox2.Size = new System.Drawing.Size(19, 20);
+            this.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureBox2.TabIndex = 15;
+            this.PictureBox2.TabStop = false;
+            this.PictureBox2.Click += new System.EventHandler(this.PictureBox2_Click);
+            // 
+            // ImageProgress
+            // 
+            this.animator1.SetDecoration(this.ImageProgress, AnimatorNS.DecorationType.None);
+            this.ImageProgress.Image = global::Client.Properties.Resources.progress1;
+            this.ImageProgress.Location = new System.Drawing.Point(607, 52);
+            this.ImageProgress.Name = "ImageProgress";
+            this.ImageProgress.Size = new System.Drawing.Size(320, 83);
+            this.ImageProgress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ImageProgress.TabIndex = 48;
+            this.ImageProgress.TabStop = false;
+            // 
+            // BtnNext
+            // 
+            this.BtnNext.BackgroundImage = global::Client.Properties.Resources.rightarrow;
+            this.BtnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.animator1.SetDecoration(this.BtnNext, AnimatorNS.DecorationType.None);
+            this.BtnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNext.Location = new System.Drawing.Point(357, 17);
+            this.BtnNext.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnNext.Name = "BtnNext";
+            this.BtnNext.Size = new System.Drawing.Size(31, 32);
+            this.BtnNext.TabIndex = 6;
+            this.BtnNext.UseVisualStyleBackColor = true;
+            // 
+            // BtnPrevious
+            // 
+            this.BtnPrevious.BackgroundImage = global::Client.Properties.Resources.leftarrow;
+            this.BtnPrevious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.animator1.SetDecoration(this.BtnPrevious, AnimatorNS.DecorationType.None);
+            this.BtnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrevious.Location = new System.Drawing.Point(213, 17);
+            this.BtnPrevious.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnPrevious.Name = "BtnPrevious";
+            this.BtnPrevious.Size = new System.Drawing.Size(31, 32);
+            this.BtnPrevious.TabIndex = 5;
+            this.BtnPrevious.UseVisualStyleBackColor = true;
+            // 
+            // LblRequested
+            // 
+            this.LblRequested.AutoSize = true;
+            this.animator1.SetDecoration(this.LblRequested, AnimatorNS.DecorationType.None);
+            this.LblRequested.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblRequested.ForeColor = System.Drawing.Color.DarkRed;
+            this.LblRequested.Location = new System.Drawing.Point(627, 116);
+            this.LblRequested.Name = "LblRequested";
+            this.LblRequested.Size = new System.Drawing.Size(75, 16);
+            this.LblRequested.TabIndex = 50;
+            this.LblRequested.Text = "Requested";
+            // 
+            // LblSent
+            // 
+            this.LblSent.AutoSize = true;
+            this.animator1.SetDecoration(this.LblSent, AnimatorNS.DecorationType.None);
+            this.LblSent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSent.ForeColor = System.Drawing.Color.DimGray;
+            this.LblSent.Location = new System.Drawing.Point(746, 116);
+            this.LblSent.Name = "LblSent";
+            this.LblSent.Size = new System.Drawing.Size(35, 16);
+            this.LblSent.TabIndex = 51;
+            this.LblSent.Text = "Sent";
+            // 
+            // LblReceived
+            // 
+            this.LblReceived.AutoSize = true;
+            this.animator1.SetDecoration(this.LblReceived, AnimatorNS.DecorationType.None);
+            this.LblReceived.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblReceived.ForeColor = System.Drawing.Color.DimGray;
+            this.LblReceived.Location = new System.Drawing.Point(833, 116);
+            this.LblReceived.Name = "LblReceived";
+            this.LblReceived.Size = new System.Drawing.Size(67, 16);
+            this.LblReceived.TabIndex = 52;
+            this.LblReceived.Text = "Received";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.BtnReceived);
+            this.groupBox6.Controls.Add(this.BtnCancel);
+            this.animator1.SetDecoration(this.groupBox6, AnimatorNS.DecorationType.None);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.ForeColor = System.Drawing.Color.DarkRed;
+            this.groupBox6.Location = new System.Drawing.Point(622, 195);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(286, 129);
+            this.groupBox6.TabIndex = 53;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Actions";
+            // 
+            // BtnCancel
+            // 
+            this.BtnCancel.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.BtnCancel, AnimatorNS.DecorationType.None);
+            this.BtnCancel.ForeColor = System.Drawing.Color.White;
+            this.BtnCancel.Location = new System.Drawing.Point(17, 46);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Size = new System.Drawing.Size(109, 48);
+            this.BtnCancel.TabIndex = 0;
+            this.BtnCancel.Text = "Cancel";
+            this.BtnCancel.UseVisualStyleBackColor = false;
+            // 
+            // BtnReceived
+            // 
+            this.BtnReceived.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.BtnReceived, AnimatorNS.DecorationType.None);
+            this.BtnReceived.ForeColor = System.Drawing.Color.White;
+            this.BtnReceived.Location = new System.Drawing.Point(157, 46);
+            this.BtnReceived.Name = "BtnReceived";
+            this.BtnReceived.Size = new System.Drawing.Size(109, 48);
+            this.BtnReceived.TabIndex = 1;
+            this.BtnReceived.Text = "Received";
+            this.BtnReceived.UseVisualStyleBackColor = false;
+            // 
             // MedicWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,12 +1098,12 @@
             this.ClientSize = new System.Drawing.Size(957, 509);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.MainPanel);
-            this.Controls.Add(this.RequestsPanel);
-            this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.MenuToggle);
             this.Controls.Add(this.PictureBox3);
             this.Controls.Add(this.PictureBox2);
+            this.Controls.Add(this.RequestsPanel);
+            this.Controls.Add(this.MenuPanel);
+            this.Controls.Add(this.MainPanel);
             this.animator1.SetDecoration(this, AnimatorNS.DecorationType.None);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -665,10 +1115,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MedicWindow_FormClosing);
             this.Load += new System.EventHandler(this.MedicWindow_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MedicWindow_MouseDown);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).EndInit();
             this.MenuPanel.ResumeLayout(false);
+            this.RequestsPanel.ResumeLayout(false);
+            this.RequestsPanel.PerformLayout();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -677,6 +1126,15 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageProgress)).EndInit();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -719,5 +1177,32 @@
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtSearchResult;
         private System.Windows.Forms.RadioButton Radio2;
         private System.Windows.Forms.RadioButton Radio1;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator2;
+        private System.Windows.Forms.Button BtnNext;
+        private System.Windows.Forms.Button BtnPrevious;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label10;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtPlatelets1;
+        private System.Windows.Forms.Label label11;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtErythrocytes1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtPlasma1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label13;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtName;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtBloodType1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtRh1;
+        private System.Windows.Forms.Label label16;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox TxtTransfusionCenter;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.PictureBox ImageProgress;
+        private System.Windows.Forms.Label LblReceived;
+        private System.Windows.Forms.Label LblSent;
+        private System.Windows.Forms.Label LblRequested;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button BtnReceived;
+        private System.Windows.Forms.Button BtnCancel;
     }
 }
