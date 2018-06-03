@@ -17,7 +17,5 @@ namespace ISSApp.Service
             _server = server;
         }
 
-
-
     }
 }
