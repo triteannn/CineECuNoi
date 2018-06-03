@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContext.cs" />
+    <Compile Include="DeleteExpired.cs" />
     <Compile Include="Migrations\201805250639597_InitialCreate.cs" />
     <Compile Include="Migrations\201805250639597_InitialCreate.Designer.cs">
       <DependentUpon>201805250639597_InitialCreate.cs</DependentUpon>

@@ -34,6 +34,9 @@ namespace Server
 
             Console.WriteLine("Server is up on " + GetLocalIPAddress() + " on port: " + props["port"]);
             Console.ReadLine();
+
+            DeleteExpired.StartTimer();
+            Console.WriteLine("Started separate thread -- stergere produs sanguin expirat");
         }
 
         public static string GetLocalIPAddress()
