@@ -531,21 +531,26 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(BloodTestsPanel);
             BloodTestsPanel.Enabled = true;
+            BtnPrevious.Enabled = BtnNext.Enabled = true;
 
             _analize = _server.AnalizaFindByDonator((int)_loggedAccount.IdD);
-            _analize.Sort((x, y) => {
-                return x.DataRecoltarii.CompareTo(y.DataRecoltarii);
-            });
 
             if (_analize.Count > 0)
             {
+                _analize.Sort((x, y) => {
+                    return x.DataRecoltarii.CompareTo(y.DataRecoltarii);
+                });
                 LoadAnaliza(_analize[_analize.Count - 1]);
                 _pagAnaliza = _analize.Count - 1;
 
                 if (_pagAnaliza == 0)
                     BtnPrevious.Enabled = false;
                 BtnNext.Enabled = false;
-
+            }
+            else
+            {
+                LblDate.Text = "There are no blood tests in the database.";
+                BtnPrevious.Enabled = BtnNext.Enabled = false;
             }
         }
 

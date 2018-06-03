@@ -190,12 +190,17 @@ namespace Client
                     BtnPrevious.Enabled = false;
                 BtnNext.Enabled = false;
             }
-
-
+            else
+            {
+                BtnReceived.Enabled = BtnNext.Enabled = BtnPrevious.Enabled = BtnCancel.Enabled = false;
+                LblMessage.Text = @"There are no requests in the database.";
+            }
         }
 
         private void AutoComplete(FormularCerere formularCerere)
         {
+            LblMessage.Text = "";
+            BtnCancel.Enabled = BtnReceived.Enabled = true;
             TxtName.Text = formularCerere.Target;
             TxtBloodType1.Text = formularCerere.Grupa;
             TxtRh1.Text = formularCerere.Rh;
@@ -482,6 +487,32 @@ namespace Client
         {
             BtnCancel.BackColor = Color.DarkRed;
             BtnCancel.ForeColor = Color.White;
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            var formular = formulareCerere[pag];
+            formular.Status = "Cancelled";
+            _server.FormularCerereUpdate(formular);
+            formulareCerere.Remove(formular);
+            if (formulareCerere.Count > 0)
+            {
+                pag = formulareCerere.Count - 1;
+                BtnNext.Enabled = false;
+                if (pag == 0)
+                {
+                    BtnPrevious.Enabled = false;
+                }
+                AutoComplete(formulareCerere[pag]);
+            }
+            else
+            {
+                LblReceived.ForeColor = LblRequested.ForeColor = LblSent.ForeColor = Color.DimGray;
+                TxtName.Text = TxtBloodType1.Text = TxtRh1.Text = TxtErythrocytes1.Text = TxtPlasma1.Text = TxtPlatelets1.Text = TxtTransfusionCenter.Text = "";
+                ImageProgress.Image = Properties.Resources.progress0;
+                LblMessage.Text = @"There are no requests in the database.";
+                BtnCancel.Enabled = BtnReceived.Enabled = BtnPrevious.Enabled = BtnNext.Enabled = false;
+            }
         }
     }
 }
