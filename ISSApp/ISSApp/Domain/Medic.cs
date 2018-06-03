@@ -17,6 +17,8 @@ namespace ISSApp.Domain
         
         public int IdS { get; set; }
 
+        public Medic() { }
+
         public virtual DateContact DateContact { get; set; }
         public virtual Account Account { get; set; }
         public virtual Spital Spital { get; set; }

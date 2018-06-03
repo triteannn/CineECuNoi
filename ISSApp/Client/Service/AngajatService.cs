@@ -37,7 +37,7 @@ namespace Client.Service
                 _server.PungaSangeAdd(punga);
             }
             catch (NetworkingException e)
-            {
+            { 
                 throw new ServiceException(e.Message);
             }       
 
