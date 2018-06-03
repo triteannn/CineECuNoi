@@ -9,6 +9,7 @@ namespace Server.Repository
 {
     public class SqlPungaSangeRepo : ISqlRepo<PungaSange>
     {
+        //doar ca sa dau push :)
         public void Add(PungaSange pungaSange)
         {
             var connection = Globals.GetDbConnection();
