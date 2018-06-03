@@ -6,6 +6,7 @@ using ISSApp.Networking;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -17,6 +18,8 @@ namespace Client
         private readonly IServer _server;
         private readonly Account _loggedAccount;
         private readonly MedicService _medicService;
+        private List<FormularCerere> formulareCerere;
+        private int pag;
 
         public MedicWindow(LoginForm loginForm, IServer server, Account account)
         {
@@ -25,6 +28,8 @@ namespace Client
             _loggedAccount = account;
             _server = server;
             _medicService = new MedicService(_server);
+            BtnPrevious.FlatAppearance.BorderSize = 0;
+            BtnNext.FlatAppearance.BorderSize = 0;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -174,6 +179,58 @@ namespace Client
         {
             //var doctor = _server.MedicFindByIdAccount(_loggedAccount.Id);
             label1.Text = @"Logged in as " + _loggedAccount.Username;//+ doctor.Nume + " " + doctor.Prenume;
+            formulareCerere = _server.FormularCerereFindAll();
+            formulareCerere = formulareCerere.Where(x => x.Status != "Cancelled").ToList();
+            if (formulareCerere.Count > 0)
+            {
+                pag = formulareCerere.Count - 1;
+                AutoComplete(formulareCerere[pag]);
+
+                if (pag == 0)
+                    BtnPrevious.Enabled = false;
+                BtnNext.Enabled = false;
+            }
+
+
+        }
+
+        private void AutoComplete(FormularCerere formularCerere)
+        {
+            TxtName.Text = formularCerere.Target;
+            TxtBloodType1.Text = formularCerere.Grupa;
+            TxtRh1.Text = formularCerere.Rh;
+            TxtPlatelets1.Text = formularCerere.CantTrombocite.ToString();
+            TxtPlasma1.Text = formularCerere.CantPlasma.ToString();
+            TxtErythrocytes1.Text = formularCerere.CantGlobuleRosii.ToString();
+            TxtTransfusionCenter.Text = _server.CentruDonareFindEntity((int)formularCerere.IdCd).Denumire;
+            if (formularCerere.Status.Equals("Rejected"))
+            {
+                ImageProgress.Image = Properties.Resources.progress0;
+                LblRequested.ForeColor = Color.DimGray;
+                LblSent.ForeColor = Color.DimGray;
+                LblReceived.ForeColor = Color.DimGray;
+            }
+            else if (formularCerere.Status.Equals("Requested"))
+            {
+                ImageProgress.Image = Properties.Resources.progress1;
+                LblRequested.ForeColor = Color.DarkRed;
+                LblSent.ForeColor = Color.DimGray;
+                LblReceived.ForeColor = Color.DimGray;
+            }
+            else if (formularCerere.Status.Equals("Sent"))
+            {
+                ImageProgress.Image = Properties.Resources.progress2;
+                LblRequested.ForeColor = Color.DarkRed;
+                LblSent.ForeColor = Color.DarkRed;
+                LblReceived.ForeColor = Color.DimGray;
+            }
+            else if (formularCerere.Status.Equals("Received"))
+            {
+                ImageProgress.Image = Properties.Resources.progress3;
+                LblRequested.ForeColor = Color.DarkRed;
+                LblSent.ForeColor = Color.DarkRed;
+                LblReceived.ForeColor = Color.DarkRed;
+            }
         }
 
         private CentruDonare centruDonare;
@@ -373,6 +430,58 @@ namespace Client
             {
                 MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            pag = pag - 1;
+            AutoComplete(formulareCerere[pag]);
+            if (pag == 0)
+                BtnPrevious.Enabled = false;
+            else
+                BtnPrevious.Enabled = true;
+            if (pag == formulareCerere.Count - 1)
+                BtnNext.Enabled = false;
+            else
+                BtnNext.Enabled = true;
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            pag = pag + 1;
+            AutoComplete(formulareCerere[pag]);
+            if (pag == 0)
+                BtnPrevious.Enabled = false;
+            else
+                BtnPrevious.Enabled = true;
+            if (pag == formulareCerere.Count - 1)
+                BtnNext.Enabled = false;
+            else
+                BtnNext.Enabled = true;
+        }
+
+        private void BtnReceived_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnReceived.BackColor = Color.White;
+            BtnReceived.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnReceived_MouseLeave(object sender, EventArgs e)
+        {
+            BtnReceived.BackColor = Color.DarkRed;
+            BtnReceived.ForeColor = Color.White;
+        }
+
+        private void BtnCancel_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnCancel.BackColor = Color.White;
+            BtnCancel.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnCancel_MouseLeave(object sender, EventArgs e)
+        {
+            BtnCancel.BackColor = Color.DarkRed;
+            BtnCancel.ForeColor = Color.White;
         }
     }
 }
