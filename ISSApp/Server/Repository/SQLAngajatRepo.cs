@@ -186,10 +186,21 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            String cnp = result.GetString(1);
-                            String nume = result.GetString(2);
-                            String prenume = result.GetString(3);
+                            String cnp = "";
+                            if (result[1] != DBNull.Value)
+                                cnp = result.GetString(1);
+
+                            String nume = "";
+                            if(result[2]!= DBNull.Value)
+                                nume = result.GetString(2);
+
+                            String prenume = "";
+                            if(result[3]!= DBNull.Value)
+                                result.GetString(3);
+
                             DateTime date = result.GetDateTime(4);
+
+
 
                             AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
                             return angajat;
@@ -224,10 +235,22 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            String cnp = result.GetString(1);
-                            String nume = result.GetString(2);
-                            String prenume = result.GetString(3);
+
+                            String cnp = "";
+                            if (result[1] != DBNull.Value)
+                                cnp = result.GetString(1);
+
+                            String nume = "";
+                            if (result[2] != DBNull.Value)
+                                nume = result.GetString(2);
+
+                            String prenume = "";
+                            if (result[3] != DBNull.Value)
+                                result.GetString(3);
+
                             DateTime date = result.GetDateTime(4);
+
+
 
                             AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
                             return angajat;
@@ -262,10 +285,20 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            String cnp = result.GetString(1);
-                            String nume = result.GetString(2);
-                            String prenume = result.GetString(3);
+                            String cnp = "";
+                            if (result[1] != DBNull.Value)
+                                cnp = result.GetString(1);
+
+                            String nume = "";
+                            if (result[2] != DBNull.Value)
+                                nume = result.GetString(2);
+
+                            String prenume = "";
+                            if (result[3] != DBNull.Value)
+                                result.GetString(3);
+
                             DateTime date = result.GetDateTime(4);
+
 
                             AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
                             return angajat;
@@ -296,7 +329,21 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            toReturn.Add(new AngajatCentru(result.GetString(1), result.GetString(2), result.GetString(3), result.GetDateTime(4)));
+                            String cnp = "";
+                            if (result[1] != DBNull.Value)
+                                cnp = result.GetString(1);
+
+                            String nume = "";
+                            if (result[2] != DBNull.Value)
+                                nume = result.GetString(2);
+
+                            String prenume = "";
+                            if (result[3] != DBNull.Value)
+                                result.GetString(3);
+
+                            DateTime date = result.GetDateTime(4);
+
+                            toReturn.Add(new AngajatCentru(cnp, nume, prenume, date));
                         }
                     }
                     connection.Close();
