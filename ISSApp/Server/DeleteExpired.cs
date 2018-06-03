@@ -26,9 +26,9 @@ namespace Server
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM PSPlasme WHERE DataExpirare > @data; " +
-                                          "DELETE FROM PSGlobuleRosii WHERE DataExpirare > @data; " +
-                                          "DELETE FROM PSTrombocite WHERE DataExpirare > @data;";
+                    command.CommandText = "DELETE FROM PSPlasme WHERE DataExpirare > @Data; " +
+                                          "DELETE FROM PSGlobuleRosii WHERE DataExpirare > @Data; " +
+                                          "DELETE FROM PSTrombocite WHERE DataExpirare > @Data;";
 
                     var paramDate = command.CreateParameter();
                     paramDate.ParameterName = "@Data";

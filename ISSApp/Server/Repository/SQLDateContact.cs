@@ -149,7 +149,9 @@ namespace Server.Repository
                             int idData = result.GetInt32(0);
                             String telefon = result.GetString(1);
                             String email = result.GetString(2);
-                            int idAdresa = result.GetInt32(3);
+                            int? idAdresa = null;
+                            if(result[3] != DBNull.Value)
+                                idAdresa = result.GetInt32(3);
 
                             DateContact dataContact = new DateContact(idData, telefon, email, idAdresa);
                             return dataContact;
@@ -211,7 +213,9 @@ namespace Server.Repository
                         int idData = result.GetInt32(0);
                         String telefon = result.GetString(1);
                         String email = result.GetString(2);
-                        int idAdresa = result.GetInt32(3);
+                        int? idAdresa = null;
+                        if (result[3] != DBNull.Value)
+                            idAdresa = result.GetInt32(3);
 
                         dateContact = new DateContact(idData, telefon, email, idAdresa);
                     }
