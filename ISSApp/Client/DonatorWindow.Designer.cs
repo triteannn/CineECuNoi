@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AnimatorNS.Animation animation1 = new AnimatorNS.Animation();
+            AnimatorNS.Animation animation2 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonatorWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuPanel = new System.Windows.Forms.Panel();
             this.MenuButton2 = new System.Windows.Forms.Button();
             this.MenuButton1 = new System.Windows.Forms.Button();
@@ -223,7 +223,7 @@
             this.BtnSubmit.Location = new System.Drawing.Point(727, 401);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(103, 51);
-            this.BtnSubmit.TabIndex = 45;
+            this.BtnSubmit.TabIndex = 8;
             this.BtnSubmit.Text = "Submit";
             this.BtnSubmit.UseVisualStyleBackColor = false;
             this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
@@ -289,14 +289,14 @@
             this.TxtCounty.HintText = "";
             this.TxtCounty.isPassword = false;
             this.TxtCounty.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtCounty.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtCounty.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtCounty.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtCounty.LineThickness = 2;
             this.TxtCounty.Location = new System.Drawing.Point(8, 397);
             this.TxtCounty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtCounty.Name = "TxtCounty";
             this.TxtCounty.Size = new System.Drawing.Size(217, 29);
-            this.TxtCounty.TabIndex = 28;
+            this.TxtCounty.TabIndex = 3;
             this.TxtCounty.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtCity
@@ -309,14 +309,14 @@
             this.TxtCity.HintText = "";
             this.TxtCity.isPassword = false;
             this.TxtCity.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtCity.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtCity.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtCity.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtCity.LineThickness = 2;
             this.TxtCity.Location = new System.Drawing.Point(8, 331);
             this.TxtCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtCity.Name = "TxtCity";
             this.TxtCity.Size = new System.Drawing.Size(217, 29);
-            this.TxtCity.TabIndex = 27;
+            this.TxtCity.TabIndex = 2;
             this.TxtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtAddress
@@ -329,14 +329,14 @@
             this.TxtAddress.HintText = "";
             this.TxtAddress.isPassword = false;
             this.TxtAddress.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtAddress.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtAddress.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtAddress.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtAddress.LineThickness = 2;
             this.TxtAddress.Location = new System.Drawing.Point(8, 265);
             this.TxtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtAddress.Name = "TxtAddress";
             this.TxtAddress.Size = new System.Drawing.Size(217, 29);
-            this.TxtAddress.TabIndex = 26;
+            this.TxtAddress.TabIndex = 1;
             this.TxtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtLastName
@@ -472,7 +472,7 @@
             this.DropdownCD.onHoverColor = System.Drawing.Color.White;
             this.DropdownCD.selectedIndex = 0;
             this.DropdownCD.Size = new System.Drawing.Size(254, 24);
-            this.DropdownCD.TabIndex = 44;
+            this.DropdownCD.TabIndex = 7;
             // 
             // label28
             // 
@@ -511,14 +511,14 @@
             this.TxtDonateFor.HintText = "Optional";
             this.TxtDonateFor.isPassword = false;
             this.TxtDonateFor.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtDonateFor.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtDonateFor.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtDonateFor.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtDonateFor.LineThickness = 2;
             this.TxtDonateFor.Location = new System.Drawing.Point(252, 219);
             this.TxtDonateFor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtDonateFor.Name = "TxtDonateFor";
             this.TxtDonateFor.Size = new System.Drawing.Size(260, 27);
-            this.TxtDonateFor.TabIndex = 25;
+            this.TxtDonateFor.TabIndex = 6;
             this.TxtDonateFor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // OthersGb
@@ -1046,14 +1046,14 @@
             this.TxtPhone.HintText = "";
             this.TxtPhone.isPassword = false;
             this.TxtPhone.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtPhone.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtPhone.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtPhone.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtPhone.LineThickness = 2;
             this.TxtPhone.Location = new System.Drawing.Point(6, 134);
             this.TxtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPhone.Name = "TxtPhone";
             this.TxtPhone.Size = new System.Drawing.Size(257, 29);
-            this.TxtPhone.TabIndex = 22;
+            this.TxtPhone.TabIndex = 5;
             this.TxtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label10
@@ -1090,14 +1090,14 @@
             this.TxtEmail.HintText = "";
             this.TxtEmail.isPassword = false;
             this.TxtEmail.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtEmail.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtEmail.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtEmail.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtEmail.LineThickness = 2;
             this.TxtEmail.Location = new System.Drawing.Point(6, 64);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(257, 29);
-            this.TxtEmail.TabIndex = 9;
+            this.TxtEmail.TabIndex = 4;
             this.TxtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // BellMovement
@@ -1134,22 +1134,22 @@
             // 
             this.animator1.AnimationType = AnimatorNS.AnimationType.VertSlide;
             this.animator1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.animator1.DefaultAnimation = animation1;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.animator1.DefaultAnimation = animation2;
             // 
             // label2
             // 
@@ -1228,14 +1228,14 @@
             this.BloodResultsTable.AllowUserToDeleteRows = false;
             this.BloodResultsTable.AllowUserToResizeRows = false;
             this.BloodResultsTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.BloodResultsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BloodResultsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AnalizaColumn,
@@ -1381,7 +1381,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.DonatorWindow_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainWindow_MouseDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DonatorWindow_MouseDown);
             this.MenuPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();

@@ -31,16 +31,23 @@ namespace ISSApp.Domain
         public double CantGlobuleRosii { get; set; }
         public string Status { get; set; }
 
+        public string Grupa { get; set; }
+
+        public string Rh { get; set; }
+
         public virtual Medic Medic { get; set; }
 
-        public FormularCerere(int id, string target, double cantTrombocite, double cantPlasma, double cantGlobuleRosi, int idM)
+        public FormularCerere(int id, string target, double? cantTrombocite, double? cantPlasma, double? cantGlobuleRosi, int? idM, string status, string grupa, string rh)
         {
             Id = id;
             Target = target;
-            CantTrombocite = cantTrombocite;
-            CantPlasma = cantPlasma;
-            CantGlobuleRosii = cantGlobuleRosi;
-            IdM = idM;
+            CantTrombocite = (double) cantTrombocite;
+            CantPlasma = (double) cantPlasma;
+            CantGlobuleRosii = (double) cantGlobuleRosi;
+            IdM = (int) idM;
+            Status = status;
+            Grupa = grupa;
+            Rh = rh;
         }
     }
 }

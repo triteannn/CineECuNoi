@@ -164,7 +164,7 @@ namespace Server.Repository
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-            
+
                 try
                 {
                     command.CommandText = "SELECT * FROM PSGlobuleRosii WHERE Id=@Id";
@@ -196,12 +196,10 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
-
             }
         }
 
