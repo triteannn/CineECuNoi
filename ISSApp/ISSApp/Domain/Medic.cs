@@ -15,7 +15,7 @@ namespace ISSApp.Domain
         public DateTime Dob { get; set; }
 
         
-        public int IdS { get; set; }
+        public int? IdS { get; set; }
 
         public virtual DateContact DateContact { get; set; }
         public virtual Account Account { get; set; }
@@ -23,9 +23,9 @@ namespace ISSApp.Domain
         public virtual FormularCerere FormularCerere { get; set; }
 
         [NotMapped]
-        public int IdDc { get; set; }
+        public int? IdDc { get; set; }
 
         [NotMapped]
-        public int IdA { get; set; }
+        public int? IdA { get; set; }
     }
 }

@@ -186,17 +186,32 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            var medic = new Medic();
-                            medic.Id = result.GetInt32(0);
-                            medic.CNP = result.GetString(1);
-                            medic.Nume = result.GetString(2);
-                            medic.Prenume = result.GetString(3);
-                            medic.Dob = result.GetDateTime(4);
-                            medic.IdS = result.GetInt32(5);
-                            medic.IdA = result.GetInt32(6);
-                            medic.IdDc = result.GetInt32(7);
+                          
+                            string cnp = result.GetString(1);
+                            string nume = result.GetString(2);
+                            string prenume = result.GetString(3);
+                            DateTime dob = result.GetDateTime(4);
+                            int? ids=null;
+                            if(result[5] != DBNull.Value)
+                                ids = result.GetInt32(5);
+                            int? ida=null;
+                            if (result[6] != DBNull.Value)
+                                ida = result.GetInt32(6);
+                            int? iddc=null;
+                            if(result[7] != DBNull.Value)
+                                iddc = result.GetInt32(7);
 
-                            return medic;
+                            return new Medic()
+                            {
+                                Id = id,
+                                CNP= cnp,
+                                Nume = nume,
+                                Prenume =  prenume,
+                                Dob = dob,
+                                IdS =  ids,
+                                IdA = ida,
+                                IdDc = iddc
+                            };
                         }
 
                         return null;
@@ -228,17 +243,32 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            var medic = new Medic();
-                            medic.Id = result.GetInt32(0);
-                            medic.CNP = result.GetString(1);
-                            medic.Nume = result.GetString(2);
-                            medic.Prenume = result.GetString(3);
-                            medic.Dob = result.GetDateTime(4);
-                            medic.IdS = result.GetInt32(5);
-                            medic.IdA = result.GetInt32(6);
-                            medic.IdDc = result.GetInt32(7);
+                            int id = result.GetInt32(0);
+                            string cnp = result.GetString(1);
+                            string nume = result.GetString(2);
+                            string prenume = result.GetString(3);
+                            DateTime dob = result.GetDateTime(4);
+                            int? ids = null;
+                            if (result[5] != DBNull.Value)
+                                ids = result.GetInt32(5);
+                            int? ida = null;
+                            if (result[6] != DBNull.Value)
+                                ida = result.GetInt32(6);
+                            int? iddc = null;
+                            if (result[7] != DBNull.Value)
+                                iddc = result.GetInt32(7);
 
-                            return medic;
+                            return new Medic()
+                            {
+                                Id = id,
+                                CNP = cnp,
+                                Nume = nume,
+                                Prenume = prenume,
+                                Dob = dob,
+                                IdS = ids,
+                                IdA = ida,
+                                IdDc = iddc
+                            };
                         }
 
                         return null;
@@ -270,17 +300,32 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            var medic = new Medic();
-                            medic.Id = result.GetInt32(0);
-                            medic.CNP = result.GetString(1);
-                            medic.Nume = result.GetString(2);
-                            medic.Prenume = result.GetString(3);
-                            medic.Dob = result.GetDateTime(4);
-                            medic.IdS = result.GetInt32(5);
-                            medic.IdA = result.GetInt32(6);
-                            medic.IdDc = result.GetInt32(7);
+                            int id = result.GetInt32(0);
+                            string cnp = result.GetString(1);
+                            string nume = result.GetString(2);
+                            string prenume = result.GetString(3);
+                            DateTime dob = result.GetDateTime(4);
+                            int? ids = null;
+                            if (result[5] != DBNull.Value)
+                                ids = result.GetInt32(5);
+                            int? ida = null;
+                            if (result[6] != DBNull.Value)
+                                ida = result.GetInt32(6);
+                            int? iddc = null;
+                            if (result[7] != DBNull.Value)
+                                iddc = result.GetInt32(7);
 
-                            return medic;
+                            return new Medic()
+                            {
+                                Id = id,
+                                CNP = cnp,
+                                Nume = nume,
+                                Prenume = prenume,
+                                Dob = dob,
+                                IdS = ids,
+                                IdA = ida,
+                                IdDc = iddc
+                            };
                         }
 
                         return null;
@@ -308,15 +353,31 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            Medic medic = new Medic {
-                                Id = result.GetInt32(0),
-                                CNP = result.GetString(1),
-                                Nume = result.GetString(2),
-                                Prenume = result.GetString(3),
-                                Dob = result.GetDateTime(4),
-                                IdS = result.GetInt32(5),
-                                IdA = result.GetInt32(6),
-                                IdDc = result.GetInt32(7)
+                            int id = result.GetInt32(0);
+                            string cnp = result.GetString(1);
+                            string nume = result.GetString(2);
+                            string prenume = result.GetString(3);
+                            DateTime dob = result.GetDateTime(4);
+                            int? ids = null;
+                            if (result[5] != DBNull.Value)
+                                ids = result.GetInt32(5);
+                            int? ida = null;
+                            if (result[6] != DBNull.Value)
+                                ida = result.GetInt32(6);
+                            int? iddc = null;
+                            if (result[7] != DBNull.Value)
+                                iddc = result.GetInt32(7);
+
+                            Medic medic = new Medic()
+                            {
+                                Id = id,
+                                CNP = cnp,
+                                Nume = nume,
+                                Prenume = prenume,
+                                Dob = dob,
+                                IdS = ids,
+                                IdA = ida,
+                                IdDc = iddc
                             };
 
                             toReturn.Add(medic);
