@@ -126,8 +126,22 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
+                            var user = "";
+                            var pass = "";
+                            int? idD = null;
+                            int? idM = null;
+                            int? idAc = null;
 
-                            Account account = new Account(result.GetInt32(0), result.GetString(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetInt32(5));
+                            user = result.GetString(1);
+                            pass = result.GetString(2);
+                            if (result[3] != DBNull.Value)
+                                idD = result.GetInt32(3);
+                            if (result[4] != DBNull.Value)
+                                idM = result.GetInt32(4);
+                            if (result[5] != DBNull.Value)
+                                idAc = result.GetInt32(5);
+
+                            Account account = new Account(id, user, pass, idD, idM, idAc);
                             return account;
                         }
 

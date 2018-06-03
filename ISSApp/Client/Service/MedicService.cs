@@ -43,5 +43,17 @@ namespace Client.Service
                 throw new ServiceException(e.Message);
             }
         }
+
+        public double GetDistantaIntreAdrese(Adresa sursa, Adresa destinatie)
+        {
+            try
+            {
+                return Adresa.DistantaIntreAdrese(sursa, destinatie);
+            }
+            catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
     }
 }
