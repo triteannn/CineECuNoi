@@ -101,13 +101,11 @@ namespace Client
 
             if (!_donatorService.PoateCreaFormular((int)_loggedAccount.IdD))
             {
-                BtnSubmit.Enabled = false;
                 LblDonate.Text = "*You can not donate yet.";
                 BtnSubmit.BackColor = Color.DimGray;
             }
             else
             {
-                BtnSubmit.Enabled = true;
                 BtnSubmit.BackColor = Color.DarkRed;
                 LblDonate.Text = "";
             }
@@ -306,7 +304,10 @@ namespace Client
             animator1.HideSync(MenuPanel);
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(MainPanel);
-            MainPanel.Enabled = true;
+            if (!_donatorService.PoateCreaFormular((int)_loggedAccount.IdD))
+                MainPanel.Enabled = false;
+            else
+                MainPanel.Enabled = true;
             var donator = _server.DonatorFindByUsername(_loggedAccount.Username);
             TxtFirstName.Text = donator.Prenume;
             TxtLastName.Text = donator.Nume;

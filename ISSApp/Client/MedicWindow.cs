@@ -289,5 +289,29 @@ namespace Client
                 MessageBox.Show("You haven't selected a search criteria.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void BtnSearch_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnSearch.BackColor = Color.White;
+            BtnSearch.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnSearch_MouseLeave(object sender, EventArgs e)
+        {
+            BtnSearch.BackColor = Color.DarkRed;
+            BtnSearch.ForeColor = Color.White;
+        }
+
+        private void BtnSubmit_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnSubmit.BackColor = Color.White;
+            BtnSubmit.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnSubmit_MouseLeave(object sender, EventArgs e)
+        {
+            BtnSubmit.BackColor = Color.DarkRed;
+            BtnSubmit.ForeColor = Color.White;
+        }
     }
 }

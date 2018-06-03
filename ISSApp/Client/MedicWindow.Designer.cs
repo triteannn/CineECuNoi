@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AnimatorNS.Animation animation3 = new AnimatorNS.Animation();
+            AnimatorNS.Animation animation6 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MedicWindow));
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
@@ -169,22 +169,22 @@
             // 
             this.animator1.AnimationType = AnimatorNS.AnimationType.VertSlide;
             this.animator1.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.animator1.DefaultAnimation = animation3;
+            animation6.AnimateOnlyDifferences = true;
+            animation6.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.BlindCoeff")));
+            animation6.LeafCoeff = 0F;
+            animation6.MaxTime = 1F;
+            animation6.MinTime = 0F;
+            animation6.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicCoeff")));
+            animation6.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicShift")));
+            animation6.MosaicSize = 0;
+            animation6.Padding = new System.Windows.Forms.Padding(0);
+            animation6.RotateCoeff = 0F;
+            animation6.RotateLimit = 0F;
+            animation6.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.ScaleCoeff")));
+            animation6.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.SlideCoeff")));
+            animation6.TimeCoeff = 0F;
+            animation6.TransparencyCoeff = 0F;
+            this.animator1.DefaultAnimation = animation6;
             // 
             // RequestsPanel
             // 
@@ -227,9 +227,11 @@
             this.BtnSubmit.Location = new System.Drawing.Point(842, 359);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(85, 40);
-            this.BtnSubmit.TabIndex = 47;
+            this.BtnSubmit.TabIndex = 10;
             this.BtnSubmit.Text = "Submit";
             this.BtnSubmit.UseVisualStyleBackColor = false;
+            this.BtnSubmit.MouseLeave += new System.EventHandler(this.BtnSubmit_MouseLeave);
+            this.BtnSubmit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnSubmit_MouseMove);
             // 
             // groupBox3
             // 
@@ -276,7 +278,7 @@
             this.Radio2.Location = new System.Drawing.Point(7, 55);
             this.Radio2.Name = "Radio2";
             this.Radio2.Size = new System.Drawing.Size(291, 20);
-            this.Radio2.TabIndex = 46;
+            this.Radio2.TabIndex = 8;
             this.Radio2.TabStop = true;
             this.Radio2.Text = "Nearest center with available blood products";
             this.Radio2.UseVisualStyleBackColor = true;
@@ -289,7 +291,7 @@
             this.Radio1.Location = new System.Drawing.Point(7, 26);
             this.Radio1.Name = "Radio1";
             this.Radio1.Size = new System.Drawing.Size(255, 20);
-            this.Radio1.TabIndex = 45;
+            this.Radio1.TabIndex = 7;
             this.Radio1.TabStop = true;
             this.Radio1.Text = "With a donation for this specific pacient";
             this.Radio1.UseVisualStyleBackColor = true;
@@ -304,10 +306,12 @@
             this.BtnSearch.Location = new System.Drawing.Point(9, 84);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(75, 31);
-            this.BtnSearch.TabIndex = 44;
+            this.BtnSearch.TabIndex = 9;
             this.BtnSearch.Text = "Search";
             this.BtnSearch.UseVisualStyleBackColor = false;
             this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
+            this.BtnSearch.MouseLeave += new System.EventHandler(this.BtnSearch_MouseLeave);
+            this.BtnSearch.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnSearch_MouseMove);
             // 
             // groupBox2
             // 
@@ -357,7 +361,7 @@
             this.TxtPlatelets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPlatelets.Name = "TxtPlatelets";
             this.TxtPlatelets.Size = new System.Drawing.Size(98, 29);
-            this.TxtPlatelets.TabIndex = 32;
+            this.TxtPlatelets.TabIndex = 4;
             this.TxtPlatelets.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label6
@@ -390,7 +394,7 @@
             this.TxtErythrocytes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtErythrocytes.Name = "TxtErythrocytes";
             this.TxtErythrocytes.Size = new System.Drawing.Size(98, 29);
-            this.TxtErythrocytes.TabIndex = 36;
+            this.TxtErythrocytes.TabIndex = 6;
             this.TxtErythrocytes.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtPlasma
@@ -410,7 +414,7 @@
             this.TxtPlasma.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPlasma.Name = "TxtPlasma";
             this.TxtPlasma.Size = new System.Drawing.Size(98, 29);
-            this.TxtPlasma.TabIndex = 34;
+            this.TxtPlasma.TabIndex = 5;
             this.TxtPlasma.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label7
@@ -474,7 +478,7 @@
             this.TxtPacient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPacient.Name = "TxtPacient";
             this.TxtPacient.Size = new System.Drawing.Size(217, 29);
-            this.TxtPacient.TabIndex = 30;
+            this.TxtPacient.TabIndex = 1;
             this.TxtPacient.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtBloodType
@@ -494,7 +498,7 @@
             this.TxtBloodType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtBloodType.Name = "TxtBloodType";
             this.TxtBloodType.Size = new System.Drawing.Size(217, 29);
-            this.TxtBloodType.TabIndex = 40;
+            this.TxtBloodType.TabIndex = 2;
             this.TxtBloodType.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label8
@@ -540,7 +544,7 @@
             this.TxtRh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtRh.Name = "TxtRh";
             this.TxtRh.Size = new System.Drawing.Size(217, 29);
-            this.TxtRh.TabIndex = 38;
+            this.TxtRh.TabIndex = 3;
             this.TxtRh.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuSeparator1
