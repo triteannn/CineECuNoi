@@ -282,7 +282,46 @@ namespace Client
             }
             else if (Radio2.Checked)
             {
+                var spital = _server.SpitalFindEntity(_server.MedicFindEntity((int)_loggedAccount.IdM).Id);
+                var spitalAdr = _server.AdresaFindEntity(spital.IdAdr);
+                var centre = _server.CentruDonareFindAll();
+                centre.Sort((x, y) => {
+                    return Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)x.IdAdr), spitalAdr).CompareTo(Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)y.IdAdr), spitalAdr));
+                });
+                CentruDonare found = null;
 
+                foreach (var c in centre)
+                {
+                    double sumaGR = 0;
+                    foreach (var ps in _server.GlobuleRosiiFindAllByCentru(c.Id))
+                    {
+                        sumaGR += ps.Cantitate;
+                    }
+                    double sumaP = 0;
+                    foreach (var ps in _server.PlasmaFindAllByCentru(c.Id))
+                    {
+                        sumaP += ps.Cantitate;
+                    }
+                    double sumaT = 0;
+                    foreach (var ps in _server.TrombociteFindAllByCentru(c.Id))
+                    {
+                        sumaT += ps.Cantitate;
+                    }
+                    if (double.Parse(TxtErythrocytes.Text).CompareTo(sumaGR) <= 0 && double.Parse(TxtPlasma.Text).CompareTo(sumaP) <= 0 && double.Parse(TxtPlatelets.Text).CompareTo(sumaT) <= 0)
+                    {
+                        found = c;
+                        break;
+                    }
+                }
+                if (found == null)
+                {
+                    TxtSearchResult.Text = "No results found.";
+                }
+                else
+                {
+                    TxtSearchResult.Text = found.Denumire;
+                    centruDonare = found;
+                }
             }
             else
             {

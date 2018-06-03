@@ -186,15 +186,37 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            var medic = new Medic();
-                            medic.Id = result.GetInt32(0);
-                            medic.CNP = result.GetString(1);
-                            medic.Nume = result.GetString(2);
-                            medic.Prenume = result.GetString(3);
-                            medic.Dob = result.GetDateTime(4);
-                            medic.IdS = result.GetInt32(5);
-                            medic.IdA = result.GetInt32(6);
-                            medic.IdDc = result.GetInt32(7);
+                            var cnp = "";
+                            var nume = "";
+                            var prenume = "";
+                            var dob = new DateTime();
+                            var idS = new int();
+                            var idA = new int();
+                            var idDc = new int();
+                            if (result[1] != DBNull.Value)
+                                cnp = result.GetString(1);
+                            if (result[2] != DBNull.Value)
+                                nume = result.GetString(2);
+                            if (result[3] != DBNull.Value)
+                                prenume = result.GetString(3);
+                            if (result[4] != DBNull.Value)
+                                dob = result.GetDateTime(4);
+                            if (result[5] != DBNull.Value)
+                                idS = result.GetInt32(5);
+                            if (result[6] != DBNull.Value)
+                                idA = result.GetInt32(6);
+                            if (result[7] != DBNull.Value)
+                                idDc = result.GetInt32(7);
+                            var medic = new Medic {
+                                Id = result.GetInt32(0),
+                                CNP = cnp,
+                                Nume = nume,
+                                Prenume = prenume,
+                                Dob = dob,
+                                IdS = idS,
+                                IdA = idA,
+                                IdDc = idDc
+                            };
 
                             return medic;
                         }

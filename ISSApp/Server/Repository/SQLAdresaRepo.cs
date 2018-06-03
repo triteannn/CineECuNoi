@@ -169,19 +169,19 @@ namespace Server.Repository
                         {
                             int idAdresa = result.GetInt32(0);
 
-                            String strada = "";
+                            var strada = "";
                             if (result[1] != DBNull.Value)
-                                result.GetString(1);
+                                strada = result.GetString(1);
 
                             int numar = result.GetInt32(2);
 
-                            String oras = "";
+                            var oras = "";
                             if (result[3] != DBNull.Value)
-                                result.GetString(3);
+                                oras = result.GetString(3);
 
-                            String judet = "";
+                            var judet = "";
                             if (result[4] != DBNull.Value)
-                                result.GetString(4);
+                                judet = result.GetString(4);
 
                             Adresa adresa = new Adresa(idAdresa, strada, numar, oras, judet);
                             return adresa;

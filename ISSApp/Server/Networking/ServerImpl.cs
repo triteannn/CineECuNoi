@@ -794,6 +794,17 @@ namespace Server.Networking
             }
         }
 
+        public List<PSGlobuleRosii> GlobuleRosiiFindAllByCentru(int idCentru)
+        {
+            try
+            {
+                return globuleRosiiRepo.FindAllByCentru(idCentru);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public void MedicAdd(Medic medic)
         {
             try
@@ -953,6 +964,17 @@ namespace Server.Networking
             try
             {
                 return plasmaRepo.Update(psPlasma);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<PSPlasma> PlasmaFindAllByCentru(int idCentru)
+        {
+            try
+            {
+                return plasmaRepo.FindAllByCentru(idCentru);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
@@ -1171,6 +1193,17 @@ namespace Server.Networking
             try
             {
                 return trombociteRepo.Update(psTrombocite);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<PSTrombocite> TrombociteFindAllByCentru(int idCentru)
+        {
+            try
+            {
+                return trombociteRepo.FindAllByCentru(idCentru);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
