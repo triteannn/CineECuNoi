@@ -1,6 +1,7 @@
 ﻿using AnimatorNS;
 using Client.Service;
 using ISSApp.Domain;
+using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
 using System.Collections.Generic;
@@ -178,6 +179,7 @@ namespace Client
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            BtnSubmit.Enabled = false;
             if (Radio1.Checked)
             {
                 centruDonare = null;
@@ -278,7 +280,10 @@ namespace Client
                 if (centruDonare == null)
                 {
                     TxtSearchResult.Text = "No results found.";
+                    BtnSubmit.Enabled = false;
                 }
+                else
+                    BtnSubmit.Enabled = true;
             }
             else if (Radio2.Checked)
             {
@@ -316,11 +321,13 @@ namespace Client
                 if (found == null)
                 {
                     TxtSearchResult.Text = "No results found.";
+                    BtnSubmit.Enabled = false;
                 }
                 else
                 {
                     TxtSearchResult.Text = found.Denumire;
                     centruDonare = found;
+                    BtnSubmit.Enabled = true;
                 }
             }
             else
@@ -351,6 +358,20 @@ namespace Client
         {
             BtnSubmit.BackColor = Color.DarkRed;
             BtnSubmit.ForeColor = Color.White;
+        }
+
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            //Status: Requested, Sent, Received, Cancelled, Rejected
+            try
+            {
+                var formularCerere = new FormularCerere(TxtPacient.Text, double.Parse(TxtPlatelets.Text), double.Parse(TxtPlasma.Text), double.Parse(TxtErythrocytes.Text), (int)_loggedAccount.IdM, "Requested", TxtBloodType.Text, TxtRh.Text, centruDonare.Id);
+                _server.FormularCerereAdd(formularCerere);
+                MessageBox.Show("Your request has been submitted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

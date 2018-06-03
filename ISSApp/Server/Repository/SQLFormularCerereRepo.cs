@@ -1,7 +1,7 @@
-using System;
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -19,7 +19,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "INSERT INTO FormulareCerere(Target, CantTrombocite, CantPlasma, CantGlobuleRosii, IdM, Status, Grupa, Rh) VALUES (@Target, @CantTrombocite, @CantPlasma, @CantGlobuleRosii, @IdM, @Status, @Grupa, @Rh)";
+                        "INSERT INTO FormulareCerere(Target, CantTrombocite, CantPlasma, CantGlobuleRosii, IdM, Status, Grupa, Rh, IdCd) VALUES (@Target, @CantTrombocite, @CantPlasma, @CantGlobuleRosii, @IdM, @Status, @Grupa, @Rh, @IdCd)";
 
                     var paramTarget = command.CreateParameter();
                     paramTarget.ParameterName = "@Target";
@@ -47,7 +47,7 @@ namespace Server.Repository
 
                     var paramCantGlobuleRosii = command.CreateParameter();
                     paramCantGlobuleRosii.ParameterName = "@CantGlobuleRosii";
-                    if(!formularCerere.CantGlobuleRosii.Equals(0))
+                    if (!formularCerere.CantGlobuleRosii.Equals(0))
                         paramCantGlobuleRosii.Value = formularCerere.CantGlobuleRosii;
                     else
                         paramCantGlobuleRosii.Value = DBNull.Value;
@@ -84,6 +84,14 @@ namespace Server.Repository
                     else
                         paramRh.Value = DBNull.Value;
                     command.Parameters.Add(paramRh);
+
+                    var paramIdCd = command.CreateParameter();
+                    paramIdCd.ParameterName = "@IdCd";
+                    if (!formularCerere.IdCd.Equals(0))
+                        paramIdCd.Value = formularCerere.IdCd;
+                    else
+                        paramIdCd.Value = DBNull.Value;
+                    command.Parameters.Add(paramIdCd);
 
                     command.ExecuteNonQuery();
                 } catch (RepositoryException)
@@ -139,7 +147,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE FormulareCerere SET Target=@Target, CantTrombocite=@CantTrombocite, CantPlasma=@CantPlasma, CantGlobuleRosii=@CantGlobuleRosii, IdM=@IdM, Status=@Status, Grupa=@Grupa, Rh=@Rh WHERE Id=@Id";
+                        "UPDATE FormulareCerere SET Target=@Target, CantTrombocite=@CantTrombocite, CantPlasma=@CantPlasma, CantGlobuleRosii=@CantGlobuleRosii, IdM=@IdM, Status=@Status, Grupa=@Grupa, Rh=@Rh, IdCd=@IdCd WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -210,6 +218,15 @@ namespace Server.Repository
                         paramRh.Value = DBNull.Value;
                     command.Parameters.Add(paramRh);
 
+                    var paramIdCd = command.CreateParameter();
+                    paramIdCd.ParameterName = "@IdCd";
+                    if (!formularCerere.IdCd.Equals(0))
+                        paramIdCd.Value = formularCerere.IdCd;
+                    else
+                        paramIdCd.Value = DBNull.Value;
+                    command.Parameters.Add(paramIdCd);
+
+
                     var result = command.ExecuteNonQuery();
                     connection.Close();
                     if (result != 0)
@@ -246,19 +263,19 @@ namespace Server.Repository
                         {
                             int idFromCerere = result.GetInt32(0);
                             string target = "";
-                            if(result[1] != DBNull.Value)
+                            if (result[1] != DBNull.Value)
                                 target = result.GetString(1);
                             double? cantTrombocite = null;
                             if (result[2] != DBNull.Value)
                                 cantTrombocite = result.GetDouble(2);
                             double? cantPlasma = null;
-                            if(result[3] != DBNull.Value)
+                            if (result[3] != DBNull.Value)
                                 cantPlasma = result.GetDouble(3);
                             double? cantGlobuleRosi = null;
-                            if(result[4] != DBNull.Value)
+                            if (result[4] != DBNull.Value)
                                 cantGlobuleRosi = result.GetDouble(4);
                             int? idM = null;
-                            if(result[5] != null)
+                            if (result[5] != null)
                                 idM = result.GetInt32(5);
                             string status = "";
                             if (result[6] != DBNull.Value)
@@ -269,15 +286,17 @@ namespace Server.Repository
                             string rh = "";
                             if (result[8] != DBNull.Value)
                                 rh = result.GetString(8);
-                            FormularCerere formularCerere = new FormularCerere(idFromCerere, target, cantTrombocite, cantPlasma, cantGlobuleRosi, idM, status, grupa, rh);
+                            int? idCd = null;
+                            if (result[9] != null)
+                                idCd = result.GetInt32(5);
+                            FormularCerere formularCerere = new FormularCerere(idFromCerere, target, cantTrombocite, cantPlasma, cantGlobuleRosi, idM, status, grupa, rh, idCd);
                             return formularCerere;
                         }
 
                         return null;
                     }
 
-                }
-                catch (RepositoryException)
+                } catch (RepositoryException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -324,7 +343,10 @@ namespace Server.Repository
                             string rh = "";
                             if (result[8] != DBNull.Value)
                                 rh = result.GetString(8);
-                            FormularCerere formularCerere = new FormularCerere(idFromCerere, target, cantTrombocite, cantPlasma, cantGlobuleRosi, idM, status, grupa, rh);
+                            int? idCd = null;
+                            if (result[9] != null)
+                                idCd = result.GetInt32(5);
+                            FormularCerere formularCerere = new FormularCerere(idFromCerere, target, cantTrombocite, cantPlasma, cantGlobuleRosi, idM, status, grupa, rh, idCd);
 
                             toReturn.Add(formularCerere);
                         }

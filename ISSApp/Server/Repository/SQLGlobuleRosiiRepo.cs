@@ -1,4 +1,3 @@
-using System;
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
@@ -187,7 +186,7 @@ namespace Server.Repository
                             psGlobuleRosii.Rh = result.GetString(5);
 
                             int? idcd = null;
-                            if(result[6] != DBNull.Value)
+                            if (result[6] != DBNull.Value)
                                 idcd = result.GetInt32(6);
 
                             psGlobuleRosii.IdCD = idcd;

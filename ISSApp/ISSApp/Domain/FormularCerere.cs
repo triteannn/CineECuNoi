@@ -25,6 +25,7 @@ namespace ISSApp.Domain
 
         [NotMapped]
         public int? IdM { get; set; }  //is this gut?
+        public int? IdCd { get; set; }
 
         public double? CantTrombocite { get; set; }
         public double? CantPlasma { get; set; }
@@ -37,7 +38,7 @@ namespace ISSApp.Domain
 
         public virtual Medic Medic { get; set; }
 
-        public FormularCerere(int id, string target, double? cantTrombocite, double? cantPlasma, double? cantGlobuleRosi, int? idM, string status, string grupa, string rh)
+        public FormularCerere(int id, string target, double? cantTrombocite, double? cantPlasma, double? cantGlobuleRosi, int? idM, string status, string grupa, string rh, int? idCd)
         {
             Id = id;
             Target = target;
@@ -48,6 +49,20 @@ namespace ISSApp.Domain
             Status = status;
             Grupa = grupa;
             Rh = rh;
+            IdCd = idCd;
+        }
+
+        public FormularCerere(string target, double? cantTrombocite, double? cantPlasma, double? cantGlobuleRosi, int? idM, string status, string grupa, string rh, int? idCd)
+        {
+            Target = target;
+            CantTrombocite = cantTrombocite;
+            CantPlasma = cantPlasma;
+            CantGlobuleRosii = cantGlobuleRosi;
+            IdM = idM;
+            Status = status;
+            Grupa = grupa;
+            Rh = rh;
+            IdCd = idCd;
         }
     }
 }
