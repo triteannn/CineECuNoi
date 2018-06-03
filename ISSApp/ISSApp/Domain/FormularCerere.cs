@@ -24,11 +24,11 @@ namespace ISSApp.Domain
         public string Target { get; set; }
 
         [NotMapped]
-        public int IdM { get; set; }  //is this gut?
+        public int? IdM { get; set; }  //is this gut?
 
-        public double CantTrombocite { get; set; }
-        public double CantPlasma { get; set; }
-        public double CantGlobuleRosii { get; set; }
+        public double? CantTrombocite { get; set; }
+        public double? CantPlasma { get; set; }
+        public double? CantGlobuleRosii { get; set; }
         public string Status { get; set; }
 
         public string Grupa { get; set; }
@@ -41,10 +41,10 @@ namespace ISSApp.Domain
         {
             Id = id;
             Target = target;
-            CantTrombocite = (double) cantTrombocite;
-            CantPlasma = (double) cantPlasma;
-            CantGlobuleRosii = (double) cantGlobuleRosi;
-            IdM = (int) idM;
+            CantTrombocite = cantTrombocite;
+            CantPlasma = cantPlasma;
+            CantGlobuleRosii = cantGlobuleRosi;
+            IdM = idM;
             Status = status;
             Grupa = grupa;
             Rh = rh;
