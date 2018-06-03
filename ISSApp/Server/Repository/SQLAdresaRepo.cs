@@ -171,17 +171,17 @@ namespace Server.Repository
 
                             String strada = "";
                             if (result[1] != DBNull.Value)
-                                result.GetString(1);
+                                strada = result.GetString(1);
 
                             int numar = result.GetInt32(2);
 
                             String oras = "";
                             if (result[3] != DBNull.Value)
-                                result.GetString(3);
+                                oras = result.GetString(3);
 
                             String judet = "";
                             if (result[4] != DBNull.Value)
-                                result.GetString(4);
+                                judet = result.GetString(4);
 
                             Adresa adresa = new Adresa(idAdresa, strada, numar, oras, judet);
                             return adresa;
@@ -216,17 +216,19 @@ namespace Server.Repository
 
                             String strada = "";
                             if (result[1] != DBNull.Value)
-                                result.GetString(1);
+                                strada = result.GetString(1);
 
                             int numar = result.GetInt32(2);
 
                             String oras = "";
                             if (result[3] != DBNull.Value)
-                                result.GetString(3);
+                                oras = result.GetString(3);
 
                             String judet = "";
                             if (result[4] != DBNull.Value)
-                                result.GetString(4);
+                                judet = result.GetString(4);
+                        
+                            
                             toReturn.Add(new Adresa(idAdresa, strada, numar, oras, judet));
                         }
                     }
