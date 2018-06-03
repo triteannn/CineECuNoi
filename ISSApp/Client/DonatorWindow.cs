@@ -81,7 +81,7 @@ namespace Client
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void MainWindow_MouseDown(object sender, MouseEventArgs e)
+        private void DonatorWindow_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
                 return;

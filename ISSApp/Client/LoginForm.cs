@@ -203,6 +203,13 @@ namespace Client
                             adminWindow.Show();
                             Hide();
                         }
+                        else if (DropdownAS.selectedValue.Equals("Doctor") && acc.IdD == 0 & acc.IdAc == 0 &&
+                                    acc.IdM != 0)
+                        {
+                            var medicWindow = new MedicWindow(this, _server, acc);
+                            medicWindow.Show();
+                            Hide();
+                        }
                         else
                         {
                             MessageBox.Show(@"This account doesn't have the rights to login as " + DropdownAS.selectedValue,
