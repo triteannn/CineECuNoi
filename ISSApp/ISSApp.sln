@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISSApp", "ISSApp\ISSApp.csproj", "{FB6828FA-3A97-4478-8F3D-5CA7159E17BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{F7C4AE59-84A2-40BC-87EC-4B86278AFDC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{06C69402-D7D1-4479-864A-DB84C809CB8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteUnit", "TesteUnit\TesteUnit.csproj", "{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{06C69402-D7D1-4479-864A-DB84C809CB8E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06C69402-D7D1-4479-864A-DB84C809CB8E}.Release|x86.ActiveCfg = Release|Any CPU
 		{06C69402-D7D1-4479-864A-DB84C809CB8E}.Release|x86.Build.0 = Release|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Debug|x86.Build.0 = Debug|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Release|x86.ActiveCfg = Release|Any CPU
+		{87ABE020-9E6D-40A9-9DAC-6EA2D91E71BD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
