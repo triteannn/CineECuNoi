@@ -23,6 +23,7 @@ namespace Client
             _server = server;
             _angajatService = new AngajatService(_server);
             _loggedAccount = loggedAccount;
+            DonationFormsList.FullRowSelect = true;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -203,6 +204,21 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(Panel1);
             Panel1.Enabled = true;
+
+            var donationForms = _server.FormularDonareFindAll();
+
+            donationForms.ForEach(x => {
+                var donator = _server.DonatorFindEntity((int)x.IdD);
+                var item = new ListViewItem(new[] {
+                    x.DataCreare.ToShortDateString(),
+                    donator.Nume,
+                    donator.Prenume
+                });
+                item.Tag = x;
+                DonationFormsList.Items.Add(item);
+            });
+
+
         }
 
         private void MenuButton2_Click(object sender, EventArgs e)
@@ -284,6 +300,18 @@ namespace Client
         {
             e.Graphics.DrawLine(Pens.DarkRed, new Point(e.ClipRectangle.Left + e.ClipRectangle.Width - 1, e.ClipRectangle.Top + e.ClipRectangle.Height - 4), new Point(e.ClipRectangle.Left + e.ClipRectangle.Width - 1, e.ClipRectangle.Top + 1));
             base.OnPaint(e);
+        }
+
+        private void DonationFormsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DonationFormsList.SelectedIndices.Count > 0)
+            {
+                var formular = DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].Tag;
+                TxtCreationDate.Text = ((FormularDonare)formular).DataCreare.ToShortDateString();
+                TxtFirstName.Text = DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].SubItems[2].Text;
+                TxtLastName.Text = DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].SubItems[1].Text;
+                TxtStatus.Text = ((FormularDonare)formular).Status;
+            }
         }
     }
 }
