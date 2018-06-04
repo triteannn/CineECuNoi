@@ -11,6 +11,8 @@ namespace ISSApp.Domain
         public string Telefon { get; set; }
         public string Email { get; set; }
 
+        public DateContact() { }
+
         public DateContact(int id, string telefon, string email, int? idAdr)
         {
             Id = id;

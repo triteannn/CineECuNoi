@@ -28,7 +28,12 @@ namespace Server.Repository
 
                     var paramIdAdr = command.CreateParameter();
                     paramIdAdr.ParameterName = "@IdAdr";
-                    paramIdAdr.Value = entity.IdAdr;
+
+                    if (entity.IdAdr != null)
+                        paramIdAdr.Value = entity.IdAdr;
+                    else
+                        paramIdAdr.Value = DBNull.Value;
+
                     command.Parameters.Add(paramIdAdr);
 
                     command.ExecuteNonQuery();

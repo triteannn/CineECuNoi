@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Server.Repository
 {
-    class SQLDateContact : ISqlRepo<DateContact>
+    public class SQLDateContact : ISqlRepo<DateContact>
     {
         public void Add(DateContact entity)
         {
