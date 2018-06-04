@@ -18,7 +18,27 @@ namespace ISSApp.Domain
 
         public PSPlasma() { }
 
-        public virtual CentruDonare CentruDonare { get; set; }
+        public PSPlasma(int id, float quantity, string target, DateTime dataExpirare, string grupa, string rh, int? idCd)
+        {
+            Id = id;
+            Cantitate = quantity;
+            Target = target;
+            DataExpirare = dataExpirare;
+            Grupa = grupa;
+            Rh = rh;
+            IdCD = idCd;
+        }
 
+        public PSPlasma(float quantity, string target, DateTime dataExpirare, string grupa, string rh, int? idCd)
+        {
+            Cantitate = quantity;
+            Target = target;
+            DataExpirare = dataExpirare;
+            Grupa = grupa;
+            Rh = rh;
+            IdCD = idCd;
+        }
+
+        public virtual CentruDonare CentruDonare { get; set; }
     }
 }

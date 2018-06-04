@@ -503,8 +503,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.AdminUpdateDataBase(dataSet);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -515,8 +514,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.AdminGetDataSet();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -1032,13 +1030,14 @@ namespace Server.Networking
         {
             try
             {
-                if (!formularCerereRepo.ExistaCNP(pungaSange.Target))
+                /*if (!formularCerereRepo.ExistaCNP(pungaSange.Target))
                 {
                     pungaSange.Target = null;
 
                 }
 
-                pungaSangeRepo.AddInitial(pungaSange);
+                pungaSangeRepo.AddInitial(pungaSange);*/
+                pungaSangeRepo.Add(pungaSange);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);

@@ -186,23 +186,26 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            String cnp = "";
+                            var iD = result.GetInt32(0);
+                            int? idCd = null;
+                            var cnp = "";
                             if (result[1] != DBNull.Value)
                                 cnp = result.GetString(1);
 
-                            String nume = "";
+                            var nume = "";
                             if (result[2] != DBNull.Value)
                                 nume = result.GetString(2);
 
-                            String prenume = "";
+                            var prenume = "";
                             if (result[3] != DBNull.Value)
-                                result.GetString(3);
+                                prenume = result.GetString(3);
 
                             DateTime date = result.GetDateTime(4);
 
+                            if (result[5] != DBNull.Value)
+                                idCd = result.GetInt32(5);
 
-
-                            AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);
+                            AngajatCentru angajat = new AngajatCentru(iD, cnp, nume, prenume, date, idCd);
                             return angajat;
                         }
 

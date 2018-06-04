@@ -28,7 +28,10 @@ namespace Server.Repository
 
                     var paramTarget = command.CreateParameter();
                     paramTarget.ParameterName = "@Target";
-                    paramTarget.Value = psGlobuleRosii.Target;
+                    if (psGlobuleRosii != null)
+                        paramTarget.Value = psGlobuleRosii.Target;
+                    else
+                        paramTarget.Value = DBNull.Value;
                     command.Parameters.Add(paramTarget);
 
                     var paramDataExpirare = command.CreateParameter();

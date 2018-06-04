@@ -28,7 +28,10 @@ namespace Server.Repository
 
                     var paramTarget = command.CreateParameter();
                     paramTarget.ParameterName = "@Target";
-                    paramTarget.Value = psTrombocite.Target;
+                    if (psTrombocite.Target != null)
+                        paramTarget.Value = psTrombocite.Target;
+                    else
+                        paramTarget.Value = DBNull.Value;
                     command.Parameters.Add(paramTarget);
 
                     var paramDataExpirare = command.CreateParameter();

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ISSApp.Domain
 {
+    [Serializable]
     public class PungaSangeCuCNP
     {
         public string CNP { get; set; }

@@ -7,6 +7,29 @@ namespace ISSApp.Domain
     [Table("PSGlobuleRosii")]
     public class PSGlobuleRosii : IProdusSanguin
     {
+        public PSGlobuleRosii(int id, float quantity, string target, DateTime dataExpirare, string grupa, string rh, int? idCd)
+        {
+            Id = id;
+            Cantitate = quantity;
+            Target = target;
+            DataExpirare = dataExpirare;
+            Grupa = grupa;
+            Rh = rh;
+            IdCD = idCd;
+        }
+
+        public PSGlobuleRosii(float quantity, string target, DateTime dataExpirare, string grupa, string rh, int? idCd)
+        {
+            Cantitate = quantity;
+            Target = target;
+            DataExpirare = dataExpirare;
+            Grupa = grupa;
+            Rh = rh;
+            IdCD = idCd;
+        }
+
+        public PSGlobuleRosii() { }
+
         public int Id { get; set; }
         public float Cantitate { get; set; }
         public string Target { get; set; }

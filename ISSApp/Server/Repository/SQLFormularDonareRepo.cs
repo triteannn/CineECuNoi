@@ -103,7 +103,7 @@ namespace Server.Repository
 
                     return null;
 
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
@@ -121,7 +121,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE Donatori SET DataCreare=@DataCreare, ListaBoli=@ListaBoli, IdAn=@IdAn, IdD=@IdD WHERE Id=@Id";
+                        "UPDATE FormulareDonare SET DataCreare=@DataCreare, ListaBoli=@ListaBoli, IdAn=@IdAn, IdD=@IdD, Status=@Status WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -148,6 +148,11 @@ namespace Server.Repository
                     paramIdD.Value = formularDonare.IdD;
                     command.Parameters.Add(paramIdD);
 
+                    var paramStatus = command.CreateParameter();
+                    paramStatus.ParameterName = "@Status";
+                    paramStatus.Value = formularDonare.Status;
+                    command.Parameters.Add(paramStatus);
+
                     var result = command.ExecuteNonQuery();
                     connection.Close();
                     if (result != 0)
@@ -156,7 +161,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
@@ -187,8 +192,10 @@ namespace Server.Repository
                             int? idAn = null;
                             int ID = result.GetInt32(0);
                             DateTime dataCreare = result.GetDateTime(1);
-                            string listaBoli = result.GetString(2);
+                            string listaBoli = "";
                             var status = "";
+                            if (result[2] != DBNull.Value)
+                                listaBoli = result.GetString(2);
                             if (result[3] != DBNull.Value)
                                 idAn = result.GetInt32(3);
                             if (result[4] != DBNull.Value)
@@ -205,7 +212,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -250,7 +257,7 @@ namespace Server.Repository
 
                     connection.Close();
                     return toReturn;
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
