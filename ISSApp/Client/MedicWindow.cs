@@ -177,8 +177,8 @@ namespace Client
 
         private void MedicWindow_Load(object sender, EventArgs e)
         {
-            //var doctor = _server.MedicFindByIdAccount(_loggedAccount.Id);
-            label1.Text = @"Logged in as " + _loggedAccount.Username;//+ doctor.Nume + " " + doctor.Prenume;
+            var doctor = _server.MedicFindByIdAccount(_loggedAccount.Id);
+            label1.Text = @"Logged in as " + doctor.Nume + " " + doctor.Prenume;
             formulareCerere = _server.FormularCerereFindAll();
             formulareCerere = formulareCerere.Where(x => x.Status != "Cancelled").ToList();
             if (formulareCerere.Count > 0)
