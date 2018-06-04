@@ -188,6 +188,28 @@ namespace Server.Networking
             }
         }
 
+        public void AdresaAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                adresaRepo.AdminUpdateDataBase(dataSet);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DataSet AdresaAdminGetDataSet()
+        {
+            try
+            {
+                return adresaRepo.AdminGetDataSet();
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public DataSet AccountAdminGetDataSet()
         {
             try
@@ -471,6 +493,30 @@ namespace Server.Networking
             {
                 return dateContactRepo.FindLastEntity();
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public void DateContactAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                dateContactRepo.AdminUpdateDataBase(dataSet);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DataSet DateContactAdminGetDataSet()
+        {
+            try
+            {
+                return dateContactRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }

@@ -24,6 +24,8 @@ namespace ISSApp.Networking
         Adresa AdresaFindEntity(int id);
         List<Adresa> AdresaFindAll();
         Adresa AdresaGetAdresaByDateContactId(int idDC);
+        void AdresaAdminUpdateDataBase(DataSet dataset);
+        DataSet AdresaAdminGetDataSet();
 
         //Angajat
         void AngajatAdd(AngajatCentru angajatCentru);
@@ -59,6 +61,8 @@ namespace ISSApp.Networking
         List<DateContact> DateContactFindAll();
         DateContact DateContactGetDateByIdDonator(int idDonator);
         DateContact DateContactFindLastEntity();
+        void DateContactAdminUpdateDataBase(DataSet dataset);
+        DataSet DateContactAdminGetDataSet();
 
         CentruDonare CentruDonareFindByDenumire(string denumire);
         //Donator

@@ -285,5 +285,53 @@ namespace Server.Repository
                 connection.Close();
             }
         }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM Adrese", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    rowsAffected = da.Update(dataSet.Tables["Adrese"]);
+                }
+                return rowsAffected;
+            }
+            catch (SqlException)
+            {
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
+            }
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            try
+            {
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM Adrese", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("Adrese");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "Adrese");
+                    return ds;
+                }
+            }
+            catch (SqlException)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
+            }
+        }
     }
 }
