@@ -38,6 +38,33 @@ namespace ISSApp.Domain
             ListaBoliDetectate = listaBoliDetectate;
         }
 
+        public Analiza(DateTime dataRecoltarii, double eritrocite, double hemoglobina, double hematocrit, double vEM, double hEM, double cHEM, double latimeDistribEritrocit, double trombocite, double volumMediuTrombocitar, double trombocrit, double latimeDistribTrombocit, double leucocite, double granulocite, double limfocite, double mID, double numarGranulocite, double numarLimfocite, double numarMID, double glicemie, double aLT_TGP, double colesterol, string listaBoliDetectate)
+        {
+            DataRecoltarii = dataRecoltarii;
+            Eritrocite = eritrocite;
+            Hemoglobina = hemoglobina;
+            Hematocrit = hematocrit;
+            VEM = vEM;
+            HEM = hEM;
+            CHEM = cHEM;
+            LatimeDistribEritrocit = latimeDistribEritrocit;
+            Trombocite = trombocite;
+            VolumMediuTrombocitar = volumMediuTrombocitar;
+            Trombocrit = trombocrit;
+            LatimeDistribTrombocit = latimeDistribTrombocit;
+            Leucocite = leucocite;
+            Granulocite = granulocite;
+            Limfocite = limfocite;
+            MID = mID;
+            NumarGranulocite = numarGranulocite;
+            NumarLimfocite = numarLimfocite;
+            NumarMID = numarMID;
+            Glicemie = glicemie;
+            ALT_TGP = aLT_TGP;
+            Colesterol = colesterol;
+            ListaBoliDetectate = listaBoliDetectate;
+        }
+
         public int Id { get; set; }
         public DateTime DataRecoltarii { get; set; }
         public double Eritrocite { get; set; }
@@ -65,6 +92,6 @@ namespace ISSApp.Domain
 
         public virtual FormularDonare FormularDonare { get; set; }
 
-        
+
     }
 }

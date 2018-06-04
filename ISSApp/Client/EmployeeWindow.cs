@@ -4,6 +4,7 @@ using ISSApp.Domain;
 using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -27,6 +28,8 @@ namespace Client
             _loggedAccount = loggedAccount;
             DonationFormsList.FullRowSelect = true;
             DonationFormsList.HideSelection = false;
+            DonationFormsList1.FullRowSelect = true;
+            DonationFormsList1.HideSelection = false;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -274,6 +277,52 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(Panel2);
             Panel2.Enabled = true;
+
+            var donationForms = _server.FormularDonareFindAll();
+
+            DonationFormsList1.Items.Clear();
+
+            donationForms.ForEach(x => {
+                if (x.IdAn == null)
+                {
+                    var donator = _server.DonatorFindEntity((int)x.IdD);
+                    var item = new ListViewItem(new[] {
+                        x.DataCreare.ToShortDateString(),
+                        donator.Nume,
+                        donator.Prenume
+                    });
+                    item.Tag = x;
+
+                    DonationFormsList1.Items.Add(item);
+                }
+            });
+
+            BloodResultsTable.Rows.Clear();
+            for (var j = 0; j < 21; ++j)
+                BloodResultsTable.Rows.Add();
+            BloodResultsTable.Rows[0].Cells[0].Value = "Erythrocytes";
+            BloodResultsTable.Rows[1].Cells[0].Value = "Haemoglobin";
+            BloodResultsTable.Rows[2].Cells[0].Value = "Hematocrit";
+            BloodResultsTable.Rows[3].Cells[0].Value = "VEM";
+            BloodResultsTable.Rows[4].Cells[0].Value = "HEM";
+            BloodResultsTable.Rows[5].Cells[0].Value = "CHEM";
+            BloodResultsTable.Rows[6].Cells[0].Value = "Erythrocytes distribution width";
+            BloodResultsTable.Rows[7].Cells[0].Value = "Platelets";
+            BloodResultsTable.Rows[8].Cells[0].Value = "Average platelets volume";
+            BloodResultsTable.Rows[9].Cells[0].Value = "Trombocrit";
+            BloodResultsTable.Rows[10].Cells[0].Value = "Trmbocrit distribution width";
+            BloodResultsTable.Rows[11].Cells[0].Value = "Leukocytes";
+            BloodResultsTable.Rows[12].Cells[0].Value = "Granulocytes (%)";
+            BloodResultsTable.Rows[13].Cells[0].Value = "Lymphocytes (%)";
+            BloodResultsTable.Rows[14].Cells[0].Value = "MID (EO + MO + BA) %";
+            BloodResultsTable.Rows[15].Cells[0].Value = "Number of granulocytes";
+            BloodResultsTable.Rows[16].Cells[0].Value = "Number of lymphocytes";
+            BloodResultsTable.Rows[17].Cells[0].Value = "Number of MID (EO + MO + BA)";
+            BloodResultsTable.Rows[18].Cells[0].Value = "Glucose";
+            BloodResultsTable.Rows[19].Cells[0].Value = "ALT/TGP";
+            BloodResultsTable.Rows[20].Cells[0].Value = "Cholesterol";
+            BloodResultsTable.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            BloodResultsTable.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void MenuButton3_Click(object sender, EventArgs e)
@@ -569,6 +618,122 @@ namespace Client
             } catch (NetworkingException)
             {
                 MessageBox.Show("Could not add the product.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnConfirm_MouseLeave(object sender, EventArgs e)
+        {
+            BtnConfirm.BackColor = Color.DarkRed;
+            BtnConfirm.ForeColor = Color.White;
+        }
+
+        private void BtnConfirm_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnConfirm.BackColor = Color.White;
+            BtnConfirm.ForeColor = Color.DarkRed;
+        }
+
+        private void UpdateAnalizaUI()
+        {
+            TxtDiseases.Text = "";
+
+            var donationForms = _server.FormularDonareFindAll();
+
+            DonationFormsList1.Items.Clear();
+
+            donationForms.ForEach(x => {
+                if (x.IdAn == null)
+                {
+                    var donator = _server.DonatorFindEntity((int)x.IdD);
+                    var item = new ListViewItem(new[] {
+                        x.DataCreare.ToShortDateString(),
+                        donator.Nume,
+                        donator.Prenume
+                    });
+                    item.Tag = x;
+
+                    DonationFormsList1.Items.Add(item);
+                }
+            });
+
+            BloodResultsTable.Rows.Clear();
+            for (var j = 0; j < 21; ++j)
+                BloodResultsTable.Rows.Add();
+            BloodResultsTable.Rows[0].Cells[0].Value = "Erythrocytes";
+            BloodResultsTable.Rows[1].Cells[0].Value = "Haemoglobin";
+            BloodResultsTable.Rows[2].Cells[0].Value = "Hematocrit";
+            BloodResultsTable.Rows[3].Cells[0].Value = "VEM";
+            BloodResultsTable.Rows[4].Cells[0].Value = "HEM";
+            BloodResultsTable.Rows[5].Cells[0].Value = "CHEM";
+            BloodResultsTable.Rows[6].Cells[0].Value = "Erythrocytes distribution width";
+            BloodResultsTable.Rows[7].Cells[0].Value = "Platelets";
+            BloodResultsTable.Rows[8].Cells[0].Value = "Average platelets volume";
+            BloodResultsTable.Rows[9].Cells[0].Value = "Trombocrit";
+            BloodResultsTable.Rows[10].Cells[0].Value = "Trmbocrit distribution width";
+            BloodResultsTable.Rows[11].Cells[0].Value = "Leukocytes";
+            BloodResultsTable.Rows[12].Cells[0].Value = "Granulocytes (%)";
+            BloodResultsTable.Rows[13].Cells[0].Value = "Lymphocytes (%)";
+            BloodResultsTable.Rows[14].Cells[0].Value = "MID (EO + MO + BA) %";
+            BloodResultsTable.Rows[15].Cells[0].Value = "Number of granulocytes";
+            BloodResultsTable.Rows[16].Cells[0].Value = "Number of lymphocytes";
+            BloodResultsTable.Rows[17].Cells[0].Value = "Number of MID (EO + MO + BA)";
+            BloodResultsTable.Rows[18].Cells[0].Value = "Glucose";
+            BloodResultsTable.Rows[19].Cells[0].Value = "ALT/TGP";
+            BloodResultsTable.Rows[20].Cells[0].Value = "Cholesterol";
+        }
+
+        private void BtnConfirm_Click(object sender, EventArgs e)
+        {
+            if (DonationFormsList1.SelectedIndices.Count < 1)
+            {
+                //Message
+            }
+            else
+            {
+                var count = 0;
+                FormularDonare formular;
+                var boli = "";
+                var dt = new DateTime();
+                List<PungaSange> ps = new List<PungaSange>();
+                foreach (DataGridViewRow row in BloodResultsTable.Rows)
+                {
+                    if (row.Cells[1].Value.ToString() == "")
+                    {
+                        count++;
+                        break;
+                    }
+                }
+                if (count > 0)
+                    count = 2;
+                //Message
+                else
+                {
+                    try
+                    {
+                        formular = (FormularDonare)DonationFormsList1.SelectedItems[0].Tag;
+                        boli = TxtDiseases.Text;
+                        ps = _server.PungaSangeFindAll();
+                        foreach (var p in ps)
+                        {
+                            if (p.IdFd == formular.Id)
+                            {
+                                dt = p.DataRecoltare;
+                                break;
+                            }
+                        }
+
+                        _server.AnalizaAdd(new Analiza(dt, double.Parse(BloodResultsTable.Rows[0].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[1].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[2].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[3].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[4].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[5].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[6].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[7].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[8].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[9].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[10].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[11].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[12].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[13].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[14].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[15].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[16].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[17].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[18].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[19].Cells[1].Value.ToString()), double.Parse(BloodResultsTable.Rows[20].Cells[1].Value.ToString()), boli));
+                        formular.IdAn = _server.AnalizaFindLastEntity().Id;
+                        _server.FormularDonareUpdate(formular);
+                        UpdateAnalizaUI();
+                        MessageBox.Show("Your action has been completed successfully.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    } catch (NetworkingException ex)
+                    {
+                        MessageBox.Show("Could not perform action.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
             }
         }
     }

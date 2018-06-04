@@ -39,9 +39,10 @@ namespace ISSApp.Networking
         int AngajatAdminUpdateDataBase(DataSet dataSet);
 
         //Analiza
-        void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza);
+        void AnalizaAdd(Analiza analiza);
         Analiza AnalizaFindLastByDonator(int idDonator);
         List<Analiza> AnalizaFindByDonator(int idDonator);
+        Analiza AnalizaFindLastEntity();
 
         //
         //CentruDonare

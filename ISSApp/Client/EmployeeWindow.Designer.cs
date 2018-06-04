@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AnimatorNS.Animation animation3 = new AnimatorNS.Animation();
+            AnimatorNS.Animation animation2 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeWindow));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -71,22 +73,34 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Panel2 = new System.Windows.Forms.Panel();
+            this.BtnConfirm = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.TxtDiseases = new System.Windows.Forms.TextBox();
+            this.BloodResultsTable = new System.Windows.Forms.DataGridView();
+            this.DonationFormsList1 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Panel3 = new System.Windows.Forms.Panel();
             this.Panel4 = new System.Windows.Forms.Panel();
             this.Panel5 = new System.Windows.Forms.Panel();
+            this.BtnAdd1 = new System.Windows.Forms.Button();
+            this.TxtTarget1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.label16 = new System.Windows.Forms.Label();
             this.TxtRh1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label15 = new System.Windows.Forms.Label();
             this.TxtBloodType1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label14 = new System.Windows.Forms.Label();
             this.TxtQuantity = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label13 = new System.Windows.Forms.Label();
+            this.TxtExpirationDate = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.DropdownComponents = new Bunifu.Framework.UI.BunifuDropdown();
-            this.TxtTarget1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.TxtExpirationDate = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.BtnAdd1 = new System.Windows.Forms.Button();
+            this.AnalysisColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).BeginInit();
@@ -95,6 +109,8 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BloodResultsTable)).BeginInit();
             this.Panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -259,22 +275,22 @@
             // 
             this.animator1.AnimationType = AnimatorNS.AnimationType.VertSlide;
             this.animator1.Cursor = null;
-            animation3.AnimateOnlyDifferences = true;
-            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
-            animation3.LeafCoeff = 0F;
-            animation3.MaxTime = 1F;
-            animation3.MinTime = 0F;
-            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
-            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
-            animation3.MosaicSize = 0;
-            animation3.Padding = new System.Windows.Forms.Padding(0);
-            animation3.RotateCoeff = 0F;
-            animation3.RotateLimit = 0F;
-            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
-            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
-            animation3.TimeCoeff = 0F;
-            animation3.TransparencyCoeff = 0F;
-            this.animator1.DefaultAnimation = animation3;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.animator1.DefaultAnimation = animation2;
             // 
             // Panel1
             // 
@@ -691,12 +707,153 @@
             // 
             this.Panel2.BackColor = System.Drawing.Color.White;
             this.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel2.Controls.Add(this.BtnConfirm);
+            this.Panel2.Controls.Add(this.label19);
+            this.Panel2.Controls.Add(this.label18);
+            this.Panel2.Controls.Add(this.label17);
+            this.Panel2.Controls.Add(this.TxtDiseases);
+            this.Panel2.Controls.Add(this.BloodResultsTable);
+            this.Panel2.Controls.Add(this.DonationFormsList1);
             this.animator1.SetDecoration(this.Panel2, AnimatorNS.DecorationType.None);
             this.Panel2.Location = new System.Drawing.Point(15, 91);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(987, 539);
             this.Panel2.TabIndex = 21;
             this.Panel2.Visible = false;
+            // 
+            // BtnConfirm
+            // 
+            this.BtnConfirm.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.BtnConfirm, AnimatorNS.DecorationType.None);
+            this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConfirm.ForeColor = System.Drawing.Color.White;
+            this.BtnConfirm.Location = new System.Drawing.Point(883, 488);
+            this.BtnConfirm.Name = "BtnConfirm";
+            this.BtnConfirm.Size = new System.Drawing.Size(97, 44);
+            this.BtnConfirm.TabIndex = 31;
+            this.BtnConfirm.Text = "Confirm";
+            this.BtnConfirm.UseVisualStyleBackColor = false;
+            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
+            this.BtnConfirm.MouseLeave += new System.EventHandler(this.BtnConfirm_MouseLeave);
+            this.BtnConfirm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnConfirm_MouseMove);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.animator1.SetDecoration(this.label19, AnimatorNS.DecorationType.None);
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.DarkRed;
+            this.label19.Location = new System.Drawing.Point(280, 17);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(168, 16);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "Input blood test results:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.animator1.SetDecoration(this.label18, AnimatorNS.DecorationType.None);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.DarkRed;
+            this.label18.Location = new System.Drawing.Point(3, 17);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(154, 16);
+            this.label18.TabIndex = 29;
+            this.label18.Text = "Select donation form:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.animator1.SetDecoration(this.label17, AnimatorNS.DecorationType.None);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.DarkRed;
+            this.label17.Location = new System.Drawing.Point(283, 442);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(113, 16);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "Input diseases:";
+            // 
+            // TxtDiseases
+            // 
+            this.animator1.SetDecoration(this.TxtDiseases, AnimatorNS.DecorationType.None);
+            this.TxtDiseases.Location = new System.Drawing.Point(283, 461);
+            this.TxtDiseases.Multiline = true;
+            this.TxtDiseases.Name = "TxtDiseases";
+            this.TxtDiseases.Size = new System.Drawing.Size(525, 68);
+            this.TxtDiseases.TabIndex = 27;
+            // 
+            // BloodResultsTable
+            // 
+            this.BloodResultsTable.AllowUserToAddRows = false;
+            this.BloodResultsTable.AllowUserToDeleteRows = false;
+            this.BloodResultsTable.AllowUserToResizeRows = false;
+            this.BloodResultsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.BloodResultsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BloodResultsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.AnalysisColumn,
+            this.ResultColumn});
+            this.animator1.SetDecoration(this.BloodResultsTable, AnimatorNS.DecorationType.None);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BloodResultsTable.DefaultCellStyle = dataGridViewCellStyle4;
+            this.BloodResultsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.BloodResultsTable.EnableHeadersVisualStyles = false;
+            this.BloodResultsTable.Location = new System.Drawing.Point(283, 36);
+            this.BloodResultsTable.MultiSelect = false;
+            this.BloodResultsTable.Name = "BloodResultsTable";
+            this.BloodResultsTable.RowHeadersVisible = false;
+            this.BloodResultsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.BloodResultsTable.Size = new System.Drawing.Size(697, 392);
+            this.BloodResultsTable.TabIndex = 26;
+            // 
+            // DonationFormsList1
+            // 
+            this.DonationFormsList1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.animator1.SetDecoration(this.DonationFormsList1, AnimatorNS.DecorationType.None);
+            this.DonationFormsList1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DonationFormsList1.ForeColor = System.Drawing.Color.DarkRed;
+            this.DonationFormsList1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.DonationFormsList1.Location = new System.Drawing.Point(3, 36);
+            this.DonationFormsList1.MultiSelect = false;
+            this.DonationFormsList1.Name = "DonationFormsList1";
+            this.DonationFormsList1.Size = new System.Drawing.Size(274, 493);
+            this.DonationFormsList1.TabIndex = 25;
+            this.DonationFormsList1.UseCompatibleStateImageBehavior = false;
+            this.DonationFormsList1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Date";
+            this.columnHeader4.Width = 82;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "First name";
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader5.Width = 85;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Last name";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Width = 88;
             // 
             // Panel3
             // 
@@ -743,6 +900,55 @@
             this.Panel5.Size = new System.Drawing.Size(987, 539);
             this.Panel5.TabIndex = 22;
             this.Panel5.Visible = false;
+            // 
+            // BtnAdd1
+            // 
+            this.BtnAdd1.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.BtnAdd1, AnimatorNS.DecorationType.None);
+            this.BtnAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAdd1.ForeColor = System.Drawing.Color.White;
+            this.BtnAdd1.Location = new System.Drawing.Point(682, 183);
+            this.BtnAdd1.Name = "BtnAdd1";
+            this.BtnAdd1.Size = new System.Drawing.Size(224, 33);
+            this.BtnAdd1.TabIndex = 12;
+            this.BtnAdd1.Text = "Add";
+            this.BtnAdd1.UseVisualStyleBackColor = false;
+            this.BtnAdd1.Click += new System.EventHandler(this.BtnAdd1_Click);
+            this.BtnAdd1.MouseLeave += new System.EventHandler(this.BtnAdd1_MouseLeave);
+            this.BtnAdd1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnAdd1_MouseMove);
+            // 
+            // TxtTarget1
+            // 
+            this.TxtTarget1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtTarget1, AnimatorNS.DecorationType.None);
+            this.TxtTarget1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtTarget1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtTarget1.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtTarget1.HintText = "Optional";
+            this.TxtTarget1.isPassword = false;
+            this.TxtTarget1.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtTarget1.LineIdleColor = System.Drawing.Color.Gray;
+            this.TxtTarget1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtTarget1.LineThickness = 3;
+            this.TxtTarget1.Location = new System.Drawing.Point(409, 183);
+            this.TxtTarget1.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtTarget1.Name = "TxtTarget1";
+            this.TxtTarget1.Size = new System.Drawing.Size(224, 33);
+            this.TxtTarget1.TabIndex = 11;
+            this.TxtTarget1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.animator1.SetDecoration(this.label16, AnimatorNS.DecorationType.None);
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkRed;
+            this.label16.Location = new System.Drawing.Point(406, 163);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(58, 16);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Target:";
             // 
             // TxtRh1
             // 
@@ -840,6 +1046,26 @@
             this.label13.TabIndex = 4;
             this.label13.Text = "Quantity:";
             // 
+            // TxtExpirationDate
+            // 
+            this.TxtExpirationDate.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.animator1.SetDecoration(this.TxtExpirationDate, AnimatorNS.DecorationType.None);
+            this.TxtExpirationDate.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtExpirationDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TxtExpirationDate.HintForeColor = System.Drawing.Color.Empty;
+            this.TxtExpirationDate.HintText = "";
+            this.TxtExpirationDate.isPassword = false;
+            this.TxtExpirationDate.LineFocusedColor = System.Drawing.Color.DarkRed;
+            this.TxtExpirationDate.LineIdleColor = System.Drawing.Color.Gray;
+            this.TxtExpirationDate.LineMouseHoverColor = System.Drawing.Color.DarkRed;
+            this.TxtExpirationDate.LineThickness = 3;
+            this.TxtExpirationDate.Location = new System.Drawing.Point(409, 61);
+            this.TxtExpirationDate.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtExpirationDate.Name = "TxtExpirationDate";
+            this.TxtExpirationDate.Size = new System.Drawing.Size(224, 33);
+            this.TxtExpirationDate.TabIndex = 3;
+            this.TxtExpirationDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -884,74 +1110,18 @@
             this.DropdownComponents.Size = new System.Drawing.Size(217, 35);
             this.DropdownComponents.TabIndex = 0;
             // 
-            // TxtTarget1
+            // AnalysisColumn
             // 
-            this.TxtTarget1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.animator1.SetDecoration(this.TxtTarget1, AnimatorNS.DecorationType.None);
-            this.TxtTarget1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.TxtTarget1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtTarget1.HintForeColor = System.Drawing.Color.Empty;
-            this.TxtTarget1.HintText = "Optional";
-            this.TxtTarget1.isPassword = false;
-            this.TxtTarget1.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtTarget1.LineIdleColor = System.Drawing.Color.Gray;
-            this.TxtTarget1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
-            this.TxtTarget1.LineThickness = 3;
-            this.TxtTarget1.Location = new System.Drawing.Point(409, 183);
-            this.TxtTarget1.Margin = new System.Windows.Forms.Padding(4);
-            this.TxtTarget1.Name = "TxtTarget1";
-            this.TxtTarget1.Size = new System.Drawing.Size(224, 33);
-            this.TxtTarget1.TabIndex = 11;
-            this.TxtTarget1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.AnalysisColumn.HeaderText = "Analysis";
+            this.AnalysisColumn.Name = "AnalysisColumn";
+            this.AnalysisColumn.ReadOnly = true;
+            this.AnalysisColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // label16
+            // ResultColumn
             // 
-            this.label16.AutoSize = true;
-            this.animator1.SetDecoration(this.label16, AnimatorNS.DecorationType.None);
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.DarkRed;
-            this.label16.Location = new System.Drawing.Point(406, 163);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(58, 16);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "Target:";
-            // 
-            // TxtExpirationDate
-            // 
-            this.TxtExpirationDate.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.animator1.SetDecoration(this.TxtExpirationDate, AnimatorNS.DecorationType.None);
-            this.TxtExpirationDate.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.TxtExpirationDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TxtExpirationDate.HintForeColor = System.Drawing.Color.Empty;
-            this.TxtExpirationDate.HintText = "";
-            this.TxtExpirationDate.isPassword = false;
-            this.TxtExpirationDate.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtExpirationDate.LineIdleColor = System.Drawing.Color.Gray;
-            this.TxtExpirationDate.LineMouseHoverColor = System.Drawing.Color.DarkRed;
-            this.TxtExpirationDate.LineThickness = 3;
-            this.TxtExpirationDate.Location = new System.Drawing.Point(409, 61);
-            this.TxtExpirationDate.Margin = new System.Windows.Forms.Padding(4);
-            this.TxtExpirationDate.Name = "TxtExpirationDate";
-            this.TxtExpirationDate.Size = new System.Drawing.Size(224, 33);
-            this.TxtExpirationDate.TabIndex = 3;
-            this.TxtExpirationDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // BtnAdd1
-            // 
-            this.BtnAdd1.BackColor = System.Drawing.Color.DarkRed;
-            this.animator1.SetDecoration(this.BtnAdd1, AnimatorNS.DecorationType.None);
-            this.BtnAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdd1.ForeColor = System.Drawing.Color.White;
-            this.BtnAdd1.Location = new System.Drawing.Point(682, 183);
-            this.BtnAdd1.Name = "BtnAdd1";
-            this.BtnAdd1.Size = new System.Drawing.Size(224, 33);
-            this.BtnAdd1.TabIndex = 12;
-            this.BtnAdd1.Text = "Add";
-            this.BtnAdd1.UseVisualStyleBackColor = false;
-            this.BtnAdd1.Click += new System.EventHandler(this.BtnAdd1_Click);
-            this.BtnAdd1.MouseLeave += new System.EventHandler(this.BtnAdd1_MouseLeave);
-            this.BtnAdd1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnAdd1_MouseMove);
+            this.ResultColumn.HeaderText = "Result";
+            this.ResultColumn.Name = "ResultColumn";
+            this.ResultColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // EmployeeWindow
             // 
@@ -959,9 +1129,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1015, 641);
             this.ControlBox = false;
+            this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.Panel5);
-            this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Panel4);
             this.Controls.Add(this.MenuToggle);
@@ -991,6 +1161,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.Panel2.ResumeLayout(false);
+            this.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BloodResultsTable)).EndInit();
             this.Panel5.ResumeLayout(false);
             this.Panel5.PerformLayout();
             this.ResumeLayout(false);
@@ -1056,5 +1229,17 @@
         private System.Windows.Forms.Label label16;
         private Bunifu.Framework.UI.BunifuMaterialTextbox TxtExpirationDate;
         private System.Windows.Forms.Button BtnAdd1;
+        private System.Windows.Forms.DataGridView BloodResultsTable;
+        private System.Windows.Forms.ListView DonationFormsList1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox TxtDiseases;
+        private System.Windows.Forms.Button BtnConfirm;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AnalysisColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResultColumn;
     }
 }

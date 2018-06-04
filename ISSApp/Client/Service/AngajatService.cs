@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ISSApp.Domain;
+﻿using ISSApp.Domain;
 using ISSApp.Exceptions;
 using ISSApp.Networking;
+using System;
+using System.Collections.Generic;
 
 namespace Client.Service
 {
@@ -26,8 +23,7 @@ namespace Client.Service
         {
             try
             {
-                PungaSange punga = new PungaSange()
-                {
+                PungaSange punga = new PungaSange() {
                     DataRecoltare = dataRecoltare,
                     Target = target,
                     IdCd = idCd,
@@ -35,11 +31,10 @@ namespace Client.Service
                 };
 
                 _server.PungaSangeAdd(punga);
-            }
-            catch (NetworkingException e)
-            { 
+            } catch (NetworkingException e)
+            {
                 throw new ServiceException(e.Message);
-            }       
+            }
 
         }
 
@@ -52,8 +47,7 @@ namespace Client.Service
             {
                 if (pungaSange.Target != null)
                 {
-                    _server.PlasmaAdd(new PSPlasma()
-                    {
+                    _server.PlasmaAdd(new PSPlasma() {
                         Cantitate = cantitatePlasma,
                         Target = pungaSange.Target,
                         DataExpirare = expirarePlasma,
@@ -62,8 +56,7 @@ namespace Client.Service
                         IdCD = pungaSange.IdCd
                     });
 
-                    _server.TrombociteAdd(new PSTrombocite()
-                    {
+                    _server.TrombociteAdd(new PSTrombocite() {
                         Cantitate = cantitateTrombocite,
                         Target = pungaSange.Target,
                         DataExpirare = expirareTrombocite,
@@ -72,8 +65,7 @@ namespace Client.Service
                         IdCD = pungaSange.IdCd
                     });
 
-                    _server.GlobuleRosiiAdd(new PSGlobuleRosii()
-                    {
+                    _server.GlobuleRosiiAdd(new PSGlobuleRosii() {
                         Cantitate = cantitateGlobule,
                         Target = pungaSange.Target,
                         DataExpirare = expirareGlobule,
@@ -84,8 +76,7 @@ namespace Client.Service
                 }
                 else
                 {
-                    _server.PlasmaAdd(new PSPlasma()
-                    {
+                    _server.PlasmaAdd(new PSPlasma() {
                         Cantitate = cantitatePlasma,
                         Target = null,
                         DataExpirare = expirarePlasma,
@@ -94,8 +85,7 @@ namespace Client.Service
                         IdCD = pungaSange.IdCd
                     });
 
-                    _server.TrombociteAdd(new PSTrombocite()
-                    {
+                    _server.TrombociteAdd(new PSTrombocite() {
                         Cantitate = cantitateTrombocite,
                         Target = null,
                         DataExpirare = expirareTrombocite,
@@ -104,8 +94,7 @@ namespace Client.Service
                         IdCD = pungaSange.IdCd
                     });
 
-                    _server.GlobuleRosiiAdd(new PSGlobuleRosii()
-                    {
+                    _server.GlobuleRosiiAdd(new PSGlobuleRosii() {
                         Cantitate = cantitateGlobule,
                         Target = null,
                         DataExpirare = expirareGlobule,
@@ -118,8 +107,7 @@ namespace Client.Service
 
                 _server.PungaSangeDelete(pungaSange);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }
@@ -129,8 +117,7 @@ namespace Client.Service
         {
             try
             {
-                PSPlasma plasma = new PSPlasma()
-                {
+                PSPlasma plasma = new PSPlasma() {
                     Cantitate = cantitate,
                     Target = null,
                     DataExpirare = dataExpirare,
@@ -140,19 +127,17 @@ namespace Client.Service
                 };
                 _server.PlasmaAdd(plasma);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
-            }           
+            }
         }
 
         public void addTrombocite(float cantitate, DateTime dataExpirare, string grupa, string rh, int idCD)
         {
             try
             {
-                PSTrombocite trombocite = new PSTrombocite()
-                {
+                PSTrombocite trombocite = new PSTrombocite() {
                     Cantitate = cantitate,
                     Target = null,
                     DataExpirare = dataExpirare,
@@ -162,8 +147,7 @@ namespace Client.Service
                 };
                 _server.TrombociteAdd(trombocite);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }
@@ -173,8 +157,7 @@ namespace Client.Service
         {
             try
             {
-                PSGlobuleRosii globule = new PSGlobuleRosii()
-                {
+                PSGlobuleRosii globule = new PSGlobuleRosii() {
                     Cantitate = cantitate,
                     Target = null,
                     DataExpirare = dataExpirare,
@@ -184,8 +167,7 @@ namespace Client.Service
                 };
                 _server.GlobuleRosiiAdd(globule);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }
@@ -199,8 +181,7 @@ namespace Client.Service
         {
             try
             {
-                Analiza analiza = new Analiza()
-                {
+                Analiza analiza = new Analiza() {
                     DataRecoltarii = pungaSange.DataRecoltare,
                     Eritrocite = eritrocite,
                     Hemoglobina = hemoglobina,
@@ -225,13 +206,12 @@ namespace Client.Service
                     Colesterol = colesterol,
                     ListaBoliDetectate = listaBoliDetectate,
                 };
-                _server.AnalizaAdd(pungaSange, grupa, rh, analiza);
+                _server.AnalizaAdd(analiza);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
-            }           
+            }
         }
 
         public AngajatCentru findByIdAccount(int id)
@@ -240,8 +220,7 @@ namespace Client.Service
             {
                 return _server.AngajatFindByIdAccount(id);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }
@@ -253,8 +232,7 @@ namespace Client.Service
             {
                 return _server.AngajatFindByUsername(username);
 
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }
@@ -265,8 +243,7 @@ namespace Client.Service
             try
             {
                 return _server.GetPungaSangeCuCNP(cnp);
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }
@@ -277,8 +254,7 @@ namespace Client.Service
             try
             {
                 return Adresa.DistantaIntreAdrese(sursa, destinatie);
-            }
-            catch (NetworkingException e)
+            } catch (NetworkingException e)
             {
                 throw new ServiceException(e.Message);
             }
