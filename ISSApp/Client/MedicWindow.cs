@@ -1,10 +1,12 @@
 ﻿using AnimatorNS;
 using Client.Service;
 using ISSApp.Domain;
+using ISSApp.Exceptions;
 using ISSApp.Networking;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -16,6 +18,8 @@ namespace Client
         private readonly IServer _server;
         private readonly Account _loggedAccount;
         private readonly MedicService _medicService;
+        private List<FormularCerere> formulareCerere;
+        private int pag;
 
         public MedicWindow(LoginForm loginForm, IServer server, Account account)
         {
@@ -24,6 +28,8 @@ namespace Client
             _loggedAccount = account;
             _server = server;
             _medicService = new MedicService(_server);
+            BtnPrevious.FlatAppearance.BorderSize = 0;
+            BtnNext.FlatAppearance.BorderSize = 0;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -146,6 +152,7 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(RequestsPanel);
             RequestsPanel.Enabled = true;
+
         }
 
         public const int WmNclbuttondown = 0xA1;
@@ -170,14 +177,72 @@ namespace Client
 
         private void MedicWindow_Load(object sender, EventArgs e)
         {
-            //var doctor = _server.MedicFindByIdAccount(_loggedAccount.Id);
-            label1.Text = @"Logged in as " + _loggedAccount.Username;//+ doctor.Nume + " " + doctor.Prenume;
+            var doctor = _server.MedicFindByIdAccount(_loggedAccount.Id);
+            label1.Text = @"Logged in as " + doctor.Nume + " " + doctor.Prenume;
+            formulareCerere = _server.FormularCerereFindAll();
+            formulareCerere = formulareCerere.Where(x => x.Status != "Cancelled").ToList();
+            if (formulareCerere.Count > 0)
+            {
+                pag = formulareCerere.Count - 1;
+                AutoComplete(formulareCerere[pag]);
+
+                if (pag == 0)
+                    BtnPrevious.Enabled = false;
+                BtnNext.Enabled = false;
+            }
+            else
+            {
+                BtnReceived.Enabled = BtnNext.Enabled = BtnPrevious.Enabled = BtnCancel.Enabled = false;
+                LblMessage.Text = @"There are no requests in the database.";
+            }
+        }
+
+        private void AutoComplete(FormularCerere formularCerere)
+        {
+            LblMessage.Text = "";
+            BtnCancel.Enabled = BtnReceived.Enabled = true;
+            TxtName.Text = formularCerere.Target;
+            TxtBloodType1.Text = formularCerere.Grupa;
+            TxtRh1.Text = formularCerere.Rh;
+            TxtPlatelets1.Text = formularCerere.CantTrombocite.ToString();
+            TxtPlasma1.Text = formularCerere.CantPlasma.ToString();
+            TxtErythrocytes1.Text = formularCerere.CantGlobuleRosii.ToString();
+            TxtTransfusionCenter.Text = _server.CentruDonareFindEntity((int)formularCerere.IdCd).Denumire;
+            if (formularCerere.Status.Equals("Rejected"))
+            {
+                ImageProgress.Image = Properties.Resources.progress0;
+                LblRequested.ForeColor = Color.DimGray;
+                LblSent.ForeColor = Color.DimGray;
+                LblReceived.ForeColor = Color.DimGray;
+            }
+            else if (formularCerere.Status.Equals("Requested"))
+            {
+                ImageProgress.Image = Properties.Resources.progress1;
+                LblRequested.ForeColor = Color.DarkRed;
+                LblSent.ForeColor = Color.DimGray;
+                LblReceived.ForeColor = Color.DimGray;
+            }
+            else if (formularCerere.Status.Equals("Sent"))
+            {
+                ImageProgress.Image = Properties.Resources.progress2;
+                LblRequested.ForeColor = Color.DarkRed;
+                LblSent.ForeColor = Color.DarkRed;
+                LblReceived.ForeColor = Color.DimGray;
+            }
+            else if (formularCerere.Status.Equals("Received"))
+            {
+                ImageProgress.Image = Properties.Resources.progress3;
+                LblRequested.ForeColor = Color.DarkRed;
+                LblSent.ForeColor = Color.DarkRed;
+                LblReceived.ForeColor = Color.DarkRed;
+            }
         }
 
         private CentruDonare centruDonare;
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            BtnSubmit.Enabled = false;
             if (Radio1.Checked)
             {
                 centruDonare = null;
@@ -278,15 +343,175 @@ namespace Client
                 if (centruDonare == null)
                 {
                     TxtSearchResult.Text = "No results found.";
+                    BtnSubmit.Enabled = false;
                 }
+                else
+                    BtnSubmit.Enabled = true;
             }
             else if (Radio2.Checked)
             {
+                var spital = _server.SpitalFindEntity(_server.MedicFindEntity((int)_loggedAccount.IdM).Id);
+                var spitalAdr = _server.AdresaFindEntity(spital.IdAdr);
+                var centre = _server.CentruDonareFindAll();
+                centre.Sort((x, y) => {
+                    return Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)x.IdAdr), spitalAdr).CompareTo(Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)y.IdAdr), spitalAdr));
+                });
+                CentruDonare found = null;
 
+                foreach (var c in centre)
+                {
+                    double sumaGR = 0;
+                    foreach (var ps in _server.GlobuleRosiiFindAllByCentru(c.Id))
+                    {
+                        sumaGR += ps.Cantitate;
+                    }
+                    double sumaP = 0;
+                    foreach (var ps in _server.PlasmaFindAllByCentru(c.Id))
+                    {
+                        sumaP += ps.Cantitate;
+                    }
+                    double sumaT = 0;
+                    foreach (var ps in _server.TrombociteFindAllByCentru(c.Id))
+                    {
+                        sumaT += ps.Cantitate;
+                    }
+                    if (double.Parse(TxtErythrocytes.Text).CompareTo(sumaGR) <= 0 && double.Parse(TxtPlasma.Text).CompareTo(sumaP) <= 0 && double.Parse(TxtPlatelets.Text).CompareTo(sumaT) <= 0)
+                    {
+                        found = c;
+                        break;
+                    }
+                }
+                if (found == null)
+                {
+                    TxtSearchResult.Text = "No results found.";
+                    BtnSubmit.Enabled = false;
+                }
+                else
+                {
+                    TxtSearchResult.Text = found.Denumire;
+                    centruDonare = found;
+                    BtnSubmit.Enabled = true;
+                }
             }
             else
             {
                 MessageBox.Show("You haven't selected a search criteria.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void BtnSearch_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnSearch.BackColor = Color.White;
+            BtnSearch.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnSearch_MouseLeave(object sender, EventArgs e)
+        {
+            BtnSearch.BackColor = Color.DarkRed;
+            BtnSearch.ForeColor = Color.White;
+        }
+
+        private void BtnSubmit_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnSubmit.BackColor = Color.White;
+            BtnSubmit.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnSubmit_MouseLeave(object sender, EventArgs e)
+        {
+            BtnSubmit.BackColor = Color.DarkRed;
+            BtnSubmit.ForeColor = Color.White;
+        }
+
+        private void BtnSubmit_Click(object sender, EventArgs e)
+        {
+            //Status: Requested, Sent, Received, Cancelled, Rejected
+            try
+            {
+                var formularCerere = new FormularCerere(TxtPacient.Text, double.Parse(TxtPlatelets.Text), double.Parse(TxtPlasma.Text), double.Parse(TxtErythrocytes.Text), (int)_loggedAccount.IdM, "Requested", TxtBloodType.Text, TxtRh.Text, centruDonare.Id);
+                _server.FormularCerereAdd(formularCerere);
+                MessageBox.Show("Your request has been submitted.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnPrevious_Click(object sender, EventArgs e)
+        {
+            pag = pag - 1;
+            AutoComplete(formulareCerere[pag]);
+            if (pag == 0)
+                BtnPrevious.Enabled = false;
+            else
+                BtnPrevious.Enabled = true;
+            if (pag == formulareCerere.Count - 1)
+                BtnNext.Enabled = false;
+            else
+                BtnNext.Enabled = true;
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            pag = pag + 1;
+            AutoComplete(formulareCerere[pag]);
+            if (pag == 0)
+                BtnPrevious.Enabled = false;
+            else
+                BtnPrevious.Enabled = true;
+            if (pag == formulareCerere.Count - 1)
+                BtnNext.Enabled = false;
+            else
+                BtnNext.Enabled = true;
+        }
+
+        private void BtnReceived_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnReceived.BackColor = Color.White;
+            BtnReceived.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnReceived_MouseLeave(object sender, EventArgs e)
+        {
+            BtnReceived.BackColor = Color.DarkRed;
+            BtnReceived.ForeColor = Color.White;
+        }
+
+        private void BtnCancel_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnCancel.BackColor = Color.White;
+            BtnCancel.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnCancel_MouseLeave(object sender, EventArgs e)
+        {
+            BtnCancel.BackColor = Color.DarkRed;
+            BtnCancel.ForeColor = Color.White;
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            var formular = formulareCerere[pag];
+            formular.Status = "Cancelled";
+            _server.FormularCerereUpdate(formular);
+            formulareCerere.Remove(formular);
+            if (formulareCerere.Count > 0)
+            {
+                pag = formulareCerere.Count - 1;
+                BtnNext.Enabled = false;
+                if (pag == 0)
+                {
+                    BtnPrevious.Enabled = false;
+                }
+                AutoComplete(formulareCerere[pag]);
+            }
+            else
+            {
+                LblReceived.ForeColor = LblRequested.ForeColor = LblSent.ForeColor = Color.DimGray;
+                TxtName.Text = TxtBloodType1.Text = TxtRh1.Text = TxtErythrocytes1.Text = TxtPlasma1.Text = TxtPlatelets1.Text = TxtTransfusionCenter.Text = "";
+                ImageProgress.Image = Properties.Resources.progress0;
+                LblMessage.Text = @"There are no requests in the database.";
+                BtnCancel.Enabled = BtnReceived.Enabled = BtnPrevious.Enabled = BtnNext.Enabled = false;
             }
         }
     }

@@ -1,6 +1,7 @@
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -191,8 +192,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -276,6 +276,66 @@ namespace Server.Repository
                 {
                     connection.Close();
                     throw new RepositoryException("Returnarea trombocitelor pentru un target din baza de date nu s-a putut realiza cu succes.");
+                }
+            }
+        }
+
+        public List<PSTrombocite> FindAllByCentru(int idCentru)
+        {
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    List<PSTrombocite> toReturn = new List<PSTrombocite>();
+                    command.CommandText = "SELECT * FROM PSTrombocite WHERE IdCD = @idCentru ";
+                    var parametru = command.CreateParameter();
+                    parametru.ParameterName = "idCentru";
+                    parametru.Value = idCentru;
+                    command.Parameters.Add(parametru);
+                    using (var result = command.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            var cantitate = new float();
+                            var target = "";
+                            var dataExpirare = new DateTime();
+                            var grupa = "";
+                            var rh = "";
+                            var idCD = new int();
+                            if (result[1] != DBNull.Value)
+                                cantitate = result.GetFloat(1);
+                            if (result[2] != DBNull.Value)
+                                target = result.GetString(2);
+                            if (result[3] != DBNull.Value)
+                                dataExpirare = result.GetDateTime(3);
+                            if (result[4] != DBNull.Value)
+                                grupa = result.GetString(4);
+                            if (result[5] != DBNull.Value)
+                                rh = result.GetString(5);
+                            if (result[6] != DBNull.Value)
+                                idCD = result.GetInt32(6);
+                            PSTrombocite psTrombocite = new PSTrombocite {
+                                Id = result.GetInt32(0),
+                                Cantitate = cantitate,
+                                Target = target,
+                                DataExpirare = dataExpirare,
+                                Grupa = grupa,
+                                Rh = rh,
+                                IdCD = idCD
+                            };
+
+                            toReturn.Add(psTrombocite);
+                        }
+                    }
+
+                    connection.Close();
+                    return toReturn;
+                } catch (SqlException)
+                {
+                    connection.Close();
+                    throw new RepositoryException("Returnarea globulelor rosii din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }

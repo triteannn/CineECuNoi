@@ -1,6 +1,7 @@
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -183,8 +184,12 @@ namespace Server.Repository
                             psGlobuleRosii.DataExpirare = result.GetDateTime(3);
                             psGlobuleRosii.Grupa = result.GetString(4);
                             psGlobuleRosii.Rh = result.GetString(5);
-                            psGlobuleRosii.IdCD = result.GetInt32(6);
 
+                            int? idcd = null;
+                            if (result[6] != DBNull.Value)
+                                idcd = result.GetInt32(6);
+
+                            psGlobuleRosii.IdCD = idcd;
                             return psGlobuleRosii;
                         }
 
@@ -212,15 +217,20 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii {
-                                Id = result.GetInt32(0),
-                                Cantitate = result.GetFloat(1),
-                                Target = result.GetString(2),
-                                DataExpirare = result.GetDateTime(3),
-                                Grupa = result.GetString(4),
-                                Rh = result.GetString(5),
-                                IdCD = result.GetInt32(6)
-                            };
+
+                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii();
+                            psGlobuleRosii.Id = result.GetInt32(0);
+                            psGlobuleRosii.Cantitate = result.GetFloat(1);
+                            psGlobuleRosii.Target = result.GetString(2);
+                            psGlobuleRosii.DataExpirare = result.GetDateTime(3);
+                            psGlobuleRosii.Grupa = result.GetString(4);
+                            psGlobuleRosii.Rh = result.GetString(5);
+
+                            int? idcd = null;
+                            if (result[6] != DBNull.Value)
+                                idcd = result.GetInt32(6);
+
+                            psGlobuleRosii.IdCD = idcd;
 
                             toReturn.Add(psGlobuleRosii);
                         }
@@ -256,15 +266,19 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii {
-                                Id = result.GetInt32(0),
-                                Cantitate = result.GetFloat(1),
-                                Target = result.GetString(2),
-                                DataExpirare = result.GetDateTime(3),
-                                Grupa = result.GetString(4),
-                                Rh = result.GetString(5),
-                                IdCD = result.GetInt32(6)
-                            };
+                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii();
+                            psGlobuleRosii.Id = result.GetInt32(0);
+                            psGlobuleRosii.Cantitate = result.GetFloat(1);
+                            psGlobuleRosii.Target = result.GetString(2);
+                            psGlobuleRosii.DataExpirare = result.GetDateTime(3);
+                            psGlobuleRosii.Grupa = result.GetString(4);
+                            psGlobuleRosii.Rh = result.GetString(5);
+
+                            int? idcd = null;
+                            if (result[6] != DBNull.Value)
+                                idcd = result.GetInt32(6);
+
+                            psGlobuleRosii.IdCD = idcd;
 
                             toReturn.Add(psGlobuleRosii);
                         }
@@ -275,6 +289,66 @@ namespace Server.Repository
                 {
                     connection.Close();
                     throw new RepositoryException("Returnarea globulelor rosii pentru un target din baza de date nu s-a putut realiza cu succes.");
+                }
+            }
+        }
+
+        public List<PSGlobuleRosii> FindAllByCentru(int idCentru)
+        {
+            IDbConnection connection = Globals.GetDbConnection();
+            connection.Open();
+            using (var command = connection.CreateCommand())
+            {
+                try
+                {
+                    List<PSGlobuleRosii> toReturn = new List<PSGlobuleRosii>();
+                    command.CommandText = "SELECT * FROM PSGlobuleRosii WHERE IdCD = @idCentru ";
+                    var parametru = command.CreateParameter();
+                    parametru.ParameterName = "idCentru";
+                    parametru.Value = idCentru;
+                    command.Parameters.Add(parametru);
+                    using (var result = command.ExecuteReader())
+                    {
+                        while (result.Read())
+                        {
+                            var cantitate = new float();
+                            var target = "";
+                            var dataExpirare = new DateTime();
+                            var grupa = "";
+                            var rh = "";
+                            var idCD = new int();
+                            if (result[1] != DBNull.Value)
+                                cantitate = result.GetFloat(1);
+                            if (result[2] != DBNull.Value)
+                                target = result.GetString(2);
+                            if (result[3] != DBNull.Value)
+                                dataExpirare = result.GetDateTime(3);
+                            if (result[4] != DBNull.Value)
+                                grupa = result.GetString(4);
+                            if (result[5] != DBNull.Value)
+                                rh = result.GetString(5);
+                            if (result[6] != DBNull.Value)
+                                idCD = result.GetInt32(6);
+                            PSGlobuleRosii psGlobuleRosii = new PSGlobuleRosii {
+                                Id = result.GetInt32(0),
+                                Cantitate = cantitate,
+                                Target = target,
+                                DataExpirare = dataExpirare,
+                                Grupa = grupa,
+                                Rh = rh,
+                                IdCD = idCD
+                            };
+
+                            toReturn.Add(psGlobuleRosii);
+                        }
+                    }
+
+                    connection.Close();
+                    return toReturn;
+                } catch (SqlException)
+                {
+                    connection.Close();
+                    throw new RepositoryException("Returnarea globulelor rosii din baza de date nu s-a putut realiza cu succes.");
                 }
             }
         }

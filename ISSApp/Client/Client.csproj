@@ -84,6 +84,12 @@
     <Compile Include="AdminWindow.Designer.cs">
       <DependentUpon>AdminWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeWindow.Designer.cs">
+      <DependentUpon>EmployeeWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,10 +120,14 @@
     <Compile Include="Service\AngajatService.cs" />
     <Compile Include="Service\DonatorService.cs" />
     <Compile Include="Service\MedicService.cs" />
+    <Compile Include="Validator\FormularCerereValidator.cs" />
     <Compile Include="Validator\FormularDonareValidator.cs" />
     <Compile Include="Validator\RegisterValidator.cs" />
     <EmbeddedResource Include="AdminWindow.resx">
       <DependentUpon>AdminWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeWindow.resx">
+      <DependentUpon>EmployeeWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -210,6 +220,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rightarrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

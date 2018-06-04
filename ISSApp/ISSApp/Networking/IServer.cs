@@ -24,6 +24,8 @@ namespace ISSApp.Networking
         Adresa AdresaFindEntity(int id);
         List<Adresa> AdresaFindAll();
         Adresa AdresaGetAdresaByDateContactId(int idDC);
+        int AdresaAdminUpdateDataBase(DataSet dataset);
+        DataSet AdresaAdminGetDataSet();
 
         //Angajat
         void AngajatAdd(AngajatCentru angajatCentru);
@@ -59,6 +61,8 @@ namespace ISSApp.Networking
         List<DateContact> DateContactFindAll();
         DateContact DateContactGetDateByIdDonator(int idDonator);
         DateContact DateContactFindLastEntity();
+        int DateContactAdminUpdateDataBase(DataSet dataset);
+        DataSet DateContactAdminGetDataSet();
 
         CentruDonare CentruDonareFindByDenumire(string denumire);
         //Donator
@@ -95,6 +99,7 @@ namespace ISSApp.Networking
         PSGlobuleRosii GlobuleRosiiFindEntity(int id);
         List<PSGlobuleRosii> GlobuleRosiiFindAll();
         List<PSGlobuleRosii> GlobuleRosiiFindByTarget(string target);
+        List<PSGlobuleRosii> GlobuleRosiiFindAllByCentru(int idCentru);
 
         //Medic
         void MedicAdd(Medic medic);
@@ -114,6 +119,7 @@ namespace ISSApp.Networking
         PSPlasma PlasmaFindEntity(int id);
         List<PSPlasma> PlasmaFindAll();
         List<PSPlasma> PlasmaFindByTarget(string target);
+        List<PSPlasma> PlasmaFindAllByCentru(int idCentru);
         //PungaSange
         void PungaSangeAdd(PungaSange pungaSange);
         PungaSange PungaSangeDelete(PungaSange pungaSange);
@@ -138,5 +144,6 @@ namespace ISSApp.Networking
         PSTrombocite TrombociteFindEntity(int id);
         List<PSTrombocite> TrombociteFindAll();
         List<PSTrombocite> TrombociteFindByTarget(string target);
+        List<PSTrombocite> TrombociteFindAllByCentru(int idCentru);
     }
 }

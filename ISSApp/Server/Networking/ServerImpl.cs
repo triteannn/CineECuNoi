@@ -188,6 +188,28 @@ namespace Server.Networking
             }
         }
 
+        public int AdresaAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return adresaRepo.AdminUpdateDataBase(dataSet);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DataSet AdresaAdminGetDataSet()
+        {
+            try
+            {
+                return adresaRepo.AdminGetDataSet();
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public DataSet AccountAdminGetDataSet()
         {
             try
@@ -471,6 +493,30 @@ namespace Server.Networking
             {
                 return dateContactRepo.FindLastEntity();
             } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public int DateContactAdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                return dateContactRepo.AdminUpdateDataBase(dataSet);
+            }
+            catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public DataSet DateContactAdminGetDataSet()
+        {
+            try
+            {
+                return dateContactRepo.AdminGetDataSet();
+            }
+            catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -794,6 +840,17 @@ namespace Server.Networking
             }
         }
 
+        public List<PSGlobuleRosii> GlobuleRosiiFindAllByCentru(int idCentru)
+        {
+            try
+            {
+                return globuleRosiiRepo.FindAllByCentru(idCentru);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public void MedicAdd(Medic medic)
         {
             try
@@ -953,6 +1010,17 @@ namespace Server.Networking
             try
             {
                 return plasmaRepo.Update(psPlasma);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<PSPlasma> PlasmaFindAllByCentru(int idCentru)
+        {
+            try
+            {
+                return plasmaRepo.FindAllByCentru(idCentru);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
@@ -1171,6 +1239,17 @@ namespace Server.Networking
             try
             {
                 return trombociteRepo.Update(psTrombocite);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public List<PSTrombocite> TrombociteFindAllByCentru(int idCentru)
+        {
+            try
+            {
+                return trombociteRepo.FindAllByCentru(idCentru);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);

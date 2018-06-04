@@ -169,19 +169,19 @@ namespace Server.Repository
                         {
                             int idAdresa = result.GetInt32(0);
 
-                            String strada = "";
-                            if(result[1]!= DBNull.Value)
-                                result.GetString(1);
+                            var strada = "";
+                            if (result[1] != DBNull.Value)
+                                strada = result.GetString(1);
 
                             int numar = result.GetInt32(2);
 
-                            String oras = "";
-                            if(result[3]!= DBNull.Value)
-                                result.GetString(3);
+                            var oras = "";
+                            if (result[3] != DBNull.Value)
+                                oras = result.GetString(3);
 
-                            String judet = "";
-                            if(result[4]!= DBNull.Value)
-                                result.GetString(4);
+                            var judet = "";
+                            if (result[4] != DBNull.Value)
+                                judet = result.GetString(4);
 
                             Adresa adresa = new Adresa(idAdresa, strada, numar, oras, judet);
                             return adresa;
@@ -216,17 +216,19 @@ namespace Server.Repository
 
                             String strada = "";
                             if (result[1] != DBNull.Value)
-                                result.GetString(1);
+                                strada = result.GetString(1);
 
                             int numar = result.GetInt32(2);
 
                             String oras = "";
                             if (result[3] != DBNull.Value)
-                                result.GetString(3);
+                                oras = result.GetString(3);
 
                             String judet = "";
                             if (result[4] != DBNull.Value)
-                                result.GetString(4);
+                                judet = result.GetString(4);
+                        
+                            
                             toReturn.Add(new Adresa(idAdresa, strada, numar, oras, judet));
                         }
                     }
@@ -255,21 +257,21 @@ namespace Server.Repository
                 {
                     if (result.Read())
                     {
-                        int idAdresa = result.GetInt32(0);
+                        var idAdresa = result.GetInt32(0);
 
-                        String strada = "";
+                        var strada = "";
                         if (result[1] != DBNull.Value)
-                            result.GetString(1);
+                            strada = result.GetString(1);
 
-                        int numar = result.GetInt32(2);
+                        var numar = result.GetInt32(2);
 
-                        String oras = "";
+                        var oras = "";
                         if (result[3] != DBNull.Value)
-                            result.GetString(3);
+                            oras = result.GetString(3);
 
-                        String judet = "";
+                        var judet = "";
                         if (result[4] != DBNull.Value)
-                            result.GetString(4);
+                            judet = result.GetString(4);
 
                         adresa = new Adresa(idAdresa, strada, numar, oras, judet);
                     }
@@ -281,6 +283,54 @@ namespace Server.Repository
             } finally
             {
                 connection.Close();
+            }
+        }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM Adrese", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    rowsAffected = da.Update(dataSet.Tables["Adrese"]);
+                }
+                return rowsAffected;
+            }
+            catch (SqlException)
+            {
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
+            }
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            try
+            {
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM Adrese", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("Adrese");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "Adrese");
+                    return ds;
+                }
+            }
+            catch (SqlException)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

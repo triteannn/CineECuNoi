@@ -223,7 +223,7 @@
             this.BtnSubmit.Location = new System.Drawing.Point(727, 401);
             this.BtnSubmit.Name = "BtnSubmit";
             this.BtnSubmit.Size = new System.Drawing.Size(103, 51);
-            this.BtnSubmit.TabIndex = 45;
+            this.BtnSubmit.TabIndex = 8;
             this.BtnSubmit.Text = "Submit";
             this.BtnSubmit.UseVisualStyleBackColor = false;
             this.BtnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
@@ -289,14 +289,14 @@
             this.TxtCounty.HintText = "";
             this.TxtCounty.isPassword = false;
             this.TxtCounty.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtCounty.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtCounty.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtCounty.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtCounty.LineThickness = 2;
             this.TxtCounty.Location = new System.Drawing.Point(8, 397);
             this.TxtCounty.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtCounty.Name = "TxtCounty";
             this.TxtCounty.Size = new System.Drawing.Size(217, 29);
-            this.TxtCounty.TabIndex = 28;
+            this.TxtCounty.TabIndex = 3;
             this.TxtCounty.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtCity
@@ -309,14 +309,14 @@
             this.TxtCity.HintText = "";
             this.TxtCity.isPassword = false;
             this.TxtCity.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtCity.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtCity.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtCity.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtCity.LineThickness = 2;
             this.TxtCity.Location = new System.Drawing.Point(8, 331);
             this.TxtCity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtCity.Name = "TxtCity";
             this.TxtCity.Size = new System.Drawing.Size(217, 29);
-            this.TxtCity.TabIndex = 27;
+            this.TxtCity.TabIndex = 2;
             this.TxtCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtAddress
@@ -329,14 +329,14 @@
             this.TxtAddress.HintText = "";
             this.TxtAddress.isPassword = false;
             this.TxtAddress.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtAddress.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtAddress.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtAddress.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtAddress.LineThickness = 2;
             this.TxtAddress.Location = new System.Drawing.Point(8, 265);
             this.TxtAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtAddress.Name = "TxtAddress";
             this.TxtAddress.Size = new System.Drawing.Size(217, 29);
-            this.TxtAddress.TabIndex = 26;
+            this.TxtAddress.TabIndex = 1;
             this.TxtAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // TxtLastName
@@ -472,7 +472,7 @@
             this.DropdownCD.onHoverColor = System.Drawing.Color.White;
             this.DropdownCD.selectedIndex = 0;
             this.DropdownCD.Size = new System.Drawing.Size(254, 24);
-            this.DropdownCD.TabIndex = 44;
+            this.DropdownCD.TabIndex = 7;
             // 
             // label28
             // 
@@ -511,14 +511,14 @@
             this.TxtDonateFor.HintText = "Optional";
             this.TxtDonateFor.isPassword = false;
             this.TxtDonateFor.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtDonateFor.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtDonateFor.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtDonateFor.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtDonateFor.LineThickness = 2;
             this.TxtDonateFor.Location = new System.Drawing.Point(252, 219);
             this.TxtDonateFor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtDonateFor.Name = "TxtDonateFor";
             this.TxtDonateFor.Size = new System.Drawing.Size(260, 27);
-            this.TxtDonateFor.TabIndex = 25;
+            this.TxtDonateFor.TabIndex = 6;
             this.TxtDonateFor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // OthersGb
@@ -1046,14 +1046,14 @@
             this.TxtPhone.HintText = "";
             this.TxtPhone.isPassword = false;
             this.TxtPhone.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtPhone.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtPhone.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtPhone.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtPhone.LineThickness = 2;
             this.TxtPhone.Location = new System.Drawing.Point(6, 134);
             this.TxtPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPhone.Name = "TxtPhone";
             this.TxtPhone.Size = new System.Drawing.Size(257, 29);
-            this.TxtPhone.TabIndex = 22;
+            this.TxtPhone.TabIndex = 5;
             this.TxtPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label10
@@ -1090,14 +1090,14 @@
             this.TxtEmail.HintText = "";
             this.TxtEmail.isPassword = false;
             this.TxtEmail.LineFocusedColor = System.Drawing.Color.DarkRed;
-            this.TxtEmail.LineIdleColor = System.Drawing.Color.DarkRed;
+            this.TxtEmail.LineIdleColor = System.Drawing.Color.DimGray;
             this.TxtEmail.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtEmail.LineThickness = 2;
             this.TxtEmail.Location = new System.Drawing.Point(6, 64);
             this.TxtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(257, 29);
-            this.TxtEmail.TabIndex = 9;
+            this.TxtEmail.TabIndex = 4;
             this.TxtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // BellMovement
@@ -1361,7 +1361,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(938, 574);
             this.ControlBox = false;
-            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.BloodTestsPanel);
             this.Controls.Add(this.Bell);
             this.Controls.Add(this.MenuToggle);
@@ -1370,6 +1369,7 @@
             this.Controls.Add(this.PictureBox2);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.NotificationsPanel);
+            this.Controls.Add(this.MainPanel);
             this.animator1.SetDecoration(this, AnimatorNS.DecorationType.None);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -191,11 +191,11 @@ namespace Server.Repository
                                 cnp = result.GetString(1);
 
                             String nume = "";
-                            if(result[2]!= DBNull.Value)
+                            if (result[2] != DBNull.Value)
                                 nume = result.GetString(2);
 
                             String prenume = "";
-                            if(result[3]!= DBNull.Value)
+                            if (result[3] != DBNull.Value)
                                 result.GetString(3);
 
                             DateTime date = result.GetDateTime(4);
@@ -275,7 +275,7 @@ namespace Server.Repository
                 var command = connection.CreateCommand();
                 try
                 {
-                    command.CommandText = "select ang.* from Angajati ang, Accounts a where a.Id = @IdAcc  and a.IdAc = ang.Id";
+                    command.CommandText = "select ang.* from Angajati ang inner join Accounts a on a.IdAc = ang.Id where a.Id = @IdAcc";
                     var paramIdAcc = command.CreateParameter();
                     paramIdAcc.ParameterName = "@IdAcc";
                     paramIdAcc.Value = idAccount;
@@ -285,19 +285,21 @@ namespace Server.Repository
                     {
                         if (result.Read())
                         {
-                            String cnp = "";
+                            var cnp = "";
                             if (result[1] != DBNull.Value)
                                 cnp = result.GetString(1);
 
-                            String nume = "";
+                            var nume = "";
                             if (result[2] != DBNull.Value)
                                 nume = result.GetString(2);
 
-                            String prenume = "";
+                            var prenume = "";
                             if (result[3] != DBNull.Value)
-                                result.GetString(3);
+                                prenume = result.GetString(3);
 
-                            DateTime date = result.GetDateTime(4);
+                            var date = new DateTime();
+                            if (result[4] != DBNull.Value)
+                                date = result.GetDateTime(4);
 
 
                             AngajatCentru angajat = new AngajatCentru(cnp, nume, prenume, date);

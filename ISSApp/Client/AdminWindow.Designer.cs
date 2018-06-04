@@ -124,6 +124,36 @@
             this.toolStripButton30 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnUpdateDb6 = new System.Windows.Forms.ToolStripButton();
+            this.ContactInfoTab = new System.Windows.Forms.TabPage();
+            this.ContactInfoTable = new System.Windows.Forms.DataGridView();
+            this.bindingNavigator7 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButton31 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel6 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton32 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton33 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton34 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator16 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox6 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton35 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton36 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb7 = new System.Windows.Forms.ToolStripButton();
+            this.AddressesTab = new System.Windows.Forms.TabPage();
+            this.AddressesTable = new System.Windows.Forms.DataGridView();
+            this.bindingNavigator8 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.toolStripButton38 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel7 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton39 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton40 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton41 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox7 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton42 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton43 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.BtnUpdateDb8 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             this.TabControl.SuspendLayout();
@@ -151,6 +181,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.TransfusionCentersTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator6)).BeginInit();
             this.bindingNavigator6.SuspendLayout();
+            this.ContactInfoTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactInfoTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator7)).BeginInit();
+            this.bindingNavigator7.SuspendLayout();
+            this.AddressesTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddressesTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator8)).BeginInit();
+            this.bindingNavigator8.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -178,7 +216,7 @@
             // PictureBox2
             // 
             this.PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox2.Image")));
-            this.PictureBox2.Location = new System.Drawing.Point(1046, 9);
+            this.PictureBox2.Location = new System.Drawing.Point(1045, 9);
             this.PictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PictureBox2.Name = "PictureBox2";
             this.PictureBox2.Size = new System.Drawing.Size(25, 25);
@@ -196,8 +234,11 @@
             this.TabControl.Controls.Add(this.DoctorsTab);
             this.TabControl.Controls.Add(this.HospitalsTab);
             this.TabControl.Controls.Add(this.TransfusionCentersTab);
+            this.TabControl.Controls.Add(this.ContactInfoTab);
+            this.TabControl.Controls.Add(this.AddressesTab);
             this.TabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabControl.Location = new System.Drawing.Point(12, 64);
+            this.TabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(1059, 522);
@@ -209,8 +250,9 @@
             this.AccountsTab.Controls.Add(this.bindingNavigator1);
             this.AccountsTab.Controls.Add(this.AccountsTable);
             this.AccountsTab.Location = new System.Drawing.Point(4, 28);
+            this.AccountsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountsTab.Name = "AccountsTab";
-            this.AccountsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.AccountsTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountsTab.Size = new System.Drawing.Size(1051, 490);
             this.AccountsTab.TabIndex = 0;
             this.AccountsTab.Text = "Accounts";
@@ -235,7 +277,7 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.BtnUpdateDb1});
-            this.bindingNavigator1.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator1.Location = new System.Drawing.Point(3, 2);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -299,7 +341,7 @@
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 27);
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(49, 27);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
@@ -348,7 +390,8 @@
             this.AccountsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AccountsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.AccountsTable.EnableHeadersVisualStyles = false;
-            this.AccountsTable.Location = new System.Drawing.Point(6, 36);
+            this.AccountsTable.Location = new System.Drawing.Point(5, 36);
+            this.AccountsTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccountsTable.MultiSelect = false;
             this.AccountsTable.Name = "AccountsTable";
             this.AccountsTable.RowHeadersVisible = false;
@@ -363,8 +406,9 @@
             this.DonatorsTab.Controls.Add(this.DonatorsTable);
             this.DonatorsTab.Controls.Add(this.bindingNavigator2);
             this.DonatorsTab.Location = new System.Drawing.Point(4, 28);
+            this.DonatorsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DonatorsTab.Name = "DonatorsTab";
-            this.DonatorsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.DonatorsTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DonatorsTab.Size = new System.Drawing.Size(1051, 490);
             this.DonatorsTab.TabIndex = 1;
             this.DonatorsTab.Text = "Donators";
@@ -376,7 +420,8 @@
             this.DonatorsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DonatorsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DonatorsTable.EnableHeadersVisualStyles = false;
-            this.DonatorsTable.Location = new System.Drawing.Point(6, 36);
+            this.DonatorsTable.Location = new System.Drawing.Point(5, 36);
+            this.DonatorsTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DonatorsTable.MultiSelect = false;
             this.DonatorsTable.Name = "DonatorsTable";
             this.DonatorsTable.RowHeadersVisible = false;
@@ -405,7 +450,7 @@
             this.toolStripButton1,
             this.toolStripButton2,
             this.BtnUpdateDb2});
-            this.bindingNavigator2.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator2.Location = new System.Drawing.Point(3, 2);
             this.bindingNavigator2.MoveFirstItem = this.toolStripButton3;
             this.bindingNavigator2.MoveLastItem = this.toolStripButton6;
             this.bindingNavigator2.MoveNextItem = this.toolStripButton5;
@@ -469,7 +514,7 @@
             this.toolStripTextBox1.AccessibleName = "Position";
             this.toolStripTextBox1.AutoSize = false;
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(50, 27);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(49, 27);
             this.toolStripTextBox1.Text = "0";
             this.toolStripTextBox1.ToolTipText = "Current position";
             // 
@@ -517,8 +562,9 @@
             this.EmployeesTab.Controls.Add(this.EmployeesTable);
             this.EmployeesTab.Controls.Add(this.bindingNavigator3);
             this.EmployeesTab.Location = new System.Drawing.Point(4, 28);
+            this.EmployeesTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EmployeesTab.Name = "EmployeesTab";
-            this.EmployeesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.EmployeesTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EmployeesTab.Size = new System.Drawing.Size(1051, 490);
             this.EmployeesTab.TabIndex = 2;
             this.EmployeesTab.Text = "Employees";
@@ -530,7 +576,8 @@
             this.EmployeesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.EmployeesTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.EmployeesTable.EnableHeadersVisualStyles = false;
-            this.EmployeesTable.Location = new System.Drawing.Point(6, 36);
+            this.EmployeesTable.Location = new System.Drawing.Point(5, 36);
+            this.EmployeesTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.EmployeesTable.MultiSelect = false;
             this.EmployeesTable.Name = "EmployeesTable";
             this.EmployeesTable.RowHeadersVisible = false;
@@ -559,7 +606,7 @@
             this.toolStripButton7,
             this.toolStripButton8,
             this.BtnUpdateDb3});
-            this.bindingNavigator3.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator3.Location = new System.Drawing.Point(3, 2);
             this.bindingNavigator3.MoveFirstItem = this.toolStripButton9;
             this.bindingNavigator3.MoveLastItem = this.toolStripButton12;
             this.bindingNavigator3.MoveNextItem = this.toolStripButton11;
@@ -623,7 +670,7 @@
             this.toolStripTextBox2.AccessibleName = "Position";
             this.toolStripTextBox2.AutoSize = false;
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(50, 27);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(49, 27);
             this.toolStripTextBox2.Text = "0";
             this.toolStripTextBox2.ToolTipText = "Current position";
             // 
@@ -671,8 +718,9 @@
             this.DoctorsTab.Controls.Add(this.DoctorsTable);
             this.DoctorsTab.Controls.Add(this.bindingNavigator4);
             this.DoctorsTab.Location = new System.Drawing.Point(4, 28);
+            this.DoctorsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DoctorsTab.Name = "DoctorsTab";
-            this.DoctorsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.DoctorsTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DoctorsTab.Size = new System.Drawing.Size(1051, 490);
             this.DoctorsTab.TabIndex = 3;
             this.DoctorsTab.Text = "Doctors";
@@ -684,7 +732,8 @@
             this.DoctorsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DoctorsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.DoctorsTable.EnableHeadersVisualStyles = false;
-            this.DoctorsTable.Location = new System.Drawing.Point(6, 36);
+            this.DoctorsTable.Location = new System.Drawing.Point(5, 36);
+            this.DoctorsTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DoctorsTable.MultiSelect = false;
             this.DoctorsTable.Name = "DoctorsTable";
             this.DoctorsTable.RowHeadersVisible = false;
@@ -713,7 +762,7 @@
             this.toolStripButton13,
             this.toolStripButton14,
             this.BtnUpdateDb4});
-            this.bindingNavigator4.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator4.Location = new System.Drawing.Point(3, 2);
             this.bindingNavigator4.MoveFirstItem = this.toolStripButton15;
             this.bindingNavigator4.MoveLastItem = this.toolStripButton18;
             this.bindingNavigator4.MoveNextItem = this.toolStripButton17;
@@ -777,7 +826,7 @@
             this.toolStripTextBox3.AccessibleName = "Position";
             this.toolStripTextBox3.AutoSize = false;
             this.toolStripTextBox3.Name = "toolStripTextBox3";
-            this.toolStripTextBox3.Size = new System.Drawing.Size(50, 27);
+            this.toolStripTextBox3.Size = new System.Drawing.Size(49, 27);
             this.toolStripTextBox3.Text = "0";
             this.toolStripTextBox3.ToolTipText = "Current position";
             // 
@@ -825,8 +874,9 @@
             this.HospitalsTab.Controls.Add(this.HospitalsTable);
             this.HospitalsTab.Controls.Add(this.bindingNavigator5);
             this.HospitalsTab.Location = new System.Drawing.Point(4, 28);
+            this.HospitalsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HospitalsTab.Name = "HospitalsTab";
-            this.HospitalsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.HospitalsTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HospitalsTab.Size = new System.Drawing.Size(1051, 490);
             this.HospitalsTab.TabIndex = 4;
             this.HospitalsTab.Text = "Hospitals";
@@ -838,7 +888,8 @@
             this.HospitalsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HospitalsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.HospitalsTable.EnableHeadersVisualStyles = false;
-            this.HospitalsTable.Location = new System.Drawing.Point(6, 36);
+            this.HospitalsTable.Location = new System.Drawing.Point(5, 36);
+            this.HospitalsTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HospitalsTable.MultiSelect = false;
             this.HospitalsTable.Name = "HospitalsTable";
             this.HospitalsTable.RowHeadersVisible = false;
@@ -867,7 +918,7 @@
             this.toolStripButton19,
             this.toolStripButton20,
             this.BtnUpdateDb5});
-            this.bindingNavigator5.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator5.Location = new System.Drawing.Point(3, 2);
             this.bindingNavigator5.MoveFirstItem = this.toolStripButton21;
             this.bindingNavigator5.MoveLastItem = this.toolStripButton24;
             this.bindingNavigator5.MoveNextItem = this.toolStripButton23;
@@ -931,7 +982,7 @@
             this.toolStripTextBox4.AccessibleName = "Position";
             this.toolStripTextBox4.AutoSize = false;
             this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.Size = new System.Drawing.Size(50, 27);
+            this.toolStripTextBox4.Size = new System.Drawing.Size(49, 27);
             this.toolStripTextBox4.Text = "0";
             this.toolStripTextBox4.ToolTipText = "Current position";
             // 
@@ -979,8 +1030,9 @@
             this.TransfusionCentersTab.Controls.Add(this.TransfusionCentersTable);
             this.TransfusionCentersTab.Controls.Add(this.bindingNavigator6);
             this.TransfusionCentersTab.Location = new System.Drawing.Point(4, 28);
+            this.TransfusionCentersTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TransfusionCentersTab.Name = "TransfusionCentersTab";
-            this.TransfusionCentersTab.Padding = new System.Windows.Forms.Padding(3);
+            this.TransfusionCentersTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TransfusionCentersTab.Size = new System.Drawing.Size(1051, 490);
             this.TransfusionCentersTab.TabIndex = 5;
             this.TransfusionCentersTab.Text = "Transfusion Centers";
@@ -992,7 +1044,8 @@
             this.TransfusionCentersTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TransfusionCentersTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.TransfusionCentersTable.EnableHeadersVisualStyles = false;
-            this.TransfusionCentersTable.Location = new System.Drawing.Point(6, 36);
+            this.TransfusionCentersTable.Location = new System.Drawing.Point(5, 36);
+            this.TransfusionCentersTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TransfusionCentersTable.MultiSelect = false;
             this.TransfusionCentersTable.Name = "TransfusionCentersTable";
             this.TransfusionCentersTable.RowHeadersVisible = false;
@@ -1021,7 +1074,7 @@
             this.toolStripButton25,
             this.toolStripButton26,
             this.BtnUpdateDb6});
-            this.bindingNavigator6.Location = new System.Drawing.Point(3, 3);
+            this.bindingNavigator6.Location = new System.Drawing.Point(3, 2);
             this.bindingNavigator6.MoveFirstItem = this.toolStripButton27;
             this.bindingNavigator6.MoveLastItem = this.toolStripButton30;
             this.bindingNavigator6.MoveNextItem = this.toolStripButton29;
@@ -1085,7 +1138,7 @@
             this.toolStripTextBox5.AccessibleName = "Position";
             this.toolStripTextBox5.AutoSize = false;
             this.toolStripTextBox5.Name = "toolStripTextBox5";
-            this.toolStripTextBox5.Size = new System.Drawing.Size(50, 27);
+            this.toolStripTextBox5.Size = new System.Drawing.Size(49, 27);
             this.toolStripTextBox5.Text = "0";
             this.toolStripTextBox5.ToolTipText = "Current position";
             // 
@@ -1128,6 +1181,318 @@
             this.BtnUpdateDb6.Text = "Update Database";
             this.BtnUpdateDb6.Click += new System.EventHandler(this.BtnUpdateDb6_Click);
             // 
+            // ContactInfoTab
+            // 
+            this.ContactInfoTab.Controls.Add(this.ContactInfoTable);
+            this.ContactInfoTab.Controls.Add(this.bindingNavigator7);
+            this.ContactInfoTab.Location = new System.Drawing.Point(4, 28);
+            this.ContactInfoTab.Margin = new System.Windows.Forms.Padding(4);
+            this.ContactInfoTab.Name = "ContactInfoTab";
+            this.ContactInfoTab.Padding = new System.Windows.Forms.Padding(4);
+            this.ContactInfoTab.Size = new System.Drawing.Size(1051, 490);
+            this.ContactInfoTab.TabIndex = 6;
+            this.ContactInfoTab.Text = "Contact Info";
+            this.ContactInfoTab.UseVisualStyleBackColor = true;
+            // 
+            // ContactInfoTable
+            // 
+            this.ContactInfoTable.AllowUserToResizeRows = false;
+            this.ContactInfoTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ContactInfoTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.ContactInfoTable.EnableHeadersVisualStyles = false;
+            this.ContactInfoTable.Location = new System.Drawing.Point(7, 36);
+            this.ContactInfoTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ContactInfoTable.MultiSelect = false;
+            this.ContactInfoTable.Name = "ContactInfoTable";
+            this.ContactInfoTable.RowHeadersVisible = false;
+            this.ContactInfoTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.ContactInfoTable.RowTemplate.Height = 24;
+            this.ContactInfoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ContactInfoTable.Size = new System.Drawing.Size(1039, 448);
+            this.ContactInfoTable.TabIndex = 7;
+            // 
+            // bindingNavigator7
+            // 
+            this.bindingNavigator7.AddNewItem = this.toolStripButton33;
+            this.bindingNavigator7.CountItem = this.toolStripLabel6;
+            this.bindingNavigator7.DeleteItem = this.toolStripButton32;
+            this.bindingNavigator7.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.bindingNavigator7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton33,
+            this.toolStripButton34,
+            this.toolStripSeparator16,
+            this.toolStripTextBox6,
+            this.toolStripLabel6,
+            this.toolStripSeparator17,
+            this.toolStripButton35,
+            this.toolStripButton36,
+            this.toolStripSeparator18,
+            this.toolStripButton31,
+            this.toolStripButton32,
+            this.BtnUpdateDb7});
+            this.bindingNavigator7.Location = new System.Drawing.Point(4, 4);
+            this.bindingNavigator7.MoveFirstItem = this.toolStripButton33;
+            this.bindingNavigator7.MoveLastItem = this.toolStripButton36;
+            this.bindingNavigator7.MoveNextItem = this.toolStripButton35;
+            this.bindingNavigator7.MovePreviousItem = this.toolStripButton34;
+            this.bindingNavigator7.Name = "bindingNavigator7";
+            this.bindingNavigator7.PositionItem = this.toolStripTextBox6;
+            this.bindingNavigator7.Size = new System.Drawing.Size(1043, 27);
+            this.bindingNavigator7.TabIndex = 6;
+            this.bindingNavigator7.Text = "bindingNavigator7";
+            // 
+            // toolStripButton31
+            // 
+            this.toolStripButton31.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton31.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton31.Image")));
+            this.toolStripButton31.Name = "toolStripButton31";
+            this.toolStripButton31.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton31.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton31.Text = "Add new";
+            // 
+            // toolStripLabel6
+            // 
+            this.toolStripLabel6.Name = "toolStripLabel6";
+            this.toolStripLabel6.Size = new System.Drawing.Size(45, 24);
+            this.toolStripLabel6.Text = "of {0}";
+            this.toolStripLabel6.ToolTipText = "Total number of items";
+            // 
+            // toolStripButton32
+            // 
+            this.toolStripButton32.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton32.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton32.Image")));
+            this.toolStripButton32.Name = "toolStripButton32";
+            this.toolStripButton32.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton32.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton32.Text = "Delete";
+            // 
+            // toolStripButton33
+            // 
+            this.toolStripButton33.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton33.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton33.Image")));
+            this.toolStripButton33.Name = "toolStripButton33";
+            this.toolStripButton33.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton33.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton33.Text = "Move first";
+            // 
+            // toolStripButton34
+            // 
+            this.toolStripButton34.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton34.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton34.Image")));
+            this.toolStripButton34.Name = "toolStripButton34";
+            this.toolStripButton34.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton34.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton34.Text = "Move previous";
+            // 
+            // toolStripSeparator16
+            // 
+            this.toolStripSeparator16.Name = "toolStripSeparator16";
+            this.toolStripSeparator16.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripTextBox6
+            // 
+            this.toolStripTextBox6.AccessibleName = "Position";
+            this.toolStripTextBox6.AutoSize = false;
+            this.toolStripTextBox6.Name = "toolStripTextBox6";
+            this.toolStripTextBox6.Size = new System.Drawing.Size(49, 27);
+            this.toolStripTextBox6.Text = "0";
+            this.toolStripTextBox6.ToolTipText = "Current position";
+            // 
+            // toolStripSeparator17
+            // 
+            this.toolStripSeparator17.Name = "toolStripSeparator17";
+            this.toolStripSeparator17.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripButton35
+            // 
+            this.toolStripButton35.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton35.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton35.Image")));
+            this.toolStripButton35.Name = "toolStripButton35";
+            this.toolStripButton35.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton35.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton35.Text = "Move next";
+            // 
+            // toolStripButton36
+            // 
+            this.toolStripButton36.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton36.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton36.Image")));
+            this.toolStripButton36.Name = "toolStripButton36";
+            this.toolStripButton36.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton36.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton36.Text = "Move last";
+            // 
+            // toolStripSeparator18
+            // 
+            this.toolStripSeparator18.Name = "toolStripSeparator18";
+            this.toolStripSeparator18.Size = new System.Drawing.Size(6, 27);
+            // 
+            // BtnUpdateDb7
+            // 
+            this.BtnUpdateDb7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb7.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb7.Image")));
+            this.BtnUpdateDb7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb7.Name = "BtnUpdateDb7";
+            this.BtnUpdateDb7.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb7.Text = "Update Database";
+            this.BtnUpdateDb7.Click += new System.EventHandler(this.BtnUpdateDb7_Click);
+            // 
+            // AddressesTab
+            // 
+            this.AddressesTab.Controls.Add(this.AddressesTable);
+            this.AddressesTab.Controls.Add(this.bindingNavigator8);
+            this.AddressesTab.Location = new System.Drawing.Point(4, 28);
+            this.AddressesTab.Margin = new System.Windows.Forms.Padding(4);
+            this.AddressesTab.Name = "AddressesTab";
+            this.AddressesTab.Padding = new System.Windows.Forms.Padding(4);
+            this.AddressesTab.Size = new System.Drawing.Size(1051, 490);
+            this.AddressesTab.TabIndex = 7;
+            this.AddressesTab.Text = "Addresses";
+            this.AddressesTab.UseVisualStyleBackColor = true;
+            // 
+            // AddressesTable
+            // 
+            this.AddressesTable.AllowUserToResizeRows = false;
+            this.AddressesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AddressesTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.AddressesTable.EnableHeadersVisualStyles = false;
+            this.AddressesTable.Location = new System.Drawing.Point(4, 36);
+            this.AddressesTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AddressesTable.MultiSelect = false;
+            this.AddressesTable.Name = "AddressesTable";
+            this.AddressesTable.RowHeadersVisible = false;
+            this.AddressesTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.AddressesTable.RowTemplate.Height = 24;
+            this.AddressesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.AddressesTable.Size = new System.Drawing.Size(1039, 444);
+            this.AddressesTable.TabIndex = 5;
+            // 
+            // bindingNavigator8
+            // 
+            this.bindingNavigator8.AddNewItem = this.toolStripButton38;
+            this.bindingNavigator8.CountItem = this.toolStripLabel7;
+            this.bindingNavigator8.DeleteItem = this.toolStripButton39;
+            this.bindingNavigator8.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.bindingNavigator8.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton40,
+            this.toolStripButton41,
+            this.toolStripSeparator19,
+            this.toolStripTextBox7,
+            this.toolStripLabel7,
+            this.toolStripSeparator20,
+            this.toolStripButton42,
+            this.toolStripButton43,
+            this.toolStripSeparator21,
+            this.toolStripButton38,
+            this.toolStripButton39,
+            this.BtnUpdateDb8});
+            this.bindingNavigator8.Location = new System.Drawing.Point(4, 4);
+            this.bindingNavigator8.MoveFirstItem = this.toolStripButton40;
+            this.bindingNavigator8.MoveLastItem = this.toolStripButton43;
+            this.bindingNavigator8.MoveNextItem = this.toolStripButton42;
+            this.bindingNavigator8.MovePreviousItem = this.toolStripButton41;
+            this.bindingNavigator8.Name = "bindingNavigator8";
+            this.bindingNavigator8.PositionItem = this.toolStripTextBox7;
+            this.bindingNavigator8.Size = new System.Drawing.Size(1043, 27);
+            this.bindingNavigator8.TabIndex = 6;
+            this.bindingNavigator8.Text = "bindingNavigator8";
+            // 
+            // toolStripButton38
+            // 
+            this.toolStripButton38.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton38.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton38.Image")));
+            this.toolStripButton38.Name = "toolStripButton38";
+            this.toolStripButton38.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton38.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton38.Text = "Add new";
+            // 
+            // toolStripLabel7
+            // 
+            this.toolStripLabel7.Name = "toolStripLabel7";
+            this.toolStripLabel7.Size = new System.Drawing.Size(45, 24);
+            this.toolStripLabel7.Text = "of {0}";
+            this.toolStripLabel7.ToolTipText = "Total number of items";
+            // 
+            // toolStripButton39
+            // 
+            this.toolStripButton39.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton39.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton39.Image")));
+            this.toolStripButton39.Name = "toolStripButton39";
+            this.toolStripButton39.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton39.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton39.Text = "Delete";
+            // 
+            // toolStripButton40
+            // 
+            this.toolStripButton40.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton40.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton40.Image")));
+            this.toolStripButton40.Name = "toolStripButton40";
+            this.toolStripButton40.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton40.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton40.Text = "Move first";
+            // 
+            // toolStripButton41
+            // 
+            this.toolStripButton41.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton41.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton41.Image")));
+            this.toolStripButton41.Name = "toolStripButton41";
+            this.toolStripButton41.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton41.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton41.Text = "Move previous";
+            // 
+            // toolStripSeparator19
+            // 
+            this.toolStripSeparator19.Name = "toolStripSeparator19";
+            this.toolStripSeparator19.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripTextBox7
+            // 
+            this.toolStripTextBox7.AccessibleName = "Position";
+            this.toolStripTextBox7.AutoSize = false;
+            this.toolStripTextBox7.Name = "toolStripTextBox7";
+            this.toolStripTextBox7.Size = new System.Drawing.Size(49, 27);
+            this.toolStripTextBox7.Text = "0";
+            this.toolStripTextBox7.ToolTipText = "Current position";
+            // 
+            // toolStripSeparator20
+            // 
+            this.toolStripSeparator20.Name = "toolStripSeparator20";
+            this.toolStripSeparator20.Size = new System.Drawing.Size(6, 27);
+            // 
+            // toolStripButton42
+            // 
+            this.toolStripButton42.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton42.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton42.Image")));
+            this.toolStripButton42.Name = "toolStripButton42";
+            this.toolStripButton42.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton42.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton42.Text = "Move next";
+            // 
+            // toolStripButton43
+            // 
+            this.toolStripButton43.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton43.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton43.Image")));
+            this.toolStripButton43.Name = "toolStripButton43";
+            this.toolStripButton43.RightToLeftAutoMirrorImage = true;
+            this.toolStripButton43.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton43.Text = "Move last";
+            // 
+            // toolStripSeparator21
+            // 
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(6, 27);
+            // 
+            // BtnUpdateDb8
+            // 
+            this.BtnUpdateDb8.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BtnUpdateDb8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnUpdateDb8.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdateDb8.Image")));
+            this.BtnUpdateDb8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnUpdateDb8.Name = "BtnUpdateDb8";
+            this.BtnUpdateDb8.Size = new System.Drawing.Size(129, 24);
+            this.BtnUpdateDb8.Text = "Update Database";
+            this.BtnUpdateDb8.Click += new System.EventHandler(this.BtnUpdateDb8_Click);
+            // 
             // AdminWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1141,6 +1506,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AdminWindow";
@@ -1189,6 +1555,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator6)).EndInit();
             this.bindingNavigator6.ResumeLayout(false);
             this.bindingNavigator6.PerformLayout();
+            this.ContactInfoTab.ResumeLayout(false);
+            this.ContactInfoTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactInfoTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator7)).EndInit();
+            this.bindingNavigator7.ResumeLayout(false);
+            this.bindingNavigator7.PerformLayout();
+            this.AddressesTab.ResumeLayout(false);
+            this.AddressesTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddressesTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator8)).EndInit();
+            this.bindingNavigator8.ResumeLayout(false);
+            this.bindingNavigator8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1290,5 +1668,35 @@
         private System.Windows.Forms.ToolStripButton BtnUpdateDb4;
         private System.Windows.Forms.ToolStripButton BtnUpdateDb5;
         private System.Windows.Forms.ToolStripButton BtnUpdateDb6;
+        private System.Windows.Forms.TabPage ContactInfoTab;
+        private System.Windows.Forms.DataGridView ContactInfoTable;
+        private System.Windows.Forms.BindingNavigator bindingNavigator7;
+        private System.Windows.Forms.ToolStripButton toolStripButton31;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel6;
+        private System.Windows.Forms.ToolStripButton toolStripButton32;
+        private System.Windows.Forms.ToolStripButton toolStripButton33;
+        private System.Windows.Forms.ToolStripButton toolStripButton34;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator16;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator17;
+        private System.Windows.Forms.ToolStripButton toolStripButton35;
+        private System.Windows.Forms.ToolStripButton toolStripButton36;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb7;
+        private System.Windows.Forms.TabPage AddressesTab;
+        private System.Windows.Forms.BindingNavigator bindingNavigator8;
+        private System.Windows.Forms.ToolStripButton toolStripButton38;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel7;
+        private System.Windows.Forms.ToolStripButton toolStripButton39;
+        private System.Windows.Forms.ToolStripButton toolStripButton40;
+        private System.Windows.Forms.ToolStripButton toolStripButton41;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator19;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator20;
+        private System.Windows.Forms.ToolStripButton toolStripButton42;
+        private System.Windows.Forms.ToolStripButton toolStripButton43;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
+        private System.Windows.Forms.ToolStripButton BtnUpdateDb8;
+        private System.Windows.Forms.DataGridView AddressesTable;
     }
 }

@@ -23,12 +23,18 @@ namespace Client.Service
 
             try
             {
-                DateTime ult = _server.AnalizaFindLastByDonator(idDonator).DataRecoltarii;
-
-                if (DateTime.Today.Subtract(ult).TotalDays > 180)
+                var ult = _server.AnalizaFindLastByDonator(idDonator);
+                DateTime data = new DateTime();
+                if (ult != null)
                 {
-                    return true;
+                    data = ult.DataRecoltarii;
+                    if (DateTime.Today.Subtract(data).TotalDays > 180)
+                    {
+                        return true;
+                    }
                 }
+                else
+                    throw new ServiceException("There are no blood tests in the database.");
 
                 return false;
             } catch (NetworkingException e)
@@ -100,15 +106,20 @@ namespace Client.Service
 
         public bool PoateCreaFormular(int idDonator)
         {
-
             try
             {
-                DateTime ult = _server.FormularDonareGetLastFormular(idDonator).DataCreare;
-
-                if (DateTime.Today.Subtract(ult).TotalDays > 180)
+                var ult = _server.FormularDonareGetLastFormular(idDonator);
+                DateTime data = new DateTime();
+                if (ult != null)
                 {
-                    return true;
+                    data = ult.DataCreare;
+                    if (DateTime.Today.Subtract(data).TotalDays > 180)
+                    {
+                        return true;
+                    }
                 }
+                else
+                    throw new ServiceException("There are no donation requests in the database.");
 
                 return false;
             } catch (NetworkingException e)

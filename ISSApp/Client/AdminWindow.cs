@@ -49,6 +49,12 @@ namespace Client
             TransfusionCentersTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             TransfusionCentersTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            ContactInfoTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ContactInfoTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            AddressesTable.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            AddressesTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             AccountsTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
             AccountsTable.DefaultCellStyle.SelectionForeColor = Color.White;
             AccountsTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
@@ -90,6 +96,20 @@ namespace Client
             DoctorsTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
             DoctorsTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             DoctorsTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            ContactInfoTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            ContactInfoTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            ContactInfoTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            ContactInfoTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            ContactInfoTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            ContactInfoTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
+
+            AddressesTable.DefaultCellStyle.SelectionBackColor = Color.DarkRed;
+            AddressesTable.DefaultCellStyle.SelectionForeColor = Color.White;
+            AddressesTable.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            AddressesTable.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkRed;
+            AddressesTable.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            AddressesTable.DefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Regular);
         }
 
         public const int WmNclbuttondown = 0xA1;
@@ -131,6 +151,8 @@ namespace Client
             AccountsTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             AccountsTable.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             AccountsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            AccountsTable.Columns["Id"].ReadOnly = true;
         }
 
         private void PictureBox3_Click(object sender, System.EventArgs e)
@@ -208,6 +230,8 @@ namespace Client
                         AccountsTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                         AccountsTable.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                         AccountsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                        AccountsTable.Columns["Id"].ReadOnly = true;
                     };
                 }
             }
@@ -246,6 +270,8 @@ namespace Client
                 DonatorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DonatorsTable.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DonatorsTable.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                AccountsTable.Columns["Id"].ReadOnly = true;
             }
             if (index == 2)
             {
@@ -278,6 +304,8 @@ namespace Client
                 EmployeesTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 EmployeesTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 EmployeesTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                AccountsTable.Columns["Id"].ReadOnly = true;
             }
             if (index == 3)
             {
@@ -310,6 +338,8 @@ namespace Client
                 DoctorsTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DoctorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DoctorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                AccountsTable.Columns["Id"].ReadOnly = true;
             }
             if (index == 4)
             {
@@ -360,6 +390,70 @@ namespace Client
                         {
                             col.SortMode = DataGridViewColumnSortMode.NotSortable;
                         }
+
+                        AccountsTable.Columns["Id"].ReadOnly = true;
+                    };
+                }
+            }
+            if(index == 6)
+            {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
+                _dataSet.Tables.Clear();
+                using (var worker = new BackgroundWorker())
+                {
+                    worker.DoWork += (obj, ea) => {
+                        _dataSet = _adminService.DateContactAdminGetDataSet();
+                    };
+                    worker.RunWorkerAsync();
+                    worker.RunWorkerCompleted += (obj, ea) => {
+                        _bindingSource.DataSource = _dataSet.Tables["DateContact"];
+                        ContactInfoTable.DataSource = _bindingSource;
+                        bindingNavigator7.BindingSource = _bindingSource;
+                        foreach (DataGridViewColumn col in ContactInfoTable.Columns)
+                        {
+                            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                        foreach (DataGridViewColumn col in ContactInfoTable.Columns)
+                        {
+                            col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        }
+                        ContactInfoTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        ContactInfoTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                        AccountsTable.Columns["Id"].ReadOnly = true;
+                    };
+                }
+            }
+            if (index == 7)
+            {
+                foreach (DataTable table in _dataSet.Tables)
+                    table.Constraints.Clear();
+                _dataSet.Tables.Clear();
+                using (var worker = new BackgroundWorker())
+                {
+                    worker.DoWork += (obj, ea) => {
+                        _dataSet = _adminService.AdresaAdminGetDataSet();
+                    };
+                    worker.RunWorkerAsync();
+                    worker.RunWorkerCompleted += (obj, ea) => {
+                        _bindingSource.DataSource = _dataSet.Tables["Adrese"];
+                        AddressesTable.DataSource = _bindingSource;
+                        bindingNavigator8.BindingSource = _bindingSource;
+                        foreach (DataGridViewColumn col in AddressesTable.Columns)
+                        {
+                            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        }
+                        foreach (DataGridViewColumn col in AddressesTable.Columns)
+                        {
+                            col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        }
+                        AddressesTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        AddressesTable.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        AddressesTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                        AddressesTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                        AccountsTable.Columns["Id"].ReadOnly = true;
                     };
                 }
             }
@@ -450,6 +544,38 @@ namespace Client
                     MessageBoxIcon.Information);
                 TabControl_SelectedIndexChanged(BtnUpdateDb6, null);
             } catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnUpdateDb7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var rowsAffected = _adminService.DateContactAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb6, null);
+            }
+            catch (ServiceException ex)
+            {
+                MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnUpdateDb8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var rowsAffected = _adminService.AdresaAdminUpdateDataBase(_dataSet);
+                MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                TabControl_SelectedIndexChanged(BtnUpdateDb6, null);
+            }
+            catch (ServiceException ex)
             {
                 MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

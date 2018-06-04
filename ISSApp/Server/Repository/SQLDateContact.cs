@@ -149,7 +149,9 @@ namespace Server.Repository
                             int idData = result.GetInt32(0);
                             String telefon = result.GetString(1);
                             String email = result.GetString(2);
-                            int idAdresa = result.GetInt32(3);
+                            int? idAdresa = null;
+                            if(result[3] != DBNull.Value)
+                                idAdresa = result.GetInt32(3);
 
                             DateContact dataContact = new DateContact(idData, telefon, email, idAdresa);
                             return dataContact;
@@ -211,7 +213,9 @@ namespace Server.Repository
                         int idData = result.GetInt32(0);
                         String telefon = result.GetString(1);
                         String email = result.GetString(2);
-                        int idAdresa = result.GetInt32(3);
+                        int? idAdresa = null;
+                        if (result[3] != DBNull.Value)
+                            idAdresa = result.GetInt32(3);
 
                         dateContact = new DateContact(idData, telefon, email, idAdresa);
                     }
@@ -263,6 +267,54 @@ namespace Server.Repository
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
 
+            }
+        }
+
+        public int AdminUpdateDataBase(DataSet dataSet)
+        {
+            try
+            {
+                int rowsAffected;
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var da = new SqlDataAdapter("SELECT * FROM DateContact", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    rowsAffected = da.Update(dataSet.Tables["DateContact"]);
+                }
+                return rowsAffected;
+            }
+            catch (SqlException)
+            {
+                throw new RepositoryException("Unable to update the database. Please check your changes.");
+            }
+        }
+
+        public DataSet AdminGetDataSet()
+        {
+            try
+            {
+                using (var connection = Globals.GetDbConnection())
+                {
+                    connection.Open();
+                    var ds = new DataSet();
+                    var da = new SqlDataAdapter("SELECT * FROM DateContact", connection);
+                    var cb = new SqlCommandBuilder(da);
+                    da.DeleteCommand = cb.GetDeleteCommand();
+                    da.InsertCommand = cb.GetInsertCommand();
+                    da.UpdateCommand = cb.GetUpdateCommand();
+                    var dt = new DataTable("DateContact");
+                    ds.Tables.Add(dt);
+                    da.Fill(ds, "DateContact");
+                    return ds;
+                }
+            }
+            catch (SqlException)
+            {
+                throw new RepositoryException("Unable to get data set from the database.");
             }
         }
     }

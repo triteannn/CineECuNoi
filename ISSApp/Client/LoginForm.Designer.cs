@@ -230,14 +230,14 @@
         "Choose option...",
         "Admin",
         "Doctor",
-        "Angajat centru recoltare",
+        "Transfusion Center Employee",
         "Donator"};
             this.DropdownAS.Location = new System.Drawing.Point(108, 290);
             this.DropdownAS.Margin = new System.Windows.Forms.Padding(5);
             this.DropdownAS.Name = "DropdownAS";
             this.DropdownAS.NomalColor = System.Drawing.Color.White;
             this.DropdownAS.onHoverColor = System.Drawing.Color.White;
-            this.DropdownAS.selectedIndex = 0;
+            this.DropdownAS.selectedIndex = -1;
             this.DropdownAS.Size = new System.Drawing.Size(261, 29);
             this.DropdownAS.TabIndex = 12;
             this.DropdownAS.onItemSelected += new System.EventHandler(this.DropdownAS_onItemSelected);

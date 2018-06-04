@@ -160,5 +160,55 @@ namespace Client.Service
                 throw new ServiceException(e.Message);
             }
         }
+
+        public int DateContactAdminUpdateDataBase(DataSet dataSet)
+        {
+
+            try
+            {
+                return _server.DateContactAdminUpdateDataBase(dataSet);
+            }
+            catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
+
+        public DataSet DateContactAdminGetDataSet()
+        {
+            try
+            {
+                return _server.DateContactAdminGetDataSet();
+            }
+            catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
+
+        public int AdresaAdminUpdateDataBase(DataSet dataSet)
+        {
+
+            try
+            {
+                return _server.AdresaAdminUpdateDataBase(dataSet);
+            }
+            catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
+
+        public DataSet AdresaAdminGetDataSet()
+        {
+            try
+            {
+                return _server.AdresaAdminGetDataSet();
+            }
+            catch (NetworkingException e)
+            {
+                throw new ServiceException(e.Message);
+            }
+        }
     }
 }

@@ -203,6 +203,13 @@ namespace Client
                             adminWindow.Show();
                             Hide();
                         }
+                        else if (DropdownAS.selectedValue.Equals("Transfusion Center Employee") && acc.IdD == 0 & acc.IdAc != 0 &&
+                                    acc.IdM == 0)
+                        {
+                            var employeeWindow = new EmployeeWindow(this, _server, acc);
+                            employeeWindow.Show();
+                            Hide();
+                        }
                         else if (DropdownAS.selectedValue.Equals("Doctor") && acc.IdD == 0 & acc.IdAc == 0 &&
                                     acc.IdM != 0)
                         {
