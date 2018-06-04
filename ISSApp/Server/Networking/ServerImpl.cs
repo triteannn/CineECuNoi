@@ -188,11 +188,11 @@ namespace Server.Networking
             }
         }
 
-        public void AdresaAdminUpdateDataBase(DataSet dataSet)
+        public int AdresaAdminUpdateDataBase(DataSet dataSet)
         {
             try
             {
-                adresaRepo.AdminUpdateDataBase(dataSet);
+                return adresaRepo.AdminUpdateDataBase(dataSet);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
@@ -498,11 +498,11 @@ namespace Server.Networking
             }
         }
 
-        public void DateContactAdminUpdateDataBase(DataSet dataSet)
+        public int DateContactAdminUpdateDataBase(DataSet dataSet)
         {
             try
             {
-                dateContactRepo.AdminUpdateDataBase(dataSet);
+                return dateContactRepo.AdminUpdateDataBase(dataSet);
             }
             catch (RepositoryException e)
             {
