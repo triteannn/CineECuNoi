@@ -8,6 +8,8 @@ namespace ISSApp.Domain
     [Table("Donatori")]
     public class Donator : IPersoana
     {
+        public Donator() { }
+
         public Donator(string cnp, string nume, string prenume, DateTime dob)
         {
             CNP = cnp;

@@ -355,9 +355,10 @@ namespace Server.Repository
                 try
                 {
                     List<Medic> toReturn = new List<Medic>();
-                    command.CommandText = "SELECT * FROM Medici";
+                    command.CommandText = "SELECT * FROM Medici"; //TODO doesnt work
                     using (var result = command.ExecuteReader())
                     {
+                        Console.WriteLine("si aici");
                         while (result.Read())
                         {
                             int id = result.GetInt32(0);
@@ -389,11 +390,18 @@ namespace Server.Repository
 
                             toReturn.Add(medic);
                         }
+
+                        foreach (var m in toReturn)
+                        {
+                            Console.WriteLine("m-- " + m.CNP);
+                        }
+
                     }
                     connection.Close();
                     return toReturn;
-                } catch (SqlException)
+                } catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                     connection.Close();
                     throw new RepositoryException("Returnarea medicilor din baza de date nu s-a putut realiza cu succes.");
                 }

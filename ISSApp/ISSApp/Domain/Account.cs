@@ -7,6 +7,8 @@ namespace ISSApp.Domain
     [Table("Accounts")]
     public class Account
     {
+        public Account() { }
+
         public Account(string username, string password)
         {
             Username = username;

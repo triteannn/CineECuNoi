@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Server.Repository
 {
-    class SQLAdresaRepo : ISqlRepo<Adresa>
+    public class SQLAdresaRepo : ISqlRepo<Adresa>
     {
         public void Add(Adresa entity)
         {

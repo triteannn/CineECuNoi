@@ -48,8 +48,20 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FunctionalitiesTests\MedicTest.cs" />
+    <Compile Include="FunctionalitiesTests\PlasmaTest.cs" />
+    <Compile Include="FunctionalitiesTests\CentruDeDonareTest.cs" />
+    <Compile Include="FunctionalitiesTests\AdresaTest.cs" />
+    <Compile Include="FunctionalitiesTests\GlobuleRosiiTest.cs" />
+    <Compile Include="FunctionalitiesTests\TrombociteTest.cs" />
+    <Compile Include="FunctionalitiesTests\SpitalTest.cs" />
+    <Compile Include="FunctionalitiesTests\DonatorTest.cs" />
+    <Compile Include="FunctionalitiesTests\PungaSangeTest.cs" />
+    <Compile Include="FunctionalitiesTests\AccountTest.cs" />
+    <Compile Include="FunctionalitiesTests\AngajatTest.cs" />
+    <Compile Include="FunctionalitiesTests\DateContactTest.cs" />
+    <Compile Include="FunctionalitiesTests\AnalizaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoriesTests\TestMedicRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -59,6 +71,10 @@
     <ProjectReference Include="..\ISSApp\ISSApp.csproj">
       <Project>{fb6828fa-3a97-4478-8f3d-5ca7159e17be}</Project>
       <Name>ISSApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Server\Server.csproj">
+      <Project>{f7c4ae59-84a2-40bc-87ec-4b86278afdc1}</Project>
+      <Name>Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
