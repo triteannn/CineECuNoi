@@ -282,8 +282,7 @@ namespace Client
 
             DonationFormsList.Items.Clear();
 
-            donationForms.ForEach(x =>
-            {
+            donationForms.ForEach(x => {
                 var donator = _server.DonatorFindEntity((int)x.IdD);
                 var item = new ListViewItem(new[] {
                     x.DataCreare.ToShortDateString(),
@@ -335,8 +334,7 @@ namespace Client
 
             DonationFormsList1.Items.Clear();
 
-            donationForms.ForEach(x =>
-            {
+            donationForms.ForEach(x => {
                 if (x.IdAn == null)
                 {
                     var donator = _server.DonatorFindEntity((int)x.IdD);
@@ -471,8 +469,7 @@ namespace Client
             if (DonationFormsList.SelectedIndices.Count > 0)
             {
                 PungaSange punga = null;
-                worker.DoWork += (obj, ea) =>
-                {
+                worker.DoWork += (obj, ea) => {
                     var formular = DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].Tag;
                     TxtCreationDate.Text = ((FormularDonare)formular).DataCreare.ToShortDateString();
                     TxtFirstName.Text = DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].SubItems[2].Text;
@@ -510,8 +507,7 @@ namespace Client
                     }
                 };
                 worker.RunWorkerAsync();
-                worker.RunWorkerCompleted += (obj, ea) =>
-                {
+                worker.RunWorkerCompleted += (obj, ea) => {
                     if (punga == null)
                     {
                         groupBox1.Enabled = true;
@@ -563,8 +559,7 @@ namespace Client
                 _server.FormularDonareUpdate(formular);
                 UpdateList();
                 DonationFormsList.SelectedIndices.Add(index);
-            }
-            catch (NetworkingException ex)
+            } catch (NetworkingException ex)
             {
                 MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -580,8 +575,7 @@ namespace Client
                 _server.FormularDonareUpdate(formular);
                 UpdateList();
                 DonationFormsList.SelectedIndices.Add(index);
-            }
-            catch (NetworkingException ex)
+            } catch (NetworkingException ex)
             {
                 MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -695,8 +689,7 @@ namespace Client
                 }
                 else
                     MessageBox.Show("Please select a blood product.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (NetworkingException)
+            } catch (NetworkingException)
             {
                 MessageBox.Show("Could not add the product.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -722,8 +715,7 @@ namespace Client
 
             DonationFormsList1.Items.Clear();
 
-            donationForms.ForEach(x =>
-            {
+            donationForms.ForEach(x => {
                 if (x.IdAn == null)
                 {
                     var donator = _server.DonatorFindEntity((int)x.IdD);
@@ -810,8 +802,7 @@ namespace Client
                         UpdateAnalizaUI();
                         MessageBox.Show("Your action has been completed successfully.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    }
-                    catch (NetworkingException ex)
+                    } catch (NetworkingException)
                     {
                         MessageBox.Show("Could not perform action.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -831,8 +822,7 @@ namespace Client
                     _server.FormularDonareDelete(toDelete);
                     UpdateList();
                 }
-            }
-            catch
+            } catch
             {
                 MessageBox.Show("Could not perform action.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -850,8 +840,7 @@ namespace Client
                     CentruDonare centru = _server.CentruDonareFindEntity((int)_server.AngajatFindEntity((int)_loggedAccount.IdAc).IdCd);
                     centru.NeedBlood = 0;
                     _server.CentruDonareUpdate(centru);
-                }
-                catch (NetworkingException ex)
+                } catch (NetworkingException)
                 {
                     _searchForDonators = true;
                     SwitchSearchDonators.BackColor = Color.Green;
@@ -869,8 +858,7 @@ namespace Client
                     CentruDonare centru = _server.CentruDonareFindEntity((int)_server.AngajatFindEntity((int)_loggedAccount.IdAc).IdCd);
                     centru.NeedBlood = 1;
                     _server.CentruDonareUpdate(centru);
-                }
-                catch (NetworkingException ex)
+                } catch (NetworkingException)
                 {
                     _searchForDonators = false;
                     SwitchSearchDonators.BackColor = Color.DimGray;
