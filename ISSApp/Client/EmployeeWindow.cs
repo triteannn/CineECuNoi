@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -377,6 +378,36 @@ namespace Client
             BloodResultsTable.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
+        private void LoadRequestForms()
+        {
+            RequestFormsTable.Rows.Clear();
+            var requests = _server.FormularCerereFindAll();
+            var i = 0;
+            var angajat = _server.AngajatFindEntity((int)_loggedAccount.IdAc);
+            foreach (var request in requests)
+            {
+                if (request.IdCd == angajat.IdCd)
+                {
+                    RequestFormsTable.Rows.Add();
+                    if (_server.DonatorFindEntityByName(request.Target) != null)
+                    {
+                        RequestFormsTable.Rows[i].DefaultCellStyle.BackColor = Color.Green;
+                        RequestFormsTable.Rows[i].DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    RequestFormsTable.Rows[i].Cells[0].Value = request.Id;
+                    RequestFormsTable.Rows[i].Cells[1].Value = request.Target;
+                    RequestFormsTable.Rows[i].Cells[2].Value = request.CantTrombocite;
+                    RequestFormsTable.Rows[i].Cells[3].Value = request.CantPlasma;
+                    RequestFormsTable.Rows[i].Cells[4].Value = request.CantGlobuleRosii;
+                    RequestFormsTable.Rows[i].Cells[5].Value = request.Status;
+                    RequestFormsTable.Rows[i].Cells[6].Value = request.Grupa;
+                    RequestFormsTable.Rows[i].Cells[7].Value = request.Rh;
+                    RequestFormsTable.Rows[i++].Cells[8].Value = request.IdM;
+                }
+            }
+            RequestFormsTable.ClearSelection();
+        }
+
         private void MenuButton3_Click(object sender, EventArgs e)
         {
             _toggleMenu = true;
@@ -405,6 +436,8 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(Panel3);
             Panel3.Enabled = true;
+
+            LoadRequestForms();
         }
 
         private void LoadBloodBags()
@@ -779,7 +812,6 @@ namespace Client
                 }
                 if (count > 0)
                     count = 2;
-                //Message
                 else
                 {
                     try
@@ -900,6 +932,175 @@ namespace Client
             }
             else
                 MessageBox.Show("All quantities must be filled.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void BtnConfirm1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var angajat = _server.AngajatFindEntity((int)_loggedAccount.IdAc);
+                List<PSTrombocite> psTrombocite = _server.TrombociteFindAllByCentru((int)angajat.IdCd);
+                List<PSPlasma> psPlasme = _server.PlasmaFindAllByCentru((int)angajat.IdCd);
+                List<PSGlobuleRosii> psGlobuleRosiis = _server.GlobuleRosiiFindAllByCentru((int)angajat.IdCd);
+                psTrombocite = psTrombocite.Where(x => (x.Target == "" || x.Target == RequestFormsTable.SelectedRows[0].Cells[1].Value.ToString()) && (x.Grupa.Equals(TxtBloodType3.Text) && x.Rh.Equals(TxtRh3.Text))).ToList();
+                psTrombocite.Sort((x, y) => {
+                    return y.Target.CompareTo(x.Target);
+                });
+                psPlasme = psPlasme.Where(x => (x.Target == "" || x.Target == RequestFormsTable.SelectedRows[0].Cells[1].Value.ToString()) && (x.Grupa.Equals(TxtBloodType3.Text) && x.Rh.Equals(TxtRh3.Text))).ToList();
+                psPlasme.Sort((x, y) => {
+                    return y.Target.CompareTo(x.Target);
+                });
+                psGlobuleRosiis = psGlobuleRosiis.Where(x => (x.Target == "" || x.Target == RequestFormsTable.SelectedRows[0].Cells[1].Value.ToString()) && (x.Grupa.Equals(TxtBloodType3.Text) && x.Rh.Equals(TxtRh3.Text))).ToList();
+                psGlobuleRosiis.Sort((x, y) => {
+                    return y.Target.CompareTo(x.Target);
+                });
+
+                double remainingTr = double.Parse(RequestFormsTable.SelectedRows[0].Cells[2].Value.ToString());
+                double remainingPs = double.Parse(RequestFormsTable.SelectedRows[0].Cells[3].Value.ToString());
+                double remainingGr = double.Parse(RequestFormsTable.SelectedRows[0].Cells[4].Value.ToString());
+                var i = 0;
+                while (remainingTr > 0)
+                {
+                    if (psTrombocite[i].Cantitate > remainingTr)
+                    {
+                        psTrombocite[i].Cantitate -= (float)remainingTr;
+                        remainingTr = 0;
+                        _server.TrombociteUpdate(psTrombocite[i]);
+                    }
+                    else
+                    {
+                        remainingTr -= psTrombocite[i].Cantitate;
+                        _server.TrombociteDelete(psTrombocite[i]);
+                    }
+                    i++;
+                }
+                i = 0;
+                while (remainingPs > 0)
+                {
+                    if (psPlasme[i].Cantitate > remainingPs)
+                    {
+                        psPlasme[i].Cantitate -= (float)remainingPs;
+                        remainingPs = 0;
+                        _server.PlasmaUpdate(psPlasme[i]);
+                    }
+                    else
+                    {
+                        remainingPs -= psPlasme[i].Cantitate;
+                        _server.PlasmaDelete(psPlasme[i]);
+                    }
+                    i++;
+                }
+                i = 0;
+                while (remainingGr > 0)
+                {
+                    if (psGlobuleRosiis[i].Cantitate > remainingGr)
+                    {
+                        psGlobuleRosiis[i].Cantitate -= (float)remainingGr;
+                        remainingGr = 0;
+                        _server.GlobuleRosiiUpdate(psGlobuleRosiis[i]);
+                    }
+                    else
+                    {
+                        remainingGr -= psGlobuleRosiis[i].Cantitate;
+                        _server.GlobuleRosiiDelete(psGlobuleRosiis[i]);
+                    }
+                    i++;
+                }
+                var formular = _server.FormularCerereFindEntity(int.Parse(RequestFormsTable.SelectedRows[0].Cells[0].Value.ToString()));
+                formular.Status = "Sent";
+                _server.FormularCerereUpdate(formular);
+                LoadRequestForms();
+                MessageBox.Show("Your action completed successfully.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } catch (NetworkingException)
+            {
+                MessageBox.Show("Your action was not completed successfully.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+        private void RequestFormsTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var selected = RequestFormsTable.SelectedRows[0];
+            TxtBloodType3.Text = selected.Cells[6].Value.ToString();
+            TxtRh3.Text = selected.Cells[7].Value.ToString();
+            var medic = _server.MedicFindEntity(int.Parse(selected.Cells[8].Value.ToString()));
+            TxtDoctorsName.Text = medic.Nume + " " + medic.Prenume;
+            TxtHospital.Text = _server.SpitalFindEntity((int)_server.MedicFindEntity(int.Parse(selected.Cells[8].Value.ToString())).IdS).Denumire;
+
+            if (RequestFormsTable.SelectedRows[0].Cells[5].Value.ToString() == "Requested")
+            {
+                BtnSendBlood.Enabled = true;
+            }
+            else
+            {
+                BtnSendBlood.Enabled = false;
+            }
+
+            double qPlatelets = 0;
+            double qPlasma = 0;
+            double qErythrocytes = 0;
+            var angajat = _server.AngajatFindEntity((int)_loggedAccount.IdAc);
+            foreach (var ps in _server.TrombociteFindAllByCentru((int)angajat.IdCd))
+            {
+                if (RequestFormsTable.SelectedRows[0].Cells[1].Value.ToString().Equals(ps.Target) || ps.Target == "")
+                    if (TxtRh3.Text.Equals(ps.Rh))
+                    {
+                        if (TxtBloodType3.Text.Equals("AB") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("A") || ps.Grupa.Equals("B") || ps.Grupa.Equals("AB")) ||
+                            TxtBloodType3.Text.Equals("A") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("A")) ||
+                            TxtBloodType3.Text.Equals("B") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("B")) ||
+                            TxtBloodType3.Text.Equals("0") && (ps.Grupa.Equals("0")))
+                        {
+                            qPlatelets += ps.Cantitate;
+                        }
+                    }
+            }
+            foreach (var ps in _server.PlasmaFindAllByCentru((int)angajat.IdCd))
+            {
+                if (RequestFormsTable.SelectedRows[0].Cells[1].Value.ToString().Equals(ps.Target) || ps.Target == "")
+                    if (TxtRh3.Text.Equals(ps.Rh))
+                    {
+                        if (TxtBloodType3.Text.Equals("AB") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("A") || ps.Grupa.Equals("B") || ps.Grupa.Equals("AB")) ||
+                            TxtBloodType3.Text.Equals("A") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("A")) ||
+                            TxtBloodType3.Text.Equals("B") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("B")) ||
+                            TxtBloodType3.Text.Equals("0") && (ps.Grupa.Equals("0")))
+                        {
+                            qPlasma += ps.Cantitate;
+                        }
+                    }
+            }
+            foreach (var ps in _server.GlobuleRosiiFindAllByCentru((int)angajat.IdCd))
+            {
+                if (RequestFormsTable.SelectedRows[0].Cells[1].Value.ToString().Equals(ps.Target) || ps.Target == "")
+                    if (TxtRh3.Text.Equals(ps.Rh))
+                    {
+                        if (TxtBloodType3.Text.Equals("AB") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("A") || ps.Grupa.Equals("B") || ps.Grupa.Equals("AB")) ||
+                            TxtBloodType3.Text.Equals("A") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("A")) ||
+                            TxtBloodType3.Text.Equals("B") && (ps.Grupa.Equals("0") || ps.Grupa.Equals("B")) ||
+                            TxtBloodType3.Text.Equals("0") && (ps.Grupa.Equals("0")))
+                        {
+                            qErythrocytes += ps.Cantitate;
+                        }
+                    }
+            }
+            TxtErythrocytes3.Text = qErythrocytes.ToString();
+            TxtPlasma3.Text = qPlasma.ToString();
+            TxtPlatetes3.Text = qPlatelets.ToString();
+
+            if (RequestFormsTable.SelectedRows[0].Cells[5].Value.ToString() == "Requested")
+            {
+                if (double.Parse(RequestFormsTable.SelectedRows[0].Cells[2].Value.ToString()) < qPlatelets && double.Parse(RequestFormsTable.SelectedRows[0].Cells[3].Value.ToString()) < qPlasma && double.Parse(RequestFormsTable.SelectedRows[0].Cells[4].Value.ToString()) < qErythrocytes)
+                {
+                    BtnSendBlood.Enabled = true;
+                }
+                else
+                {
+                    BtnSendBlood.Enabled = false;
+                }
+            }
+            else
+            {
+                BtnSendBlood.Enabled = false;
+            }
         }
     }
 }

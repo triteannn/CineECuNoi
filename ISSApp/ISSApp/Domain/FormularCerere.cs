@@ -24,7 +24,7 @@ namespace ISSApp.Domain
         public string Target { get; set; }
 
         [NotMapped]
-        public int? IdM { get; set; }  //is this gut?
+        public int? IdM { get; set; }
         public int? IdCd { get; set; }
 
         public double? CantTrombocite { get; set; }

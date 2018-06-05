@@ -575,6 +575,17 @@ namespace Server.Networking
             }
         }
 
+        public Donator DonatorFindEntityByName(string fullName)
+        {
+            try
+            {
+                return donatorRepo.FindEntityByName(fullName);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public Donator DonatorFindByUsername(string username)
         {
             try

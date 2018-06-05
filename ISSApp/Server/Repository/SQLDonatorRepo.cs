@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Server.Repository
 {
@@ -393,7 +394,7 @@ namespace Server.Repository
                     command.CommandText = "SELECT * FROM Donatori";
                     using (var result = command.ExecuteReader())
                     {
-                        
+
                         while (result.Read())
                         {
                             int? idA = null;
@@ -482,6 +483,74 @@ namespace Server.Repository
             } catch (SqlException)
             {
                 throw new RepositoryException("Unable to get data set from the database.");
+            }
+        }
+
+        public Donator FindEntityByName(string numeComplet)
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+
+                try
+                {
+                    command.CommandText = "SELECT * FROM Donatori WHERE Nume=@Nume AND Prenume=@Prenume";
+
+                    var paramNume = command.CreateParameter();
+                    paramNume.ParameterName = "@Nume";
+                    paramNume.Value = numeComplet.Split(' ').First();
+                    command.Parameters.Add(paramNume);
+
+                    var paramPrenume = command.CreateParameter();
+                    paramPrenume.ParameterName = "@Prenume";
+                    var enumerable = numeComplet.Split(' ').Skip(1);
+                    var str = "";
+                    foreach (var s in enumerable)
+                    {
+                        str += s;
+                        str += " ";
+                    }
+                    paramPrenume.Value = str;
+                    command.Parameters.Add(paramPrenume);
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            int? idA = null;
+                            int? idDc = null;
+                            int? idCd = null;
+                            string grupa = "";
+                            string rh = "";
+                            var idDonator = result.GetInt32(0);
+                            var cnp = result.GetString(1);
+                            var nume = result.GetString(2);
+                            var prenume = result.GetString(3);
+                            var date = result.GetDateTime(4);
+                            if (result[5] != DBNull.Value)
+                                idCd = result.GetInt32(5);
+                            if (result[6] != DBNull.Value)
+                                idA = result.GetInt32(6);
+                            if (result[7] != DBNull.Value)
+                                idDc = result.GetInt32(7);
+                            if (result[8] != DBNull.Value)
+                                grupa = result.GetString(8);
+                            if (result[9] != DBNull.Value)
+                                rh = result.GetString(9);
+
+                            Donator donator = new Donator(idDonator, cnp, nume, prenume, date, idA, idDc, idCd, grupa, rh);
+                            return donator;
+                        }
+
+                        return null;
+                    }
+
+                } catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+
             }
         }
     }

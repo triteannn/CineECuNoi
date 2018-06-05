@@ -78,6 +78,7 @@ namespace ISSApp.Networking
         DataSet DonatorAdminGetDataSet();
         Donator DonatorFindByUsername(string username);
         Donator DonatorFindByIdAccount(int id);
+        Donator DonatorFindEntityByName(string fullName);
 
         //FormularCerere
         void FormularCerereAdd(FormularCerere formular);
