@@ -1,7 +1,7 @@
-using System;
 using ISSApp.Domain;
 using ISSApp.Exceptions;
 using Server.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +10,7 @@ namespace Server.Repository
 {
     public class SqlPungaSangeRepo : ISqlRepo<PungaSange>
     {
- 
+
         public void Add(PungaSange pungaSange)
         {
 
@@ -36,12 +36,10 @@ namespace Server.Repository
             {
                 cmd.Connection = connection;
                 cmd.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
+            } catch (SqlException ex)
             {
                 throw new RepositoryException(ex.Message);
-            }
-            finally
+            } finally
             {
                 connection.Close();
             }
@@ -224,7 +222,7 @@ namespace Server.Repository
                     if (pungaSange.Rh != null)
                         paramRh.Value = pungaSange.Rh;
                     else
-                        paramRh.Value = DBNull.Value;   
+                        paramRh.Value = DBNull.Value;
                     command.Parameters.Add(paramRh);
 
                     var paramTarget = command.CreateParameter();
@@ -281,7 +279,9 @@ namespace Server.Repository
                         if (result.Read())
                         {
                             int idPunga = result.GetInt32(0);
-                            DateTime dataRecoltare = result.GetDateTime(1);
+                            DateTime dataRecoltare = new DateTime();
+                            if (result[1] != DBNull.Value)
+                                dataRecoltare = result.GetDateTime(1);
                             string grupa = "";
                             if (result[2] != DBNull.Value)
                                 grupa = result.GetString(2);
@@ -291,8 +291,12 @@ namespace Server.Repository
                             string target = "";
                             if (result[4] != DBNull.Value)
                                 target = result.GetString(4);
-                            int idCd = result.GetInt32(5);
-                            int idFd = result.GetInt32(6);
+                            int? idCd = null;
+                            if (result[5] != DBNull.Value)
+                                idCd = result.GetInt32(5);
+                            int? idFd = null;
+                            if (result[6] != DBNull.Value)
+                                idFd = result.GetInt32(6);
 
                             PungaSange pungaSange = new PungaSange(idPunga, dataRecoltare, grupa, rh, target, idCd, idFd);
                             return pungaSange;
@@ -301,8 +305,7 @@ namespace Server.Repository
                         return null;
                     }
 
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -328,7 +331,9 @@ namespace Server.Repository
                         {
 
                             int idPunga = result.GetInt32(0);
-                            DateTime dataRecoltare = result.GetDateTime(1);
+                            DateTime dataRecoltare = new DateTime();
+                            if (result[1] != DBNull.Value)
+                                dataRecoltare = result.GetDateTime(1);
                             string grupa = "";
                             if (result[2] != DBNull.Value)
                                 grupa = result.GetString(2);
@@ -338,8 +343,12 @@ namespace Server.Repository
                             string target = "";
                             if (result[4] != DBNull.Value)
                                 target = result.GetString(4);
-                            int idCd = result.GetInt32(5);
-                            int idFd = result.GetInt32(6);
+                            int? idCd = null;
+                            if (result[5] != DBNull.Value)
+                                idCd = result.GetInt32(5);
+                            int? idFd = null;
+                            if (result[6] != DBNull.Value)
+                                idFd = result.GetInt32(6);
 
                             PungaSange pungaSange = new PungaSange(idPunga, dataRecoltare, grupa, rh, target, idCd, idFd);
 
@@ -377,9 +386,9 @@ namespace Server.Repository
                 {
                     List<PungaSangeCuCNP> pungiSange = new List<PungaSangeCuCNP>();
                     command.CommandText = "SELECT D.CNP, PS.Id, PS.DataRecoltare, PS.Grupa, PS.Rh, PS.Target " +
-                                          "FROM Donatori D " + 
+                                          "FROM Donatori D " +
                                           "     INNER JOIN FormulareDonare FD ON D.Id=FD.IdD " +
-                                          "     INNER JOIN PungiSange PS ON FD.Id=PS.IdFd " + 
+                                          "     INNER JOIN PungiSange PS ON FD.Id=PS.IdFd " +
                                           "WHERE D.CNP='" + cnp + "'";
 
                     using (var result = command.ExecuteReader())
@@ -405,8 +414,7 @@ namespace Server.Repository
                         }
                     }
                     return pungiSange;
-                }
-                catch (SqlException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Returnarea pungii de sange din baza de date nu s-a putut realiza cu succes.");
                 }

@@ -13,15 +13,15 @@ namespace ISSApp.Domain
         public string Rh { get; set; }
         public string Target { get; set; }
 
-        public int IdCd { get; set; }
+        public int? IdCd { get; set; }
 
         public virtual CentruDonare CentruDonare { get; set; }
         public virtual FormularDonare FormularDonare { get; set; }
 
         [NotMapped]
-        public int IdFd { get; set; }
+        public int? IdFd { get; set; }
 
-        public PungaSange(int id, DateTime dataRecoltare, string grupa, string rh, string target, int idCd, int idFd)
+        public PungaSange(int id, DateTime dataRecoltare, string grupa, string rh, string target, int? idCd, int? idFd)
         {
             Id = id;
             DataRecoltare = dataRecoltare;

@@ -355,6 +355,23 @@ namespace Client
             Panel3.Enabled = true;
         }
 
+        private void LoadBloodBags()
+        {
+            TxtCollectionDate2.Text = TxtTarget2.Text = TxtBloodType2.Text = TxtRh2.Text = "";
+            BloodBagsTable.Rows.Clear();
+            var i = 0;
+            foreach (var bloodBag in _server.PungaSangeFindAll())
+            {
+                BloodBagsTable.Rows.Add();
+                BloodBagsTable.Rows[i].Cells[0].Value = bloodBag.Id;
+                BloodBagsTable.Rows[i].Cells[1].Value = bloodBag.DataRecoltare.ToShortDateString();
+                BloodBagsTable.Rows[i].Cells[2].Value = bloodBag.Target;
+                BloodBagsTable.Rows[i].Cells[3].Value = bloodBag.Grupa;
+                BloodBagsTable.Rows[i++].Cells[4].Value = bloodBag.Rh;
+            }
+            BloodBagsTable.ClearSelection();
+        }
+
         private void MenuButton4_Click(object sender, EventArgs e)
         {
             _toggleMenu = true;
@@ -383,6 +400,8 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(Panel4);
             Panel4.Enabled = true;
+
+            LoadBloodBags();
         }
 
         private void MenuPanel_Paint(object sender, PaintEventArgs e)
@@ -425,7 +444,7 @@ namespace Client
                     foreach (var p in pungi)
                     {
                         var actualPunga = _server.PungaSangeFindEntity(p.Id);
-                        if (((FormularDonare)formular).Id == _server.FormularDonareFindEntity(actualPunga.IdFd).Id)
+                        if (((FormularDonare)formular).Id == _server.FormularDonareFindEntity((int)actualPunga.IdFd).Id)
                         {
                             punga = actualPunga;
                             break;
@@ -728,13 +747,47 @@ namespace Client
                         UpdateAnalizaUI();
                         MessageBox.Show("Your action has been completed successfully.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    } catch (NetworkingException ex)
+                    } catch (NetworkingException)
                     {
                         MessageBox.Show("Could not perform action.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
             }
+        }
+
+        private void BloodBagsTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = BloodBagsTable.SelectedRows[0];
+            TxtCollectionDate2.Text = row.Cells[1].Value.ToString();
+            TxtTarget2.Text = row.Cells[2].Value.ToString();
+            TxtBloodType2.Text = row.Cells[3].Value.ToString();
+            TxtRh2.Text = row.Cells[4].Value.ToString();
+        }
+
+        private void BtnConvert_Click(object sender, EventArgs e)
+        {
+            if (TxtPlatelets.Text.Length > 0 && TxtPlasma.Text.Length > 0 && TxtErythrocytes.Text.Length > 0)
+            {
+                if (float.TryParse(TxtPlatelets.Text, out float plateletsQty) && float.TryParse(TxtPlasma.Text, out float plasmaQty) && float.TryParse(TxtErythrocytes.Text, out float erythrocytesQty))
+                {
+                    var punga = _server.PungaSangeFindEntity(int.Parse(BloodBagsTable.SelectedRows[0].Cells[0].Value.ToString()));
+                    var erythrocytes = new PSGlobuleRosii(erythrocytesQty, TxtTarget2.Text, punga.DataRecoltare.AddDays(42), TxtBloodType2.Text, TxtRh2.Text, punga.IdCd);
+                    var plasma = new PSPlasma(plasmaQty, TxtTarget2.Text, punga.DataRecoltare.AddMonths(12), TxtBloodType2.Text, TxtRh2.Text, punga.IdCd);
+                    var platelets = new PSTrombocite(plateletsQty, TxtTarget2.Text, punga.DataRecoltare.AddDays(5), TxtBloodType2.Text, TxtRh2.Text, punga.IdCd);
+                    _server.GlobuleRosiiAdd(erythrocytes);
+                    _server.PlasmaAdd(plasma);
+                    _server.TrombociteAdd(platelets);
+                    _server.PungaSangeDelete(punga);
+                    LoadBloodBags();
+                    TxtPlatelets.Text = TxtPlasma.Text = TxtErythrocytes.Text = "";
+                    MessageBox.Show("Action completed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("All quantities must be floating point numbers.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+                MessageBox.Show("All quantities must be filled.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

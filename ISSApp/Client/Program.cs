@@ -1,6 +1,7 @@
 ﻿using ISSApp.Networking;
 using System;
 using System.Collections;
+using System.Configuration;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace Client
             props["port"] = 0;
             TcpChannel channel = new TcpChannel(props, clientProv, serverProv);
             ChannelServices.RegisterChannel(channel, false);
-            IServer server = (IServer)Activator.GetObject(typeof(IServer), "tcp://localhost:55555/DonareSangeISS");
+            IServer server = (IServer)Activator.GetObject(typeof(IServer), "tcp://" + ConfigurationManager.AppSettings.Get("ServerIP") + ":55555/DonareSangeISS");
 
 
             Application.Run(new LoginForm(server));

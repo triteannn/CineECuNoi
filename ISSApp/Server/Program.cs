@@ -1,16 +1,13 @@
-﻿using System;
+﻿using Server.Networking;
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
-using System.Text;
-using System.Threading.Tasks;
-using Server.Networking;
+using System.Runtime.Remoting.Lifetime;
 
 namespace Server
 {
@@ -18,6 +15,7 @@ namespace Server
     {
         static void Main(string[] args)
         {
+            LifetimeServices.LeaseTime = TimeSpan.FromMinutes(30);
             BinaryServerFormatterSinkProvider serverProv = new BinaryServerFormatterSinkProvider();
             serverProv.TypeFilterLevel = System.Runtime.Serialization.Formatters.TypeFilterLevel.Full;
             BinaryClientFormatterSinkProvider clientProv = new BinaryClientFormatterSinkProvider();
