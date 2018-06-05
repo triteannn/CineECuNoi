@@ -81,13 +81,14 @@ namespace Server.Repository
 
         public FormularDonare Delete(FormularDonare formularDonare)
         {
+            //Console.WriteLine(formularDonare.Id);
             IDbConnection connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM Donatori WHERE Id=@Id";
+                    command.CommandText = "DELETE FROM FormulareDonare WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
