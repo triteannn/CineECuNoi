@@ -28,7 +28,10 @@ namespace Server.Repository
 
                     var paramTarget = command.CreateParameter();
                     paramTarget.ParameterName = "@Target";
-                    paramTarget.Value = psPlasma.Target;
+                    if (psPlasma != null)
+                        paramTarget.Value = psPlasma.Target;
+                    else
+                        paramTarget.Value = DBNull.Value;
                     command.Parameters.Add(paramTarget);
 
                     var paramDataExpirare = command.CreateParameter();

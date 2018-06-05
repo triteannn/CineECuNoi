@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201806031704434_whatever2.Designer.cs">
       <DependentUpon>201806031704434_whatever2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806041417575_Status.cs" />
+    <Compile Include="Migrations\201806041417575_Status.Designer.cs">
+      <DependentUpon>201806041417575_Status.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Networking\ServerImpl.cs" />
     <Compile Include="Program.cs" />
@@ -154,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806031704434_whatever2.resx">
       <DependentUpon>201806031704434_whatever2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041417575_Status.resx">
+      <DependentUpon>201806041417575_Status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

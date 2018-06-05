@@ -271,7 +271,7 @@ namespace Client
                 DonatorsTable.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DonatorsTable.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                AccountsTable.Columns["Id"].ReadOnly = true;
+                DonatorsTable.Columns["Id"].ReadOnly = true;
             }
             if (index == 2)
             {
@@ -305,7 +305,7 @@ namespace Client
                 EmployeesTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 EmployeesTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                AccountsTable.Columns["Id"].ReadOnly = true;
+                EmployeesTable.Columns["Id"].ReadOnly = true;
             }
             if (index == 3)
             {
@@ -339,7 +339,7 @@ namespace Client
                 DoctorsTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 DoctorsTable.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                AccountsTable.Columns["Id"].ReadOnly = true;
+                DoctorsTable.Columns["Id"].ReadOnly = true;
             }
             if (index == 4)
             {
@@ -364,6 +364,7 @@ namespace Client
                         {
                             col.SortMode = DataGridViewColumnSortMode.NotSortable;
                         }
+                        HospitalsTable.Columns["Id"].ReadOnly = true;
                     };
                 }
             }
@@ -391,11 +392,11 @@ namespace Client
                             col.SortMode = DataGridViewColumnSortMode.NotSortable;
                         }
 
-                        AccountsTable.Columns["Id"].ReadOnly = true;
+                        TransfusionCentersTable.Columns["Id"].ReadOnly = true;
                     };
                 }
             }
-            if(index == 6)
+            if (index == 6)
             {
                 foreach (DataTable table in _dataSet.Tables)
                     table.Constraints.Clear();
@@ -421,7 +422,7 @@ namespace Client
                         ContactInfoTable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                         ContactInfoTable.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                        AccountsTable.Columns["Id"].ReadOnly = true;
+                        ContactInfoTable.Columns["Id"].ReadOnly = true;
                     };
                 }
             }
@@ -453,7 +454,7 @@ namespace Client
                         AddressesTable.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                         AddressesTable.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-                        AccountsTable.Columns["Id"].ReadOnly = true;
+                        AddressesTable.Columns["Id"].ReadOnly = true;
                     };
                 }
             }
@@ -558,8 +559,7 @@ namespace Client
                 MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 TabControl_SelectedIndexChanged(BtnUpdateDb6, null);
-            }
-            catch (ServiceException ex)
+            } catch (ServiceException ex)
             {
                 MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -574,8 +574,7 @@ namespace Client
                 MessageBox.Show(rowsAffected + @" row(s) affected.", @"Update successful", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 TabControl_SelectedIndexChanged(BtnUpdateDb6, null);
-            }
-            catch (ServiceException ex)
+            } catch (ServiceException ex)
             {
                 MessageBox.Show(ex.Message, @"Error occured", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);

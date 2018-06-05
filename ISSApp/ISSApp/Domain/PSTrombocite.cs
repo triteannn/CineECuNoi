@@ -23,5 +23,28 @@ namespace ISSApp.Domain
         public int? IdCD { get; set; } //cheie catre centru donare
 
         public virtual CentruDonare CentruDonare { get; set; }
+
+        public PSTrombocite(int id, float cantitate, string target, DateTime dataExpirare, string grupa, string rh, int? idCd)
+        {
+            Id = id;
+            Cantitate = cantitate;
+            Target = target;
+            DataExpirare = dataExpirare;
+            Grupa = grupa;
+            Rh = rh;
+            IdCD = idCd;
+        }
+
+        public PSTrombocite(float cantitate, string target, DateTime dataExpirare, string grupa, string rh, int? idCd)
+        {
+            Cantitate = cantitate;
+            Target = target;
+            DataExpirare = dataExpirare;
+            Grupa = grupa;
+            Rh = rh;
+            IdCD = idCd;
+        }
+
+        public PSTrombocite() { }
     }
 }

@@ -81,13 +81,14 @@ namespace Server.Repository
 
         public FormularDonare Delete(FormularDonare formularDonare)
         {
+            //Console.WriteLine(formularDonare.Id);
             IDbConnection connection = Globals.GetDbConnection();
             connection.Open();
             using (var command = connection.CreateCommand())
             {
                 try
                 {
-                    command.CommandText = "DELETE FROM Donatori WHERE Id=@Id";
+                    command.CommandText = "DELETE FROM FormulareDonare WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -103,7 +104,7 @@ namespace Server.Repository
 
                     return null;
 
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new RepositoryException("Stergerea din baza de date nu s-a putut realiza cu succes.");
@@ -121,7 +122,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE Donatori SET DataCreare=@DataCreare, ListaBoli=@ListaBoli, IdAn=@IdAn, IdD=@IdD WHERE Id=@Id";
+                        "UPDATE FormulareDonare SET DataCreare=@DataCreare, ListaBoli=@ListaBoli, IdAn=@IdAn, IdD=@IdD, Status=@Status WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -148,6 +149,11 @@ namespace Server.Repository
                     paramIdD.Value = formularDonare.IdD;
                     command.Parameters.Add(paramIdD);
 
+                    var paramStatus = command.CreateParameter();
+                    paramStatus.ParameterName = "@Status";
+                    paramStatus.Value = formularDonare.Status;
+                    command.Parameters.Add(paramStatus);
+
                     var result = command.ExecuteNonQuery();
                     connection.Close();
                     if (result != 0)
@@ -156,7 +162,7 @@ namespace Server.Repository
                     }
 
                     return null;
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
@@ -187,7 +193,10 @@ namespace Server.Repository
                             int? idAn = null;
                             int ID = result.GetInt32(0);
                             DateTime dataCreare = result.GetDateTime(1);
-                            string listaBoli = result.GetString(2);
+                            string listaBoli = "";
+                            var status = "";
+                            if (result[2] != DBNull.Value)
+                                listaBoli = result.GetString(2);
                             if (result[3] != DBNull.Value)
                                 idAn = result.GetInt32(3);
                             if (result[4] != DBNull.Value)
@@ -195,15 +204,16 @@ namespace Server.Repository
                             string target = "";
                             if (result[5] != DBNull.Value)
                                 target = result.GetString(5);
-
-                            FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target);
+                            if (result[6] != DBNull.Value)
+                                status = result.GetString(6);
+                            FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target, status);
                             return formularDonare;
                         }
 
                         return null;
                     }
 
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
                 }
@@ -225,14 +235,30 @@ namespace Server.Repository
                     {
                         while (result.Read())
                         {
-                            // la momentul crearii functiei, in BD nu exista campul target(pozitia 4); am presupus ca se va face ulterior
-                            toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetString(5)));
+                            int? idD = null;
+                            int? idAn = null;
+                            int ID = result.GetInt32(0);
+                            DateTime dataCreare = result.GetDateTime(1);
+                            string listaBoli = "";
+                            if (result[2] != DBNull.Value)
+                                listaBoli = result.GetString(2);
+                            var status = "";
+                            if (result[3] != DBNull.Value)
+                                idAn = result.GetInt32(3);
+                            if (result[4] != DBNull.Value)
+                                idD = result.GetInt32(4);
+                            string target = "";
+                            if (result[5] != DBNull.Value)
+                                target = result.GetString(5);
+                            if (result[6] != DBNull.Value)
+                                status = result.GetString(6);
+                            toReturn.Add(new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target, status));
                         }
                     }
 
                     connection.Close();
                     return toReturn;
-                } catch (RepositoryException)
+                } catch (SqlException)
                 {
                     connection.Close();
                     throw new RepositoryException("Returnarea donatorilor din baza de date nu s-a putut realiza cu succes.");
@@ -255,7 +281,22 @@ namespace Server.Repository
                 {
                     while (result.Read())
                     {
-                        toReturn.Add(new FormularDonare(result.GetInt32(0), result.GetDateTime(1), result.GetString(2), result.GetInt32(3), result.GetInt32(4), result.GetString(5)));
+                        int? idD = null;
+                        int? idAn = null;
+                        int ID = result.GetInt32(0);
+                        DateTime dataCreare = result.GetDateTime(1);
+                        string listaBoli = result.GetString(2);
+                        var status = "";
+                        if (result[3] != DBNull.Value)
+                            idAn = result.GetInt32(3);
+                        if (result[4] != DBNull.Value)
+                            idD = result.GetInt32(4);
+                        string target = "";
+                        if (result[5] != DBNull.Value)
+                            target = result.GetString(5);
+                        if (result[6] != DBNull.Value)
+                            status = result.GetString(6);
+                        toReturn.Add(new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target, status));
                     }
                 }
             } catch (SqlException ex)
@@ -288,6 +329,7 @@ namespace Server.Repository
                         int ID = result.GetInt32(0);
                         DateTime dataCreare = result.GetDateTime(1);
                         string listaBoli = "";
+                        var status = "";
                         if (result[2] != DBNull.Value)
                             result.GetString(2);
                         if (result[3] != DBNull.Value)
@@ -297,8 +339,10 @@ namespace Server.Repository
                         string target = "";
                         if (result[5] != DBNull.Value)
                             target = result.GetString(5);
+                        if (result[6] != DBNull.Value)
+                            status = result.GetString(6);
 
-                        FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target);
+                        FormularDonare formularDonare = new FormularDonare(ID, dataCreare, listaBoli, idAn, idD, target, status);
                         return formularDonare;
                     }
 

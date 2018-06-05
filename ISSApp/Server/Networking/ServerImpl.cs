@@ -503,8 +503,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.AdminUpdateDataBase(dataSet);
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -515,8 +514,7 @@ namespace Server.Networking
             try
             {
                 return dateContactRepo.AdminGetDataSet();
-            }
-            catch (RepositoryException e)
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }
@@ -1032,13 +1030,14 @@ namespace Server.Networking
         {
             try
             {
-                if (!formularCerereRepo.ExistaCNP(pungaSange.Target))
+                /*if (!formularCerereRepo.ExistaCNP(pungaSange.Target))
                 {
                     pungaSange.Target = null;
 
                 }
 
-                pungaSangeRepo.AddInitial(pungaSange);
+                pungaSangeRepo.AddInitial(pungaSange);*/
+                pungaSangeRepo.Add(pungaSange);
             } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
@@ -1257,14 +1256,10 @@ namespace Server.Networking
         }
 
 
-        public void AnalizaAdd(PungaSange pungaSange, string grupa, string rh, Analiza analiza) // cum pun in service? In care service? 
+        public void AnalizaAdd(Analiza analiza) // cum pun in service? In care service? 
         {
             try
             {
-                pungaSange.Grupa = grupa;
-                pungaSange.Rh = rh;
-                pungaSangeRepo.Update(pungaSange);
-
                 analizaRepo.Add(analiza);
 
             } catch (RepositoryException e)
@@ -1300,7 +1295,18 @@ namespace Server.Networking
             try
             {
                 return pungaSangeRepo.GetPungaSangeCuCNP(cnp);
-            } catch (Exception e)
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
+        public Analiza AnalizaFindLastEntity()
+        {
+            try
+            {
+                return analizaRepo.FindLastEntity();
+            } catch (RepositoryException e)
             {
                 throw new NetworkingException(e.Message);
             }

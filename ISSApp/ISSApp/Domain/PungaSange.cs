@@ -32,6 +32,16 @@ namespace ISSApp.Domain
             IdFd = idFd;
         }
 
+        public PungaSange(DateTime dataRecoltare, string grupa, string rh, string target, int idCd, int idFd)
+        {
+            DataRecoltare = dataRecoltare;
+            Grupa = grupa;
+            Rh = rh;
+            Target = target;
+            IdCd = idCd;
+            IdFd = idFd;
+        }
+
         public PungaSange(DateTime DataRecoltare, string Target, int IdCd, int IdFd)
         {
             this.DataRecoltare = DataRecoltare;

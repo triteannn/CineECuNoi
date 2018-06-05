@@ -7,7 +7,7 @@ namespace ISSApp.Domain
     [Table("FormulareDonare")]
     public class FormularDonare
     {
-        public FormularDonare(int id, DateTime dataCreare, string listaBoli, int? idAn, int? idD, string target)
+        public FormularDonare(int id, DateTime dataCreare, string listaBoli, int? idAn, int? idD, string target, string status)
         {
             Id = id;
             DataCreare = dataCreare;
@@ -15,6 +15,7 @@ namespace ISSApp.Domain
             IdAn = idAn;
             IdD = idD;
             Target = target;
+            Status = status;
         }
 
         public FormularDonare(DateTime dataCreare, string listaBoli, int? idAn, int? idD, string target)
@@ -44,5 +45,9 @@ namespace ISSApp.Domain
         public int? IdD { get; set; }
 
         public string Target { get; set; }
+
+        public string Status { get; set; }
+
+
     }
 }
