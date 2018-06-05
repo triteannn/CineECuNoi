@@ -29,26 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AnimatorNS.Animation animation2 = new AnimatorNS.Animation();
+            AnimatorNS.Animation animation3 = new AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PictureBox3 = new System.Windows.Forms.PictureBox();
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.MenuToggle = new System.Windows.Forms.PictureBox();
-            this.MenuPanel = new System.Windows.Forms.Panel();
-            this.SwitchSearchDonators = new System.Windows.Forms.Button();
-            this.label34 = new System.Windows.Forms.Label();
-            this.MenuButton5 = new System.Windows.Forms.Button();
-            this.MenuButton4 = new System.Windows.Forms.Button();
-            this.MenuButton3 = new System.Windows.Forms.Button();
-            this.MenuButton2 = new System.Windows.Forms.Button();
-            this.MenuButton1 = new System.Windows.Forms.Button();
             this.animator1 = new AnimatorNS.Animator(this.components);
             this.Panel1 = new System.Windows.Forms.Panel();
             this.DonationFormsList = new System.Windows.Forms.ListView();
@@ -155,10 +147,17 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.DropdownComponents = new Bunifu.Framework.UI.BunifuDropdown();
+            this.MenuPanel = new System.Windows.Forms.Panel();
+            this.MenuButton1 = new System.Windows.Forms.Button();
+            this.MenuButton4 = new System.Windows.Forms.Button();
+            this.MenuButton3 = new System.Windows.Forms.Button();
+            this.MenuButton5 = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.SwitchSearchDonators = new System.Windows.Forms.Button();
+            this.MenuButton2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).BeginInit();
-            this.MenuPanel.SuspendLayout();
             this.Panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -174,6 +173,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BloodBagsTable)).BeginInit();
             this.Panel5.SuspendLayout();
+            this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PictureBox3
@@ -228,162 +228,26 @@
             this.MenuToggle.Click += new System.EventHandler(this.MenuToggle_Click);
             this.MenuToggle.MouseHover += new System.EventHandler(this.MenuToggle_MouseHover);
             // 
-            // MenuPanel
-            // 
-            this.MenuPanel.Controls.Add(this.SwitchSearchDonators);
-            this.MenuPanel.Controls.Add(this.label34);
-            this.MenuPanel.Controls.Add(this.MenuButton5);
-            this.MenuPanel.Controls.Add(this.MenuButton4);
-            this.MenuPanel.Controls.Add(this.MenuButton3);
-            this.MenuPanel.Controls.Add(this.MenuButton2);
-            this.MenuPanel.Controls.Add(this.MenuButton1);
-            this.animator1.SetDecoration(this.MenuPanel, AnimatorNS.DecorationType.None);
-            this.MenuPanel.Location = new System.Drawing.Point(20, 112);
-            this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(284, 663);
-            this.MenuPanel.TabIndex = 19;
-            this.MenuPanel.Visible = false;
-            this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
-            // 
-            // SwitchSearchDonators
-            // 
-            this.SwitchSearchDonators.BackColor = System.Drawing.Color.DimGray;
-            this.animator1.SetDecoration(this.SwitchSearchDonators, AnimatorNS.DecorationType.None);
-            this.SwitchSearchDonators.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SwitchSearchDonators.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SwitchSearchDonators.ForeColor = System.Drawing.Color.White;
-            this.SwitchSearchDonators.Location = new System.Drawing.Point(168, 601);
-            this.SwitchSearchDonators.Margin = new System.Windows.Forms.Padding(4);
-            this.SwitchSearchDonators.Name = "SwitchSearchDonators";
-            this.SwitchSearchDonators.Size = new System.Drawing.Size(65, 52);
-            this.SwitchSearchDonators.TabIndex = 9;
-            this.SwitchSearchDonators.Text = "Off";
-            this.SwitchSearchDonators.UseVisualStyleBackColor = false;
-            this.SwitchSearchDonators.Click += new System.EventHandler(this.SwitchSearchDonators_Click);
-            // 
-            // label34
-            // 
-            this.animator1.SetDecoration(this.label34, AnimatorNS.DecorationType.None);
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.DarkRed;
-            this.label34.Location = new System.Drawing.Point(44, 603);
-            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(116, 53);
-            this.label34.TabIndex = 35;
-            this.label34.Text = "Search for donators:";
-            // 
-            // MenuButton5
-            // 
-            this.MenuButton5.BackColor = System.Drawing.Color.DarkRed;
-            this.animator1.SetDecoration(this.MenuButton5, AnimatorNS.DecorationType.None);
-            this.MenuButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuButton5.ForeColor = System.Drawing.Color.White;
-            this.MenuButton5.Location = new System.Drawing.Point(5, 294);
-            this.MenuButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MenuButton5.Name = "MenuButton5";
-            this.MenuButton5.Size = new System.Drawing.Size(264, 57);
-            this.MenuButton5.TabIndex = 30;
-            this.MenuButton5.Text = "Add standalone product";
-            this.MenuButton5.UseVisualStyleBackColor = false;
-            this.MenuButton5.Click += new System.EventHandler(this.MenuButton5_Click);
-            this.MenuButton5.MouseLeave += new System.EventHandler(this.MenuButton5_MouseLeave);
-            this.MenuButton5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton5_MouseMove);
-            // 
-            // MenuButton4
-            // 
-            this.MenuButton4.BackColor = System.Drawing.Color.DarkRed;
-            this.animator1.SetDecoration(this.MenuButton4, AnimatorNS.DecorationType.None);
-            this.MenuButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuButton4.ForeColor = System.Drawing.Color.White;
-            this.MenuButton4.Location = new System.Drawing.Point(5, 222);
-            this.MenuButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MenuButton4.Name = "MenuButton4";
-            this.MenuButton4.Size = new System.Drawing.Size(264, 57);
-            this.MenuButton4.TabIndex = 29;
-            this.MenuButton4.Text = "Convert blood to products";
-            this.MenuButton4.UseVisualStyleBackColor = false;
-            this.MenuButton4.Click += new System.EventHandler(this.MenuButton4_Click);
-            this.MenuButton4.MouseLeave += new System.EventHandler(this.MenuButton4_MouseLeave);
-            this.MenuButton4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton4_MouseMove);
-            // 
-            // MenuButton3
-            // 
-            this.MenuButton3.BackColor = System.Drawing.Color.DarkRed;
-            this.animator1.SetDecoration(this.MenuButton3, AnimatorNS.DecorationType.None);
-            this.MenuButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuButton3.ForeColor = System.Drawing.Color.White;
-            this.MenuButton3.Location = new System.Drawing.Point(5, 149);
-            this.MenuButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MenuButton3.Name = "MenuButton3";
-            this.MenuButton3.Size = new System.Drawing.Size(264, 57);
-            this.MenuButton3.TabIndex = 28;
-            this.MenuButton3.Text = "View hospital requests";
-            this.MenuButton3.UseVisualStyleBackColor = false;
-            this.MenuButton3.Click += new System.EventHandler(this.MenuButton3_Click);
-            this.MenuButton3.MouseLeave += new System.EventHandler(this.MenuButton3_MouseLeave);
-            this.MenuButton3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton3_MouseMove);
-            // 
-            // MenuButton2
-            // 
-            this.MenuButton2.BackColor = System.Drawing.Color.DarkRed;
-            this.animator1.SetDecoration(this.MenuButton2, AnimatorNS.DecorationType.None);
-            this.MenuButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuButton2.ForeColor = System.Drawing.Color.White;
-            this.MenuButton2.Location = new System.Drawing.Point(5, 76);
-            this.MenuButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MenuButton2.Name = "MenuButton2";
-            this.MenuButton2.Size = new System.Drawing.Size(264, 57);
-            this.MenuButton2.TabIndex = 27;
-            this.MenuButton2.Text = "Send blood results";
-            this.MenuButton2.UseVisualStyleBackColor = false;
-            this.MenuButton2.Click += new System.EventHandler(this.MenuButton2_Click);
-            this.MenuButton2.MouseLeave += new System.EventHandler(this.MenuButton2_MouseLeave);
-            this.MenuButton2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton2_MouseMove);
-            // 
-            // MenuButton1
-            // 
-            this.MenuButton1.BackColor = System.Drawing.Color.DarkRed;
-            this.animator1.SetDecoration(this.MenuButton1, AnimatorNS.DecorationType.None);
-            this.MenuButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuButton1.ForeColor = System.Drawing.Color.White;
-            this.MenuButton1.Location = new System.Drawing.Point(5, 5);
-            this.MenuButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MenuButton1.Name = "MenuButton1";
-            this.MenuButton1.Size = new System.Drawing.Size(264, 57);
-            this.MenuButton1.TabIndex = 27;
-            this.MenuButton1.Text = "View donation forms";
-            this.MenuButton1.UseVisualStyleBackColor = false;
-            this.MenuButton1.Click += new System.EventHandler(this.MenuButton1_Click);
-            this.MenuButton1.MouseLeave += new System.EventHandler(this.MenuButton1_MouseLeave);
-            this.MenuButton1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton1_MouseMove);
-            // 
             // animator1
             // 
             this.animator1.AnimationType = AnimatorNS.AnimationType.VertSlide;
             this.animator1.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(0);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.animator1.DefaultAnimation = animation2;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(0);
+            animation3.RotateCoeff = 0F;
+            animation3.RotateLimit = 0F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 0F;
+            this.animator1.DefaultAnimation = animation3;
             // 
             // Panel1
             // 
@@ -451,7 +315,7 @@
             this.groupBox3.Location = new System.Drawing.Point(628, 503);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(320, 123);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
@@ -481,7 +345,7 @@
             this.BtnReject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnReject.ForeColor = System.Drawing.Color.White;
             this.BtnReject.Location = new System.Drawing.Point(196, 50);
-            this.BtnReject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnReject.Margin = new System.Windows.Forms.Padding(4);
             this.BtnReject.Name = "BtnReject";
             this.BtnReject.Size = new System.Drawing.Size(113, 52);
             this.BtnReject.TabIndex = 7;
@@ -498,7 +362,7 @@
             this.BtnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAccept.ForeColor = System.Drawing.Color.White;
             this.BtnAccept.Location = new System.Drawing.Point(8, 50);
-            this.BtnAccept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAccept.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAccept.Name = "BtnAccept";
             this.BtnAccept.Size = new System.Drawing.Size(113, 52);
             this.BtnAccept.TabIndex = 6;
@@ -522,9 +386,9 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox2.Location = new System.Drawing.Point(457, 25);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(361, 450);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
@@ -545,7 +409,7 @@
             this.TxtStatus.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtStatus.LineThickness = 3;
             this.TxtStatus.Location = new System.Drawing.Point(28, 342);
-            this.TxtStatus.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtStatus.Margin = new System.Windows.Forms.Padding(5);
             this.TxtStatus.Name = "TxtStatus";
             this.TxtStatus.Size = new System.Drawing.Size(307, 41);
             this.TxtStatus.TabIndex = 34;
@@ -578,7 +442,7 @@
             this.TxtCreationDate.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtCreationDate.LineThickness = 3;
             this.TxtCreationDate.Location = new System.Drawing.Point(28, 256);
-            this.TxtCreationDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtCreationDate.Margin = new System.Windows.Forms.Padding(5);
             this.TxtCreationDate.Name = "TxtCreationDate";
             this.TxtCreationDate.Size = new System.Drawing.Size(307, 41);
             this.TxtCreationDate.TabIndex = 32;
@@ -600,7 +464,7 @@
             this.TxtLastName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtLastName.LineThickness = 3;
             this.TxtLastName.Location = new System.Drawing.Point(28, 167);
-            this.TxtLastName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtLastName.Margin = new System.Windows.Forms.Padding(5);
             this.TxtLastName.Name = "TxtLastName";
             this.TxtLastName.Size = new System.Drawing.Size(307, 41);
             this.TxtLastName.TabIndex = 31;
@@ -622,7 +486,7 @@
             this.TxtFirstName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtFirstName.LineThickness = 3;
             this.TxtFirstName.Location = new System.Drawing.Point(28, 79);
-            this.TxtFirstName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtFirstName.Margin = new System.Windows.Forms.Padding(5);
             this.TxtFirstName.Name = "TxtFirstName";
             this.TxtFirstName.Size = new System.Drawing.Size(307, 41);
             this.TxtFirstName.TabIndex = 30;
@@ -678,9 +542,9 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox1.Location = new System.Drawing.Point(923, 25);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(361, 450);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
@@ -693,7 +557,7 @@
             this.BtnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAdd.ForeColor = System.Drawing.Color.White;
             this.BtnAdd.Location = new System.Drawing.Point(221, 391);
-            this.BtnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAdd.Name = "BtnAdd";
             this.BtnAdd.Size = new System.Drawing.Size(113, 52);
             this.BtnAdd.TabIndex = 5;
@@ -715,7 +579,7 @@
             this.TxtRh.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtRh.LineThickness = 3;
             this.TxtRh.Location = new System.Drawing.Point(28, 342);
-            this.TxtRh.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtRh.Margin = new System.Windows.Forms.Padding(5);
             this.TxtRh.Name = "TxtRh";
             this.TxtRh.Size = new System.Drawing.Size(307, 41);
             this.TxtRh.TabIndex = 4;
@@ -735,7 +599,7 @@
             this.TxtBloodType.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtBloodType.LineThickness = 3;
             this.TxtBloodType.Location = new System.Drawing.Point(28, 256);
-            this.TxtBloodType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtBloodType.Margin = new System.Windows.Forms.Padding(5);
             this.TxtBloodType.Name = "TxtBloodType";
             this.TxtBloodType.Size = new System.Drawing.Size(307, 41);
             this.TxtBloodType.TabIndex = 3;
@@ -755,7 +619,7 @@
             this.TxtTarget.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtTarget.LineThickness = 3;
             this.TxtTarget.Location = new System.Drawing.Point(28, 167);
-            this.TxtTarget.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtTarget.Margin = new System.Windows.Forms.Padding(5);
             this.TxtTarget.Name = "TxtTarget";
             this.TxtTarget.Size = new System.Drawing.Size(307, 41);
             this.TxtTarget.TabIndex = 2;
@@ -775,7 +639,7 @@
             this.TxtCollectionDate.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtCollectionDate.LineThickness = 3;
             this.TxtCollectionDate.Location = new System.Drawing.Point(28, 79);
-            this.TxtCollectionDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtCollectionDate.Margin = new System.Windows.Forms.Padding(5);
             this.TxtCollectionDate.Name = "TxtCollectionDate";
             this.TxtCollectionDate.Size = new System.Drawing.Size(307, 41);
             this.TxtCollectionDate.TabIndex = 1;
@@ -851,7 +715,7 @@
             this.Panel2.Controls.Add(this.DonationFormsList1);
             this.animator1.SetDecoration(this.Panel2, AnimatorNS.DecorationType.None);
             this.Panel2.Location = new System.Drawing.Point(20, 112);
-            this.Panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel2.Margin = new System.Windows.Forms.Padding(4);
             this.Panel2.Name = "Panel2";
             this.Panel2.Size = new System.Drawing.Size(1315, 662);
             this.Panel2.TabIndex = 21;
@@ -865,7 +729,7 @@
             this.BtnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConfirm.ForeColor = System.Drawing.Color.White;
             this.BtnConfirm.Location = new System.Drawing.Point(1177, 601);
-            this.BtnConfirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnConfirm.Margin = new System.Windows.Forms.Padding(4);
             this.BtnConfirm.Name = "BtnConfirm";
             this.BtnConfirm.Size = new System.Drawing.Size(129, 54);
             this.BtnConfirm.TabIndex = 31;
@@ -918,7 +782,7 @@
             // 
             this.animator1.SetDecoration(this.TxtDiseases, AnimatorNS.DecorationType.None);
             this.TxtDiseases.Location = new System.Drawing.Point(377, 567);
-            this.TxtDiseases.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtDiseases.Margin = new System.Windows.Forms.Padding(4);
             this.TxtDiseases.Multiline = true;
             this.TxtDiseases.Name = "TxtDiseases";
             this.TxtDiseases.Size = new System.Drawing.Size(699, 83);
@@ -930,31 +794,31 @@
             this.BloodResultsTable.AllowUserToDeleteRows = false;
             this.BloodResultsTable.AllowUserToResizeRows = false;
             this.BloodResultsTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BloodResultsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.BloodResultsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BloodResultsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AnalysisColumn,
             this.ResultColumn});
             this.animator1.SetDecoration(this.BloodResultsTable, AnimatorNS.DecorationType.None);
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BloodResultsTable.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BloodResultsTable.DefaultCellStyle = dataGridViewCellStyle14;
             this.BloodResultsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.BloodResultsTable.EnableHeadersVisualStyles = false;
             this.BloodResultsTable.Location = new System.Drawing.Point(377, 44);
-            this.BloodResultsTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BloodResultsTable.Margin = new System.Windows.Forms.Padding(4);
             this.BloodResultsTable.MultiSelect = false;
             this.BloodResultsTable.Name = "BloodResultsTable";
             this.BloodResultsTable.RowHeadersVisible = false;
@@ -986,7 +850,7 @@
             this.DonationFormsList1.ForeColor = System.Drawing.Color.DarkRed;
             this.DonationFormsList1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.DonationFormsList1.Location = new System.Drawing.Point(4, 44);
-            this.DonationFormsList1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DonationFormsList1.Margin = new System.Windows.Forms.Padding(4);
             this.DonationFormsList1.MultiSelect = false;
             this.DonationFormsList1.Name = "DonationFormsList1";
             this.DonationFormsList1.Size = new System.Drawing.Size(364, 606);
@@ -1020,7 +884,7 @@
             this.Panel3.Controls.Add(this.RequestFormsTable);
             this.animator1.SetDecoration(this.Panel3, AnimatorNS.DecorationType.None);
             this.Panel3.Location = new System.Drawing.Point(20, 112);
-            this.Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel3.Margin = new System.Windows.Forms.Padding(4);
             this.Panel3.Name = "Panel3";
             this.Panel3.Size = new System.Drawing.Size(1315, 662);
             this.Panel3.TabIndex = 22;
@@ -1038,9 +902,9 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox7.Location = new System.Drawing.Point(605, 17);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox7.Size = new System.Drawing.Size(519, 127);
             this.groupBox7.TabIndex = 14;
             this.groupBox7.TabStop = false;
@@ -1074,7 +938,7 @@
             this.TxtErythrocytes3.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtErythrocytes3.LineThickness = 2;
             this.TxtErythrocytes3.Location = new System.Drawing.Point(360, 59);
-            this.TxtErythrocytes3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtErythrocytes3.Margin = new System.Windows.Forms.Padding(5);
             this.TxtErythrocytes3.Name = "TxtErythrocytes3";
             this.TxtErythrocytes3.Size = new System.Drawing.Size(132, 41);
             this.TxtErythrocytes3.TabIndex = 10;
@@ -1108,7 +972,7 @@
             this.TxtPlasma3.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtPlasma3.LineThickness = 2;
             this.TxtPlasma3.Location = new System.Drawing.Point(191, 59);
-            this.TxtPlasma3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtPlasma3.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPlasma3.Name = "TxtPlasma3";
             this.TxtPlasma3.Size = new System.Drawing.Size(132, 41);
             this.TxtPlasma3.TabIndex = 8;
@@ -1142,7 +1006,7 @@
             this.TxtPlatetes3.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtPlatetes3.LineThickness = 2;
             this.TxtPlatetes3.Location = new System.Drawing.Point(23, 59);
-            this.TxtPlatetes3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtPlatetes3.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPlatetes3.Name = "TxtPlatetes3";
             this.TxtPlatetes3.Size = new System.Drawing.Size(132, 41);
             this.TxtPlatetes3.TabIndex = 6;
@@ -1162,9 +1026,9 @@
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox6.Location = new System.Drawing.Point(8, 444);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox6.Size = new System.Drawing.Size(589, 207);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
@@ -1198,7 +1062,7 @@
             this.TxtDoctorsName.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtDoctorsName.LineThickness = 2;
             this.TxtDoctorsName.Location = new System.Drawing.Point(316, 148);
-            this.TxtDoctorsName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtDoctorsName.Margin = new System.Windows.Forms.Padding(5);
             this.TxtDoctorsName.Name = "TxtDoctorsName";
             this.TxtDoctorsName.Size = new System.Drawing.Size(224, 41);
             this.TxtDoctorsName.TabIndex = 12;
@@ -1232,7 +1096,7 @@
             this.TxtHospital.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtHospital.LineThickness = 2;
             this.TxtHospital.Location = new System.Drawing.Point(316, 59);
-            this.TxtHospital.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtHospital.Margin = new System.Windows.Forms.Padding(5);
             this.TxtHospital.Name = "TxtHospital";
             this.TxtHospital.Size = new System.Drawing.Size(224, 41);
             this.TxtHospital.TabIndex = 10;
@@ -1266,7 +1130,7 @@
             this.TxtRh3.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtRh3.LineThickness = 2;
             this.TxtRh3.Location = new System.Drawing.Point(23, 148);
-            this.TxtRh3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtRh3.Margin = new System.Windows.Forms.Padding(5);
             this.TxtRh3.Name = "TxtRh3";
             this.TxtRh3.Size = new System.Drawing.Size(224, 41);
             this.TxtRh3.TabIndex = 8;
@@ -1300,7 +1164,7 @@
             this.TxtBloodType3.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtBloodType3.LineThickness = 2;
             this.TxtBloodType3.Location = new System.Drawing.Point(23, 59);
-            this.TxtBloodType3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtBloodType3.Margin = new System.Windows.Forms.Padding(5);
             this.TxtBloodType3.Name = "TxtBloodType3";
             this.TxtBloodType3.Size = new System.Drawing.Size(224, 41);
             this.TxtBloodType3.TabIndex = 6;
@@ -1311,14 +1175,14 @@
             this.RequestFormsTable.AllowUserToAddRows = false;
             this.RequestFormsTable.AllowUserToDeleteRows = false;
             this.RequestFormsTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.RequestFormsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.RequestFormsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.RequestFormsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.RequestFormsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -1328,18 +1192,18 @@
             this.ErythrocytesQtyColumn,
             this.StatusColumn});
             this.animator1.SetDecoration(this.RequestFormsTable, AnimatorNS.DecorationType.None);
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.RequestFormsTable.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.RequestFormsTable.DefaultCellStyle = dataGridViewCellStyle16;
             this.RequestFormsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.RequestFormsTable.EnableHeadersVisualStyles = false;
             this.RequestFormsTable.Location = new System.Drawing.Point(8, 17);
-            this.RequestFormsTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RequestFormsTable.Margin = new System.Windows.Forms.Padding(4);
             this.RequestFormsTable.MultiSelect = false;
             this.RequestFormsTable.Name = "RequestFormsTable";
             this.RequestFormsTable.ReadOnly = true;
@@ -1409,7 +1273,7 @@
             this.Panel4.Controls.Add(this.BloodBagsTable);
             this.animator1.SetDecoration(this.Panel4, AnimatorNS.DecorationType.None);
             this.Panel4.Location = new System.Drawing.Point(20, 112);
-            this.Panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.Panel4.Name = "Panel4";
             this.Panel4.Size = new System.Drawing.Size(1315, 662);
             this.Panel4.TabIndex = 23;
@@ -1423,7 +1287,7 @@
             this.BtnConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnConvert.ForeColor = System.Drawing.Color.White;
             this.BtnConvert.Location = new System.Drawing.Point(971, 586);
-            this.BtnConvert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnConvert.Margin = new System.Windows.Forms.Padding(4);
             this.BtnConvert.Name = "BtnConvert";
             this.BtnConvert.Size = new System.Drawing.Size(137, 54);
             this.BtnConvert.TabIndex = 4;
@@ -1445,9 +1309,9 @@
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox5.Location = new System.Drawing.Point(787, 44);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(497, 384);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
@@ -1481,7 +1345,7 @@
             this.TxtRh2.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtRh2.LineThickness = 2;
             this.TxtRh2.Location = new System.Drawing.Point(23, 322);
-            this.TxtRh2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtRh2.Margin = new System.Windows.Forms.Padding(5);
             this.TxtRh2.Name = "TxtRh2";
             this.TxtRh2.Size = new System.Drawing.Size(224, 41);
             this.TxtRh2.TabIndex = 12;
@@ -1515,7 +1379,7 @@
             this.TxtBloodType2.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtBloodType2.LineThickness = 2;
             this.TxtBloodType2.Location = new System.Drawing.Point(23, 236);
-            this.TxtBloodType2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtBloodType2.Margin = new System.Windows.Forms.Padding(5);
             this.TxtBloodType2.Name = "TxtBloodType2";
             this.TxtBloodType2.Size = new System.Drawing.Size(224, 41);
             this.TxtBloodType2.TabIndex = 10;
@@ -1549,7 +1413,7 @@
             this.TxtTarget2.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtTarget2.LineThickness = 2;
             this.TxtTarget2.Location = new System.Drawing.Point(23, 148);
-            this.TxtTarget2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtTarget2.Margin = new System.Windows.Forms.Padding(5);
             this.TxtTarget2.Name = "TxtTarget2";
             this.TxtTarget2.Size = new System.Drawing.Size(224, 41);
             this.TxtTarget2.TabIndex = 8;
@@ -1583,7 +1447,7 @@
             this.TxtCollectionDate2.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtCollectionDate2.LineThickness = 2;
             this.TxtCollectionDate2.Location = new System.Drawing.Point(23, 59);
-            this.TxtCollectionDate2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtCollectionDate2.Margin = new System.Windows.Forms.Padding(5);
             this.TxtCollectionDate2.Name = "TxtCollectionDate2";
             this.TxtCollectionDate2.Size = new System.Drawing.Size(224, 41);
             this.TxtCollectionDate2.TabIndex = 6;
@@ -1601,9 +1465,9 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBox4.Location = new System.Drawing.Point(787, 444);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(497, 119);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
@@ -1636,7 +1500,7 @@
             this.TxtErythrocytes.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtErythrocytes.LineThickness = 2;
             this.TxtErythrocytes.Location = new System.Drawing.Point(349, 69);
-            this.TxtErythrocytes.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtErythrocytes.Margin = new System.Windows.Forms.Padding(5);
             this.TxtErythrocytes.Name = "TxtErythrocytes";
             this.TxtErythrocytes.Size = new System.Drawing.Size(137, 41);
             this.TxtErythrocytes.TabIndex = 6;
@@ -1669,7 +1533,7 @@
             this.TxtPlasma.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtPlasma.LineThickness = 2;
             this.TxtPlasma.Location = new System.Drawing.Point(184, 69);
-            this.TxtPlasma.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtPlasma.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPlasma.Name = "TxtPlasma";
             this.TxtPlasma.Size = new System.Drawing.Size(137, 41);
             this.TxtPlasma.TabIndex = 4;
@@ -1702,7 +1566,7 @@
             this.TxtPlatelets.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtPlatelets.LineThickness = 2;
             this.TxtPlatelets.Location = new System.Drawing.Point(21, 69);
-            this.TxtPlatelets.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtPlatelets.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPlatelets.Name = "TxtPlatelets";
             this.TxtPlatelets.Size = new System.Drawing.Size(137, 41);
             this.TxtPlatelets.TabIndex = 2;
@@ -1726,14 +1590,14 @@
             this.BloodBagsTable.AllowUserToAddRows = false;
             this.BloodBagsTable.AllowUserToDeleteRows = false;
             this.BloodBagsTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BloodBagsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BloodBagsTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.BloodBagsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BloodBagsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdColumn,
@@ -1742,18 +1606,18 @@
             this.BloodTypeColumn,
             this.RhColumn});
             this.animator1.SetDecoration(this.BloodBagsTable, AnimatorNS.DecorationType.None);
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkRed;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BloodBagsTable.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.DarkRed;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BloodBagsTable.DefaultCellStyle = dataGridViewCellStyle18;
             this.BloodBagsTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.BloodBagsTable.EnableHeadersVisualStyles = false;
             this.BloodBagsTable.Location = new System.Drawing.Point(16, 44);
-            this.BloodBagsTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BloodBagsTable.Margin = new System.Windows.Forms.Padding(4);
             this.BloodBagsTable.MultiSelect = false;
             this.BloodBagsTable.Name = "BloodBagsTable";
             this.BloodBagsTable.ReadOnly = true;
@@ -1822,7 +1686,7 @@
             this.Panel5.Controls.Add(this.DropdownComponents);
             this.animator1.SetDecoration(this.Panel5, AnimatorNS.DecorationType.None);
             this.Panel5.Location = new System.Drawing.Point(20, 112);
-            this.Panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel5.Margin = new System.Windows.Forms.Padding(4);
             this.Panel5.Name = "Panel5";
             this.Panel5.Size = new System.Drawing.Size(1315, 662);
             this.Panel5.TabIndex = 22;
@@ -1836,7 +1700,7 @@
             this.BtnAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAdd1.ForeColor = System.Drawing.Color.White;
             this.BtnAdd1.Location = new System.Drawing.Point(909, 225);
-            this.BtnAdd1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAdd1.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAdd1.Name = "BtnAdd1";
             this.BtnAdd1.Size = new System.Drawing.Size(299, 41);
             this.BtnAdd1.TabIndex = 12;
@@ -1860,7 +1724,7 @@
             this.TxtTarget1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtTarget1.LineThickness = 3;
             this.TxtTarget1.Location = new System.Drawing.Point(545, 225);
-            this.TxtTarget1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtTarget1.Margin = new System.Windows.Forms.Padding(5);
             this.TxtTarget1.Name = "TxtTarget1";
             this.TxtTarget1.Size = new System.Drawing.Size(299, 41);
             this.TxtTarget1.TabIndex = 11;
@@ -1893,7 +1757,7 @@
             this.TxtRh1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtRh1.LineThickness = 3;
             this.TxtRh1.Location = new System.Drawing.Point(909, 149);
-            this.TxtRh1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtRh1.Margin = new System.Windows.Forms.Padding(5);
             this.TxtRh1.Name = "TxtRh1";
             this.TxtRh1.Size = new System.Drawing.Size(299, 41);
             this.TxtRh1.TabIndex = 9;
@@ -1926,7 +1790,7 @@
             this.TxtBloodType1.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtBloodType1.LineThickness = 3;
             this.TxtBloodType1.Location = new System.Drawing.Point(909, 75);
-            this.TxtBloodType1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtBloodType1.Margin = new System.Windows.Forms.Padding(5);
             this.TxtBloodType1.Name = "TxtBloodType1";
             this.TxtBloodType1.Size = new System.Drawing.Size(299, 41);
             this.TxtBloodType1.TabIndex = 7;
@@ -1959,7 +1823,7 @@
             this.TxtQuantity.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtQuantity.LineThickness = 3;
             this.TxtQuantity.Location = new System.Drawing.Point(545, 149);
-            this.TxtQuantity.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtQuantity.Margin = new System.Windows.Forms.Padding(5);
             this.TxtQuantity.Name = "TxtQuantity";
             this.TxtQuantity.Size = new System.Drawing.Size(299, 41);
             this.TxtQuantity.TabIndex = 5;
@@ -1992,7 +1856,7 @@
             this.TxtExpirationDate.LineMouseHoverColor = System.Drawing.Color.DarkRed;
             this.TxtExpirationDate.LineThickness = 3;
             this.TxtExpirationDate.Location = new System.Drawing.Point(545, 75);
-            this.TxtExpirationDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TxtExpirationDate.Margin = new System.Windows.Forms.Padding(5);
             this.TxtExpirationDate.Name = "TxtExpirationDate";
             this.TxtExpirationDate.Size = new System.Drawing.Size(299, 41);
             this.TxtExpirationDate.TabIndex = 3;
@@ -2037,7 +1901,7 @@
         "Plasma",
         "Erythrocytes"};
             this.DropdownComponents.Location = new System.Drawing.Point(36, 74);
-            this.DropdownComponents.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.DropdownComponents.Margin = new System.Windows.Forms.Padding(5);
             this.DropdownComponents.Name = "DropdownComponents";
             this.DropdownComponents.NomalColor = System.Drawing.Color.DarkRed;
             this.DropdownComponents.onHoverColor = System.Drawing.Color.DarkRed;
@@ -2045,12 +1909,146 @@
             this.DropdownComponents.Size = new System.Drawing.Size(289, 43);
             this.DropdownComponents.TabIndex = 0;
             // 
+            // MenuPanel
+            // 
+            this.MenuPanel.Controls.Add(this.MenuButton2);
+            this.MenuPanel.Controls.Add(this.SwitchSearchDonators);
+            this.MenuPanel.Controls.Add(this.label34);
+            this.MenuPanel.Controls.Add(this.MenuButton5);
+            this.MenuPanel.Controls.Add(this.MenuButton4);
+            this.MenuPanel.Controls.Add(this.MenuButton3);
+            this.MenuPanel.Controls.Add(this.MenuButton1);
+            this.animator1.SetDecoration(this.MenuPanel, AnimatorNS.DecorationType.None);
+            this.MenuPanel.Location = new System.Drawing.Point(20, 111);
+            this.MenuPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MenuPanel.Name = "MenuPanel";
+            this.MenuPanel.Size = new System.Drawing.Size(284, 663);
+            this.MenuPanel.TabIndex = 24;
+            this.MenuPanel.Visible = false;
+            this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
+            // 
+            // MenuButton1
+            // 
+            this.MenuButton1.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.MenuButton1, AnimatorNS.DecorationType.None);
+            this.MenuButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuButton1.ForeColor = System.Drawing.Color.White;
+            this.MenuButton1.Location = new System.Drawing.Point(5, 5);
+            this.MenuButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MenuButton1.Name = "MenuButton1";
+            this.MenuButton1.Size = new System.Drawing.Size(264, 57);
+            this.MenuButton1.TabIndex = 27;
+            this.MenuButton1.Text = "View donation forms";
+            this.MenuButton1.UseVisualStyleBackColor = false;
+            this.MenuButton1.Click += new System.EventHandler(this.MenuButton1_Click);
+            this.MenuButton1.MouseLeave += new System.EventHandler(this.MenuButton1_MouseLeave);
+            this.MenuButton1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton1_MouseMove);
+            // 
+            // MenuButton4
+            // 
+            this.MenuButton4.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.MenuButton4, AnimatorNS.DecorationType.None);
+            this.MenuButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuButton4.ForeColor = System.Drawing.Color.White;
+            this.MenuButton4.Location = new System.Drawing.Point(5, 220);
+            this.MenuButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MenuButton4.Name = "MenuButton4";
+            this.MenuButton4.Size = new System.Drawing.Size(264, 57);
+            this.MenuButton4.TabIndex = 28;
+            this.MenuButton4.Text = "Convert blood to products";
+            this.MenuButton4.UseVisualStyleBackColor = false;
+            this.MenuButton4.Click += new System.EventHandler(this.MenuButton4_Click);
+            this.MenuButton4.MouseLeave += new System.EventHandler(this.MenuButton4_MouseLeave);
+            this.MenuButton4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton4_MouseMove);
+            // 
+            // MenuButton3
+            // 
+            this.MenuButton3.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.MenuButton3, AnimatorNS.DecorationType.None);
+            this.MenuButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuButton3.ForeColor = System.Drawing.Color.White;
+            this.MenuButton3.Location = new System.Drawing.Point(5, 149);
+            this.MenuButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MenuButton3.Name = "MenuButton3";
+            this.MenuButton3.Size = new System.Drawing.Size(264, 57);
+            this.MenuButton3.TabIndex = 29;
+            this.MenuButton3.Text = "View hospital requests";
+            this.MenuButton3.UseVisualStyleBackColor = false;
+            this.MenuButton3.Click += new System.EventHandler(this.MenuButton3_Click);
+            this.MenuButton3.MouseLeave += new System.EventHandler(this.MenuButton3_MouseLeave);
+            this.MenuButton3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton3_MouseMove);
+            // 
+            // MenuButton5
+            // 
+            this.MenuButton5.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.MenuButton5, AnimatorNS.DecorationType.None);
+            this.MenuButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuButton5.ForeColor = System.Drawing.Color.White;
+            this.MenuButton5.Location = new System.Drawing.Point(5, 293);
+            this.MenuButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MenuButton5.Name = "MenuButton5";
+            this.MenuButton5.Size = new System.Drawing.Size(264, 57);
+            this.MenuButton5.TabIndex = 30;
+            this.MenuButton5.Text = "Add standalone product";
+            this.MenuButton5.UseVisualStyleBackColor = false;
+            this.MenuButton5.Click += new System.EventHandler(this.MenuButton5_Click);
+            this.MenuButton5.MouseLeave += new System.EventHandler(this.MenuButton5_MouseLeave);
+            this.MenuButton5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton5_MouseMove);
+            // 
+            // label34
+            // 
+            this.animator1.SetDecoration(this.label34, AnimatorNS.DecorationType.None);
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.DarkRed;
+            this.label34.Location = new System.Drawing.Point(35, 608);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(130, 49);
+            this.label34.TabIndex = 8;
+            this.label34.Text = "Search for donators:";
+            // 
+            // SwitchSearchDonators
+            // 
+            this.SwitchSearchDonators.BackColor = System.Drawing.Color.DimGray;
+            this.animator1.SetDecoration(this.SwitchSearchDonators, AnimatorNS.DecorationType.None);
+            this.SwitchSearchDonators.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SwitchSearchDonators.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.SwitchSearchDonators.Location = new System.Drawing.Point(172, 601);
+            this.SwitchSearchDonators.Name = "SwitchSearchDonators";
+            this.SwitchSearchDonators.Size = new System.Drawing.Size(69, 52);
+            this.SwitchSearchDonators.TabIndex = 31;
+            this.SwitchSearchDonators.Text = "Off";
+            this.SwitchSearchDonators.UseVisualStyleBackColor = false;
+            // 
+            // MenuButton2
+            // 
+            this.MenuButton2.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.MenuButton2, AnimatorNS.DecorationType.None);
+            this.MenuButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MenuButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MenuButton2.ForeColor = System.Drawing.Color.White;
+            this.MenuButton2.Location = new System.Drawing.Point(5, 77);
+            this.MenuButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MenuButton2.Name = "MenuButton2";
+            this.MenuButton2.Size = new System.Drawing.Size(264, 57);
+            this.MenuButton2.TabIndex = 32;
+            this.MenuButton2.Text = "Send blood results";
+            this.MenuButton2.UseVisualStyleBackColor = false;
+            this.MenuButton2.Click += new System.EventHandler(this.MenuButton2_Click);
+            this.MenuButton2.MouseLeave += new System.EventHandler(this.MenuButton2_MouseLeave);
+            this.MenuButton2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuButton2_MouseMove);
+            // 
             // EmployeeWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 789);
             this.ControlBox = false;
+            this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.Panel4);
             this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Panel1);
@@ -2064,7 +2062,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "EmployeeWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2075,7 +2073,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuToggle)).EndInit();
-            this.MenuPanel.ResumeLayout(false);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -2101,6 +2098,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BloodBagsTable)).EndInit();
             this.Panel5.ResumeLayout(false);
             this.Panel5.PerformLayout();
+            this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2112,11 +2110,6 @@
         private System.Windows.Forms.PictureBox PictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox MenuToggle;
-        private System.Windows.Forms.Panel MenuPanel;
-        private System.Windows.Forms.Button MenuButton2;
-        private System.Windows.Forms.Button MenuButton1;
-        private System.Windows.Forms.Button MenuButton3;
-        private System.Windows.Forms.Button MenuButton4;
         private AnimatorNS.Animator animator1;
         private System.Windows.Forms.Panel Panel1;
         private System.Windows.Forms.Panel Panel2;
@@ -2149,7 +2142,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.Button MenuButton5;
         private System.Windows.Forms.Panel Panel5;
         private System.Windows.Forms.Label label11;
         private Bunifu.Framework.UI.BunifuDropdown DropdownComponents;
@@ -2224,7 +2216,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ErythrocytesQtyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
         private System.Windows.Forms.Button BtnDelete;
+        private System.Windows.Forms.Panel MenuPanel;
+        private System.Windows.Forms.Button MenuButton5;
+        private System.Windows.Forms.Button MenuButton4;
+        private System.Windows.Forms.Button MenuButton3;
+        private System.Windows.Forms.Button MenuButton1;
         private System.Windows.Forms.Button SwitchSearchDonators;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Button MenuButton2;
     }
 }
