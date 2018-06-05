@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FunctionalitiesTests\MedicTest.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="FunctionalitiesTests\DateContactTest.cs" />
     <Compile Include="FunctionalitiesTests\AnalizaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TèsteFuncționale\DeleteExpiredTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -42,6 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MenuToggle = new System.Windows.Forms.PictureBox();
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.SwitchSearchDonators = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
             this.MenuButton5 = new System.Windows.Forms.Button();
             this.MenuButton4 = new System.Windows.Forms.Button();
             this.MenuButton3 = new System.Windows.Forms.Button();
@@ -54,6 +56,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnReject = new System.Windows.Forms.Button();
             this.BtnAccept = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -227,6 +230,8 @@
             // 
             // MenuPanel
             // 
+            this.MenuPanel.Controls.Add(this.SwitchSearchDonators);
+            this.MenuPanel.Controls.Add(this.label34);
             this.MenuPanel.Controls.Add(this.MenuButton5);
             this.MenuPanel.Controls.Add(this.MenuButton4);
             this.MenuPanel.Controls.Add(this.MenuButton3);
@@ -240,6 +245,34 @@
             this.MenuPanel.TabIndex = 19;
             this.MenuPanel.Visible = false;
             this.MenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPanel_Paint);
+            // 
+            // SwitchSearchDonators
+            // 
+            this.SwitchSearchDonators.BackColor = System.Drawing.Color.DimGray;
+            this.animator1.SetDecoration(this.SwitchSearchDonators, AnimatorNS.DecorationType.None);
+            this.SwitchSearchDonators.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SwitchSearchDonators.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SwitchSearchDonators.ForeColor = System.Drawing.Color.White;
+            this.SwitchSearchDonators.Location = new System.Drawing.Point(168, 601);
+            this.SwitchSearchDonators.Margin = new System.Windows.Forms.Padding(4);
+            this.SwitchSearchDonators.Name = "SwitchSearchDonators";
+            this.SwitchSearchDonators.Size = new System.Drawing.Size(65, 52);
+            this.SwitchSearchDonators.TabIndex = 9;
+            this.SwitchSearchDonators.Text = "Off";
+            this.SwitchSearchDonators.UseVisualStyleBackColor = false;
+            this.SwitchSearchDonators.Click += new System.EventHandler(this.SwitchSearchDonators_Click);
+            // 
+            // label34
+            // 
+            this.animator1.SetDecoration(this.label34, AnimatorNS.DecorationType.None);
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.DarkRed;
+            this.label34.Location = new System.Drawing.Point(44, 603);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(116, 53);
+            this.label34.TabIndex = 35;
+            this.label34.Text = "Search for donators:";
             // 
             // MenuButton5
             // 
@@ -363,7 +396,7 @@
             this.Panel1.Controls.Add(this.label2);
             this.animator1.SetDecoration(this.Panel1, AnimatorNS.DecorationType.None);
             this.Panel1.Location = new System.Drawing.Point(20, 112);
-            this.Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.Panel1.Name = "Panel1";
             this.Panel1.Size = new System.Drawing.Size(1315, 662);
             this.Panel1.TabIndex = 20;
@@ -380,7 +413,7 @@
             this.DonationFormsList.ForeColor = System.Drawing.Color.DarkRed;
             this.DonationFormsList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.DonationFormsList.Location = new System.Drawing.Point(16, 48);
-            this.DonationFormsList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DonationFormsList.Margin = new System.Windows.Forms.Padding(4);
             this.DonationFormsList.MultiSelect = false;
             this.DonationFormsList.Name = "DonationFormsList";
             this.DonationFormsList.Size = new System.Drawing.Size(352, 606);
@@ -408,20 +441,38 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.BtnDelete);
             this.groupBox3.Controls.Add(this.BtnReject);
             this.groupBox3.Controls.Add(this.BtnAccept);
             this.animator1.SetDecoration(this.groupBox3, AnimatorNS.DecorationType.None);
             this.groupBox3.Enabled = false;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.DarkRed;
-            this.groupBox3.Location = new System.Drawing.Point(713, 501);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Location = new System.Drawing.Point(628, 503);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox3.Size = new System.Drawing.Size(320, 123);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Actions";
+            // 
+            // BtnDelete
+            // 
+            this.BtnDelete.BackColor = System.Drawing.Color.DarkRed;
+            this.animator1.SetDecoration(this.BtnDelete, AnimatorNS.DecorationType.None);
+            this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDelete.ForeColor = System.Drawing.Color.White;
+            this.BtnDelete.Location = new System.Drawing.Point(343, 50);
+            this.BtnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(113, 52);
+            this.BtnDelete.TabIndex = 8;
+            this.BtnDelete.Text = "Delete";
+            this.BtnDelete.UseVisualStyleBackColor = false;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            this.BtnDelete.MouseLeave += new System.EventHandler(this.BtnDelete_MouseLeave);
+            this.BtnDelete.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnDelete_MouseMove);
             // 
             // BtnReject
             // 
@@ -437,6 +488,8 @@
             this.BtnReject.Text = "Reject";
             this.BtnReject.UseVisualStyleBackColor = false;
             this.BtnReject.Click += new System.EventHandler(this.BtnReject_Click);
+            this.BtnReject.MouseLeave += new System.EventHandler(this.BtnReject_MouseLeave);
+            this.BtnReject.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnReject_MouseMove);
             // 
             // BtnAccept
             // 
@@ -452,6 +505,8 @@
             this.BtnAccept.Text = "Accept";
             this.BtnAccept.UseVisualStyleBackColor = false;
             this.BtnAccept.Click += new System.EventHandler(this.BtnAccept_Click);
+            this.BtnAccept.MouseLeave += new System.EventHandler(this.BtnAccept_MouseLeave);
+            this.BtnAccept.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnAccept_MouseMove);
             // 
             // groupBox2
             // 
@@ -480,7 +535,7 @@
             this.TxtStatus.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtStatus, AnimatorNS.DecorationType.None);
             this.TxtStatus.Enabled = false;
-            this.TxtStatus.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtStatus.HintForeColor = System.Drawing.Color.Empty;
             this.TxtStatus.HintText = "";
@@ -513,7 +568,7 @@
             this.TxtCreationDate.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtCreationDate, AnimatorNS.DecorationType.None);
             this.TxtCreationDate.Enabled = false;
-            this.TxtCreationDate.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtCreationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtCreationDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtCreationDate.HintForeColor = System.Drawing.Color.Empty;
             this.TxtCreationDate.HintText = "";
@@ -535,7 +590,7 @@
             this.TxtLastName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtLastName, AnimatorNS.DecorationType.None);
             this.TxtLastName.Enabled = false;
-            this.TxtLastName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtLastName.HintForeColor = System.Drawing.Color.Empty;
             this.TxtLastName.HintText = "";
@@ -557,7 +612,7 @@
             this.TxtFirstName.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtFirstName, AnimatorNS.DecorationType.None);
             this.TxtFirstName.Enabled = false;
-            this.TxtFirstName.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtFirstName.HintForeColor = System.Drawing.Color.Empty;
             this.TxtFirstName.HintText = "";
@@ -650,7 +705,7 @@
             // 
             this.TxtRh.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtRh, AnimatorNS.DecorationType.None);
-            this.TxtRh.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtRh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtRh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtRh.HintForeColor = System.Drawing.Color.Empty;
             this.TxtRh.HintText = "";
@@ -670,7 +725,7 @@
             // 
             this.TxtBloodType.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtBloodType, AnimatorNS.DecorationType.None);
-            this.TxtBloodType.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtBloodType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtBloodType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtBloodType.HintForeColor = System.Drawing.Color.Empty;
             this.TxtBloodType.HintText = "";
@@ -690,7 +745,7 @@
             // 
             this.TxtTarget.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtTarget, AnimatorNS.DecorationType.None);
-            this.TxtTarget.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtTarget.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtTarget.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtTarget.HintForeColor = System.Drawing.Color.Empty;
             this.TxtTarget.HintText = "";
@@ -710,7 +765,7 @@
             // 
             this.TxtCollectionDate.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtCollectionDate, AnimatorNS.DecorationType.None);
-            this.TxtCollectionDate.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtCollectionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtCollectionDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtCollectionDate.HintForeColor = System.Drawing.Color.Empty;
             this.TxtCollectionDate.HintText = "";
@@ -1795,7 +1850,7 @@
             // 
             this.TxtTarget1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtTarget1, AnimatorNS.DecorationType.None);
-            this.TxtTarget1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtTarget1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtTarget1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtTarget1.HintForeColor = System.Drawing.Color.Empty;
             this.TxtTarget1.HintText = "Optional";
@@ -1828,7 +1883,7 @@
             // 
             this.TxtRh1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtRh1, AnimatorNS.DecorationType.None);
-            this.TxtRh1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtRh1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtRh1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtRh1.HintForeColor = System.Drawing.Color.Empty;
             this.TxtRh1.HintText = "";
@@ -1861,7 +1916,7 @@
             // 
             this.TxtBloodType1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtBloodType1, AnimatorNS.DecorationType.None);
-            this.TxtBloodType1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtBloodType1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtBloodType1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtBloodType1.HintForeColor = System.Drawing.Color.Empty;
             this.TxtBloodType1.HintText = "";
@@ -1894,7 +1949,7 @@
             // 
             this.TxtQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtQuantity, AnimatorNS.DecorationType.None);
-            this.TxtQuantity.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtQuantity.HintForeColor = System.Drawing.Color.Empty;
             this.TxtQuantity.HintText = "";
@@ -1927,7 +1982,7 @@
             // 
             this.TxtExpirationDate.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.animator1.SetDecoration(this.TxtExpirationDate, AnimatorNS.DecorationType.None);
-            this.TxtExpirationDate.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.TxtExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.TxtExpirationDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TxtExpirationDate.HintForeColor = System.Drawing.Color.Empty;
             this.TxtExpirationDate.HintText = "";
@@ -2005,7 +2060,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PictureBox3);
             this.Controls.Add(this.PictureBox2);
-            this.Controls.Add(this.MenuPanel);
             this.animator1.SetDecoration(this, AnimatorNS.DecorationType.None);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -2169,5 +2223,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PlasmaQtyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ErythrocytesQtyColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
+        private System.Windows.Forms.Button BtnDelete;
+        private System.Windows.Forms.Button SwitchSearchDonators;
+        private System.Windows.Forms.Label label34;
     }
 }

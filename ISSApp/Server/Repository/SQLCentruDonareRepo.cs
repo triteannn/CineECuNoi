@@ -91,7 +91,7 @@ namespace Server.Repository
                 try
                 {
                     command.CommandText =
-                        "UPDATE CentreDonare SET Denumire=@Denumire, IdAdr=@IdAdr WHERE Id=@Id";
+                        "UPDATE CentreDonare SET Denumire=@Denumire, IdAdr=@IdAdr, NeedBlood=@NeedBlood WHERE Id=@Id";
 
                     var paramId = command.CreateParameter();
                     paramId.ParameterName = "@Id";
@@ -107,6 +107,11 @@ namespace Server.Repository
                     paramIdAdr.ParameterName = "@IdAdr";
                     paramIdAdr.Value = entity.IdAdr;
                     command.Parameters.Add(paramIdAdr);
+
+                    var paramNeed = command.CreateParameter();
+                    paramNeed.ParameterName = "@NeedBlood";
+                    paramNeed.Value = entity.NeedBlood;
+                    command.Parameters.Add(paramNeed);
 
                     var result = command.ExecuteNonQuery();
                     if (result != 0)

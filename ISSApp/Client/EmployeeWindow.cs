@@ -18,6 +18,7 @@ namespace Client
         private readonly IServer _server;
         private readonly AngajatService _angajatService;
         private readonly Account _loggedAccount;
+        private bool _searchForDonators;
 
         public EmployeeWindow(LoginForm loginForm, IServer server, Account loggedAccount)
         {
@@ -30,6 +31,7 @@ namespace Client
             DonationFormsList.HideSelection = false;
             DonationFormsList1.FullRowSelect = true;
             DonationFormsList1.HideSelection = false;
+            _searchForDonators = false;
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
@@ -46,6 +48,20 @@ namespace Client
         {
             var employee = _server.AngajatFindEntity((int)_loggedAccount.IdAc);
             label1.Text = @"Logged in as " + employee.Nume + " " + employee.Prenume;
+
+
+            if (_server.CentruDonareFindEntity((int)_server.AngajatFindEntity((int)_loggedAccount.IdAc).IdCd).NeedBlood == 0)
+            {
+                _searchForDonators = false;
+                SwitchSearchDonators.BackColor = Color.DimGray;
+                SwitchSearchDonators.Text = "Off";
+            }
+            else
+            {
+                _searchForDonators = true;
+                SwitchSearchDonators.BackColor = Color.Green;
+                SwitchSearchDonators.Text = "On";
+            }
         }
 
         private void EmployeeWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -126,6 +142,42 @@ namespace Client
         {
             MenuButton4.BackColor = Color.DarkRed;
             MenuButton4.ForeColor = Color.White;
+        }
+
+        private void BtnDelete_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnDelete.BackColor = Color.White;
+            BtnDelete.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnDelete_MouseLeave(object sender, EventArgs e)
+        {
+            BtnDelete.BackColor = Color.DarkRed;
+            BtnDelete.ForeColor = Color.White;
+        }
+
+        private void BtnReject_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnReject.BackColor = Color.White;
+            BtnReject.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnReject_MouseLeave(object sender, EventArgs e)
+        {
+            BtnReject.BackColor = Color.DarkRed;
+            BtnReject.ForeColor = Color.White;
+        }
+
+        private void BtnAccept_MouseMove(object sender, MouseEventArgs e)
+        {
+            BtnAccept.BackColor = Color.White;
+            BtnAccept.ForeColor = Color.DarkRed;
+        }
+
+        private void BtnAccept_MouseLeave(object sender, EventArgs e)
+        {
+            BtnAccept.BackColor = Color.DarkRed;
+            BtnAccept.ForeColor = Color.White;
         }
 
         private bool _toggleMenu = true;
@@ -230,7 +282,8 @@ namespace Client
 
             DonationFormsList.Items.Clear();
 
-            donationForms.ForEach(x => {
+            donationForms.ForEach(x =>
+            {
                 var donator = _server.DonatorFindEntity((int)x.IdD);
                 var item = new ListViewItem(new[] {
                     x.DataCreare.ToShortDateString(),
@@ -282,7 +335,8 @@ namespace Client
 
             DonationFormsList1.Items.Clear();
 
-            donationForms.ForEach(x => {
+            donationForms.ForEach(x =>
+            {
                 if (x.IdAn == null)
                 {
                     var donator = _server.DonatorFindEntity((int)x.IdD);
@@ -417,7 +471,8 @@ namespace Client
             if (DonationFormsList.SelectedIndices.Count > 0)
             {
                 PungaSange punga = null;
-                worker.DoWork += (obj, ea) => {
+                worker.DoWork += (obj, ea) =>
+                {
                     var formular = DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].Tag;
                     TxtCreationDate.Text = ((FormularDonare)formular).DataCreare.ToShortDateString();
                     TxtFirstName.Text = DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].SubItems[2].Text;
@@ -429,15 +484,18 @@ namespace Client
                     if (((FormularDonare)formular).Status.Equals("Received"))
                     {
                         BtnAccept.Enabled = BtnReject.Enabled = true;
+                        BtnDelete.Enabled = true;
                     }
                     else if (((FormularDonare)formular).Status.Equals("Accepted"))
                     {
                         BtnReject.Enabled = true;
                         BtnAccept.Enabled = false;
+                        BtnDelete.Enabled = false;
                     }
                     else
                     {
                         BtnAccept.Enabled = BtnReject.Enabled = false;
+                        BtnDelete.Enabled = false;
                     }
 
                     var pungi = _server.GetPungaSangeCuCNP(_server.DonatorFindEntity((int)((FormularDonare)formular).IdD).CNP);
@@ -452,7 +510,8 @@ namespace Client
                     }
                 };
                 worker.RunWorkerAsync();
-                worker.RunWorkerCompleted += (obj, ea) => {
+                worker.RunWorkerCompleted += (obj, ea) =>
+                {
                     if (punga == null)
                     {
                         groupBox1.Enabled = true;
@@ -504,7 +563,8 @@ namespace Client
                 _server.FormularDonareUpdate(formular);
                 UpdateList();
                 DonationFormsList.SelectedIndices.Add(index);
-            } catch (NetworkingException ex)
+            }
+            catch (NetworkingException ex)
             {
                 MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -520,7 +580,8 @@ namespace Client
                 _server.FormularDonareUpdate(formular);
                 UpdateList();
                 DonationFormsList.SelectedIndices.Add(index);
-            } catch (NetworkingException ex)
+            }
+            catch (NetworkingException ex)
             {
                 MessageBox.Show(ex.Message, "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -634,7 +695,8 @@ namespace Client
                 }
                 else
                     MessageBox.Show("Please select a blood product.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } catch (NetworkingException)
+            }
+            catch (NetworkingException)
             {
                 MessageBox.Show("Could not add the product.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -660,7 +722,8 @@ namespace Client
 
             DonationFormsList1.Items.Clear();
 
-            donationForms.ForEach(x => {
+            donationForms.ForEach(x =>
+            {
                 if (x.IdAn == null)
                 {
                     var donator = _server.DonatorFindEntity((int)x.IdD);
@@ -747,12 +810,73 @@ namespace Client
                         UpdateAnalizaUI();
                         MessageBox.Show("Your action has been completed successfully.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    } catch (NetworkingException)
+                    }
+                    catch (NetworkingException ex)
                     {
                         MessageBox.Show("Could not perform action.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var toDelete = (FormularDonare)DonationFormsList.SelectedItems[0].Tag;
+                DialogResult ask = MessageBox.Show("Do you really want to delete this donation form?", "Are you sure?", MessageBoxButtons.YesNo);
+                if (ask == DialogResult.Yes)
+                {
+                    _server.FormularDonareDelete(toDelete);
+                    UpdateList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Could not perform action.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SwitchSearchDonators_Click(object sender, EventArgs e)
+        {
+            if (_searchForDonators)
+            {
+                try
+                {
+                    _searchForDonators = false;
+                    SwitchSearchDonators.BackColor = Color.DimGray;
+                    SwitchSearchDonators.Text = "Off";
+                    CentruDonare centru = _server.CentruDonareFindEntity((int)_server.AngajatFindEntity((int)_loggedAccount.IdAc).IdCd);
+                    centru.NeedBlood = 0;
+                    _server.CentruDonareUpdate(centru);
+                }
+                catch (NetworkingException ex)
+                {
+                    _searchForDonators = true;
+                    SwitchSearchDonators.BackColor = Color.Green;
+                    SwitchSearchDonators.Text = "On";
+                    MessageBox.Show("Can't search right now.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    _searchForDonators = true;
+                    SwitchSearchDonators.BackColor = Color.Green;
+                    SwitchSearchDonators.Text = "On";
+                    CentruDonare centru = _server.CentruDonareFindEntity((int)_server.AngajatFindEntity((int)_loggedAccount.IdAc).IdCd);
+                    centru.NeedBlood = 1;
+                    _server.CentruDonareUpdate(centru);
+                }
+                catch (NetworkingException ex)
+                {
+                    _searchForDonators = false;
+                    SwitchSearchDonators.BackColor = Color.DimGray;
+                    SwitchSearchDonators.Text = "Off";
+                    MessageBox.Show("Can't search right now.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
