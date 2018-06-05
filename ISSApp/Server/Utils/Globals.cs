@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace Server.Utils
@@ -18,6 +19,7 @@ namespace Server.Utils
 
         public static SqlConnection GetDbConnection()
         {
+            Console.WriteLine(ConfigurationManager.ConnectionStrings["DatabaseContext"].ToString());
             return new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseContext"].ToString());
         }
     }

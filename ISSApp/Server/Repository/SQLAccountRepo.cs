@@ -36,6 +36,7 @@ namespace Server.Repository
             else
                 throw new RepositoryException("There is already an account registered with that username.");
             connection.Close();
+            Console.WriteLine("I'm here ;)");
         }
 
         public Account Delete(Account entity)

@@ -39,7 +39,7 @@ namespace Client.Validator
 
         public static void ValidareRh(string rh)
         {
-            if (!(rh.Equals("-") || rh.Equals("+") || rh.Equals("negativ") || rh.Equals("pozitiv")))
+            if (!(rh.Equals("negative") || rh.Equals("positive") || rh.Equals("Negative") || rh.Equals("Positive")))
                 throw new ValidationException("Rh-ul invalid.");
         }
 

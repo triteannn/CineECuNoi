@@ -10,9 +10,14 @@ namespace TesteUnit.FunctionalitiesTests
     public class AccountTest
     {
         //Accounts(Username, Password)
-        private SqlAccountRepo accountRepo;
+        private readonly SqlAccountRepo accountRepo = new SqlAccountRepo();
         private Account account = new Account { Username="tiesto", Password = "paroala"};
 
+
+        public AccountTest()
+        {
+            
+        }
 
         [TestMethod]
         public void Account_Add()
@@ -20,14 +25,12 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 accountRepo.Add(account);
-                //Assert.IsTrue(true);
-                Assert.Fail();
+                Assert.IsTrue(true);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                //Assert.Fail();
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
@@ -38,19 +41,16 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 accountRepo.Delete(account);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
 
         [TestMethod]
-        public void Donator_Update()
+        public void Account_Update()
         {
             try
             {
@@ -59,7 +59,6 @@ namespace TesteUnit.FunctionalitiesTests
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -69,13 +68,13 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                Account account = accountRepo.FindEntity(-1);
-                Assert.Fail();
+                Account account = accountRepo.FindEntity(1);
+                Assert.IsTrue(true);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
@@ -85,12 +84,12 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<Account> accounts = accountRepo.FindAll();
-                Assert.Fail();
+                Assert.IsTrue(accounts.Count >= 0);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
@@ -100,13 +99,13 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                Account account = accountRepo.FindAccountByCredentials("Andreea", "saint.tropz");
-                Assert.Fail();
+                Account account = accountRepo.FindAccountByCredentials("admin", "nimda");
+                Assert.IsTrue(true);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
@@ -125,5 +124,7 @@ namespace TesteUnit.FunctionalitiesTests
                 Assert.IsTrue(true);
             }
         }
+
+
     }
 }

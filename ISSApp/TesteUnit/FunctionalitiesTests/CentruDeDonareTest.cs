@@ -11,14 +11,14 @@ namespace TesteUnit.FunctionalitiesTests
 
     public class CentruDeDonareTest
     {
-        private SqlCentruDonareRepo centruDonareRepo;
+        private SqlCentruDonareRepo centruDonareRepo = new SqlCentruDonareRepo();
         private SQLAdresaRepo adresaRepo;
         private CentruDonare centruDonare = new CentruDonare { Denumire = "Centru Marasti" };
         //(Strada, Numar, Oras, Judet)
 
         public CentruDeDonareTest()
         {
-            centruDonareRepo = new SqlCentruDonareRepo();
+
         }
 
         [TestMethod]
@@ -27,14 +27,11 @@ namespace TesteUnit.FunctionalitiesTests
             
             try
             {
-                centruDonareRepo.Add(centruDonare);
-                //Assert.IsTrue(true);
+                centruDonareRepo.Add(new CentruDonare());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -46,13 +43,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 centruDonareRepo.Delete(centruDonare);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -65,9 +59,8 @@ namespace TesteUnit.FunctionalitiesTests
                 centruDonareRepo.Update(new CentruDonare());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -80,9 +73,8 @@ namespace TesteUnit.FunctionalitiesTests
                 CentruDonare centru = centruDonareRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -93,13 +85,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<CentruDonare> centre = centruDonareRepo.FindAll();
-                //Assert.IsTrue(centre.Count >= 0);
-                Assert.Fail();
+                Assert.IsTrue(centre.Count >= 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -112,7 +101,7 @@ namespace TesteUnit.FunctionalitiesTests
                 CentruDonare centru = centruDonareRepo.FindCentruDonareByDenumire("blablabla");
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
