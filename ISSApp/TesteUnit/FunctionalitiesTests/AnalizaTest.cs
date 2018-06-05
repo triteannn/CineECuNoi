@@ -44,14 +44,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                analizaRepo.Add(analiza);
-                //Assert.IsTrue(true);
+                analizaRepo.Add(new Analiza());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -63,13 +60,11 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 analizaRepo.Delete(analiza);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -82,9 +77,8 @@ namespace TesteUnit.FunctionalitiesTests
                 analizaRepo.Update(new Analiza());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -94,12 +88,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                Analiza angajat = analizaRepo.FindEntity(-1);
-                Assert.Fail();
+                Analiza angajat = analizaRepo.FindEntity(2); //please don't modify
+                Assert.IsTrue(angajat.Eritrocite == 7.4);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -109,12 +102,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                List<Analiza> analiza = analizaRepo.FindAll();
-                Assert.Fail();
+                List<Analiza> analize = analizaRepo.FindAll();
+                Assert.IsTrue(analize.Count >= 0);  
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -125,13 +117,12 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                List<Analiza> analize = analizaRepo.FindByDonator(-1);
-                Assert.Fail();
+                List<Analiza> analize = analizaRepo.FindByDonator(1);
+                Assert.IsTrue(analize.Count == 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
@@ -145,7 +136,6 @@ namespace TesteUnit.FunctionalitiesTests
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }

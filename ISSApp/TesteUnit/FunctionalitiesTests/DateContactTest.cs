@@ -10,12 +10,12 @@ namespace TesteUnit.FunctionalitiesTests
     public class DateContactTest
     {
         //DateContact(Telefon, Email, IdAdr)
-        private SQLDateContact dateContactRepo;
+        private SQLDateContact dateContactRepo = new SQLDateContact();
         private DateContact dateContact = new DateContact { };
 
         public DateContactTest()
         {
-            dateContactRepo = new SQLDateContact();
+            
         }
 
         [TestMethod]
@@ -24,13 +24,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 dateContactRepo.Add(dateContact);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -42,13 +39,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 dateContactRepo.Delete(dateContact);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -61,9 +55,8 @@ namespace TesteUnit.FunctionalitiesTests
                 dateContactRepo.Update(new DateContact());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -73,12 +66,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                DateContact date = dateContactRepo.FindEntity(-1);
-                Assert.Fail();
+                DateContact date = dateContactRepo.FindEntity(1); //keep it this way
+                Assert.IsTrue(date.Email == "tudortritean@gmail.com");
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -89,16 +81,13 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<DateContact> date = dateContactRepo.FindAll();
-                Assert.Fail();
+                Assert.IsTrue(date.Count >= 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
-
-       
     }
 }

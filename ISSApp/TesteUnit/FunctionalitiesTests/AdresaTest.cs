@@ -10,12 +10,12 @@ namespace TesteUnit.FunctionalitiesTests
     public class AdresaTest
     {
         //"INSERT INTO Adrese(Strada, Numar, Oras, Judet)
-        private SQLAdresaRepo adresaRepo;
+        private SQLAdresaRepo adresaRepo = new SQLAdresaRepo();
         private Adresa adresa = new Adresa("Strada Piezisa", 68, "Cluj-Napoca", "Cluj");
 
         public AdresaTest()
         {
-            adresaRepo = new SQLAdresaRepo();
+            
         }
 
         [TestMethod]
@@ -23,14 +23,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                adresaRepo.Add(adresa);
-                // Assert.IsTrue(true);
+                adresaRepo.Add(new Adresa()); //trebe sa dea fail
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -41,13 +38,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 adresaRepo.Delete(adresa);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -58,13 +52,12 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                Adresa adresa = adresaRepo.FindEntity(-1);
-                Assert.Fail();
+                Adresa adresa = adresaRepo.FindEntity(1);
+                Assert.IsTrue(adresa.Strada == "Macilor"); // a nu se schimba in BD
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
@@ -74,32 +67,14 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                List<Adresa> adrese = adresaRepo.FindAll(); //TODO da fail findAll, why?
-                Assert.Fail();
-                Console.WriteLine("size adrese: " + adrese.Count);
+                List<Adresa> adrese = adresaRepo.FindAll();
+                Assert.IsTrue(adrese.Count >= 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
-            }
-        }
-
-        [TestMethod]
-        public void Adresa_GetAdresaByDateContactId()
-        {
-            try
-            {
-                Adresa adresa = adresaRepo.GetAdresaByDateContactId(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
-            }
         }
-
 
     }
 }

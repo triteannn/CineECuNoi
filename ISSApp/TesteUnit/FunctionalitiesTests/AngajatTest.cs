@@ -20,14 +20,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                angajatRepo.Add(angajat);
-                //Assert.IsTrue(true);
+                angajatRepo.Add(new AngajatCentru());
                 Assert.Fail();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -39,13 +36,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 angajatRepo.Delete(angajat);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -58,9 +52,8 @@ namespace TesteUnit.FunctionalitiesTests
                 angajatRepo.Update(new AngajatCentru());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -73,9 +66,8 @@ namespace TesteUnit.FunctionalitiesTests
                 AngajatCentru angajat = angajatRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -86,7 +78,7 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<AngajatCentru> angajati = angajatRepo.FindAll();
-                Assert.Fail();
+                Assert.IsTrue(angajati.Count >= 0);
             }
             catch (Exception e)
             {
@@ -102,12 +94,12 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                AngajatCentru angajat = angajatRepo.FindByIdAccount(-1);
-                Assert.Fail();
+                AngajatCentru angajat = angajatRepo.FindByIdAccount(1); //please don't delete him
+                Assert.IsTrue(true);
             }
             catch (Exception)
             {
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
