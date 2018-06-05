@@ -181,6 +181,7 @@
     <Content Include="icon.ico" />
     <None Include="Resources\codDiagrama.zip" />
     <None Include="Resources\donare sange diag2.mdj" />
+    <None Include="Resources\FunctionalTest - Automatic Removal.pdf" />
     <None Include="Resources\RegisterImage.swf" />
     <None Include="Resources\LoginImage.swf" />
     <None Include="Resources\minimize.png" />

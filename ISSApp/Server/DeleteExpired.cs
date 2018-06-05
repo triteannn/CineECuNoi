@@ -13,7 +13,8 @@ namespace Server
         
         public static void StartTimer()
         {
-            timer = new Timer(36000000);   // o data la o ora   
+            //timer = new Timer(36000000);   // o data la o ora   
+            timer = new Timer(60000); // o data pe minut (e mai ok la testare)
             timer.Elapsed += OnTimedEvent;
             timer.Enabled = true;
         }
