@@ -103,7 +103,6 @@ namespace TesteUnit.FunctionalitiesTests
             }
             catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }

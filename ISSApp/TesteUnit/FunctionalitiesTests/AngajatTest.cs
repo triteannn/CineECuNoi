@@ -10,7 +10,7 @@ namespace TesteUnit.FunctionalitiesTests
     public class AngajatTest
     {
         //AngajatiCentru(CNP, Nume, Prenume, Dob, IdCd, IdA, IdDc)
-        private SqlAngajatRepo angajatRepo;
+        private SqlAngajatRepo angajatRepo = new SqlAngajatRepo();
         private AngajatCentru angajat = new AngajatCentru { CNP = "23647367", Nume = "Alin", Prenume = "Barosanu", Dob = new DateTime(2012, 3, 4) };
 
 
@@ -94,12 +94,12 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                AngajatCentru angajat = angajatRepo.FindByIdAccount(1); //please don't delete him
-                Assert.IsTrue(true);
+                AngajatCentru angajat = angajatRepo.FindByIdAccount(-1);
+                Assert.Fail();
             }
             catch (Exception)
             {
-                Assert.Fail();
+                Assert.IsTrue(true);
             }
         }
 

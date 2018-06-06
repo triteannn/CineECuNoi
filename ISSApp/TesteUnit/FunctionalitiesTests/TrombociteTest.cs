@@ -9,12 +9,12 @@ namespace TesteUnit.FunctionalitiesTests
     [TestClass]
     public class TrombociteTest
     {
-        private SqlTrombociteRepo trombociteRepo;
+        private SqlTrombociteRepo trombociteRepo = new SqlTrombociteRepo();
         private PSTrombocite trombocit = new PSTrombocite { Cantitate = 141, Target = "6653474674", DataExpirare = new DateTime(2006, 9, 3) };
 
         public TrombociteTest()
         {
-            trombociteRepo = new SqlTrombociteRepo();
+            
         }
 
 
@@ -24,14 +24,11 @@ namespace TesteUnit.FunctionalitiesTests
 
             try
             {
-                trombociteRepo.Add(trombocit);
-                //Assert.IsTrue(true);
+                trombociteRepo.Add(new PSTrombocite());
                 Assert.Fail();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -43,13 +40,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 trombociteRepo.Delete(trombocit);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -62,9 +56,8 @@ namespace TesteUnit.FunctionalitiesTests
                 trombociteRepo.Update(new PSTrombocite());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -77,9 +70,8 @@ namespace TesteUnit.FunctionalitiesTests
                 PSTrombocite trombocit = trombociteRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -90,11 +82,12 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<PSTrombocite> trombocite = trombociteRepo.FindAll();
+                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -104,12 +97,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                List<PSTrombocite> trombocite = trombociteRepo.FindByTarget("36568567");
+                List<PSTrombocite> trombocite = trombociteRepo.FindByTarget("365998898968567");
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }

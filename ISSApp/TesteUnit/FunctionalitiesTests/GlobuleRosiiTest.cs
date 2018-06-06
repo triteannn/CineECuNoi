@@ -9,12 +9,12 @@ namespace TesteUnit.FunctionalitiesTests
     [TestClass]
     public class GlobuleRosiiTest
     {
-        private SqlGlobuleRosiiRepo globuleRepo;
+        private SqlGlobuleRosiiRepo globuleRepo = new SqlGlobuleRosiiRepo();
         private PSGlobuleRosii globula = new PSGlobuleRosii { Cantitate = 101, Target = "1553235256253", DataExpirare = new DateTime(2021, 2, 3) };
 
         public GlobuleRosiiTest()
         {
-            globuleRepo = new SqlGlobuleRosiiRepo();
+           
         }
 
 
@@ -24,14 +24,11 @@ namespace TesteUnit.FunctionalitiesTests
 
             try
             {
-                globuleRepo.Add(globula);
-                //Assert.IsTrue(true);
+                globuleRepo.Add(new PSGlobuleRosii());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -43,13 +40,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 globuleRepo.Delete(globula);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -62,9 +56,8 @@ namespace TesteUnit.FunctionalitiesTests
                 globuleRepo.Update(new PSGlobuleRosii());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -74,12 +67,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                PSGlobuleRosii lasma = globuleRepo.FindEntity(-1);
+                PSGlobuleRosii globuleRosii = globuleRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -90,11 +82,12 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<PSGlobuleRosii> globule = globuleRepo.FindAll();
+                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -107,9 +100,8 @@ namespace TesteUnit.FunctionalitiesTests
                 List<PSGlobuleRosii> globule = globuleRepo.FindByTarget("34875748");
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }

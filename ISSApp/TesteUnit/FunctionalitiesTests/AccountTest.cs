@@ -24,13 +24,12 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                accountRepo.Add(account);
-                Assert.IsTrue(true);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
+                accountRepo.Add(new Account());
                 Assert.Fail();
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(true);
             }
         }
 

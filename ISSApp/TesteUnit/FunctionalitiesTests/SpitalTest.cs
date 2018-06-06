@@ -10,7 +10,7 @@ namespace TesteUnit.FunctionalitiesTests
     public class SpitalTest
     {
         //Spitale(Denumire, IdAdr)
-        private SqlSpitalRepo spitalRepo;
+        private SqlSpitalRepo spitalRepo = new SqlSpitalRepo();
         private Spital spital = new Spital { Denumire = "Urgente" };
 
         [TestMethod]
@@ -19,14 +19,11 @@ namespace TesteUnit.FunctionalitiesTests
 
             try
             {
-                spitalRepo.Add(spital);
-                //Assert.IsTrue(true);
+                spitalRepo.Add(new Spital());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -38,13 +35,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 spitalRepo.Delete(spital);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -57,9 +51,8 @@ namespace TesteUnit.FunctionalitiesTests
                 spitalRepo.Update(new Spital());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -72,9 +65,8 @@ namespace TesteUnit.FunctionalitiesTests
                 Spital spital = spitalRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -85,12 +77,11 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<Spital> spitale = spitalRepo.FindAll();
-                Assert.Fail();
+                Assert.IsTrue(spitale.Count >= 1);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 

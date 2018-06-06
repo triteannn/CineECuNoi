@@ -13,7 +13,7 @@ namespace TesteUnit.FunctionalitiesTests
         //Trombocite, VolumMediuTrombocitar, Trombocrit, LatimeDistribTrombocit, Leucocite, 
         // Granulocite, Limfocite, MID, NumarLimfocite, NumarMID, Glicemie, ALT_TGP, Colesterol, ListaBoliDetectate)
 
-        private SQLAnalizaRepo analizaRepo;
+        private SQLAnalizaRepo analizaRepo = new SQLAnalizaRepo();
         private Analiza analiza = new Analiza {
             DataRecoltarii = new DateTime(2011, 2, 3), //have no idea if values are correct
             Eritrocite = 0.1,

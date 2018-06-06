@@ -11,13 +11,13 @@ namespace TesteUnit.FunctionalitiesTests
     public class MedicTest
     {
         //"INSERT INTO Medici(CNP, Nume, Prenume, Dob, IdS, IdA, IdDc)
-        private SqlMedicRepo medicRepo;
+        private SqlMedicRepo medicRepo = new SqlMedicRepo();
         private Medic medic;
 
 
         public MedicTest()
         {
-            medicRepo = new SqlMedicRepo();
+            
             medic = new Medic { CNP = "1970902135778", Nume = "Alexandru", Prenume = "Ioan", Dob = new DateTime(2011, 3, 4) };
         }
 
@@ -28,12 +28,11 @@ namespace TesteUnit.FunctionalitiesTests
             Console.WriteLine("medic: " + medic.CNP);
             try
             {
-                medicRepo.Add(medic);
+                medicRepo.Add(new Medic());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -49,7 +48,6 @@ namespace TesteUnit.FunctionalitiesTests
             catch (Exception)
             {
                 Assert.IsTrue(true);
-
             }
         }
 
@@ -88,12 +86,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<Medic> medici = medicRepo.FindAll(); //TODO da fail findAll, why?
-                Assert.Fail();
-                Console.WriteLine("size med: " + medici.Count);
+                Assert.IsTrue(medici.Count >= 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }

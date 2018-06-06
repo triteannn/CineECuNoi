@@ -9,7 +9,7 @@ namespace TesteUnit.FunctionalitiesTests
     [TestClass]
     public class PungaSangeTest
     {
-        private SqlPungaSangeRepo pungaRepo;
+        private SqlPungaSangeRepo pungaRepo = new SqlPungaSangeRepo();
         private PungaSange punga = new PungaSange { };
         //PungiSange(DataRecoltare, Grupa, Rh, Target, IdCd, IdFd)
 
@@ -21,13 +21,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 pungaRepo.Add(punga);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -39,13 +36,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 pungaRepo.Delete(punga);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -58,9 +52,8 @@ namespace TesteUnit.FunctionalitiesTests
                 pungaRepo.Update(new PungaSange());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -73,9 +66,8 @@ namespace TesteUnit.FunctionalitiesTests
                 PungaSange pungaSange = pungaRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -88,9 +80,8 @@ namespace TesteUnit.FunctionalitiesTests
                 List<PungaSange> pungi = pungaRepo.FindAll();
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -100,12 +91,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                List<PungaSange> pungi = pungaRepo.FindByTarget("4536345");
+                List<PungaSange> pungi = pungaRepo.FindByTarget("45363798798797945");
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -116,11 +106,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<PungaSangeCuCNP> pungi = pungaRepo.GetPungaSangeCuCNP("4536345p");
-                Assert.Fail();
+                Assert.IsTrue(true);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }

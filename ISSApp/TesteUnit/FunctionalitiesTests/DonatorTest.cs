@@ -10,7 +10,7 @@ namespace TesteUnit.FunctionalitiesTests
     public class DonatorTest
     {
         //Donatori(CNP, Nume, Prenume, Dob, IdA)
-        private SqlDonatorRepo donatorRepo;
+        private SqlDonatorRepo donatorRepo = new SqlDonatorRepo();
         private Donator donator = new Donator { CNP="2436543564", Nume="Nelutu", Prenume="Paul", Dob=new DateTime(2011, 2, 3)};
 
 
@@ -20,14 +20,11 @@ namespace TesteUnit.FunctionalitiesTests
 
             try
             {
-                donatorRepo.Add(donator);
-                //Assert.IsTrue(true);
+                donatorRepo.Add(new Donator());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -39,13 +36,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 donatorRepo.Delete(donator);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -58,9 +52,8 @@ namespace TesteUnit.FunctionalitiesTests
                 donatorRepo.Update(new Donator());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -73,9 +66,8 @@ namespace TesteUnit.FunctionalitiesTests
                 Donator donator = donatorRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -86,12 +78,11 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<Donator> donatoruri = donatorRepo.FindAll();
-                Assert.Fail();
+                Assert.IsTrue(donatoruri.Count >= 0);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                Assert.IsTrue(true);
+                Assert.Fail();
             }
         }
 
@@ -101,12 +92,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                Donator donator = donatorRepo.FindByUsername("Andreea");
+                Donator donator = donatorRepo.FindByUsername("Andreea_Qwerty");
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -120,9 +110,8 @@ namespace TesteUnit.FunctionalitiesTests
                 Donator donator = donatorRepo.FindByIdAccount(-1235);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }

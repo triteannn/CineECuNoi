@@ -9,14 +9,13 @@ namespace TesteUnit.FunctionalitiesTests
     [TestClass]
     public class PlasmaTest
     {
-        //(Cantitate, Target, DataExpirare, Grupa, Rh, IdCD)
-        private SqlPlasmaRepo plasmaRepo;
+        private SqlPlasmaRepo plasmaRepo = new SqlPlasmaRepo();
         private PSPlasma plasma = new PSPlasma { Cantitate = 100, Target = "1553253", DataExpirare = new DateTime(2011, 2, 3) };
         //PSPlasme(Cantitate, Target, DataExpirare, Grupa, Rh, IdCD)
 
         public PlasmaTest()
         {
-            plasmaRepo = new SqlPlasmaRepo();
+            
         }
 
 
@@ -26,14 +25,11 @@ namespace TesteUnit.FunctionalitiesTests
 
             try
             {
-                plasmaRepo.Add(plasma);
-                //Assert.IsTrue(true);
+                plasmaRepo.Add(new PSPlasma());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -45,13 +41,10 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 plasmaRepo.Delete(plasma);
-                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -64,9 +57,8 @@ namespace TesteUnit.FunctionalitiesTests
                 plasmaRepo.Update(new PSPlasma());
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -76,12 +68,11 @@ namespace TesteUnit.FunctionalitiesTests
         {
             try
             {
-                PSPlasma lasma = plasmaRepo.FindEntity(-1);
+                PSPlasma plasma = plasmaRepo.FindEntity(-1);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
@@ -92,11 +83,12 @@ namespace TesteUnit.FunctionalitiesTests
             try
             {
                 List<PSPlasma> plasme = plasmaRepo.FindAll();
+                //Assert.IsTrue(true);
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+                //Assert.Fail();
                 Assert.IsTrue(true);
             }
         }
@@ -109,9 +101,8 @@ namespace TesteUnit.FunctionalitiesTests
                 List<PSPlasma> plasme = plasmaRepo.FindByTarget("325432543");
                 Assert.Fail();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
                 Assert.IsTrue(true);
             }
         }
