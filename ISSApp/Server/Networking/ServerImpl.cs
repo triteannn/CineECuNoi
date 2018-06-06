@@ -67,6 +67,17 @@ namespace Server.Networking
             }
         }
 
+        public Account AccountFindByUsername(string username)
+        {
+            try
+            {
+                return accountRepo.FindAccountByUsername(username);
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public Account AccountFindAccountByCredentials(string username, string password)
         {
             try

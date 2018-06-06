@@ -1,4 +1,5 @@
 ﻿using ISSApp.Exceptions;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Client.Validator
@@ -38,6 +39,15 @@ namespace Client.Validator
         {
             if (password.Length < 5)
                 throw new ValidationException("Password must be at least 5 characters long.");
+        }
+
+        public static void ValidateAge(DateTime dob)
+        {
+            var now = int.Parse(DateTime.Now.ToString("yyyyMMdd"));
+            var date = int.Parse(dob.ToString("yyyyMMdd"));
+            int age = (now - date) / 10000;
+            if (age < 18)
+                throw new ValidationException("You must be at least 18 years old to create an account.");
         }
     }
 }

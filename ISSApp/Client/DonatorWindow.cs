@@ -23,7 +23,7 @@ namespace Client
         private readonly IServer _server;
         private readonly DonatorService _donatorService;
         private readonly Account _loggedAccount;
-        private readonly List<string> _notifications;
+        private List<string> _notifications;
         private List<Analiza> _analize;
         private int _pagAnaliza;
 

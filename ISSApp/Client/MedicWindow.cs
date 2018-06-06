@@ -137,6 +137,10 @@ namespace Client
             animator1.AnimationType = AnimationType.Scale;
             animator1.ShowSync(MainPanel);
             MainPanel.Enabled = true;
+
+            var medic = _server.MedicFindEntity((int)_loggedAccount.IdM);
+            TxtDoctor.Text = medic.Nume + " " + medic.Prenume;
+            TxtHospital.Text = _server.SpitalFindEntity((int)medic.IdS).Denumire;
         }
 
         private void MenuButton2_Click(object sender, EventArgs e)
@@ -214,6 +218,7 @@ namespace Client
                 LblRequested.ForeColor = Color.DimGray;
                 LblSent.ForeColor = Color.DimGray;
                 LblReceived.ForeColor = Color.DimGray;
+                BtnCancel.Enabled = BtnReceived.Enabled = false;
             }
             else if (formularCerere.Status.Equals("Requested"))
             {
@@ -221,6 +226,8 @@ namespace Client
                 LblRequested.ForeColor = Color.DarkRed;
                 LblSent.ForeColor = Color.DimGray;
                 LblReceived.ForeColor = Color.DimGray;
+                BtnCancel.Enabled = true;
+                BtnReceived.Enabled = false;
             }
             else if (formularCerere.Status.Equals("Sent"))
             {
@@ -228,6 +235,8 @@ namespace Client
                 LblRequested.ForeColor = Color.DarkRed;
                 LblSent.ForeColor = Color.DarkRed;
                 LblReceived.ForeColor = Color.DimGray;
+                BtnCancel.Enabled = true;
+                BtnReceived.Enabled = true;
             }
             else if (formularCerere.Status.Equals("Received"))
             {
@@ -235,6 +244,7 @@ namespace Client
                 LblRequested.ForeColor = Color.DarkRed;
                 LblSent.ForeColor = Color.DarkRed;
                 LblReceived.ForeColor = Color.DarkRed;
+                BtnCancel.Enabled = BtnReceived.Enabled = false;
             }
         }
 
@@ -513,6 +523,15 @@ namespace Client
                 LblMessage.Text = @"There are no requests in the database.";
                 BtnCancel.Enabled = BtnReceived.Enabled = BtnPrevious.Enabled = BtnNext.Enabled = false;
             }
+        }
+
+        private void BtnReceived_Click(object sender, EventArgs e)
+        {
+            var formular = formulareCerere[pag];
+            formular.Status = "Received";
+            _server.FormularCerereUpdate(formular);
+            ImageProgress.Image = Properties.Resources.progress3;
+            LblReceived.ForeColor = LblRequested.ForeColor = LblSent.ForeColor = Color.DarkRed;
         }
     }
 }
