@@ -252,160 +252,176 @@ namespace Client
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            BtnSubmit.Enabled = false;
-            if (Radio1.Checked)
+            try
             {
-                centruDonare = null;
-                var globuleRosii = _server.GlobuleRosiiFindByTarget(TxtPacient.Text);
-                var plasma = _server.PlasmaFindByTarget(TxtPacient.Text);
-                var trombocite = _server.TrombociteFindByTarget(TxtPacient.Text);
-                var tupluGlobuleRosii = new List<Tuple<CentruDonare, double>>();
-                var tupluPlasma = new List<Tuple<CentruDonare, double>>();
-                var tupluTrombocite = new List<Tuple<CentruDonare, double>>();
+                BtnSubmit.Enabled = false;
+                if (Radio1.Checked)
+                {
+                    centruDonare = null;
+                    var globuleRosii = _server.GlobuleRosiiFindByTarget(TxtPacient.Text);
+                    var plasma = _server.PlasmaFindByTarget(TxtPacient.Text);
+                    var trombocite = _server.TrombociteFindByTarget(TxtPacient.Text);
+                    var tupluGlobuleRosii = new List<Tuple<CentruDonare, double>>();
+                    var tupluPlasma = new List<Tuple<CentruDonare, double>>();
+                    var tupluTrombocite = new List<Tuple<CentruDonare, double>>();
 
-                foreach (var gr in globuleRosii)
-                {
-                    var centru = _server.CentruDonareFindEntity((int)gr.IdCD);
-                    Tuple<CentruDonare, double> found = null;
-                    foreach (var tup in tupluGlobuleRosii)
+                    foreach (var gr in globuleRosii)
                     {
-                        if (tup.Item1.Id == centru.Id)
+                        var centru = _server.CentruDonareFindEntity((int)gr.IdCD);
+                        Tuple<CentruDonare, double> found = null;
+                        foreach (var tup in tupluGlobuleRosii)
                         {
-                            found = tup;
+                            if (tup.Item1.Id == centru.Id)
+                            {
+                                found = tup;
+                                break;
+                            }
+                        }
+                        double item = new double();
+                        if (found == null)
+                            tupluGlobuleRosii.Add(new Tuple<CentruDonare, double>(centru, gr.Cantitate));
+                        else
+                        {
+                            item = found.Item2;
+                            item += gr.Cantitate;
+                            tupluGlobuleRosii.Remove(found);
+                            tupluGlobuleRosii.Add(new Tuple<CentruDonare, double>(centru, item));
+                        }
+                    }
+                    foreach (var p in plasma)
+                    {
+                        var centru = _server.CentruDonareFindEntity((int)p.IdCD);
+                        Tuple<CentruDonare, double> found = null;
+                        foreach (var tup in tupluPlasma)
+                        {
+                            if (tup.Item1.Id == centru.Id)
+                            {
+                                found = tup;
+                                break;
+                            }
+                        }
+                        double item = new double();
+                        if (found == null)
+                            tupluPlasma.Add(new Tuple<CentruDonare, double>(centru, p.Cantitate));
+                        else
+                        {
+                            item = found.Item2;
+                            item += p.Cantitate;
+                            tupluPlasma.Remove(found);
+                            tupluPlasma.Add(new Tuple<CentruDonare, double>(centru, item));
+                        }
+                    }
+                    foreach (var t in trombocite)
+                    {
+                        var centru = _server.CentruDonareFindEntity((int)t.IdCD);
+                        Tuple<CentruDonare, double> found = null;
+                        foreach (var tup in tupluTrombocite)
+                        {
+                            if (tup.Item1.Id == centru.Id)
+                            {
+                                found = tup;
+                                break;
+                            }
+                        }
+                        double item = new double();
+                        if (found == null)
+                            tupluTrombocite.Add(new Tuple<CentruDonare, double>(centru, t.Cantitate));
+                        else
+                        {
+                            item = found.Item2;
+                            item += t.Cantitate;
+                            tupluTrombocite.Remove(found);
+                            tupluTrombocite.Add(new Tuple<CentruDonare, double>(centru, item));
+                        }
+                    }
+                    tupluGlobuleRosii.Sort((x, y) =>
+                    {
+                        return x.Item1.Id.CompareTo(y.Item1.Id);
+                    });
+                    tupluPlasma.Sort((x, y) =>
+                    {
+                        return x.Item1.Id.CompareTo(y.Item1.Id);
+                    });
+                    tupluTrombocite.Sort((x, y) =>
+                    {
+                        return x.Item1.Id.CompareTo(y.Item1.Id);
+                    });
+                    for (var i = 0; i < tupluGlobuleRosii.Count; i++)
+                    {
+                        if (tupluGlobuleRosii[i].Item2.CompareTo(double.Parse(TxtErythrocytes.Text)) > -1 && tupluPlasma[i].Item2.CompareTo(double.Parse(TxtPlasma.Text)) > -1 && tupluTrombocite[i].Item2.CompareTo(double.Parse(TxtPlatelets.Text)) > -1)
+                        {
+                            centruDonare = tupluGlobuleRosii[i].Item1;
+                            TxtSearchResult.Text = centruDonare.Denumire;
                             break;
                         }
                     }
-                    double item = new double();
-                    if (found == null)
-                        tupluGlobuleRosii.Add(new Tuple<CentruDonare, double>(centru, gr.Cantitate));
-                    else
+                    if (centruDonare == null)
                     {
-                        item = found.Item2;
-                        item += gr.Cantitate;
-                        tupluGlobuleRosii.Remove(found);
-                        tupluGlobuleRosii.Add(new Tuple<CentruDonare, double>(centru, item));
+                        TxtSearchResult.Text = "No results found.";
+                        BtnSubmit.Enabled = false;
                     }
+                    else
+                        BtnSubmit.Enabled = true;
                 }
-                foreach (var p in plasma)
+                else if (Radio2.Checked)
                 {
-                    var centru = _server.CentruDonareFindEntity((int)p.IdCD);
-                    Tuple<CentruDonare, double> found = null;
-                    foreach (var tup in tupluPlasma)
+                    var spital = _server.SpitalFindEntity(_server.MedicFindEntity((int)_loggedAccount.IdM).Id);
+                    var spitalAdr = _server.AdresaFindEntity(spital.IdAdr);
+                    var centre = _server.CentruDonareFindAll();
+                    centre.Sort((x, y) =>
                     {
-                        if (tup.Item1.Id == centru.Id)
+                        return Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)x.IdAdr), spitalAdr).CompareTo(Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)y.IdAdr), spitalAdr));
+                    });
+                    CentruDonare found = null;
+
+                    foreach (var c in centre)
+                    {
+                        double sumaGR = 0;
+                        foreach (var ps in _server.GlobuleRosiiFindAllByCentru(c.Id))
                         {
-                            found = tup;
+                            sumaGR += ps.Cantitate;
+                        }
+                        double sumaP = 0;
+                        foreach (var ps in _server.PlasmaFindAllByCentru(c.Id))
+                        {
+                            sumaP += ps.Cantitate;
+                        }
+                        double sumaT = 0;
+                        foreach (var ps in _server.TrombociteFindAllByCentru(c.Id))
+                        {
+                            sumaT += ps.Cantitate;
+                        }
+                        if (double.Parse(TxtErythrocytes.Text).CompareTo(sumaGR) <= 0 && double.Parse(TxtPlasma.Text).CompareTo(sumaP) <= 0 && double.Parse(TxtPlatelets.Text).CompareTo(sumaT) <= 0)
+                        {
+                            found = c;
                             break;
                         }
                     }
-                    double item = new double();
                     if (found == null)
-                        tupluPlasma.Add(new Tuple<CentruDonare, double>(centru, p.Cantitate));
+                    {
+                        TxtSearchResult.Text = "No results found.";
+                        BtnSubmit.Enabled = false;
+                    }
                     else
                     {
-                        item = found.Item2;
-                        item += p.Cantitate;
-                        tupluPlasma.Remove(found);
-                        tupluPlasma.Add(new Tuple<CentruDonare, double>(centru, item));
+                        TxtSearchResult.Text = found.Denumire;
+                        centruDonare = found;
+                        BtnSubmit.Enabled = true;
                     }
-                }
-                foreach (var t in trombocite)
-                {
-                    var centru = _server.CentruDonareFindEntity((int)t.IdCD);
-                    Tuple<CentruDonare, double> found = null;
-                    foreach (var tup in tupluTrombocite)
-                    {
-                        if (tup.Item1.Id == centru.Id)
-                        {
-                            found = tup;
-                            break;
-                        }
-                    }
-                    double item = new double();
-                    if (found == null)
-                        tupluTrombocite.Add(new Tuple<CentruDonare, double>(centru, t.Cantitate));
-                    else
-                    {
-                        item = found.Item2;
-                        item += t.Cantitate;
-                        tupluTrombocite.Remove(found);
-                        tupluTrombocite.Add(new Tuple<CentruDonare, double>(centru, item));
-                    }
-                }
-                tupluGlobuleRosii.Sort((x, y) => {
-                    return x.Item1.Id.CompareTo(y.Item1.Id);
-                });
-                tupluPlasma.Sort((x, y) => {
-                    return x.Item1.Id.CompareTo(y.Item1.Id);
-                });
-                tupluTrombocite.Sort((x, y) => {
-                    return x.Item1.Id.CompareTo(y.Item1.Id);
-                });
-                for (var i = 0; i < tupluGlobuleRosii.Count; i++)
-                {
-                    if (tupluGlobuleRosii[i].Item2.CompareTo(double.Parse(TxtErythrocytes.Text)) > -1 && tupluPlasma[i].Item2.CompareTo(double.Parse(TxtPlasma.Text)) > -1 && tupluTrombocite[i].Item2.CompareTo(double.Parse(TxtPlatelets.Text)) > -1)
-                    {
-                        centruDonare = tupluGlobuleRosii[i].Item1;
-                        TxtSearchResult.Text = centruDonare.Denumire;
-                        break;
-                    }
-                }
-                if (centruDonare == null)
-                {
-                    TxtSearchResult.Text = "No results found.";
-                    BtnSubmit.Enabled = false;
                 }
                 else
-                    BtnSubmit.Enabled = true;
+                {
+                    MessageBox.Show("You haven't selected a search criteria.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-            else if (Radio2.Checked)
+            catch (NetworkingException)
             {
-                var spital = _server.SpitalFindEntity(_server.MedicFindEntity((int)_loggedAccount.IdM).Id);
-                var spitalAdr = _server.AdresaFindEntity(spital.IdAdr);
-                var centre = _server.CentruDonareFindAll();
-                centre.Sort((x, y) => {
-                    return Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)x.IdAdr), spitalAdr).CompareTo(Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)y.IdAdr), spitalAdr));
-                });
-                CentruDonare found = null;
 
-                foreach (var c in centre)
-                {
-                    double sumaGR = 0;
-                    foreach (var ps in _server.GlobuleRosiiFindAllByCentru(c.Id))
-                    {
-                        sumaGR += ps.Cantitate;
-                    }
-                    double sumaP = 0;
-                    foreach (var ps in _server.PlasmaFindAllByCentru(c.Id))
-                    {
-                        sumaP += ps.Cantitate;
-                    }
-                    double sumaT = 0;
-                    foreach (var ps in _server.TrombociteFindAllByCentru(c.Id))
-                    {
-                        sumaT += ps.Cantitate;
-                    }
-                    if (double.Parse(TxtErythrocytes.Text).CompareTo(sumaGR) <= 0 && double.Parse(TxtPlasma.Text).CompareTo(sumaP) <= 0 && double.Parse(TxtPlatelets.Text).CompareTo(sumaT) <= 0)
-                    {
-                        found = c;
-                        break;
-                    }
-                }
-                if (found == null)
-                {
-                    TxtSearchResult.Text = "No results found.";
-                    BtnSubmit.Enabled = false;
-                }
-                else
-                {
-                    TxtSearchResult.Text = found.Denumire;
-                    centruDonare = found;
-                    BtnSubmit.Enabled = true;
-                }
+                MessageBox.Show("The search was unsuccessful.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("You haven't selected a search criteria.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Unable to use provided informations.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
