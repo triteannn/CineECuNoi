@@ -30,8 +30,11 @@ namespace Server
 
             RemotingServices.Marshal(service, "DonareSangeISS");
 
+            //Console.WriteLine(DateTime.Now);
+
             Console.WriteLine("Server is up on " + GetLocalIPAddress() + " on port: " + props["port"]);
-            Console.ReadLine();
+            //Console.ReadLine();
+
 
             DeleteExpired.StartTimer();
             Console.WriteLine("Started separate thread -- stergere produs sanguin expirat");

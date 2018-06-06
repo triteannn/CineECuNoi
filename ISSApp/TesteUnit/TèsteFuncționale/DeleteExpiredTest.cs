@@ -14,9 +14,8 @@ namespace TesteUnit.TèsteFuncționale
             return;
             Thread.Sleep(60000); // se asteapta un minut
 
-            Assert.IsTrue(true); return;// doar temporar, pana gasesc eroarea
-            var connection = Globals.GetDbConnection(); // aici e eroare,
-
+            Assert.IsTrue(true);
+            var connection = Globals.GetDbConnection(); 
 
             connection.Open();
             using (var command = connection.CreateCommand())
