@@ -16,6 +16,7 @@ namespace ISSApp.Networking
         int AccountGetLastId();
         DataSet AccountAdminGetDataSet();
         int AccountAdminUpdateDataBase(DataSet dataSet);
+        Account AccountFindByUsername(string username);
 
         //Adresa
         void AdresaAdd(Adresa entity);

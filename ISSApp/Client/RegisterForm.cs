@@ -74,7 +74,9 @@ namespace Client
         private void BtnRegister_Click(object sender, EventArgs e)
         {
             BtnRegister.Enabled = false;
-            var worker = new BackgroundWorker();
+            var worker = new BackgroundWorker {
+                WorkerSupportsCancellation = true
+            };
             if (TxtCnp.Text.Length > 0 && TxtFirstName.Text.Length > 0 && TxtLastName.Text.Length > 0 && TxtUsername.Text.Length > 0 && TxtPassword.Text.Length > 0 && !TxtCnp.Text.Equals("CNP") && !TxtFirstName.Text.Equals("First name") && !TxtLastName.Text.Equals("Last name") && !TxtUsername.Text.Equals("Username") && !TxtPassword.Text.Equals("Password"))
             {
                 try
@@ -84,32 +86,46 @@ namespace Client
                     RegisterValidator.ValidateLastName(TxtLastName.Text);
                     RegisterValidator.ValidateUsername(TxtUsername.Text);
                     RegisterValidator.ValidatePassword(TxtPassword.Text);
+                    RegisterValidator.ValidateAge(DOB.Value);
                     var donator = new Donator(TxtCnp.Text, TxtLastName.Text, TxtFirstName.Text, DOB.Value);
                     var account = new Account(TxtUsername.Text, TxtPassword.Text);
-
+                    var created = false;
                     worker.DoWork += (obj, ea) => {
-                        _server.AccountAdd(account);
+                        if (_server.AccountFindByUsername(account.Username) == null)
+                        {
+                            created = true;
+                            _server.AccountAdd(account);
 
-                        donator.IdA = _server.AccountGetLastId();
-                        account.Id = (int)donator.IdA;
+                            donator.IdA = _server.AccountGetLastId();
+                            account.Id = (int)donator.IdA;
 
-                        _server.DonatorAdd(donator);
+                            _server.DonatorAdd(donator);
 
-                        donator.Id = _server.DonatorGetLastId();
-                        account.IdD = donator.Id;
-                        _server.AccountUpdate(account);
+                            donator.Id = _server.DonatorGetLastId();
+                            account.IdD = donator.Id;
+                            _server.AccountUpdate(account);
+                        }
+                        else
+                        {
+                            MessageBox.Show(@"There is already an account with that username.", @"Error occured", MessageBoxButtons.OK,
+                       MessageBoxIcon.Error);
+                            worker.CancelAsync();
+                        }
                     };
 
                     worker.RunWorkerAsync();
 
                     worker.RunWorkerCompleted += (obj, ea) => {
                         BtnRegister.Enabled = true;
-                        MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-                        _loginForm.EmptyFields();
-                        _loginForm.Enabled = true;
-                        worker.Dispose();
-                        Close();
+                        if (created)
+                        {
+                            MessageBox.Show(@"Account created successfully!", @"Success", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                            _loginForm.EmptyFields();
+                            _loginForm.Enabled = true;
+                            worker.Dispose();
+                            Close();
+                        }
                     };
                 } catch (ValidationException ex)
                 {
