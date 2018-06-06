@@ -26,6 +26,7 @@ namespace Client
         private List<string> _notifications;
         private List<Analiza> _analize;
         private int _pagAnaliza;
+        private readonly List<string> _picList;
 
         public DonatorWindow(LoginForm loginForm, IServer server, Account loggedAccount)
         {
@@ -49,6 +50,12 @@ namespace Client
 
             BtnPrevious.FlatAppearance.BorderSize = 0;
             BtnNext.FlatAppearance.BorderSize = 0;
+
+            _picList = new List<string> {
+                Environment.CurrentDirectory.Replace(@"bin\Debug", @"Resources\bg1.png"),
+                Environment.CurrentDirectory.Replace(@"bin\Debug", @"Resources\bg2.png"),
+                Environment.CurrentDirectory.Replace(@"bin\Debug", @"Resources\bg3.png")
+            };
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -95,6 +102,7 @@ namespace Client
 
         private void DonatorWindow_Load(object sender, EventArgs e)
         {
+            pictureBox1.LoadAsync(_picList[0]);
             Text = @"Donator Window";
             var donator = _server.DonatorFindByIdAccount(_loggedAccount.Id);
             label2.Text = @"Logged in as " + donator.Nume + " " + donator.Prenume;
@@ -226,11 +234,19 @@ namespace Client
 
         private void MenuToggle_Click(object sender, EventArgs e)
         {
+
             if (_toggleMenu)
             {
+                Screensaver.Stop();
+                if (pictureBox1.Visible)
+                {
+                    animator2.HideSync(pictureBox1);
+                    pictureBox1.SendToBack();
+                }
                 MainPanel.SendToBack();
                 BloodTestsPanel.SendToBack();
                 animator1.AnimationType = AnimationType.HorizSlide;
+                animator1.WaitAllAnimations();
                 animator1.ShowSync(MenuPanel);
                 if (MainPanel.Visible)
                     MainPanel.Enabled = false;
@@ -258,6 +274,10 @@ namespace Client
                 if (NotificationsPanel.Visible)
                     NotificationsPanel.BringToFront();
                 _toggleMenu = true;
+                if (_toggleNotif == 1)
+                {
+                    pictureBox1.LoadAsync(_picList[0]);
+                }
             }
         }
 
@@ -291,6 +311,12 @@ namespace Client
                 BellMovement.Stop();
             if (_toggleNotif == 1)
             {
+                Screensaver.Stop();
+                if (pictureBox1.Visible)
+                {
+                    animator2.HideSync(pictureBox1);
+                    pictureBox1.SendToBack();
+                }
                 Bell.Image = Properties.Resources.bellinactive;
                 animator1.AnimationType = AnimationType.VertSlide;
                 MainPanel.SendToBack();
@@ -305,6 +331,10 @@ namespace Client
                 if (MenuPanel.Visible)
                     MenuPanel.BringToFront();
                 _toggleNotif = 1;
+                if (_toggleMenu)
+                {
+                    pictureBox1.LoadAsync(_picList[0]);
+                }
             }
         }
 
@@ -640,6 +670,26 @@ namespace Client
         {
             e.Graphics.DrawLine(Pens.DarkRed, new Point(e.ClipRectangle.Left + e.ClipRectangle.Width - 1, e.ClipRectangle.Top + e.ClipRectangle.Height - 4), new Point(e.ClipRectangle.Left + e.ClipRectangle.Width - 1, e.ClipRectangle.Top + 4));
             base.OnPaint(e);
+        }
+
+        int ind = 1;
+
+        private void Screensaver_Tick(object sender, EventArgs e)
+        {
+            if (pictureBox1.Visible)
+                animator2.HideSync(pictureBox1);
+            if (_toggleMenu && _toggleNotif == 1)
+            {
+                pictureBox1.LoadAsync(_picList[ind++]);
+                ind %= 3;
+                Screensaver.Stop();
+            }
+        }
+
+        private void pictureBox1_LoadCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            animator2.ShowSync(pictureBox1);
+            Screensaver.Start();
         }
     }
 }
