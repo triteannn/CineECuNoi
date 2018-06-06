@@ -690,7 +690,6 @@ namespace Client
         {
             animator2.ShowSync(pictureBox1);
             Screensaver.Start();
-            //Pista, please
         }
     }
 }
