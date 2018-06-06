@@ -736,13 +736,13 @@
             this.Radio2.Name = "Radio2";
             this.Radio2.Size = new System.Drawing.Size(361, 24);
             this.Radio2.TabIndex = 8;
-            this.Radio2.TabStop = true;
             this.Radio2.Text = "Nearest center with available blood products";
             this.Radio2.UseVisualStyleBackColor = true;
             // 
             // Radio1
             // 
             this.Radio1.AutoSize = true;
+            this.Radio1.Checked = true;
             this.animator1.SetDecoration(this.Radio1, AnimatorNS.DecorationType.None);
             this.Radio1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Radio1.Location = new System.Drawing.Point(9, 32);

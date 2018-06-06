@@ -261,6 +261,10 @@ namespace Client
                     var globuleRosii = _server.GlobuleRosiiFindByTarget(TxtPacient.Text);
                     var plasma = _server.PlasmaFindByTarget(TxtPacient.Text);
                     var trombocite = _server.TrombociteFindByTarget(TxtPacient.Text);
+                    trombocite = trombocite.Where(x => (x.Target == "" || x.Target == TxtPacient.Text) && (x.Grupa.Equals(TxtBloodType.Text) && x.Rh.Equals(TxtRh.Text))).ToList();
+                    plasma = plasma.Where(x => (x.Target == "" || x.Target == TxtPacient.Text) && (x.Grupa.Equals(TxtBloodType.Text) && x.Rh.Equals(TxtRh.Text))).ToList();
+                    globuleRosii = globuleRosii.Where(x => (x.Target == "" || x.Target == TxtPacient.Text) && (x.Grupa.Equals(TxtBloodType.Text) && x.Rh.Equals(TxtRh.Text))).ToList();
+
                     var tupluGlobuleRosii = new List<Tuple<CentruDonare, double>>();
                     var tupluPlasma = new List<Tuple<CentruDonare, double>>();
                     var tupluTrombocite = new List<Tuple<CentruDonare, double>>();
@@ -334,16 +338,13 @@ namespace Client
                             tupluTrombocite.Add(new Tuple<CentruDonare, double>(centru, item));
                         }
                     }
-                    tupluGlobuleRosii.Sort((x, y) =>
-                    {
+                    tupluGlobuleRosii.Sort((x, y) => {
                         return x.Item1.Id.CompareTo(y.Item1.Id);
                     });
-                    tupluPlasma.Sort((x, y) =>
-                    {
+                    tupluPlasma.Sort((x, y) => {
                         return x.Item1.Id.CompareTo(y.Item1.Id);
                     });
-                    tupluTrombocite.Sort((x, y) =>
-                    {
+                    tupluTrombocite.Sort((x, y) => {
                         return x.Item1.Id.CompareTo(y.Item1.Id);
                     });
                     for (var i = 0; i < tupluGlobuleRosii.Count; i++)
@@ -368,8 +369,7 @@ namespace Client
                     var spital = _server.SpitalFindEntity(_server.MedicFindEntity((int)_loggedAccount.IdM).Id);
                     var spitalAdr = _server.AdresaFindEntity(spital.IdAdr);
                     var centre = _server.CentruDonareFindAll();
-                    centre.Sort((x, y) =>
-                    {
+                    centre.Sort((x, y) => {
                         return Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)x.IdAdr), spitalAdr).CompareTo(Adresa.DistantaIntreAdrese(_server.AdresaFindEntity((int)y.IdAdr), spitalAdr));
                     });
                     CentruDonare found = null;
@@ -413,13 +413,11 @@ namespace Client
                 {
                     MessageBox.Show("You haven't selected a search criteria.", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-            }
-            catch (NetworkingException)
+            } catch (NetworkingException)
             {
 
                 MessageBox.Show("The search was unsuccessful.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception)
+            } catch (Exception)
             {
                 MessageBox.Show("Unable to use provided informations.", "Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -553,8 +551,7 @@ namespace Client
                 BtnReceived.Enabled = BtnCancel.Enabled = false;
 
                 MessageBox.Show(@"Confirmation successful.", @"Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch(NetworkingException)
+            } catch (NetworkingException)
             {
                 MessageBox.Show(@"Unable to confirm.", @"Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
