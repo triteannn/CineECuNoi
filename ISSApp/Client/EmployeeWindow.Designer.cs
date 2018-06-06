@@ -2094,8 +2094,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1353, 789);
             this.ControlBox = false;
-            this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Panel1);
+            this.Controls.Add(this.Panel3);
             this.Controls.Add(this.Panel4);
             this.Controls.Add(this.Panel2);
             this.Controls.Add(this.Panel5);

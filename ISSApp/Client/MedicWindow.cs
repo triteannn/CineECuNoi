@@ -543,11 +543,21 @@ namespace Client
 
         private void BtnReceived_Click(object sender, EventArgs e)
         {
-            var formular = formulareCerere[pag];
-            formular.Status = "Received";
-            _server.FormularCerereUpdate(formular);
-            ImageProgress.Image = Properties.Resources.progress3;
-            LblReceived.ForeColor = LblRequested.ForeColor = LblSent.ForeColor = Color.DarkRed;
+            try
+            {
+                var formular = formulareCerere[pag];
+                formular.Status = "Received";
+                _server.FormularCerereUpdate(formular);
+                ImageProgress.Image = Properties.Resources.progress3;
+                LblReceived.ForeColor = LblRequested.ForeColor = LblSent.ForeColor = Color.DarkRed;
+                BtnReceived.Enabled = BtnCancel.Enabled = false;
+
+                MessageBox.Show(@"Confirmation successful.", @"Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(NetworkingException)
+            {
+                MessageBox.Show(@"Unable to confirm.", @"Error occured", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

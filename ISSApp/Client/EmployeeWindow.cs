@@ -513,6 +513,7 @@ namespace Client
 
                     if (((FormularDonare)formular).Status.Equals("Received"))
                     {
+                        groupBox1.Enabled = false;
                         BtnAccept.Enabled = BtnReject.Enabled = true;
                         BtnDelete.Enabled = true;
                     }
@@ -526,6 +527,7 @@ namespace Client
                     {
                         BtnAccept.Enabled = BtnReject.Enabled = false;
                         BtnDelete.Enabled = false;
+                        groupBox1.Enabled = false;
                     }
 
                     var pungi = _server.GetPungaSangeCuCNP(_server.DonatorFindEntity((int)((FormularDonare)formular).IdD).CNP);
@@ -541,9 +543,12 @@ namespace Client
                 };
                 worker.RunWorkerAsync();
                 worker.RunWorkerCompleted += (obj, ea) => {
-                    if (punga == null)
+                    if (punga == null )
                     {
-                        groupBox1.Enabled = true;
+                        if (((FormularDonare)DonationFormsList.Items[DonationFormsList.SelectedIndices[0]].Tag).Status=="Received")
+                        groupBox1.Enabled = false;
+                        else
+                            groupBox1.Enabled = true;
                         TxtCollectionDate.Text = "";
                         TxtTarget.Text = "";
                         TxtBloodType.Text = "";

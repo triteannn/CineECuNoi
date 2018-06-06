@@ -1142,8 +1142,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1276, 626);
             this.ControlBox = false;
-            this.Controls.Add(this.RequestsPanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.RequestsPanel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MenuToggle);
             this.Controls.Add(this.PictureBox3);
