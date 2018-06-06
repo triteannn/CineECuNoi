@@ -19,7 +19,6 @@ namespace Server.Utils
 
         public static SqlConnection GetDbConnection()
         {
-            Console.WriteLine(ConfigurationManager.ConnectionStrings["DatabaseContext"].ToString());
             return new SqlConnection(ConfigurationManager.ConnectionStrings["DatabaseContext"].ToString());
         }
     }
