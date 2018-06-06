@@ -522,10 +522,36 @@ namespace Client
                     }
                     else
                     {
+                        var str = TxtAddress.Text.Split(' ');
+
+                        var numar = int.Parse(str[str.Length - 1]);
+                        var strada = "";
+                        for (var i = 0; i < str.Length - 1; ++i)
+                            strada += str[i];
+                        var newAdresa = new Adresa {
+                            Strada = strada,
+                            Numar = numar,
+                            Oras = TxtCity.Text,
+                            Judet = TxtCounty.Text
+                        };
+
+                        TaskCompletionSource<Tuple<double, double>> result = new TaskCompletionSource<Tuple<double, double>>();
+                        Func<Task> action = async () => { result.SetResult(await GetLatAndLng(newAdresa)); };
+
+                        TaskEx.Run(action);
+                        newAdresa.Latitude = result.Task.Result.Item1;
+                        newAdresa.Longitude = result.Task.Result.Item2;
+
+                        _server.AdresaAdd(newAdresa);
+
+
+                        newAdr = _server.AdresaFindLastEntity();
+
                         var newDateContact = new DateContact(TxtPhone.Text, TxtEmail.Text, newAdr.Id);
                         _server.DateContactAdd(newDateContact);
                         var donatorr = _server.DonatorFindEntity((int)_loggedAccount.IdD);
-                        donatorr.IdDc = _server.DateContactFindLastEntity().Id;
+                        var dc = _server.DateContactFindLastEntity();
+                        donatorr.IdDc = dc.Id;
                         _server.DonatorUpdate(donatorr);
                     }
 

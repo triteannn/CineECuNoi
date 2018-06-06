@@ -152,66 +152,44 @@ namespace Server.Repository
 
         public Donator Update(Donator donator)
         {
-            IDbConnection connection = Globals.GetDbConnection();
-            connection.Open();
-            using (var command = connection.CreateCommand())
+            using (var connection = Globals.GetDbConnection())
             {
                 try
                 {
-                    command.CommandText =
-                        "UPDATE Donatori SET CNP=@CNP, Nume=@Nume, Prenume=@Prenume, Dob=@Dob, IdCd=@IdCd, IdA=@IdA, IdDc=@IdDc WHERE Id=@Id";
+                    connection.Open();
+                    var cmd = new SqlCommand {
+                        Connection = connection,
+                        CommandText =
+                        "UPDATE Donatori SET CNP=@CNP, Nume=@Nume, Prenume=@Prenume, @Dob=@Dob, IdCd=@IdCd, IdA=@IdA, IdDc=@IdDc WHERE Id=@Id"
+                    };
+                    cmd.Parameters.AddWithValue("@CNP", donator.CNP);
+                    cmd.Parameters.AddWithValue("@Nume", donator.Nume);
+                    cmd.Parameters.AddWithValue("@Prenume", donator.Prenume);
+                    cmd.Parameters.AddWithValue("@Dob", donator.Dob);
+                    if (donator.IdCd == null)
+                        cmd.Parameters.AddWithValue("@IdCd", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@IdCd", donator.IdCd);
+                    if (donator.IdA == null)
+                        cmd.Parameters.AddWithValue("@IdA", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@IdA", donator.IdA);
+                    if (donator.IdDc == null)
+                        cmd.Parameters.AddWithValue("@IdDc", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@IdDc", donator.IdDc);
 
+                    cmd.Parameters.AddWithValue("@Id", donator.Id);
 
-                    var paramId = command.CreateParameter();
-                    paramId.ParameterName = "@Id";
-                    paramId.Value = donator.Id;
-                    command.Parameters.Add(paramId);
-
-                    var paramCNP = command.CreateParameter();
-                    paramCNP.ParameterName = "@CNP";
-                    paramCNP.Value = donator.CNP;
-                    command.Parameters.Add(paramCNP);
-
-                    var paramNume = command.CreateParameter();
-                    paramNume.ParameterName = "@Nume";
-                    paramNume.Value = donator.Nume;
-                    command.Parameters.Add(paramNume);
-
-                    var paramPrenume = command.CreateParameter();
-                    paramPrenume.ParameterName = "@Prenume";
-                    paramPrenume.Value = donator.Prenume;
-                    command.Parameters.Add(paramPrenume);
-
-                    var paramDob = command.CreateParameter();
-                    paramDob.ParameterName = "@Dob";
-                    paramDob.Value = donator.Dob;
-                    command.Parameters.Add(paramDob);
-
-                    var paramIdCd = command.CreateParameter();
-                    paramIdCd.ParameterName = "@IdCd";
-                    paramIdCd.Value = donator.IdCd;
-                    command.Parameters.Add(paramIdCd);
-
-                    var paramIdA = command.CreateParameter();
-                    paramIdA.ParameterName = "@IdA";
-                    paramIdA.Value = donator.IdA;
-                    command.Parameters.Add(paramIdA);
-
-                    var paramIdDc = command.CreateParameter();
-                    paramIdDc.ParameterName = "@IdDc";
-                    paramIdDc.Value = donator.IdDc;
-                    command.Parameters.Add(paramIdDc);
-
-                    var result = command.ExecuteNonQuery();
+                    var result = cmd.ExecuteNonQuery();
                     if (result != 0)
                     {
-                        connection.Close();
                         return donator;
                     }
-                    connection.Close();
                     return null;
-                } catch (SqlException)
+                } catch (SqlException ex)
                 {
+                    Console.WriteLine(ex.Message);
                     throw new RepositoryException("Update-ul din baza de date nu s-a putut realiza cu succes.");
                 }
             }

@@ -150,7 +150,7 @@ namespace Server.Repository
                             String telefon = result.GetString(1);
                             String email = result.GetString(2);
                             int? idAdresa = null;
-                            if(result[3] != DBNull.Value)
+                            if (result[3] != DBNull.Value)
                                 idAdresa = result.GetInt32(3);
 
                             DateContact dataContact = new DateContact(idData, telefon, email, idAdresa);
@@ -238,11 +238,8 @@ namespace Server.Repository
                 var command = connection.CreateCommand();
                 try
                 {
-                    command.CommandText = "SELECT * FROM DateContact WHERE Id=@Id";
-                    var paramId = command.CreateParameter();
-                    paramId.ParameterName = "@Id";
-                    paramId.Value = "(SELECT MAX(Id) FROM DateContact)";
-                    command.Parameters.Add(paramId);
+                    command.CommandText = "SELECT * FROM DateContact WHERE Id=(SELECT MAX(Id) FROM DateContact)";
+
 
                     using (var result = command.ExecuteReader())
                     {
@@ -286,8 +283,7 @@ namespace Server.Repository
                     rowsAffected = da.Update(dataSet.Tables["DateContact"]);
                 }
                 return rowsAffected;
-            }
-            catch (SqlException)
+            } catch (SqlException)
             {
                 throw new RepositoryException("Unable to update the database. Please check your changes.");
             }
@@ -311,8 +307,7 @@ namespace Server.Repository
                     da.Fill(ds, "DateContact");
                     return ds;
                 }
-            }
-            catch (SqlException)
+            } catch (SqlException)
             {
                 throw new RepositoryException("Unable to get data set from the database.");
             }

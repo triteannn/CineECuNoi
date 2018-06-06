@@ -27,6 +27,7 @@ namespace ISSApp.Networking
         Adresa AdresaGetAdresaByDateContactId(int idDC);
         int AdresaAdminUpdateDataBase(DataSet dataset);
         DataSet AdresaAdminGetDataSet();
+        Adresa AdresaFindLastEntity();
 
         //Angajat
         void AngajatAdd(AngajatCentru angajatCentru);

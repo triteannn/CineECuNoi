@@ -155,6 +155,17 @@ namespace Server.Networking
             }
         }
 
+        public Adresa AdresaFindLastEntity()
+        {
+            try
+            {
+                return adresaRepo.FindLastEntity();
+            } catch (RepositoryException e)
+            {
+                throw new NetworkingException(e.Message);
+            }
+        }
+
         public Adresa AdresaUpdate(Adresa entity)
         {
             try

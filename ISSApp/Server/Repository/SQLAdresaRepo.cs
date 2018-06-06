@@ -198,6 +198,51 @@ namespace Server.Repository
             }
         }
 
+        public Adresa FindLastEntity()
+        {
+            using (IDbConnection connection = Globals.GetDbConnection())
+            {
+                connection.Open();
+                var command = connection.CreateCommand();
+                try
+                {
+                    command.CommandText = "SELECT * FROM Adrese WHERE Id=(SELECT MAX(Id) FROM Adrese)";
+
+                    using (var result = command.ExecuteReader())
+                    {
+                        if (result.Read())
+                        {
+                            int idAdresa = result.GetInt32(0);
+
+                            var strada = "";
+                            if (result[1] != DBNull.Value)
+                                strada = result.GetString(1);
+
+                            int numar = result.GetInt32(2);
+
+                            var oras = "";
+                            if (result[3] != DBNull.Value)
+                                oras = result.GetString(3);
+
+                            var judet = "";
+                            if (result[4] != DBNull.Value)
+                                judet = result.GetString(4);
+
+                            Adresa adresa = new Adresa(idAdresa, strada, numar, oras, judet);
+                            return adresa;
+                        }
+
+                        return null;
+                    }
+
+                } catch (SqlException)
+                {
+                    throw new RepositoryException("Gasirea entitatii in baza de date nu s-a putut realiza cu susces.");
+                }
+
+            }
+        }
+
         public List<Adresa> FindAll()
         {
             IDbConnection connection = Globals.GetDbConnection();
@@ -227,8 +272,8 @@ namespace Server.Repository
                             String judet = "";
                             if (result[4] != DBNull.Value)
                                 judet = result.GetString(4);
-                        
-                            
+
+
                             toReturn.Add(new Adresa(idAdresa, strada, numar, oras, judet));
                         }
                     }
@@ -302,8 +347,7 @@ namespace Server.Repository
                     rowsAffected = da.Update(dataSet.Tables["Adrese"]);
                 }
                 return rowsAffected;
-            }
-            catch (SqlException)
+            } catch (SqlException)
             {
                 throw new RepositoryException("Unable to update the database. Please check your changes.");
             }
@@ -327,8 +371,7 @@ namespace Server.Repository
                     da.Fill(ds, "Adrese");
                     return ds;
                 }
-            }
-            catch (SqlException)
+            } catch (SqlException)
             {
                 throw new RepositoryException("Unable to get data set from the database.");
             }
